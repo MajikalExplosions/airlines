@@ -1,7 +1,9 @@
-# File: 
-# Written By: Christopher Luey
-# Date: 
-#
+# Name: GUI.py
+# Description: File for GUI and screens
+
+# Ver.	Writer			        Date			Notes
+# 1.0     Christopher Luey     05/08/20		   Original
+
 
 from graphics import *
 

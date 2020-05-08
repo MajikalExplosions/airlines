@@ -43,4 +43,5 @@ class Screen:
         pass
 
     def undraw(self):
+        pass
 

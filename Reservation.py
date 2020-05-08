@@ -7,8 +7,38 @@
 import random
 
 class Reservation:
-    def validateCreditCard(self, creditCardNum, cardCompany, pinCode):
-        pass
+    def validateCreditCard(self, creditCardNum):
+        #check digit is the last digit of the number
+        checkDigit = creditCardNum % 10
+
+        #creates a list of strings of all of the digits but the last one
+        sequence = self.__splitNumToList(creditCardNum // 10)
+
+        digitSum = 0
+
+        for i in range(len(sequence)):
+            #for every other digit, multiplies by 2 and then turns that number into the sum of it's digits
+            if i % 2 == 0:
+                digit = sequence[i] * 2
+                digit = (digit % 10) + (digit // 10)
+            else:
+                digit = sequence[i]
+
+            digitSum += digit
+
+        digitSum *= 9
+
+        return (digitSum % 10) == checkDigit
+
+    #takes a number and splits it into a list of each of it's digits, the returned list will be the number reversed
+    def __splitNumToList(self, number):
+        list = []
+
+        while number > 0:
+            list.append(number % 10)
+            number //= 10
+
+        return list
 
     def issueConfirmationNumer(self):
         usedNumbers = open("confirmationNumbers.txt", "r")
@@ -41,5 +71,3 @@ class Reservation:
             confirmation += allCharacters[random.randrange(len(allCharacters))]
 
         return confirmation
-
-Reservation().issueConfirmationNumer()

@@ -1,5 +1,5 @@
 class Airport:
-	def __init(self,code, city, timezone):
+	def __init(self,code, city, timezone): 
 		self.code = code
 		self.city = city
 		self.timezone = timezone

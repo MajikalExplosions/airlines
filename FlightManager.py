@@ -1,3 +1,9 @@
+# Name: FlightManager.py
+# Description: Route map manager
+
+# Ver.	Writer			    Date			Notes
+# 0.1   Kyler Rosen         05/09/20		File I/O test
+
 class FlightManager:
 	def __init__(self,file):
 		file = open(file,"r")

@@ -56,3 +56,6 @@ class Flight:
     
     def getTravelTime(self):
         return (TZManager.toUTC(self.destination.getTimezone()) - TZManager.toUTC(self.origin.getTimezone())) % 24
+    
+    def toString(self):
+        return "Flight " + self.airline + str(self.number) + " from " + self.origin.getName() + " to " + self.destination.getName()

@@ -17,6 +17,9 @@ class FlightManager:
 	def getFlights(self):
 		pass
 
+	def getAirports(self):
+		pass
+
 	def getFlightsFrom(self):
 		pass
 

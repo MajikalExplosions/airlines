@@ -3,12 +3,14 @@
 
 # Ver.	Writer			    Date			Notes
 # 0.1   Kyler Rosen         05/09/20		Add flight info from file except days
-# 0.2   Joseph Liu			05/15/20		Renaming and add days
+# 0.2   Joseph Liu			05/15/20		Renaming, add parsing for days, add travel time
+
+from Time import TZManager
 
 class Flight:
-	def __init__(self, i, airline, num, origin, destination, depTime, arrTime, days):
+    def __init__(self, i, airline, num, origin, destination, depTime, arrTime, days):
         #Python has built-in ids, so we can't use the self.id property
-		self.flightId = i
+        self.flightId = i
         self.airline = airline
         self.number = num
         self.origin = origin
@@ -22,10 +24,10 @@ class Flight:
         else:
             #Not daily flight
             if days[0] == "X":
-                self.runs = [True, True, True, True, True, True, True]
+                self.runsOn = [True, True, True, True, True, True, True]
                 days = days[1:]
             else:
-                self.runs = [False, False, False, False, False, False, False]
+                self.runsOn = [False, False, False, False, False, False, False]
             
             #For each
             for i in range(len(days)):
@@ -51,3 +53,6 @@ class Flight:
 
     def getArrTime(self):
         return self.arrivalTime
+    
+    def getTravelTime(self):
+        return (TZManager.toUTC(self.destination.getTimezone()) - TZManager.toUTC(self.origin.getTimezone())) % 24

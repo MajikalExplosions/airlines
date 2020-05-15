@@ -1,6 +1,6 @@
 
 
-f1 = open("f1.csv", "r")
+f1 = open("flights.unprocessed", "r")
 contents = f1.read()
 contents = contents.replace(",", "\t", -1)
 f1.close()

@@ -18,17 +18,26 @@ class Airport:
     def key(self):
         return self.code
 
-f1, f2 = open("airports.csv", "r", encoding="utf-8"), open("iata.dat", "r")
+f1, f2 = open("airports.unprocessed", "r", encoding="utf-8"), open("tz.unprocessed", "r")
 names = f1.readlines()[1:]
 tzs = f2.readlines()
 f1.close()
 f2.close()
 
 airports = []
+used = []
 for row in names:
     row = row.split(",")
     if len(row[13].strip("\" ,\t\n")) == 3:
         airports.append(Airport(row[13].strip("\" ,\t\n"), row[3].strip("\" ,\t\n"), row[10].strip("\" ,\t\n")))
+        used.append(row[13].strip("\" ,\t\n"))
+
+for row in names:
+    row = row.split(",")
+    code = row[14].strip("\" ,\t\n")
+    if len(code) == 3 and (code not in used):
+        airports.append(Airport(code, row[3].strip("\" ,\t\n"), row[10].strip("\" ,\t\n")))
+        used.append(code)
 
 airports.sort(key=Airport.key)
 
@@ -43,8 +52,10 @@ while i1 < len(airports) and i2 < len(tzs):
         i1 += 1
         i2 += 1
     elif c1 < c2:
+        #print(airports[i1].code)
         i1 += 1
     elif c1 > c2:
+        print(airports[i1].code)
         i2 += 1
 
 out = open("airports.tsv", "w", encoding="utf-8")

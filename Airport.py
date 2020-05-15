@@ -11,6 +11,7 @@ class Airport:
 		self.city = city
 		self.timezone = timezone
 		self.flights = []
+		self.node = 0
 
 	def addFlight(self, f):
 		self.flights.append(f)
@@ -26,3 +27,9 @@ class Airport:
 
 	def getTimezone(self):
 		return self.timezone
+
+	def setNode(self, n):
+		self.node = n
+	
+	def getNode(self):
+		return self.node

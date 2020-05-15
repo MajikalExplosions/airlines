@@ -5,13 +5,15 @@
 # 1.0   Joseph Liu              05/15/20		Original
 
 import heapq
-import ShortestPathTree
+from Graph import Graph
+import FlightManager
 
 class DijkstraSP:
     def __init__(self, graph, origin):
         nodes = graph.getNodes()
 
         pq = [(0, origin.getNode())]
+        origin.getNode().root()
         heapq.heapify(pq)
         
         while len(pq) > 0:
@@ -21,23 +23,40 @@ class DijkstraSP:
 
             cur[1].visit()
             for f in cur[1].getEdges():
+                #print(f.toString())
                 dest = f.getDestination().getNode()
                 #At some point we may want to add the layover times to the following calculation.
                 timeSpent = f.getTravelTime()
 
                 #If new path shorter, update.
-                if f.getDist() + timeSpent < dest.getDist():
-                    dest.setDist(f.getDist() + timeSpent)
+                tt = cur[1].getDist()
+                if tt + timeSpent < dest.getDist():
+                    dest.setDist(tt + timeSpent)
                     dest.setFlightIn(f)
-                    heapq.heappush(pq, (f.getDist() + timeSpent, f.getDestination().getNode()))
+                    heapq.heappush(pq, (tt + timeSpent, f.getDestination().getNode()))
         
-        self.grapth = graph
+        self.graph = graph
     
     def getPath(self, dest):
-        cur = dest
+        cur = dest.getNode()
         path = []
         while not cur.isRoot():
+            if cur.getFlightIn() in path:
+                break
             path.insert(0, cur.getFlightIn())
             cur = cur.getFlightIn().getOrigin().getNode()
         
         return path
+
+def test():
+    fm = FlightManager.FlightManager("airports.tsv", "flights.tsv")
+    graph = Graph(fm)
+    sp = DijkstraSP(graph, fm.airports[69])
+    print("Getting path from", fm.airports[69].getName(), "to", fm.airports[420].getName())
+
+    for f in sp.getPath(fm.airports[420]):
+        print(f.toString())
+    #print(sp.getPath(fm.airports[12]))
+
+if __name__ == "__main__":
+    test()

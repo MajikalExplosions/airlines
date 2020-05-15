@@ -25,7 +25,7 @@ class Node:
         a.setNode(self)
         #Dijkstra stuff
         self.reset(m)
-        self.visited = False
+        self.v = False
     
     def getEdges(self):
         return self.airport.getFlights()
@@ -40,15 +40,15 @@ class Node:
         self.dist = d
 
     def visited(self):
-        return self.visited
+        return self.v
     
     def visit(self):
-        self.visited = True
+        self.v = True
     
     def reset(self, mx):
         self.dist = mx
         self.flightIn = 0
-        self.visited = False
+        self.v = False
     
     def setFlightIn(self, p):
         self.flightIn = p
@@ -62,3 +62,6 @@ class Node:
     def root(self):
         self.dist = 0
         self.flightIn = -1
+
+    def __lt__(self, o):
+        return 0

@@ -53,10 +53,10 @@ class FlightManager:
 			
 
 	def getFlights(self):
-		pass
+		return self.flights
 
 	def getAirports(self):
-		pass
+		return self.airports
 
 
 def test():

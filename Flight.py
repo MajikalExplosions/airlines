@@ -1,12 +1,12 @@
 class Flight:
-	def __init__(self,id, airline, num, origin, destination, depTime, arrTime, days):
+	def __init__(self, id, airline, num, origin, destination, depTime, arrTime, days):
 		self.id = id 
         self.airline = airline
         self.number = num
-        self.orig = origin
-        self.dest = destination
-        self.depTime = depTime
-        self.arrTime = arrTime
+        self.origin = origin
+        self.destination = destination
+        self.departureTime = depTime
+        self.arrivalTime = arrTime
 
     def getID(self):
     	return self.id

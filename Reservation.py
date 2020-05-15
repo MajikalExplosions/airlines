@@ -1,8 +1,8 @@
 # Name: Reservation.py
 # Description: Class to hold an airline reservation
 
-# Ver.	Writer			        Date			Notes
-# 1.0     Shuvam Chatterjee     05/08/20		Original
+# Ver.  Writer              Date            Notes
+# 1.0   Shuvam Chatterjee   05/08/20        Original
 
 import random
 

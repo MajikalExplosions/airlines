@@ -66,4 +66,4 @@ class Flight:
         return (td.total_seconds() / 3600) % 24
     
     def toString(self):
-        return "Flight " + self.airline + str(self.number) + " from " + self.origin.getSearchString() + " to " + self.destination.getSearchString()
+        return "Flight " + self.airline + str(self.number) + " from " + self.origin.getSearchString() + " to " + self.destination.getSearchString() + " (" + str(self.getTravelTime()) + "h)"

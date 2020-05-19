@@ -44,6 +44,9 @@ class DijkstraSP:
             if cur.getFlightIn() in path:
                 break
             path.insert(0, cur.getFlightIn())
+            for f in cur.getAirport().getFlights():
+                #print(f.toString(), f.getTravelTime())
+                pass
             cur = cur.getFlightIn().getOrigin().getNode()
         
         return path
@@ -52,9 +55,9 @@ def test():
     fm = FlightManager.FlightManager("airports.tsv", "flights.tsv")
     graph = Graph(fm)
     sp = DijkstraSP(graph, fm.airports[69])
-    print("Getting path from", fm.airports[69].getName(), "to", fm.airports[420].getName())
+    print("Path from", fm.airports[69].getName(), "to", fm.airports[419].getName(), "takes", fm.airports[419].getNode().dist, "hours")
 
-    for f in sp.getPath(fm.airports[420]):
+    for f in sp.getPath(fm.airports[419]):
         print(f.toString())
     #print(sp.getPath(fm.airports[12]))
 

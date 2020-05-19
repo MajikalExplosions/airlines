@@ -14,7 +14,7 @@ class FlightManager:
 		self.flights = []
 		self.airports = []
 		codes = {}
-		processed = ""
+		processed = []
 
 		af = open(airportFile, "r")
 		contents = af.readlines()[1:]
@@ -36,9 +36,9 @@ class FlightManager:
 			l = line.split("\t")
 			for i in range(len(l)):
 				l[i] = l[i].strip()
-			if processed == l[4] + l[5]:
+			if l[4] + l[5] in processed:
 				continue
-			processed = l[4] + l[5]
+			processed.append(l[4] + l[5])
 			#print(processed)
 			self.flights.append(Flight(index, l[4], int(l[5]), self.airports[codes[l[0]]], self.airports[codes[l[1]]], l[2], l[3], l[6]))
 			self.flights[-1].getOrigin().addFlight(self.flights[-1])
@@ -50,6 +50,8 @@ class FlightManager:
 			if a.hasFlight():
 				n.append(a)
 		self.airports = n
+		
+		print("Done processing. Flights:", len(self.flights), "| Airports:", len(self.airports))
 			
 
 	def getFlights(self):

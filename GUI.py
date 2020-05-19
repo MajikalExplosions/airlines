@@ -13,6 +13,9 @@ class GUI:
         self.win = GraphWin(title="Airport", width=1000, height=800, autoflush=False)
         main = Screen('main', self.win)
         self.activeScreen = main
+        self.activeScreen.inflate()
+        while True:
+            pass
         pass
 
     def switchScreen(self, screen):
@@ -53,7 +56,7 @@ class Screen:
         """
         self.name = name
         self.win = win
-        path = "/Screens/" + name + ".txt"
+        path = "Screens/" + name + ".txt"
         try:
             self.source_file = open(path, 'r')
             self.attr = self._parse(self.source_file)
@@ -62,10 +65,10 @@ class Screen:
 
 
 
-    def undraw(self):
+    def deflate(self):
         pass
 
-    def draw(self):
+    def inflate(self):
         pass
 
     def _parse(self, source):

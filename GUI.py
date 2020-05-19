@@ -16,6 +16,11 @@ class GUI:
         pass
 
     def switchScreen(self, screen):
+
+        """
+        Args:
+            screen:
+        """
         if screen == "MAIN":
             pass
         elif screen == "CREATE_RESERVATION":
@@ -34,12 +39,18 @@ class GUI:
     def getScreen(self):
         return self.activeScreen
 
+
     def setOnButtonClickListener(self):
         pass
 
 class Screen:
 
     def __init__(self, name, win):
+        """
+        Args:
+            name:
+            win:
+        """
         self.name = name
         self.win = win
         path = "/Screens/" + name + ".txt"
@@ -59,6 +70,10 @@ class Screen:
 
     def _parse(self, source):
 
+        """
+        Args:
+            source:
+        """
         pass
 
 

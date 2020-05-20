@@ -33,7 +33,7 @@ class FlightManager:
 			index += 1
 		
 		ff = open(flightFile, "r")
-		contents = ff.readlines()[1:]
+		contents = ff.readlines()
 		ff.close()
 		index = 0
 		for line in contents:

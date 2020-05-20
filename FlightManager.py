@@ -68,22 +68,26 @@ class FlightManager:
 
 	def searchAirport(self,string):
 		matchingAirports = []
-		if len(string) == 3:
-			for airport in self.airports:
-				if airport.getCode().lower() == string.lower():
-					matchingAirports.append(airport)
-
-				if len(matchingAirports) == 10:
-					return matchingAirports
-
 		for airport in self.airports:
-			if (len(string) <= len(airport.getCity())) and (airport.getCity()[:len(string)].lower() == string.lower()) and not airport in matchingAirports:
+			if len(string) == 3 and airport.getCode().lower() == string.lower():
+				matchingAirports.append(airport)
+
+			if airport.getCity().lower() == string.lower():
+				matchingAirports.append(airport)
+
+			if airport.getName().lower() == string.lower():
+				matchingAirports.append(airport)
+
+			if airport.getSearchString().lower() == string.lower():
 				matchingAirports.append(airport)
 
 			if len(matchingAirports) == 10:
 				return matchingAirports
 
 		for airport in self.airports:
+			if (len(string) <= len(airport.getCity())) and (airport.getCity()[:len(string)].lower() == string.lower()) and not airport in matchingAirports:
+		 		matchingAirports.append(airport)
+
 			if len(string) <= len(airport.getSearchString()) and airport.getSearchString()[:len(string)].lower() == string.lower() and not airport in matchingAirports:
 				matchingAirports.append(airport)
 
@@ -91,8 +95,6 @@ class FlightManager:
 				return matchingAirports
 
 		return matchingAirports
-
-
 
 
 def test():

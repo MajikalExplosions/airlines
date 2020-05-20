@@ -1,7 +1,7 @@
 # Name: GUI.py
 # Description: File for GUI and screens
 
-# Ver.	Writer			        Date			Notes
+# Ver.	       Writer			 Date			Notes
 # 1.0     Christopher Luey     05/08/20		   Original
 
 
@@ -11,11 +11,19 @@ class GUI:
 
     def __init__(self):
         self.win = GraphWin(title="Airport", width=1000, height=800, autoflush=False)
-        main = Screen('main')
+        main = Screen('main', self.win)
         self.activeScreen = main
+        self.activeScreen.inflate()
+        while True:
+            pass
         pass
 
     def switchScreen(self, screen):
+
+        """
+        Args:
+            screen:
+        """
         if screen == "MAIN":
             pass
         elif screen == "CREATE_RESERVATION":
@@ -29,21 +37,46 @@ class GUI:
         elif screen == "START":
             pass
         else:
-            raise("unknown screen")
+            raise("Could not locate screen")
 
     def getScreen(self):
         return self.activeScreen
 
-    def setButtonClickListener(self):
+
+    def setOnButtonClickListener(self):
         pass
 
 class Screen:
 
     def __init__(self, name, win):
+        """
+        Args:
+            name:
+            win:
+        """
         self.name = name
         self.win = win
+        path = "Screens/" + name + ".txt"
+        try:
+            self.source_file = open(path, 'r')
+            self.attr = self._parse(self.source_file)
+        except:
+            raise("Could not locate file: " + path)
+
+
+
+    def deflate(self):
         pass
 
-    def undraw(self):
+    def inflate(self):
         pass
+
+    def _parse(self, source):
+
+        """
+        Args:
+            source:
+        """
+        pass
+
 

@@ -5,8 +5,10 @@
 # 0.1   Kyler Rosen         05/09/20		Add airport code, city, and timezone
 # 0.2   Joseph Liu			05/15/20		Add flight data storage for graph
 # 0.3   Joseph Liu			05/15/20		Add name info for searching
+# 0.4	Kyler Rosen			05/20/20		Cleaned up functions
 
 class Airport:
+
 	def __init__(self, code, city, name, timezone):
 		self.code = code
 		self.city = city
@@ -15,11 +17,18 @@ class Airport:
 		self.flights = []
 		self.node = 0
 		self.serviced = False
+		self.flightNum = 0
+
+	def getFlightNum(self):
+		return self.flightNum
+
 
 	def addFlight(self, f):
 		self.serviced = True
 		if f.getOrigin() == self:
 			self.flights.append(f)
+
+		self.flightNum +=1
 
 	def getFlights(self):
 		return self.flights
@@ -32,12 +41,6 @@ class Airport:
 
 	def getTimezone(self):
 		return self.timezone
-
-	def setNode(self, n):
-		self.node = n
-	
-	def getNode(self):
-		return self.node
 	
 	def hasFlight(self):
 		return self.serviced

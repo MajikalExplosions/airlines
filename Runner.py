@@ -1,15 +1,22 @@
-# File: 
-# Written By: Christopher Luey
-# Date: 
-# 
+# Name: Runner.py
+# Description: Runner program.
+
+# Ver.	    Writer			        Date			Notes
+# 1.0   Christopher Luey            05/17/20		Original
+
 
 import GUI
 
 def main():
     gui = GUI.GUI()
-    clicked = gui.setOnButtonClickListener()
+    clicked = 0
     while clicked != "quit":
         screen = gui.getScreen()
         clicked = gui.setOnButtonClickListener()
+        print(clicked)
+        if clicked == 'quit':
+            break
+        gui.switchScreen(clicked)
 
-main()
+if __name__ == '__main__':
+    main()

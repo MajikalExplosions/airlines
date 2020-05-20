@@ -59,7 +59,9 @@ class Button:
             self.radiusInd = True
 
         # Draw itself on the window
+        self.drawn = False
         self.draw(win)
+
 
     def draw(self, win):
         """
@@ -141,6 +143,7 @@ class Button:
             self.poly.setOutline(self.color)
             self.poly.setFill(self.color)
             self.poly.draw(win)
+            self.drawn = True
 
         else:
             # The Button will be a rectangle
@@ -182,6 +185,10 @@ class Button:
             self.shadowCircle2.undraw()
             self.shadowCircle3.undraw()
             self.shadowCircle4.undraw()
+        self.drawn = False
+
+    def isDrawn(self):
+        return self.drawn
 
     def toggleActivation(self):
         """

@@ -2,25 +2,25 @@
 # Description: File for GUI and screens
 
 # Ver.	       Writer			 Date			Notes
-# 1.0     Christopher Luey     05/08/20		   Master
-
+# 1.0     Christopher Luey     05/08/20		    Master
+# 1.1     Christopher Luey     05/15/20	   Add switchScreen method
 
 from Button import *
-import time
 
 class GUI:
 
     def __init__(self):
         self.win = GraphWin(title="Airport", width=1200, height=800, autoflush=False)
-        main = Screen('main', self.win)
-        start = Screen('start', self.win)
-        create_reservation = Screen('create_reservation', self.win)
-        modify_reservation = Screen('modify_reservation', self.win)
-        flight_status = Screen('flight_status', self.win)
-        checkin = Screen('checkin', self.win)
+        self.main = Screen('main', self.win)
+        self.start = Screen('start', self.win)
+        self.create_reservation = Screen('create_reservation', self.win)
+        self.modify_reservation = Screen('modify_reservation', self.win)
+        self.flight_status = Screen('flight_status', self.win)
+        self.checkin = Screen('checkin', self.win)
+        self.previousScreen = self.main
 
         self.inflate_header()
-        self.activeScreen = main
+        self.activeScreen = self.main
         self.attrs = self.activeScreen.inflate()
 
 
@@ -31,19 +31,62 @@ class GUI:
             screen:
         """
         if screen == "main":
+            if self.backButton.isActive():
+                self.backButton.toggleActivation()
+            self.activeScreen.deflate()
+            self.previousScreen = self.activeScreen
+            self.activeScreen = self.main
+            self.attrs = self.activeScreen.inflate()
             pass
         elif screen == "create_reservation":
+            if not self.backButton.isActive():
+                self.backButton.toggleActivation()
+            self.activeScreen.deflate()
+            self.previousScreen = self.activeScreen
+            self.activeScreen = self.create_reservation
+            self.attrs = self.activeScreen.inflate()
             pass
         elif screen == "modify_reservation":
+            if not self.backButton.isActive():
+                self.backButton.toggleActivation()
+            self.activeScreen.deflate()
+            self.previousScreen = self.activeScreen
+            self.activeScreen = self.modify_reservation
+            self.attrs = self.activeScreen.inflate()
             pass
         elif screen == "flight_status":
+            if not self.backButton.isActive():
+                self.backButton.toggleActivation()
+            self.activeScreen.deflate()
+            self.previousScreen = self.activeScreen
+            self.activeScreen = self.flight_status
+            self.attrs = self.activeScreen.inflate()
             pass
         elif screen == "checkin":
+            if not self.backButton.isActive():
+                self.backButton.toggleActivation()
+            self.activeScreen.deflate()
+            self.previousScreen = self.activeScreen
+            self.activeScreen = self.checkin
+            self.attrs = self.activeScreen.inflate()
             pass
         elif screen == "start":
+            if not self.backButton.isActive():
+                self.backButton.toggleActivation()
+            self.activeScreen.deflate()
+            self.previousScreen = self.activeScreen
+            self.activeScreen = self.start
+            self.attrs = self.activeScreen.inflate()
             pass
+        elif screen == "back":
+            if self.previousScreen == self.main and self.backButton.isActive():
+                self.backButton.toggleActivation()
+            self.activeScreen.deflate()
+            self.previousScreen, self.activeScreen = self.activeScreen, self.previousScreen
+            self.attrs = self.activeScreen.inflate()
         else:
             raise("Could not locate screen")
+        print(self.activeScreen.getName())
 
     def getScreen(self):
         return self.activeScreen
@@ -53,7 +96,7 @@ class GUI:
         p = self.win.getMouse()
         buttons = {"Modify an Existing Reservation" : "modify_reservation",
                    "Create a Reservation" : "create_reservation",
-                   "Lookup Flight Status" : "lookup_status",
+                   "Lookup Flight Status" : "flight_status",
                    "Check-In Online" : "checkin"}
         while not self.quitButton.isClicked(p):
             for i in self.attrs:
@@ -73,7 +116,6 @@ class GUI:
         self.quitButton = Button(1125, 75 / 2, 100, 50, 5, color_rgb(219, 80, 74), "Exit", 'white', 20, self.win)
         self.quitButton.toggleActivation()
         self.backButton = Button(75, 75 / 2, 100, 50, 5, color_rgb(219, 80, 74), "Back", 'white', 20, self.win)
-        self.backButton.toggleActivation()
 
 class Screen:
 
@@ -95,15 +137,24 @@ class Screen:
 
 
     def deflate(self):
-        pass
+        for i in self.attr:
+            if type(i) == Button:
+                i.toggleActivation()
+            i.undraw()
 
     def inflate(self):
         for i in self.attr:
             if type(i) == Button:
-                i.toggleActivation()
+                if not i.isDrawn():
+                    i.draw(self.win)
+                if not i.isActive():
+                    i.toggleActivation()
             else:
                 i.draw(self.win)
         return self.attr
+
+    def getName(self):
+        return self.name
 
     def _parse(self, s):
 

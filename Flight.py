@@ -41,6 +41,12 @@ class Flight:
 
         self.departureTime = Time.toUTC(self.origin.getTimezone(), Time.flightToDatetime(self.departureTime))
         
+        self.arrivalTime = Time.flightToDatetime(self.arrivalTime)
+        self.departureTime = Time.flightToDatetime(self.departureTime)
+
+        td = (Time.toUTC(self.destination.getTimezone(), self.arrivalTime) - Time.toUTC(self.origin.getTimezone(), self.departureTime))
+        self.td = (td.total_seconds() / 3600) % 24
+
         #Add days where flight is run
         if days == "Daily":
             self.runsOn = [True, True, True, True, True, True, True]
@@ -87,6 +93,7 @@ class Flight:
         td = self.arrivalTime - self.departureTime
         #td.total_seconds / 3600
         return (td.total_seconds() / 3600) % 24
+
     
     def toString(self):
         return "Flight " + self.airline + str(self.number) + " from " + self.origin.getSearchString() + " to " + self.destination.getSearchString() + " (" + str(self.getTravelTime()) + "h)"

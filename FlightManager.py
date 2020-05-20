@@ -5,6 +5,7 @@
 # 0.1   Kyler Rosen         05/09/20		File I/O test
 # 0.2   Joseph Liu			05/15/20		Add useful functions
 # 0.3   Joseph Liu			05/15/20		Add file I/O with new data format
+# 0.4 	Kyler Rosen 		05/20/20		Added searchAirport, sorts the airports
 
 from Airport import Airport
 from Flight import Flight
@@ -60,6 +61,35 @@ class FlightManager:
 	def getAirports(self):
 		return self.airports
 
+	def searchAirport(self,string):
+		matchingAirports = []
+		if len(string) == 3:
+			for airport in self.airports:
+				if airport.getCode().lower() == string.lower():
+					matchingAirports.append(airport)
+
+				if len(matchingAirports) == 10:
+					return matchingAirports
+
+		for airport in self.airports:
+
+			if (len(string) <= len(airport.getCity())) and (airport.getCity()[:len(string)].lower() == string.lower()) and not airport in matchingAirports:
+				matchingAirports.append(airport)
+
+			if len(matchingAirports) == 10:
+				return matchingAirports
+
+		for airport in self.airports:
+			if len(string) <= len(airport.getSearchString()) and airport.getSearchString()[:len(string)].lower() == string.lower() and not airport in matchingAirports:
+				matchingAirports.append(airport)
+
+			if len(matchingAirports) == 10:
+				return matchingAirports
+
+		return matchingAirports
+
+
+
 
 def test():
 	FlightMan = FlightManager("airports.tsv", "flights.tsv")
@@ -69,6 +99,11 @@ def test():
 	print("\n\nFlights from", FlightMan.airports[69].getName(), "\n")
 	for f in FlightMan.airports[69].getFlights():
 		print(f.toString())
+
+	airports = FlightMan.searchAirport("SAN")
+
+	for airport in airports:
+		print(airport.getSearchString())
 
 if __name__ == '__main__':
 	test()

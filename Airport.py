@@ -16,11 +16,18 @@ class Airport:
 		self.flights = []
 		self.node = 0
 		self.serviced = False
+		self.flightNum = 0
+
+	def getFlightNum(self):
+		return self.flightNum
+
 
 	def addFlight(self, f):
 		self.serviced = True
 		if f.getOrigin() == self:
 			self.flights.append(f)
+
+		self.flightNum +=1
 
 	def getFlights(self):
 		return self.flights

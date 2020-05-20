@@ -108,11 +108,11 @@ def test():
 	for f in FlightMan.airports[1].getFlights():
 	 	print(f.toString())
 
-	for airport in airports[0:10]:
+	for airport in FlightMan.airports[0:10]:
 		print(airport.getSearchString())
 		print(airport.getFlightNum())
 
-		
+
 	airports = FlightMan.searchAirport("SAN")
 
 	for airport in airports:

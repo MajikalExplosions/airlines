@@ -99,17 +99,25 @@ class FlightManager:
 
 def test():
 	FlightMan = FlightManager("airports.tsv", "flights.tsv")
-	print("Flights from", FlightMan.airports[420].getName(), "\n")
-	for f in FlightMan.airports[420].getFlights():
-		print(f.toString())
-	print("\n\nFlights from", FlightMan.airports[69].getName(), "\n")
-	for f in FlightMan.airports[69].getFlights():
-		print(f.toString())
+	
 
+	print("Flights from", FlightMan.airports[0].getName(), "\n")
+	for f in FlightMan.airports[0].getFlights():
+	 	print(f.toString())
+	print("\n\nFlights from", FlightMan.airports[1].getName(), "\n")
+	for f in FlightMan.airports[1].getFlights():
+	 	print(f.toString())
+
+	for airport in airports[0:10]:
+		print(airport.getSearchString())
+		print(airport.getFlightNum())
+
+		
 	airports = FlightMan.searchAirport("SAN")
 
 	for airport in airports:
 		print(airport.getSearchString())
+		print(airport.getFlightNum())
 
 if __name__ == '__main__':
 	test()

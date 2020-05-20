@@ -6,6 +6,7 @@
 # 0.2   Joseph Liu			05/15/20		Renaming, add parsing for days, add travel time
 
 import Time
+from datetime import timedelta
 
 class Flight:
     def __init__(self, i, airline, num, origin, destination, depTime, arrTime, days):
@@ -38,6 +39,10 @@ class Flight:
 
         elif arrivalTimeSubtract:
             self.arrivalTime -= timedelta(hours = 24)
+
+        print(arrivalTimeAdd)
+        print(arrivalTimeSubtract)
+        print(self.arrivalTime)
 
         self.departureTime = Time.toUTC(self.origin.getTimezone(), Time.flightToDatetime(self.departureTime))
         

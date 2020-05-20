@@ -30,8 +30,6 @@ class Flight:
 
             self.arrivalTime = self.arrivalTime[:-2]
 
-        print(self.arrivalTime)
-
         self.arrivalTime = Time.toUTC(self.destination.getTimezone(), Time.flightToDatetime(self.arrivalTime))
 
         if arrivalTimeAdd:
@@ -39,10 +37,6 @@ class Flight:
 
         elif arrivalTimeSubtract:
             self.arrivalTime -= timedelta(hours = 24)
-
-        print(arrivalTimeAdd)
-        print(arrivalTimeSubtract)
-        print(self.arrivalTime)
 
         self.departureTime = Time.toUTC(self.origin.getTimezone(), Time.flightToDatetime(self.departureTime))
         

@@ -86,7 +86,7 @@ class GUI:
             self.attrs = self.activeScreen.inflate()
         else:
             raise("Could not locate screen")
-        print(self.activeScreen.getName())
+        print("Switching to screen", self.activeScreen.getName())
 
     def getScreen(self):
         return self.activeScreen

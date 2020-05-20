@@ -41,9 +41,6 @@ class Flight:
 
         self.departureTime = Time.toUTC(self.origin.getTimezone(), Time.flightToDatetime(self.departureTime))
         
-        self.arrivalTime = Time.flightToDatetime(self.arrivalTime)
-        self.departureTime = Time.flightToDatetime(self.departureTime)
-
         td = (Time.toUTC(self.destination.getTimezone(), self.arrivalTime) - Time.toUTC(self.origin.getTimezone(), self.departureTime))
         self.td = (td.total_seconds() / 3600) % 24
 

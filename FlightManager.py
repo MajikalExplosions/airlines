@@ -10,6 +10,9 @@
 from Airport import Airport
 from Flight import Flight
 
+def getFlightNum(airport):
+	return airport.getFlightNum()
+
 class FlightManager:
 	def __init__(self, airportFile, flightFile):
 		self.flights = []
@@ -51,6 +54,8 @@ class FlightManager:
 			if a.hasFlight():
 				n.append(a)
 		self.airports = n
+
+		self.airports.sort(key = getFlightNum,reverse = True)
 		
 		print("Done processing. Flights:", len(self.flights), "| Airports:", len(self.airports))
 			
@@ -72,7 +77,6 @@ class FlightManager:
 					return matchingAirports
 
 		for airport in self.airports:
-
 			if (len(string) <= len(airport.getCity())) and (airport.getCity()[:len(string)].lower() == string.lower()) and not airport in matchingAirports:
 				matchingAirports.append(airport)
 

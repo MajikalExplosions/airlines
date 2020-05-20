@@ -18,10 +18,9 @@ class FlightManager:
 		self.flights = []
 		self.airports = []
 		codes = {}
-		processed = []
 
 		af = open(airportFile, "r")
-		contents = af.readlines()[1:]
+		contents = af.readlines()
 		af.close()
 		index = 0
 		for line in contents:
@@ -40,10 +39,6 @@ class FlightManager:
 			l = line.split("\t")
 			for i in range(len(l)):
 				l[i] = l[i].strip()
-			if l[4] + l[5] in processed:
-				continue
-			processed.append(l[4] + l[5])
-			#print(processed)
 			self.flights.append(Flight(index, l[4], int(l[5]), self.airports[codes[l[0]]], self.airports[codes[l[1]]], l[2], l[3], l[6]))
 			self.flights[-1].getOrigin().addFlight(self.flights[-1])
 			self.flights[-1].getDestination().addFlight(self.flights[-1])
@@ -55,7 +50,7 @@ class FlightManager:
 				n.append(a)
 		self.airports = n
 
-		self.airports.sort(key = getFlightNum,reverse = True)
+		self.airports.sort(key = getFlightNum, reverse = True)
 		
 		print("Done processing. Flights:", len(self.flights), "| Airports:", len(self.airports))
 			

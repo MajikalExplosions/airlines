@@ -50,7 +50,10 @@ class FlightManager:
 				n.append(a)
 		self.airports = n
 
-		self.airports.sort(key = getFlightNum, reverse = True)
+		self.airports.sort(key = getFlightNum,reverse = True)
+
+		for index in range(len(self.airports)):
+			self.airport[index].assignID(index)
 		
 		print("Done processing. Flights:", len(self.flights), "| Airports:", len(self.airports))
 			
@@ -90,6 +93,9 @@ class FlightManager:
 				return matchingAirports
 
 		return matchingAirports
+
+	def getAirport(self,accessNum):
+		return self.airports[accessNum]
 
 
 def test():

@@ -18,6 +18,7 @@ class Airport:
 		self.node = 0
 		self.serviced = False
 		self.flightNum = 0
+		self.ID = -1
 
 	def getFlightNum(self):
 		return self.flightNum
@@ -50,3 +51,9 @@ class Airport:
 	
 	def getSearchString(self):
 		return self.name + ", " + self.city + " (" + self.code + ")"
+
+	def assignId(self,ID):
+		self.ID = ID
+
+	def getID(self):
+		return self.ID

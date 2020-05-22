@@ -2,5 +2,3 @@
 *.pyc
 *.iml
 *.xml
-*.unprocessed
-data_compilers/all.py

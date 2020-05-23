@@ -4,8 +4,10 @@
 # Ver.	       Writer			 Date			Notes
 # 1.0     Christopher Luey     05/08/20		    Master
 # 1.1     Christopher Luey     05/15/20	   Add switchScreen method
+# 1.2     Christopher Luey     05/15/20	   Add parsing method
 
-from Button import *
+
+from GUI.lib.Button import *
 
 class GUI:
 
@@ -22,7 +24,7 @@ class GUI:
         self.inflate_header()
         self.activeScreen = self.main
         self.attrs = self.activeScreen.inflate()
-
+        self.win.setBackground(color_rgb(self.activeScreen.getBackground()[0], self.activeScreen.getBackground()[1], self.activeScreen.getBackground()[2]))
 
     def switchScreen(self, screen):
 
@@ -37,6 +39,7 @@ class GUI:
             self.previousScreen = self.activeScreen
             self.activeScreen = self.main
             self.attrs = self.activeScreen.inflate()
+            #self.win.setBackground(self.activeScreen.getBackground())
             pass
         elif screen == "create_reservation":
             if not self.backButton.isActive():
@@ -162,14 +165,25 @@ class Screen:
         Args:
             s:
         """
+        print("here")
         attrs = []
         source = s.readlines()
         if source:
-            self.background = source[0].rstrip("Background: ")
+            self.background = source[0].lstrip("Background: ").strip().split(",")
+            print(self.background)
+            for i in self.background:
+                self.background[self.background.index(i)] = int(self.background[self.background.index(i)])
             i=2
             while i < len(source):
                 if source[i][0] == "<" and source[i].lstrip("<").rstrip(">\n") == "Button":
                     attrs.append(Button(float(source[i+1].lstrip("x: ").rstrip("\n")), float(source[i+2].lstrip("y: ").rstrip("\n")), float(source[i+3].lstrip("width: ").rstrip("\n")), float(source[i+4].lstrip("height: ").rstrip("\n")), float(source[i+5].lstrip("radius: ").rstrip("\n")), color_rgb(int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[0]), int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[1]), int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[2])), str(source[i+7].lstrip("text: ").rstrip("\n")), color_rgb(int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[0]), int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[1]), int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[2])), int(source[i+9].lstrip("textSize: ").rstrip("\n")), self.win))
+                    attrs[len(attrs)-1].undraw()
                     i+=12
-                #elif source[i].rstrip("<").lstrip(">\n") == "Attr":
+                # elif source[i].rstrip("<").lstrip(">\n") == "Input":
+                #     attrs.append()
+                #     i = Entry(Point, width)
+                #     i.
         return attrs
+
+    def getBackground(self):
+        return self.background[0], self.background[1], self.background[2]

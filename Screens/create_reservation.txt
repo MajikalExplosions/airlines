@@ -1,0 +1,13 @@
+Background: 95, 168, 211
+
+<Button>
+x: 600
+y: 650
+width: 500
+height: 100
+radius: 20
+color: 86, 163, 166
+text: Create Reservation
+textColor: 255,255,255
+textSize: 22
+>

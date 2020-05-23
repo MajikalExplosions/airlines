@@ -1,4 +1,4 @@
-Background: 4F6D7A
+Background: 95, 168, 211
 
 <Button>
 x: 600

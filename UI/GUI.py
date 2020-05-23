@@ -173,5 +173,6 @@ class Screen:
                 #     i.
         return attrs
 
+
     def getBackground(self):
         return self.background[0], self.background[1], self.background[2]

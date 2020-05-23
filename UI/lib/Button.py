@@ -206,6 +206,7 @@ class Button:
             self.setCenter(Point(self.centerX + 3, self.centerY + 5))
         else:
             self.setCenter(Point(self.centerX-3, self.centerY-5))
+        return self
 
 
     def isActive(self):

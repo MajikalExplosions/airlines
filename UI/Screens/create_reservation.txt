@@ -7,7 +7,8 @@ width: 500
 height: 100
 radius: 20
 color: 86, 163, 166
-text: Create Reservation
+text: Create a Reservation
 textColor: 255,255,255
 textSize: 22
+id: create_reservation2
 >

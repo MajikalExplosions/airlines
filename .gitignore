@@ -1,7 +1,4 @@
 
 *.pyc
 *.xml
-.gitignore
-__pycache__/
-/.idea/airlines.iml
-/.idea/
+*.iml

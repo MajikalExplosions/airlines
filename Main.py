@@ -7,6 +7,11 @@
 
 
 from UI import GUI
+from Reservation.Reservation import Reservation, Passenger
+from Passenger.BoardingPass import BoardingPass
+from Flight.FlightManager import Flight, Airport, FlightManager
+from Flight.Path.DijkstraSP import DijkstraSP
+import Flight.Time as timezone
 
 
 def main():

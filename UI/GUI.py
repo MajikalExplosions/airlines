@@ -18,6 +18,7 @@ class GUI:
     def __init__(self):
         self.win = GraphWin(title="Airport", width=1200, height=800, autoflush=False)
         self.id_widget, self.widget_id = {}, {}
+
         ids = ["main", "start", "create_reservation", "modify_reservation", "flight_status", "checkin"]
         # self.screens - Hash: screenID : Screen()
         self.screens = {x:y for x,y in zip(ids, [Screen(i, self.win) for i in ids])}
@@ -25,6 +26,7 @@ class GUI:
         for i in self.screens.values():
             self.id_widget.update({x[1]:x[0] for x in i.getAttr()})
             self.widget_id.update({x[0]:x[1] for x in i.getAttr()})
+
         print(self.id_widget)
         self.previousScreen = self.screens["main"]
         self.inflate_header()

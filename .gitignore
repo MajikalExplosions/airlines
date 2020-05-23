@@ -1,4 +1,7 @@
 
 *.pyc
-../.idea/airlines.iml
 *.xml
+.gitignore
+Flight/Path/__pycache__/
+__pycache__/
+*.iml

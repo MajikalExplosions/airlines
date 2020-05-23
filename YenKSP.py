@@ -6,7 +6,7 @@
 
 import heapq
 
-class EppsteinKSP:
+class YenKSP:
     def __init__(self, fm, origin, dest, k):
         self.paths = []
         

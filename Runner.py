@@ -14,10 +14,10 @@ def main():
     while clicked != "quit":
         screen = gui.getScreen()
         clicked = gui.setOnButtonClickListener()
-        print(clicked)
         if clicked == 'quit':
             break
         gui.switchScreen(clicked)
+        print("Action performed:", clicked)
 
 if __name__ == '__main__':
     main()

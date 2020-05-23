@@ -4,8 +4,10 @@
 # Ver.	Writer			    Date			Notes
 # 0.1   Kyler Rosen         05/09/20		Add flight info from file except days
 # 0.2   Joseph Liu			05/15/20		Renaming, add parsing for days, add travel time
+# 0.3   Kyler Rosen         05/20/20        Fixed consideration for days, timezones, etc
 
 import Time
+from datetime import timedelta
 
 class Flight:
     def __init__(self, i, airline, num, origin, destination, depTime, arrTime, days):
@@ -17,16 +19,28 @@ class Flight:
         self.destination = destination
         self.departureTime = depTime
         self.arrivalTime = arrTime
-        #Some times are written in the format 04:00+/-1, but I have no idea what the -1 is so for now I just cut it out.
+        arrivalTimeAdd = False
+        arrivalTimeSubtract = False
+
         if self.arrivalTime.find("-") != -1 or self.arrivalTime.find("+") != -1:
+            if self.arrivalTime.find("-") != -1:
+                arrivalTimeSubtract = True
+
+            if self.arrivalTime.find("+") != -1:
+                arrivalTimeAdd = True
+
             self.arrivalTime = self.arrivalTime[:-2]
 
-        if self.departureTime.find("-") != -1 or self.departureTime.find("+") != -1:
-            self.departureTime = self.departureTime[:-2]
-        
-        self.arrivalTime = Time.flightToDatetime(self.arrivalTime)
-        self.departureTime = Time.flightToDatetime(self.departureTime)
+        self.arrivalTime = Time.toUTC(self.destination.getTimezone(), Time.flightToDatetime(self.arrivalTime))
 
+        if arrivalTimeAdd:
+            self.arrivalTime += timedelta(hours = 24)
+
+        elif arrivalTimeSubtract:
+            self.arrivalTime -= timedelta(hours = 24)
+
+        self.departureTime = Time.toUTC(self.origin.getTimezone(), Time.flightToDatetime(self.departureTime))
+        
         td = (Time.toUTC(self.destination.getTimezone(), self.arrivalTime) - Time.toUTC(self.origin.getTimezone(), self.departureTime))
         self.td = (td.total_seconds() / 3600) % 24
 
@@ -63,11 +77,20 @@ class Flight:
     def getDepTime(self):
         return self.departureTime
 
+    def getArrTimeLocal(self):
+        return self.arrivalTimeLocal
+
+    def getDepTimeLocal(self):
+        return self.departureTimeLocal
+
     def getArrTime(self):
         return self.arrivalTime
     
     def getTravelTime(self):
-        return self.td
+        td = self.arrivalTime - self.departureTime
+        #td.total_seconds / 3600
+        return (td.total_seconds() / 3600) % 24
+
     
     def toString(self):
         return "Flight " + self.airline + str(self.number) + " from " + self.origin.getSearchString() + " to " + self.destination.getSearchString() + " (" + str(self.getTravelTime()) + "h)"

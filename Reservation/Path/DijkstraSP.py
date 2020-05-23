@@ -5,7 +5,7 @@
 # 1.0   Joseph Liu              05/15/20		Original
 
 import heapq
-from Graph import Graph
+from Reservation.Path.Graph import Graph
 import FlightManager
 
 class DijkstraSP:

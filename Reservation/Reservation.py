@@ -45,13 +45,13 @@ class Reservation:
     def issueConfirmationNumer(self):
         #continuously generates a new number until we get one that has not already been issued
         confirmationNumber = self.__generateRandomConfirmation()
-        while self.__fileContainsString("confirmationNumbers.txt", confirmationNumber):
+        while self.__fileContainsString("confirmation_numbers.txt", confirmationNumber):
             confirmationNumber = self.__generateRandomConfirmation()
 
         self.confirmationNumber = confirmationNumber
 
         #stores the issued code in a file to prevent future repeats
-        confirmationFile = open("confirmationNumbers.txt", "a")
+        confirmationFile = open("confirmation_numbers.txt", "a")
         print(confirmationNumber, file=confirmationFile)
         confirmationFile.close()
 

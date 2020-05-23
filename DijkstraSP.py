@@ -52,7 +52,7 @@ class DijkstraSP:
         return path
 
 def test():
-    fm = FlightManager.FlightManager("data_compilers/airports.tsv", "flights.tsv")
+    fm = FlightManager.FlightManager("data_compilers/airports.tsv", "data_compilers/flights.tsv")
     graph = Graph(fm)
     sp = DijkstraSP(graph, fm.airports[69])
     print("Path from", fm.airports[69].getName(), "to", fm.airports[419].getName(), "takes", fm.airports[419].getNode().dist, "hours")

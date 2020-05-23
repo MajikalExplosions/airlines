@@ -99,7 +99,7 @@ class FlightManager:
 
 
 def test():
-	FlightMan = FlightManager("airports.tsv", "flights.tsv")
+	FlightMan = FlightManager("data_compilers/airports.tsv", "data_compilers/flights.tsv")
 	
 
 	print("Flights from", FlightMan.airports[0].getName(), "\n")

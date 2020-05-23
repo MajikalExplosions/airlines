@@ -4,10 +4,127 @@
 # Ver.  Writer              Date            Notes
 # 1.0   Shuvam Chatterjee   05/08/20        Original
 
-import random
+from random import randrange
+from Passenger import Passenger
 
 class Reservation:
+    def __init__(self):
+        self.confirmationNumber = ""
+        self.passengers = []
+        self.flights = []
+
+    def loadFromFile(self, confirmationNumber, lastName):
+        readFile = open("reservations.txt", "r")
+        fileLines = readFile.readlines()
+        reservationStartInd = self.__fileContainsConfirmationNumber(confirmationNumber, fileLines)
+
+        if reservationStartInd == -1:
+            return "Confirmation number was not found."
+
+        #fileContainsReservation only makes sure that the confirmation numbers match so we still need to check the last name
+        if not self.__reservationMatchesLastName(lastName, fileLines, reservationStartInd):
+            return "Last name was not found."
+
+        self.__parseReservation(fileLines, reservationStartInd)
+
+        readFile.close()
+        return "Loaded successfully."
+
+    def serialize(self):
+        if self.confirmationNumber == "":
+            self.confirmationNumber = self.issueConfirmationNumer()
+
+        readFile = open("reservations.txt", "r")
+        reservationStartInd = self.__fileContainsConfirmationNumber(self.confirmationNumber, readFile.readlines())
+        readFile.close()
+
+        #means that this reservation has not already been serialized
+        if reservationStartInd == -1:
+            reservationFile = open("reservations.txt", "a")
+            print(self.__toString(), file=reservationFile)
+
+        #it has been serialized and we have to override it
+        else:
+            pass
+
+    def __toString(self):
+        string = "Reservation {\n"
+        string += "Confirmation Number: " + self.confirmationNumber + "\n"
+        string += "Flights: " + str(self.flights) + "\n"
+
+        for passenger in self.passengers:
+            string += passenger.toString()
+
+        return string
+
+
+    #parses a reservation and sets instance variables accordingly
+    def __parseReservation(self, fileLines, index):
+        self.confirmationNumber = fileLines[index + 1].lstrip("Confirmation Number:")
+
+        #TODO: Do flight parsing
+
+
+
+    def __createPassengerFromString(self, passengerString):
+        firstName = passengerString[1].lstrip("First Name: ")
+        lastName = passengerString[2].lstrip("Last Name: ")
+
+        passenger = Passenger(firstName, lastName)
+
+        seatsString = passengerString[3].lstrip("Seats: ")[1:-1]
+
+        for seat in seatsString.split(","):
+            passenger.addSeat(seat.strip())
+
+        return passenger
+
+    def __reservationMatchesLastName(self, lastName, fileLines, reservationStartInd):
+        passengerLastNameInd = reservationStartInd + 5
+
+        while passengerLastNameInd < len(fileLines) and fileLines[passengerLastNameInd].find("Last Name: ") != -1:
+            if fileLines[passengerLastNameInd].lstrip("Last Name: ") == lastName:
+                return True
+
+            passengerLastNameInd += 4
+
+        return False
+
+    #searches the list of file lines to see if it contains a reservation with the given confirmation number
+    #if it does, returns the line where the reservation starts
+    #if it doesn't, returns -1
+    def __fileContainsConfirmationNumber(self, confirmationNumber, fileLines):
+        lineNum = 0
+
+        while lineNum < len(fileLines):
+            curLine = fileLines[lineNum]
+
+            if curLine.find("Confirmation Number: ") != -1:
+                #the string "Confirmation Number: " has length 21 so everything after that is the actual number
+                confirmationNum = curLine.lstrip("Confirmation Number: ")
+
+                if confirmationNum == confirmationNumber:
+                    #the start of a reservation will be 1 line above where it's confirmation number is
+                    return lineNum - 1
+            else:
+                lineNum += 1
+        return -1
+
+    def addPassenger(self, firstName, lastName, birthDate, gender):
+        self.passengers.append(Passenger(firstName, lastName, birthDate, gender))
+
     def validateCreditCard(self, creditCardNum):
+        if not (16 <= len(creditCardNum) <= 19):
+            return False
+
+        try:
+            creditCardNum = int(creditCardNum)
+
+            if creditCardNum <= 0:
+                return False
+        except:
+            return False
+
         #check digit is the last digit of the number
         checkDigit = creditCardNum % 10
 
@@ -16,7 +133,7 @@ class Reservation:
 
         digitSum = 0
 
-        #iterates through list and adds each digit to the digit sum
+        #iterates through list right to left and adds each digit to the digit sum
         for i in range(len(sequence)):
             #for every other digit, multiplies by 2 and then turns that number into the sum of it's digits
             if i % 2 == 0:
@@ -43,15 +160,18 @@ class Reservation:
         return list
 
     def issueConfirmationNumer(self):
+        if self.confirmationNumber != "":
+            return self.confirmationNumber
+
         #continuously generates a new number until we get one that has not already been issued
-        confirmationNumber = self.__generateRandomConfirmation()
-        while self.__fileContainsString("confirmation_numbers.txt", confirmationNumber):
+        self.confirmationNumber = self.__generateRandomConfirmation()
+        while self.__fileContainsString("confirmationNumbers.txt", self.confirmationNumber):
             confirmationNumber = self.__generateRandomConfirmation()
 
         self.confirmationNumber = confirmationNumber
 
         #stores the issued code in a file to prevent future repeats
-        confirmationFile = open("confirmation_numbers.txt", "a")
+        confirmationFile = open("confirmationNumbers.txt", "a")
         print(confirmationNumber, file=confirmationFile)
         confirmationFile.close()
 
@@ -77,9 +197,12 @@ class Reservation:
 
         #makes 6 random selections to create the confirmation number
         for i in range(6):
-            confirmation += allChars[random.randrange(len(allChars))]
+            confirmation += allChars[randrange(len(allChars))]
 
         return confirmation
 
     def getConfirmationNumber(self):
         return self.confirmationNumber
+
+    def getPassengers(self):
+        return self.passengers

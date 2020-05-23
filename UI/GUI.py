@@ -6,9 +6,11 @@
 # 1.1     Christopher Luey     05/15/20	        Add switchScreen method
 # 1.2     Christopher Luey     05/15/20	        Add parsing method
 # 1.3     Christopher Luey     05/23/20         Add widget id system & minor bug fixes
+# 1.4     Christopher Luey     05/23/20         Add json compatibility
 
 
 from UI.lib.Button import *
+import json
 
 
 class GUI:
@@ -16,19 +18,18 @@ class GUI:
     def __init__(self):
         self.win = GraphWin(title="Airport", width=1200, height=800, autoflush=False)
         self.id_widget, self.widget_id = {}, {}
-        ids = ['main', 'start', 'create_reservation', 'modify_reservation', 'flight_status', 'checkin']
+        ids = ["main", "start", "create_reservation", "modify_reservation", "flight_status", "checkin"]
         # self.screens - Hash: screenID : Screen()
         self.screens = {x:y for x,y in zip(ids, [Screen(i, self.win) for i in ids])}
 
         for i in self.screens.values():
             self.id_widget.update({x[1]:x[0] for x in i.getAttr()})
             self.widget_id.update({x[0]:x[1] for x in i.getAttr()})
-
-        self.previousScreen = self.screens['main']
+        print(self.id_widget)
+        self.previousScreen = self.screens["main"]
         self.inflate_header()
-        self.activeScreen = self.screens['main']
+        self.activeScreen = self.screens["main"]
         self.attrs = self.activeScreen.inflate()
-        self.win.setBackground(color_rgb(self.activeScreen.getBackground()[0], self.activeScreen.getBackground()[1], self.activeScreen.getBackground()[2]))
 
     def switchScreen(self, screen):
         """
@@ -40,20 +41,20 @@ class GUI:
                 self.backButton.toggleActivation()
             self.activeScreen.deflate()
             self.previousScreen = self.activeScreen
-            self.activeScreen = self.screens['main']
+            self.activeScreen = self.screens["main"]
             self.attrs = self.activeScreen.inflate()
         elif screen == "create_reservation":
-            self._switchScreen(self.screens['create_reservation'])
+            self._switchScreen(self.screens["create_reservation"])
         elif screen == "modify_reservation":
-            self._switchScreen(self.screens['modify_reservation'])
+            self._switchScreen(self.screens["modify_reservation"])
         elif screen == "flight_status":
-            self._switchScreen(self.screens['flight_status'])
+            self._switchScreen(self.screens["flight_status"])
         elif screen == "checkin":
-            self._switchScreen(self.screens['checkin'])
+            self._switchScreen(self.screens["checkin"])
         elif screen == "start":
-            self._switchScreen(self.screens['start'])
+            self._switchScreen(self.screens["start"])
         elif screen == "back":
-            if self.previousScreen == self.screens['main'] and self.backButton.isActive():
+            if self.previousScreen == self.screens["main"] and self.backButton.isActive():
                 self.backButton.toggleActivation()
             self.activeScreen.deflate()
             self.previousScreen, self.activeScreen = self.activeScreen, self.previousScreen
@@ -78,7 +79,6 @@ class GUI:
     def getScreenIDs(self):
         return self.screens
 
-
     def _switchScreen(self, screen):
         if not self.backButton.isActive(): self.backButton.toggleActivation()
         self.activeScreen.deflate()
@@ -94,18 +94,19 @@ class GUI:
                 if type(widget) == Button and widget.isClicked(p):
                     return id
             if self.backButton.isClicked(p):
-                return 'back'
+                return "back"
             p = self.win.getMouse()
-        return 'quit'
+        return "quit"
 
 
     def inflate_header(self):
-        self.home = Button(595, 75/2 - 5, 1205, 80, 0, color_rgb(8, 76, 97), 'ᴀɪʀᴘᴏʀᴛ ᴘʀᴏɢʀᴀᴍ', 'white', 26, self.win)
+        self.home = Button(595, 75/2 - 5, 1205, 80, 0, color_rgb(8, 76, 97), "ᴀɪʀᴘᴏʀᴛ ᴘʀᴏɢʀᴀᴍ", "white", 26, self.win)
         self.home.setInactiveColor(color_rgb(8, 76, 97))
         self.home.toggleActivation()
         self.home.toggleActivation()
-        self.quitButton = Button(1125, 75 / 2, 100, 50, 5, color_rgb(219, 80, 74), "Exit", 'white', 20, self.win).toggleActivation()
-        self.backButton = Button(75, 75 / 2, 100, 50, 5, color_rgb(219, 80, 74), "Back", 'white', 20, self.win)
+        self.quitButton = Button(1125, 75 / 2, 100, 50, 5, color_rgb(219, 80, 74), "Exit", "white", 20, self.win).toggleActivation()
+        self.backButton = Button(75, 75 / 2, 100, 50, 5, color_rgb(219, 80, 74), "Back", "white", 20, self.win)
+
 
 class Screen:
 
@@ -118,9 +119,9 @@ class Screen:
         self.name = name
         self.win = win
         # self.ids = ids
-        path = "UI/Screens/" + name + ".txt"
+        path = "UI/Screens/" + name + ".json"
         try:
-            self.source_file = open(path, 'r')
+            self.source_file = open(path, "r")
             self.attr = self._parse(self.source_file)
         except:
             raise("Could not locate file: " + path)
@@ -156,23 +157,48 @@ class Screen:
         """
         attrs = []
 
-        source = s.readlines()
-        if source:
-            self.background = source[0].lstrip("Background: ").strip().split(",")
-            for i in self.background:
-                self.background[self.background.index(i)] = int(self.background[self.background.index(i)])
-            i=2
-            while i < len(source):
-                if source[i][0] == "<" and source[i].lstrip("<").rstrip(">\n") == "Button":
-                    attrs.append([Button(float(source[i+1].lstrip("x: ").rstrip("\n")), float(source[i+2].lstrip("y: ").rstrip("\n")), float(source[i+3].lstrip("width: ").rstrip("\n")), float(source[i+4].lstrip("height: ").rstrip("\n")), float(source[i+5].lstrip("radius: ").rstrip("\n")), color_rgb(int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[0]), int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[1]), int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[2])), str(source[i+7].lstrip("text: ").rstrip("\n")), color_rgb(int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[0]), int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[1]), int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[2])), int(source[i+9].lstrip("textSize: ").rstrip("\n")), self.win), source[i+10].lstrip("id: ").rstrip("\n")])
-                    attrs[len(attrs)-1][0].undraw()
-                    i+=13
-                # elif source[i].rstrip("<").lstrip(">\n") == "Input":
-                #     attrs.append()
-                #     i = Entry(Point, width)
-                #     i.
+        # if source:
+        #     self.background = source[0].lstrip("Background: ").strip().split(",")
+        #     for i in self.background:
+        #         self.background[self.background.index(i)] = int(self.background[self.background.index(i)])
+        #     i=2
+        #     while i < len(source):
+        #         if source[i][0] == "<" and source[i].lstrip("<").rstrip(">\n") == "Button":
+        #             attrs.append([Button(float(source[i+1].lstrip("x: ").rstrip("\n")), float(source[i+2].lstrip("y: ").rstrip("\n")), float(source[i+3].lstrip("width: ").rstrip("\n")), float(source[i+4].lstrip("height: ").rstrip("\n")), float(source[i+5].lstrip("radius: ").rstrip("\n")), color_rgb(int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[0]), int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[1]), int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[2])), str(source[i+7].lstrip("text: ").rstrip("\n")), color_rgb(int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[0]), int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[1]), int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[2])), int(source[i+9].lstrip("textSize: ").rstrip("\n")), self.win), source[i+10].lstrip("id: ").rstrip("\n")])
+        #             attrs[len(attrs)-1][0].undraw()
+        #             i+=13
+        #         # elif source[i].rstrip("<").lstrip(">\n") == "Input":
+        #         #     attrs.append()
+        #         #     i = Entry(Point, width)
+        #         #     i.
+
+        d = json.load(s)
+        for key, item in d.items():
+            if str(key).find("Button") != -1:
+                attrs.append([Button(item["x"], item["y"], item["width"], item["height"], item["radius"], color_rgb(item["color"][0], item["color"][1], item["color"][2]), item["text"], color_rgb(item["textColor"][0], item["textColor"][1], item["textColor"][2]), item["textSize"], self.win), item["id"]])
+                attrs[len(attrs)-1][0].undraw()
+            elif str(key).find("Entry") != -1:
+                pass
+            elif str(key).find("Text") != -1:
+                pass
+            elif str(key).find("Rectangle") != -1:
+                pass
+            elif str(key).find("Circle") != -1:
+                pass
+            elif str(key).find("Point") != -1:
+                pass
+            elif str(key).find("Oval") != -1:
+                pass
+            elif str(key).find("Line") != -1:
+                pass
+            elif str(key).find("Polygon") != -1:
+                pass
+            elif str(key).find("Image") != -1:
+                pass
+
         return attrs
 
 
-    def getBackground(self):
-        return self.background[0], self.background[1], self.background[2]
+class Gradient():
+    def __init__(self):
+        pass

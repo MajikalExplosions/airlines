@@ -5,7 +5,8 @@
 # 1.0   Christopher Luey            05/17/20		Original
 
 
-import GUI
+from UI import GUI
+
 
 def main():
     gui = GUI.GUI()

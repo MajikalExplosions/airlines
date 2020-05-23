@@ -1,0 +1,49 @@
+Background: 95, 168, 211
+
+<Button>
+x: 600
+y: 200
+width: 500
+height: 100
+radius: 20
+color: 86, 163, 166
+text: Create a Reservation
+textColor: 255,255,255
+textSize: 22
+>
+
+<Button>
+x: 600
+y: 350
+width: 500
+height: 100
+radius: 20
+color: 86, 163, 166
+text: Modify an Existing Reservation
+textColor: 255,255,255
+textSize: 22
+>
+
+<Button>
+x: 600
+y: 500
+width: 500
+height: 100
+radius: 20
+color: 86, 163, 166
+text: Lookup Flight Status
+textColor: 255,255,255
+textSize: 22
+>
+
+<Button>
+x: 600
+y: 650
+width: 500
+height: 100
+radius: 20
+color: 86, 163, 166
+text: Check-In Online
+textColor: 255,255,255
+textSize: 22
+>

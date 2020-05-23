@@ -18,7 +18,6 @@ class FlightManager:
 		self.flights = []
 		self.airports = []
 		codes = {}
-		processed = []
 
 		af = open(airportFile, "r")
 		contents = af.readlines()
@@ -40,12 +39,6 @@ class FlightManager:
 			l = line.split("\t")
 			for i in range(len(l)):
 				l[i] = l[i].strip()
-			if l[4] + l[5] in processed:
-				continue
-			processed.append(l[4] + l[5])
-			#print(processed)
-			for i in range(6):
-				print(l[i])
 			self.flights.append(Flight(index, l[4], int(l[5]), self.airports[codes[l[0]]], self.airports[codes[l[1]]], l[2], l[3], l[6]))
 			self.flights[-1].getOrigin().addFlight(self.flights[-1])
 			self.flights[-1].getDestination().addFlight(self.flights[-1])
@@ -58,6 +51,9 @@ class FlightManager:
 		self.airports = n
 
 		self.airports.sort(key = getFlightNum,reverse = True)
+
+		for index in range(len(self.airports)):
+			self.airport[index].assignID(index)
 		
 		print("Done processing. Flights:", len(self.flights), "| Airports:", len(self.airports))
 			
@@ -98,9 +94,12 @@ class FlightManager:
 
 		return matchingAirports
 
+	def getAirport(self,accessNum):
+		return self.airports[accessNum]
+
 
 def test():
-	FlightMan = FlightManager("airports.tsv", "flights.tsv")
+	FlightMan = FlightManager("data_compilers/airports.tsv", "data_compilers/flights.tsv")
 	
 
 	print("Flights from", FlightMan.airports[0].getName(), "\n")

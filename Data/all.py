@@ -1,5 +1,5 @@
-from Airport import Airport
-from Flight import Flight
+from Flight.Flight import Airport
+from Flight.Flight import Flight
 
 class All:
     def __init__(self):

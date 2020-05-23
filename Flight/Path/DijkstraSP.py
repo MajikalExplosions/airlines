@@ -5,8 +5,9 @@
 # 1.0   Joseph Liu              05/15/20		Original
 
 import heapq
-from Reservation.Path.Graph import Graph
-import FlightManager
+from Flight.Path.Graph import Graph
+from Flight import FlightManager
+
 
 class DijkstraSP:
     def __init__(self, graph, origin):
@@ -52,7 +53,7 @@ class DijkstraSP:
         return path
 
 def test():
-    fm = FlightManager.FlightManager("data_compilers/airports.tsv", "data_compilers/flights.tsv")
+    fm = FlightManager.FlightManager("Data/airports.tsv", "Data/flights.tsv")
     graph = Graph(fm)
     sp = DijkstraSP(graph, fm.airports[69])
     print("Path from", fm.airports[69].getName(), "to", fm.airports[419].getName(), "takes", fm.airports[419].getNode().dist, "hours")

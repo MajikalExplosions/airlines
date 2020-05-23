@@ -7,8 +7,8 @@
 # 0.3   Joseph Liu			05/15/20		Add file I/O with new data format
 # 0.4 	Kyler Rosen 		05/20/20		Added searchAirport, sorts the airports
 
-from Airport import Airport
-from Flight import Flight
+from Flight.Flight import Airport
+from Flight.Flight import Flight
 
 def getFlightNum(airport):
 	return airport.getFlightNum()
@@ -99,7 +99,7 @@ class FlightManager:
 
 
 def test():
-	FlightMan = FlightManager("data_compilers/airports.tsv", "data_compilers/flights.tsv")
+	FlightMan = FlightManager("Data/airports.tsv", "Data/flights.tsv")
 	
 
 	print("Flights from", FlightMan.airports[0].getName(), "\n")

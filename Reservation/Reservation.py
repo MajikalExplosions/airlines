@@ -5,7 +5,7 @@
 # 1.0   Shuvam Chatterjee   05/08/20        Original
 
 from random import randrange
-from Passenger import Passenger
+from Passenger.Passenger import Passenger
 
 class Reservation:
     def __init__(self):

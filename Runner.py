@@ -5,7 +5,7 @@
 # 1.0   Christopher Luey            05/17/20		Original
 
 
-from GUI import GUI
+from UI import GUI
 
 
 def main():

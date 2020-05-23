@@ -1,5 +1,5 @@
-# Name: GUI.py
-# Description: File for GUI and screens
+# Name: UI.py
+# Description: File for UI and screens
 
 # Ver.	       Writer			 Date			Notes
 # 1.0     Christopher Luey     05/08/20		    Master
@@ -7,7 +7,7 @@
 # 1.2     Christopher Luey     05/15/20	   Add parsing method
 
 
-from GUI.lib.Button import *
+from UI.lib.Button import *
 
 class GUI:
 
@@ -130,7 +130,7 @@ class Screen:
         """
         self.name = name
         self.win = win
-        path = "Screens/" + name + ".txt"
+        path = "UI/Screens/" + name + ".txt"
         try:
             self.source_file = open(path, 'r')
             self.attr = self._parse(self.source_file)

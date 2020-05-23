@@ -3,7 +3,7 @@
 # Date: 9/24/19
 # This is a class that creates a Button using Zelle's Graphics Library
 
-from GUI.lib.graphics import *
+from UI.lib.graphics import *
 
 class Button:
     """

@@ -105,9 +105,9 @@ def writeToFiles(a, f):
     fa.write(fa2[:-1])
     fa.close()
 
-    ff2 = "Source\tDest\tLeave\tArrive\tCarrier\tflights\tDays\n"
+    ff2 = "Source\tDest\tLeave\tArrive\tCarrier\tFlight\tDays\n"
     for f2 in f:
-        #Source	Destination	Leave	Arrive	Carrier	flights	Days
+        #Source	Destination	Leave	Arrive	Carrier	Flight	Days
         ff2 += f2.getOrigin().getCode() + "\t" + f2.getDestination().getCode() + "\t" + f2.departureTime + "\t" + f2.arrivalTime + "\t" + f2.airline + "\t" + str(f2.number) + "\t" + f2.days + "\n"
     ff.write(ff2[:-1])
     ff.close()

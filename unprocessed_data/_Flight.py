@@ -1,4 +1,4 @@
-# Name: flights.py
+# Name: Flight.py
 # Description: Stores data for a single flight
 
 # Ver.	Writer			    Date			Notes
@@ -55,4 +55,4 @@ class Flight:
 
     
     def toString(self):
-        return "flights " + self.airline + str(self.number) + " from " + self.origin.getSearchString() + " to " + self.destination.getSearchString() + " (" + str(self.getTravelTime()) + "h)"
+        return "Flight " + self.airline + str(self.number) + " from " + self.origin.getSearchString() + " to " + self.destination.getSearchString() + " (" + str(self.getTravelTime()) + "h)"

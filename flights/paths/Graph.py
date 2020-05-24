@@ -6,7 +6,6 @@
 # 1.1   Joseph Liu              05/20/20		Add edges
 
 import heapq
-import math
 
 class Graph:
     def __init__(self):
@@ -43,9 +42,14 @@ class Graph:
     def exists(self, i):
         return self.nodes[i] != 0
     
-    def reset(self):
+    def resetAll(self):
         for node in self.nodes:
             node.reset(self.MAX)
+    
+    def reset(self, path):
+        for node in self.nodes:
+            if node not in path.getNodes():
+                node.reset(self.MAX)
             
 
 class Node:
@@ -63,10 +67,10 @@ class Node:
         return self.edges
     
     def getDist(self):
-        return self.dist
+        return self._dist
     
     def setDist(self, d):
-        self.dist = math.ceil(d * 1000) / 1000
+        self._dist = d
 
     def visited(self):
         return self.v
@@ -75,7 +79,7 @@ class Node:
         self.v = True
     
     def reset(self, mx):
-        self.dist = mx
+        self._dist = mx
         self.edgeIn = 0
         self.v = False
     
@@ -88,8 +92,8 @@ class Node:
     def isRoot(self):
         return self.edgeIn == -1
 
-    def root(self):
-        self.dist = 0
+    def root(self, d):
+        self._dist = d
         self.edgeIn = -1
 
     def __lt__(self, o):

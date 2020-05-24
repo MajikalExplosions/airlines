@@ -5,12 +5,14 @@
 # 1.0   Joseph Liu              05/23/20		Original
 
 from flights.paths.Graph import *
+from datetime import timedelta
+from flights.Time import *
 
 class Path:
     def __init__(self):
         self.nodes = []
         self.edges = []
-        self.dist = -1
+        self.distToNode = []
         self.graph = 0
     
     def fromDSP(self, dsp, dest):
@@ -21,13 +23,16 @@ class Path:
                 self.edges.insert(0, self.nodes[0].getEdgeIn())
                 self.nodes.insert(0, dsp.graph.getNodes()[self.nodes[0].getEdgeIn().u])
             
-            self.dist = dest.dist
+            self.distToNode = []
+            for node in self.nodes:
+                self.distToNode.append(node.getDist())
+            
             self.graph = dsp.graph
         except:
             self.nodes = []
             self.edges = []
-            self.dist = -1
-            print("Bad.")
+            self.distToNode = []
+            print("Can't get path from DSP.")
             return
     
     def fromTwo(self, p1, p2):
@@ -35,11 +40,15 @@ class Path:
         #Assumes that the p1 ends on the same node that p2 starts at.
         if p1.getNodes()[-1] != p2.getNodes()[0]:
             print("Can't combine two paths.")
-            print(p1.getNodes(), p2.getNodes())
             return
         self.nodes = p1.getNodes()[:-1] + p2.getNodes()
+        self.distToNode = p1.getDists()[:-1]
         self.edges = p1.getEdges() + p2.getEdges()
-        self.dist = p1.dist + p2.dist
+        
+        offset = p1.getNodes()[-1].getDist() - p2.getNodes()[0].getDist()
+        for d in p2.getDists():
+            self.distToNode.append(d + offset)
+
         self.graph = p1.graph
 
     def sliceToPath(self, i1, i2):
@@ -49,7 +58,7 @@ class Path:
         ne = self.edges[i1:i2]
         np.nodes = nn
         np.edges = ne
-        np.dist = nn[-1].dist - nn[0].dist
+        np.distToNode = self.distToNode[i1:i2 + 1]
         np.graph = self.graph
         return np
 
@@ -59,17 +68,25 @@ class Path:
     def getEdges(self):
         return self.edges
 
-    def getDist(self):
-        return self.dist
+    def getDists(self):
+        return self.distToNode
 
     def toString(self, fm):
         s = ""
         for i in range(len(self.edges)):
-            s += "Arrival at " + fm.getAirport(self.graph.ntoa[self.nodes[i].nid]).toString() + " at " + str(self.nodes[i].dist) + "\n"
+            s += "Arrival at " + fm.getAirport(self.graph.ntoa[self.nodes[i].nid]).toString() + " at " + str(self.distToNode[i]) + "\n"
             s += "Take " + self.edges[i].f.toString() + "\n"
         
-        s += "Final arrival at " + fm.getAirport(self.graph.ntoa[self.nodes[-1].nid]).toString() + " at " + str(self.dist)
+        s += "Final arrival at " + fm.getAirport(self.graph.ntoa[self.nodes[-1].nid]).toString() + " at " + str(self.distToNode[-1])
         return s
+    
+    def recalculateDist(self, initial):
+        return
+        self.distToNode = [initial]
+        for i in range(len(self.edges)):
+            nextFlightTime = self.edges[i].f.timeUntilNextFlight(offsetStartTime(timedelta(hours=self.distToNode[-1])))
+            flightTime = self.edges[i].f.getTravelTime()
+            self.distToNode.append(self.distToNode[-1] + nextFlightTime + flightTime)
 
     def equals(self, other):
         p1 = self.edges

@@ -14,11 +14,12 @@ from flights.paths.Path import Path
 from time import time
 
 class DijkstraSP:
-    def __init__(self, graph, origin):
+    def __init__(self, graph, origin, rootVal = 0):
         nodes = graph.getNodes()
         t = time()
         pq = [(0, origin)]
-        origin.root()
+        origin.root(rootVal)
+        origin.v = False
         heapq.heapify(pq)
         
         while len(pq) > 0:

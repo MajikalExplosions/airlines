@@ -3,6 +3,7 @@
 
 # Ver.	Writer			        Date			Notes
 # 1.0   Joseph Liu              05/15/20		Original
+# 1.0   Joseph Liu              05/20/20		Reimplemented without getting node from airport
 
 import heapq
 from flights.paths.Graph import Graph
@@ -23,32 +24,42 @@ class DijkstraSP:
                 continue
 
             cur[1].visit()
-            for f in cur[1].getEdges():
-                #print(f.toString())
-                dest = f.getDestination().getNode()
-                #At some point we may want to add the layover times to the following calculation.
-                timeSpent = f.getTravelTime()
+            for edge in cur[1].getEdges():
+                if not graph.exists(edge.v):
+                    continue
+                
+                dest = nodes[edge.v]
+                #At some point we want to add the layover times to the following calculation.
+                timeSpent = edge.f.getTravelTime()
 
                 #If new path shorter, update.
-                tt = cur[1].getDist()
-                if tt + timeSpent < dest.getDist():
-                    dest.setDist(tt + timeSpent)
-                    dest.setFlightIn(f)
-                    heapq.heappush(pq, (tt + timeSpent, f.getDestination().getNode()))
+                if cur[1].getDist() + timeSpent < dest.getDist():
+                    dest.setDist(cur[1].getDist() + timeSpent)
+                    dest.setEdgeIn(edge)
+                    heapq.heappush(pq, (cur[1].getDist() + timeSpent, dest))
         
         self.graph = graph
     
-    def getPath(self, dest):
-        cur = dest.getNode()
-        path = []
-        while not cur.isRoot():
-            if cur.getFlightIn() in path:
-                break
-            path.insert(0, cur.getFlightIn())
-            for f in cur.getAirport().getFlights():
-                #print(f.toString(), f.getTravelTime())
-                pass
-            cur = cur.getFlightIn().getOrigin().getNode()
+    def pathIsEqual(self, other, dest, i):
+        p1 = self.getPathEdge(dest)
+        p2 = other.getPathEdge(dest)
+        for x in range(i):
+            if p1[x].f != p2[x].f:
+                return False
+        
+        return True
+    
+    def getPathEdge(self, dest):
+        path = [dest.getEdgeIn()]
+        while not path[0].u.isRoot():
+            path.insert(0, self.graph.getNodes()[path[0].u.getEdgeIn()])
+        
+        return path
+    
+    def getPathNode(self, dest):
+        path = [dest]
+        while not path[0].isRoot():
+            path.insert(0, self.graph.getNodes()[path[0].getEdgeIn().u])
         
         return path
 

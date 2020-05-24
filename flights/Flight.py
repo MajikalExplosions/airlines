@@ -6,7 +6,7 @@
 # 0.2   Joseph Liu			05/15/20		Renaming, add parsing for days, add travel time
 # 0.3   Kyler Rosen         05/20/20        Fixed consideration for days, timezones, etc
 
-from flights.Time import *
+from Time import *
 from datetime import timedelta
 
 class Flight:

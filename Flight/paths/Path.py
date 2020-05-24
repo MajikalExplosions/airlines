@@ -4,7 +4,7 @@
 # Ver.	Writer			        Date			Notes
 # 1.0   Joseph Liu              05/23/20		Original
 
-from flights.paths.Graph import *
+from Flight.paths.Graph import *
 
 class Path:
     def __init__(self):

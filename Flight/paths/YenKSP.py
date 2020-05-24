@@ -4,8 +4,8 @@
 # Ver.	Writer			        Date			Notes
 # 1.0   Joseph Liu              05/23/20		Original
 
-from flights.paths.DijkstraSP import DijkstraSP
-from flights.paths.Path import Path
+from Flight.paths.DijkstraSP import DijkstraSP
+from Flight.paths.Path import Path
 
 class YenKSP:
     def __init__(self, graph, origin, dest, k):

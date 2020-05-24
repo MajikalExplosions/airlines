@@ -1,5 +1,5 @@
 import unidecode
-from Flight.Airport import *
+from flights.Airport import *
 from unprocessed_data._Flight import *
 
 
@@ -97,7 +97,7 @@ def clean(airports, flights, serviced, timezones, codes):
     return a
 
 def writeToFiles(a, f):
-    fa, ff = open("data/airports.tsv", "w"), open("data/Flight.tsv", "w")
+    fa, ff = open("data/airports.tsv", "w"), open("data/flights.tsv", "w")
 
     fa2 = "Code\tTimezone\tName\tCity\tSize\n"
     for a2 in a:
@@ -130,7 +130,7 @@ def main():
     print("Creating airports...")
     a, c = createAirports(airports, tz)
 
-    print("Creating Flight...")
+    print("Creating flights...")
     f, s = createFlights(flights, a, c)
 
     print("Cleaning data...")

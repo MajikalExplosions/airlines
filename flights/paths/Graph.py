@@ -6,6 +6,7 @@
 # 1.1   Joseph Liu              05/20/20		Add edges
 
 import heapq
+import math
 
 class Graph:
     def __init__(self):
@@ -18,12 +19,12 @@ class Graph:
         a = fm.getAirports()
         for i in range(len(a)):
             self.nodes.append(Node(i, self.MAX))
-            self.ntoa[i] = a.getId()
-            self.aton[a.getId()] = i
+            self.ntoa[i] = a[i].getId()
+            self.aton[a[i].getId()] = i
         
         for airport in a:
             for flight in airport.getFlights():
-                self.aton[airport.getId()].addEdge(Edge(flight, airport.getId(), self.aton[flight.getDestination().getId()]))
+                self.nodes[self.aton[airport.getId()]].addEdge(Edge(flight, self.aton[airport.getId()], self.aton[flight.getDestination().getId()]))
 
     def removeEdges(self, remove):
         for e in remove:
@@ -44,8 +45,11 @@ class Graph:
     def getNodes(self):
         return self.nodes
     
-    def exists(self, id):
-        return self.nodes[id] == 0
+    def getNodeFromAirport(self, a):
+        return self.nodes[self.aton[a.getId()]]
+
+    def exists(self, i):
+        return self.nodes[i] != 0
             
 
 class Node:
@@ -66,7 +70,7 @@ class Node:
         return self.dist
     
     def setDist(self, d):
-        self.dist = d
+        self.dist = math.ceil(d * 1000) / 1000
 
     def visited(self):
         return self.v

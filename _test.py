@@ -3,16 +3,23 @@
 from flights.FlightManager import *
 from flights.paths.DijkstraSP import *
 from flights.paths.Graph import *
+from datetime import timedelta
 
-def test():
-    fm = FlightManager("Data/airports.tsv", "Data/flights.tsv")
-    graph = Graph(fm)
-    sp = DijkstraSP(graph, fm.airports[69])
-    print("Path from", fm.airports[69].getName(), "to", fm.airports[419].getName(), "takes", fm.airports[419].getNode().dist, "hours")
+def test(a, b):
+    fm = FlightManager("data/airports.tsv", "data/flights.tsv")
+    graph = Graph()
+    graph.fromFlights(fm)
 
-    for f in sp.getPath(fm.airports[419]):
-        print(f.toString())
+    sp = DijkstraSP(graph, graph.getNodeFromAirport(fm.airports[a]))
+    print("\nPath from", fm.airports[a].getName(), "to", fm.airports[b].getName(), "takes", graph.getNodeFromAirport(fm.airports[b]).dist, "hours\n")
+
+    for node in sp.getPathNode(graph.getNodeFromAirport(fm.airports[b])):
+        print("Arrival at", fm.getAirport(graph.ntoa[node.nid]).getSearchString(), "at", offsetStartTime(timedelta(hours=round(node.dist, 3))))
+    
+    print()
+    for edge in sp.getPathEdge(graph.getNodeFromAirport(fm.airports[b])):
+        print("Take", edge.f.toString())
     #print(sp.getPath(fm.airports[12]))
 
 if __name__ == "__main__":
-    test()
+    test(1, 3)

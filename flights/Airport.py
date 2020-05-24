@@ -50,8 +50,8 @@ class Airport:
 	def getSearchString(self):
 		return self.name + ", " + self.city + " (" + self.code + ")"
 
-	def assignId(self,ID):
+	def assignId(self, ID):
 		self.ID = ID
 
-	def getID(self):
+	def getId(self):
 		return self.ID

@@ -7,14 +7,16 @@
 
 import heapq
 from flights.paths.Graph import Graph
+from flights.Time import *
+from datetime import timedelta
 
 
 class DijkstraSP:
     def __init__(self, graph, origin):
         nodes = graph.getNodes()
 
-        pq = [(0, origin.getNode())]
-        origin.getNode().root()
+        pq = [(0, origin)]
+        origin.root()
         heapq.heapify(pq)
         
         while len(pq) > 0:
@@ -26,10 +28,9 @@ class DijkstraSP:
             for edge in cur[1].getEdges():
                 if not graph.exists(edge.v):
                     continue
-                
                 dest = nodes[edge.v]
                 #At some point we want to add the layover times to the following calculation.
-                timeSpent = edge.f.getTravelTime()
+                timeSpent = edge.f.getTravelTime() + edge.f.timeUntilNextFlight(offsetStartTime(timedelta(hours=cur[1].getDist())))
 
                 #If new path shorter, update.
                 if cur[1].getDist() + timeSpent < dest.getDist():
@@ -50,8 +51,8 @@ class DijkstraSP:
     
     def getPathEdge(self, dest):
         path = [dest.getEdgeIn()]
-        while not path[0].u.isRoot():
-            path.insert(0, self.graph.getNodes()[path[0].u.getEdgeIn()])
+        while not self.graph.getNodes()[path[0].u].isRoot():
+            path.insert(0, self.graph.getNodes()[path[0].u].getEdgeIn())
         
         return path
     

@@ -32,8 +32,8 @@ class DijkstraSP:
                 if not graph.exists(edge.v) or edge.removed():
                     continue
                 dest = nodes[edge.v]
-                #At some point we want to add the layover times to the following calculation.
-                timeSpent = edge.f.getTravelTime() + edge.f.timeUntilNextFlight(offsetStartTime(timedelta(hours=cur[1].getDist())))
+                #1 is added because layovers take T I M E
+                timeSpent = edge.f.getTravelTime() + edge.f.timeUntilNextFlight(offsetStartTime(timedelta(hours=cur[1].getDist() + 1)))
 
                 #If new path shorter, update.
                 if cur[1].getDist() + timeSpent < dest.getDist():

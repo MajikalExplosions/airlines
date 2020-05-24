@@ -81,7 +81,6 @@ class Path:
         return s
     
     def recalculateDist(self, initial):
-        return
         self.distToNode = [initial]
         for i in range(len(self.edges)):
             nextFlightTime = self.edges[i].f.timeUntilNextFlight(offsetStartTime(timedelta(hours=self.distToNode[-1])))

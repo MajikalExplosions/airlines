@@ -87,7 +87,7 @@ class Flight:
     def getTravelTime(self):
         td = self.arrivalTime - self.departureTime
         #td.total_seconds / 3600
-        return (td.total_seconds() / 3600) % 24
+        return (td.total_seconds() / 3600)
 
     #Note: this function needs optimizing.
     def timeUntilNextFlight(self, time):

@@ -5,7 +5,11 @@
 # 1.0   Shuvam Chatterjee   05/08/20        Original
 
 from random import randrange
+<<<<<<< HEAD:reservation/Reservation.py
 from reservation.Passenger import Passenger
+=======
+from Passenger.Passenger import Passenger
+>>>>>>> parent of 13c9ba8... Start fixing things:Reservation/Reservation.py
 
 class Reservation:
     def __init__(self):
@@ -14,7 +18,7 @@ class Reservation:
         self.flights = []
 
     def loadFromFile(self, confirmationNumber, lastName):
-        readFile = open("reservations/data_reservation/reservations.txt", "r")
+        readFile = open("Reservation/data_reservation/reservations.txt", "r")
         fileLines = readFile.readlines()
         reservationStartInd = self.__fileContainsConfirmationNumber(confirmationNumber, fileLines)
 
@@ -34,13 +38,13 @@ class Reservation:
         if self.confirmationNumber == "":
             self.confirmationNumber = self.issueConfirmationNumer()
 
-        readFile = open("reservations/data_reservation/reservations.txt", "r")
+        readFile = open("Reservation/data_reservation/reservations.txt", "r")
         reservationStartInd = self.__fileContainsConfirmationNumber(self.confirmationNumber, readFile.readlines())
         readFile.close()
 
         #means that this reservation has not already been serialized
         if reservationStartInd == -1:
-            reservationFile = open("reservations/data_reservation/reservations.txt", "a")
+            reservationFile = open("Reservation/data_reservation/reservations.txt", "a")
             print(self.__toString(), file=reservationFile)
 
         #it has been serialized and we have to override it
@@ -165,13 +169,13 @@ class Reservation:
 
         #continuously generates a new number until we get one that has not already been issued
         self.confirmationNumber = self.__generateRandomConfirmation()
-        while self.__fileContainsString("reservations/data_reservation/confirmation_numbers.txt", self.confirmationNumber):
+        while self.__fileContainsString("Reservation/data_reservation/confirmation_numbers.txt", self.confirmationNumber):
             confirmationNumber = self.__generateRandomConfirmation()
 
         self.confirmationNumber = confirmationNumber
 
         #stores the issued code in a file to prevent future repeats
-        confirmationFile = open("reservations/data_reservation/confirmation_numbers.txt", "a")
+        confirmationFile = open("Reservation/data_reservation/confirmation_numbers.txt", "a")
         print(confirmationNumber, file=confirmationFile)
         confirmationFile.close()
 

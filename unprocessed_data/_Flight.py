@@ -1,4 +1,4 @@
-# Name: Flight.py
+# Name: flights.py
 # Description: Stores data for a single flight
 
 # Ver.	Writer			    Date			Notes
@@ -6,7 +6,7 @@
 # 0.2   Joseph Liu			05/15/20		Renaming, add parsing for days, add travel time
 # 0.3   Kyler Rosen         05/20/20        Fixed consideration for days, timezones, etc
 
-from Flight.Time import *
+from flights.Time import *
 from datetime import timedelta
 
 class Flight:
@@ -55,4 +55,4 @@ class Flight:
 
     
     def toString(self):
-        return "Flight " + self.airline + str(self.number) + " from " + self.origin.getSearchString() + " to " + self.destination.getSearchString() + " (" + str(self.getTravelTime()) + "h)"
+        return "flights " + self.airline + str(self.number) + " from " + self.origin.getSearchString() + " to " + self.destination.getSearchString() + " (" + str(self.getTravelTime()) + "h)"

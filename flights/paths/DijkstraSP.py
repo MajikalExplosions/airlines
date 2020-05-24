@@ -7,10 +7,10 @@
 # 3.0   Joseph Liu              05/23/20		Update time spent calculations and reimplement with path object
 
 import heapq
-from Flight.paths.Graph import Graph
-from Flight.Time import *
+from flights.paths.Graph import Graph
+from flights.Time import *
 from datetime import timedelta
-from Flight.paths.Path import Path
+from flights.paths.Path import Path
 from time import time
 
 class DijkstraSP:

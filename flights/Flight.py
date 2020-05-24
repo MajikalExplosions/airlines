@@ -93,7 +93,7 @@ class Flight:
     def timeUntilNextFlight(self, time):
         #First convert to local time
         time += timedelta(hours=toUTCOffset(self.getOrigin().getTimezone(), time.year, time.month, time.day))
-        
+
         #Find next day that flight runs
         if time.hour * 60 + time.minute > self.getDepTimeLocal().hour * 60 + self.getDepTimeLocal().minute:
             time = time + timedelta(days=1)
@@ -113,16 +113,13 @@ class Flight:
                 day = day % 7
                 initialDay -= 7
         
-        runDay = time.replace(hour=0, minute=0) + timedelta(days=day - initialDay)
-        negativeOffset = time.replace(hour=0, minute=0) - time
-        startTime = runDay + timedelta(hours=time.hour, minutes=time.minute) + negativeOffset + timedelta(hours=self.getDepTimeLocal().hour, minutes=self.getDepTimeLocal().minute)
+        #Old:
+        #runDay = time.replace(hour=0, minute=0) + timedelta(days=day - initialDay)
+        #negativeOffset = time.replace(hour=0, minute=0) - time
+        #startTime = runDay + timedelta(hours=time.hour, minutes=time.minute) + negativeOffset + timedelta(hours=self.getDepTimeLocal().hour, minutes=self.getDepTimeLocal().minute)
+        #return (startTime - time).totalSeconds() / 3600
 
-        if (startTime - time).total_seconds() < 0:
-            #We know that we can get the time until flight minus days
-            #So adding days is wrong?
-            print(offset)
-
-        return (startTime - time).total_seconds() / 3600
+        return timedelta(days=day - initialDay, hours=self.getDepTimeLocal().hour - time.hour, minutes=self.getDepTimeLocal().minute - time.minute).total_seconds() / 3600
     
     def toString(self):
         return "Flight " + self.airline + str(self.number) + " from " + self.origin.toString() + " to " + self.destination.toString() + " (" + str(self.getTravelTime()) + "h)"

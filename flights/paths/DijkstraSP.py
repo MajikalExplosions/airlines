@@ -16,7 +16,6 @@ from time import time
 class DijkstraSP:
     def __init__(self, graph, origin, rootVal = 0):
         nodes = graph.getNodes()
-        t = time()
         pq = [(0, origin)]
         origin.root(rootVal)
         origin.v = False
@@ -41,7 +40,6 @@ class DijkstraSP:
                     dest.setEdgeIn(edge)
                     heapq.heappush(pq, (cur[1].getDist() + timeSpent, dest))
         
-        print("DSP took", (time() - t) * 1000, "ms")
         self.graph = graph
     
     def getPath(self, dest):

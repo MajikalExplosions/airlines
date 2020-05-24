@@ -8,61 +8,72 @@ from flights.paths.DijkstraSP import DijkstraSP
 from flights.paths.Path import Path
 
 class YenKSP:
-    def __init__(self, graph, origin, dest, k, fm=0):
-        graph.resetAll()
-        validPath, _path = DijkstraSP(graph, origin).getPath(dest)
-        A = [_path]
-        B = []
 
-        for pathNum in range(1, k):
-            path = A[pathNum - 1]
-            for i in range(len(A[pathNum - 1].getNodes()) - 2, -1, -1):
-                rootPath = path.sliceToPath(0, i)
+    def __init__(self, graph, origin, dest):
+        self.graph = graph
+        self.origin = origin
+        self.dest = dest
+        self.k = 0
+        self.A = []
+        self.B = []
+
+    def solve(self):
+        self.graph.resetAll()
+        if self.k == 0:
+            validPath, _path = DijkstraSP(self.graph, self.origin).getPath(self.dest)
+            self.A = [_path]
+            self.k = 1
+            return
+
+        path = self.A[-1]
+        for i in range(len(self.A[-1].getNodes()) - 2, -1, -1):
+            rootPath = path.sliceToPath(0, i)
+        
+            #Remove edges that have already been traveled on starting at spur node
+            removedEdges = []
+            for p2 in self.A:
+                if rootPath.equals(p2.sliceToPath(0, i)):
+                    removedEdges.append(p2.getEdges()[i])
+            self.graph.removeEdges(removedEdges)
+
+            #Find the spur path
+            spurNode = rootPath.getNodes()[i]
+            #You can't reset the nodes along the root path, for obvious reasons.
             
-                #Remove edges that have already been traveled on starting at spur node
-                removedEdges = []
-                for p2 in A:
-                    if rootPath.equals(p2.sliceToPath(0, i)):
-                        removedEdges.append(p2.getEdges()[i])
-                graph.removeEdges(removedEdges)
+            self.graph.reset(rootPath)
+            validPath, spurPath = DijkstraSP(self.graph, spurNode, rootVal=rootPath.getDists()[-1]).getPath(self.dest)
 
-                #Find the spur path
-                spurNode = rootPath.getNodes()[i]
-                #You can't reset the nodes along the root path, for obvious reasons.
-                
-                graph.reset(rootPath)
-                validPath, spurPath = DijkstraSP(graph, spurNode, rootVal=rootPath.getDists()[-1]).getPath(dest)
+            if not validPath:
+                graph.resetAll()
+                return
+            
+            totalPath = Path()
+            totalPath.fromTwo(rootPath, spurPath)
 
-                if not validPath:
-                    self.paths = A
-                    graph.resetAll()
-                    return
-                
-                totalPath = Path()
-                totalPath.fromTwo(rootPath, spurPath)
+            inB = False
+            for p2 in self.B:
+                if p2.equals(totalPath):
+                    inB = True
+            
+            if not inB:
+                self.B.append(totalPath)
 
-                inB = False
-                for p2 in B:
-                    if p2.equals(totalPath):
-                        inB = True
-                
-                if not inB:
-                    B.append(totalPath)
+            self.graph.addEdges(removedEdges)
 
-                graph.addEdges(removedEdges)
-
-                if len(B) == 0:
-                    break
-            B.sort(key=yksp_pathLength)
-            A.append(B[0])
-            B = B[1:]
+            if len(self.B) == 0:
+                break
+        self.B.sort(key=yksp_pathLength)
+        self.A.append(self.B[0])
+        self.B = self.B[1:]
         
         #Reset graph
-        graph.resetAll()
-        self.paths = A
+        self.graph.resetAll()
+        self.k += 1
     
     def getPath(self, k):
-        return self.paths[k]
+        for k2 in range(self.k, k + 1):
+            self.solve()
+        return self.A[k]
 
 def yksp_pathLength(path):
     path.recalculateDist(0)

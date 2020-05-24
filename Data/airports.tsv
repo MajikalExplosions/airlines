@@ -168,7 +168,6 @@ CPT	Africa/Johannesburg	Cape Town International Airport	Cape Town	2
 ELS	Africa/Johannesburg	Ben Schoeman Airport	East London	1
 JNB	Africa/Johannesburg	OR Tambo International Airport	Johannesburg	2
 DUR	Africa/Johannesburg	King Shaka International Airport	Durban	2
-JNB	Africa/Johannesburg	OR Tambo International Airport	Johannesburg	2
 PLZ	Africa/Johannesburg	Port Elizabeth Airport	Port Elizabeth	1
 GBE	Africa/Gaborone	Sir Seretse Khama International Airport	Gaborone	2
 MRU	Indian/Mauritius	Sir Seewoosagur Ramgoolam International Airport	Port Louis	2
@@ -216,7 +215,6 @@ KRT	Africa/Khartoum	Khartoum International Airport	Khartoum	2
 DAR	Africa/Dar_es_Salaam	Julius Nyerere International Airport	Dar es Salaam	2
 EBB	Africa/Kampala	Entebbe International Airport	Kampala	2
 ISG	Asia/Tokyo	New Ishigaki Airport	Ishigaki	1
-JNB	Africa/Johannesburg	O R Tambo International	Johannesburg	2
 ABE	America/New_York	Lehigh Valley International Airport	Allentown	1
 ABQ	America/Denver	Albuquerque International Sunport	Albuquerque	2
 ACK	America/New_York	Nantucket Memorial Airport	Nantucket	1
@@ -673,7 +671,6 @@ KOA	Pacific/Honolulu	Ellison Onizuka Kona International At Keahole Airport	Kailu
 LIH	Pacific/Honolulu	Lihue Airport	Lihue	1
 HNL	Pacific/Honolulu	Daniel K Inouye International Airport	Honolulu	2
 OGG	Pacific/Honolulu	Kahului Airport	Kahului	1
-ISB	Asia/Karachi	New Islamabad International Airport	Islamabad	3
 ROR	Pacific/Palau	Babelthuap Airport	Babelthuap Island	1
 TSA	Asia/Taipei	Taipei Songshan Airport	Taipei City	1
 TPE	Asia/Taipei	Taiwan Taoyuan International Airport	Taipei	2
@@ -709,7 +706,6 @@ NTQ	Asia/Tokyo	Noto Airport	Wajima	1
 HIJ	Asia/Tokyo	Hiroshima Airport	Hiroshima	1
 OKJ	Asia/Tokyo	Okayama Airport	Okayama City	1
 YGJ	Asia/Tokyo	Miho Yonago Airport	Yonago	1
-KCZ	Asia/Tokyo	Kochi Ryoma Airport	Nankoku	1
 MYJ	Asia/Tokyo	Matsuyama Airport	Matsuyama	1
 ITM	Asia/Tokyo	Osaka International Airport	Osaka	2
 TTJ	Asia/Tokyo	Tottori Airport	Tottori	1
@@ -779,7 +775,7 @@ KHV	Asia/Vladivostok	Khabarovsk-Novy Airport	Khabarovsk	2
 UUS	Asia/Sakhalin	Yuzhno-Sakhalinsk Airport	Yuzhno-Sakhalinsk	1
 HTA	Asia/Yakutsk	Chita-Kadala Airport	Chita	1
 KBP	Europe/Kiev	Boryspil International Airport	Kiev	2
-DOK	Europe/Zaporozhye	Donetsk International Airport	Donetsk	3
+DOK	Europe/Zaporozhye	Donetsk International Airport	Donetsk	2
 DNK	Europe/Zaporozhye	Dnipropetrovsk International Airport	Dnipropetrovsk	1
 SIP	Europe/Simferopol	Simferopol International Airport	Simferopol	2
 HRK	Europe/Zaporozhye	Kharkiv International Airport	Kharkiv	2
@@ -808,7 +804,6 @@ REP	Asia/Phnom_Penh	Siem Reap International Airport	Siem Reap	2
 CCU	Asia/Kolkata	Netaji Subhash Chandra Bose International Airport	Kolkata	2
 DAC	Asia/Dhaka	Hazrat Shahjalal International Airport	Dhaka	2
 HKG	Asia/Hong_Kong	Hong Kong International Airport	Hong Kong	2
-HKG	Asia/Hong_Kong	Hong Kong International Airport Kai Tak	Hong Kong	3
 DEL	Asia/Kolkata	Indira Gandhi International Airport	New Delhi	2
 VTE	Asia/Vientiane	Wattay International Airport	Vientiane	1
 MFM	Asia/Macau	Macau International Airport	Macau	2
@@ -840,12 +835,10 @@ CGK	Asia/Jakarta	Soekarno-Hatta International Airport	Jakarta	2
 KUL	Asia/Kuala_Lumpur	Kuala Lumpur International Airport	Kuala Lumpur	2
 PEN	Asia/Kuala_Lumpur	Penang International Airport	Penang	1
 SIN	Asia/Singapore	Singapore Changi Airport	Singapore	2
-MUC	Europe/Berlin	Flughafen Munchen-Riem	Munich	3
 BNE	Australia/Brisbane	Brisbane International Airport	Brisbane	2
 OOL	Australia/Brisbane	Gold Coast Airport	Gold Coast	1
 CNS	Australia/Brisbane	Cairns International Airport	Cairns	1
 MEL	Australia/Melbourne	Melbourne International Airport	Melbourne	2
-YNT	Asia/Shanghai	Yantai Penglai International Airport	Yantai	2
 ADL	Australia/Adelaide	Adelaide International Airport	Adelaide	2
 PER	Australia/Perth	Perth International Airport	Perth	2
 NLK	Pacific/Norfolk	Norfolk Island International Airport	Burnt Pine	1

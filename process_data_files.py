@@ -36,7 +36,7 @@ def createAirports(fileContent, timezones):
     used = []
 
     for l in fileContent:
-        if len(l[13]) == 3:
+        if len(l[13]) == 3 and l[13] not in used:
             #__init__(code, city, name, timezone, size)
             airports.append(Airport(l[13], l[10], l[3], "none", sizes.index(l[2])))
             used.append(l[13])
@@ -45,6 +45,8 @@ def createAirports(fileContent, timezones):
 
     for l in fileContent:
         if len(l[14]) == 3 and l[14] not in used:
+            if l[14] == "HKG":
+                print("UH OH")
             #__init__(code, city, name, timezone, size)
             airports.append(Airport(l[14], l[10], l[3], "none", sizes.index(l[2])))
             used.append(l[14])

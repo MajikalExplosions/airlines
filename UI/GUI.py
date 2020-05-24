@@ -118,7 +118,7 @@ class Screen:
         self.name = name
         self.win = win
         # self.ids = ids
-        path = "UI/Screens/" + name + ".txt"
+        path = "UI/screens/" + name + ".txt"
         try:
             self.source_file = open(path, 'r')
             self.attr = self._parse(self.source_file)

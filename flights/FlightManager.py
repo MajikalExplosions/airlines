@@ -7,8 +7,8 @@
 # 0.3   Joseph Liu			05/15/20		Add file I/O with new data format
 # 0.4 	Kyler Rosen 		05/20/20		Added searchAirport, sorts the airports
 
-from Flight.Flight import Airport
-from Flight.Flight import Flight
+from flights.Airport import Airport
+from flights.Flight import Flight
 
 def getFlightNum(airport):
 	return airport.getFlightNum()

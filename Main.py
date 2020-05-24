@@ -6,11 +6,11 @@
 # 1.1       Christopher Luey        05/17/20		Compatibility with widget id system
 
 
-from UI import GUI
+from UI.GUI import GUI
 
 
 def main():
-    gui = GUI.GUI()
+    gui = GUI()
     clicked = 0
     screens = gui.getScreenIDs()
     while clicked != 'quit':

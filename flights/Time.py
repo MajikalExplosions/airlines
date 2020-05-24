@@ -15,11 +15,6 @@ for i in t_tzs:
     i = str(i)
     r_tzs[i] = timezone(i)
 
-def timeSinceStart(t):
-    return (t - t_starttime).total_seconds() / 3600
-
-def offsetStartTime(time):
-    return t_starttime + time
 
 def toUTCOffset(tzName, y, m, d):
     return r_tzs[tzName].utcoffset(datetime(year=y, month=m, day=d)).total_seconds() / 3600
@@ -30,9 +25,7 @@ def toUTC(tzName, time):
 
 def flightToDatetime(s):
     s = s.split(":")
-    return t_starttime.replace(hour=int(s[0]), minute=int(s[1]), second=0, microsecond=0)
-
-t_starttime = toUTC("America/New_York", datetime.now().replace(second=0, microsecond=0))
+    return datetime.now().replace(hour=int(s[0]), minute=int(s[1]), second=0, microsecond=0)
 
 #Example code below.  Prints current time in UTC.
 #t = TZManager()

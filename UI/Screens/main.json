@@ -1,175 +1,82 @@
 {
-  "Circle1": {
-    "id": "background_circle1",
-    "x": 1400,
-    "y": 900,
-    "radius": 700,
-    "fill": {
-      "r": 98,
-      "g": 182,
-      "b": 203
-    },
-    "outline": {
-      "r": 98,
-      "g": 182,
-      "b": 203
-    }
-
-  },
-  "Circle2": {
-    "id": "background_circle2",
-    "x": 1400,
-    "y": 850,
-    "radius": 550,
-    "fill": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
-    "outline": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    }
-  },
-  "Circle3": {
-    "id": "background_circle3",
-    "x": 700,
-    "y": 1200,
-    "radius": 700,
-    "fill": {
-      "r": 27,
-      "g": 73,
-      "b": 101
-    },
-    "outline": {
-      "r": 27,
-      "g": 73,
-      "b": 101
-    }
-
-  },
-  "Circle4": {
-    "id": "background_circle4",
-    "x": 800,
-    "y": 1160,
-    "radius": 550,
-    "fill": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
-    "outline": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    }
-  },
-
-  "Text1": {
-    "id": "Dashboard",
-    "x": 200,
-    "y": 150,
-    "text": "Dashboard",
-    "size": 60,
-    "color": {
-      "r": 27,
-      "g": 73,
-      "b": 101
-    },
-    "style": "bold"
-  },
-  "Text2": {
-    "id": "Dashboard_Description",
-    "x": 225,
-    "y": 200,
-    "text": "Select an option to begin.",
-    "size": 32,
-    "color": {
-      "r": 150,
-      "g": 193,
-      "b": 192
-    },
-    "style": "normal"
-  },
   "Button1": {
     "x": 600,
-    "y": 300,
-    "width": 600,
-    "height": 75,
+    "y": 200,
+    "width": 500,
+    "height": 100,
     "radius": 20,
-    "color": {
-      "r": 95,
-      "g": 168,
-      "b": 211
-    },
+    "color": [
+      86,
+      163,
+      166
+    ],
     "text": "Create a Reservation",
-    "textColor": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
-    "textSize": 25,
+    "textColor": [
+      255,
+      255,
+      255
+    ],
+    "textSize": 22,
     "id": "create_reservation"
   },
   "Button2": {
     "x": 600,
-    "y": 425,
-    "width": 600,
-    "height": 75,
+    "y": 350,
+    "width": 500,
+    "height": 100,
     "radius": 20,
-    "color": {
-      "r": 95,
-      "g": 168,
-      "b": 211
-    },
+    "color": [
+      86,
+      163,
+      166
+    ],
     "text": "Modify an Existing Reservation",
-    "textColor": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
-    "textSize": 25,
+    "textColor": [
+      255,
+      255,
+      255
+    ],
+    "textSize": 22,
     "id": "modify_reservation"
   },
   "Button3": {
     "x": 600,
-    "y": 545,
-    "width": 600,
-    "height": 75,
+    "y": 500,
+    "width": 500,
+    "height": 100,
     "radius": 20,
-    "color": {
-      "r": 95,
-      "g": 168,
-      "b": 211
-    },
+    "color": [
+      86,
+      163,
+      166
+    ],
     "text": "Lookup Flight Status",
-    "textColor": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
-    "textSize": 25,
+    "textColor": [
+      255,
+      255,
+      255
+    ],
+    "textSize": 22,
     "id": "flight_status"
   },
   "Button4": {
     "x": 600,
-    "y": 670,
-    "width": 600,
-    "height": 75,
+    "y": 650,
+    "width": 500,
+    "height": 100,
     "radius": 20,
-    "color": {
-      "r": 95,
-      "g": 168,
-      "b": 211
-    },
+    "color": [
+      86,
+      163,
+      166
+    ],
     "text": "Check-In Online",
-    "textColor": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
-    "textSize": 25,
+    "textColor": [
+      255,
+      255,
+      255
+    ],
+    "textSize": 22,
     "id": "checkin"
   }
 }

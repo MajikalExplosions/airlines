@@ -5,17 +5,17 @@
     "width": 500,
     "height": 100,
     "radius": 20,
-    "color": {
-      "r": 86,
-      "g": 163,
-      "b": 166
-    },
+    "color": [
+      86,
+      163,
+      166
+    ],
     "text": "Create a Reservation",
-    "textColor": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
+    "textColor": [
+      255,
+      255,
+      255
+    ],
     "textSize": 22,
     "id": "create_reservation4"
   }

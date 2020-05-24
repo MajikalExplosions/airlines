@@ -29,9 +29,10 @@ class GUI:
 
         print(self.id_widget)
         self.previousScreen = self.screens["main"]
-        self.inflate_header()
         self.activeScreen = self.screens["main"]
         self.attrs = self.activeScreen.inflate()
+        self.inflate_header()
+
 
     def switchScreen(self, screen):
         """
@@ -159,34 +160,26 @@ class Screen:
         """
         attrs = []
 
-        # if source:
-        #     self.background = source[0].lstrip("Background: ").strip().split(",")
-        #     for i in self.background:
-        #         self.background[self.background.index(i)] = int(self.background[self.background.index(i)])
-        #     i=2
-        #     while i < len(source):
-        #         if source[i][0] == "<" and source[i].lstrip("<").rstrip(">\n") == "Button":
-        #             attrs.append([Button(float(source[i+1].lstrip("x: ").rstrip("\n")), float(source[i+2].lstrip("y: ").rstrip("\n")), float(source[i+3].lstrip("width: ").rstrip("\n")), float(source[i+4].lstrip("height: ").rstrip("\n")), float(source[i+5].lstrip("radius: ").rstrip("\n")), color_rgb(int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[0]), int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[1]), int(source[i+6].lstrip("color: ").rstrip("\n").strip().split(",")[2])), str(source[i+7].lstrip("text: ").rstrip("\n")), color_rgb(int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[0]), int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[1]), int(source[i+8].lstrip("textColor: ").rstrip("\n").strip().split(",")[2])), int(source[i+9].lstrip("textSize: ").rstrip("\n")), self.win), source[i+10].lstrip("id: ").rstrip("\n")])
-        #             attrs[len(attrs)-1][0].undraw()
-        #             i+=13
-        #         # elif source[i].rstrip("<").lstrip(">\n") == "Input":
-        #         #     attrs.append()
-        #         #     i = Entry(Point, width)
-        #         #     i.
-
         d = json.load(s)
         for key, item in d.items():
             if str(key).find("Button") != -1:
-                attrs.append([Button(item["x"], item["y"], item["width"], item["height"], item["radius"], color_rgb(item["color"][0], item["color"][1], item["color"][2]), item["text"], color_rgb(item["textColor"][0], item["textColor"][1], item["textColor"][2]), item["textSize"], self.win), item["id"]])
+                attrs.append([Button(item["x"], item["y"], item["width"], item["height"], item["radius"], color_rgb(item["color"]["r"], item["color"]['g'], item["color"]['b']), item["text"], color_rgb(item["textColor"]['r'], item["textColor"]['g'], item["textColor"]['b']), item["textSize"], self.win), item["id"]])
                 attrs[len(attrs)-1][0].undraw()
             elif str(key).find("Entry") != -1:
                 pass
             elif str(key).find("Text") != -1:
+                attrs.append([Text(Point(item["x"], item["y"]), item["text"]), item["id"]])
+                attrs[len(attrs) - 1][0].setTextColor(color_rgb(item["color"]["r"], item["color"]["g"], item["color"]["b"]))
+                attrs[len(attrs) - 1][0].setStyle(item["style"])
+                attrs[len(attrs)-1][0].setSize(item["size"])
                 pass
             elif str(key).find("Rectangle") != -1:
                 pass
             elif str(key).find("Circle") != -1:
-                pass
+                attrs.append([Circle(Point(item["x"], item["y"]), item["radius"]), item["id"]])
+                attrs[len(attrs)-1][0].setFill(color_rgb(item["fill"]["r"], item["fill"]["g"], item["fill"]["b"]))
+                attrs[len(attrs)-1][0].setOutline(color_rgb(item["outline"]["r"], item["outline"]["g"], item["outline"]["b"]))
+
             elif str(key).find("Point") != -1:
                 pass
             elif str(key).find("Oval") != -1:

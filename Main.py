@@ -6,11 +6,16 @@
 # 1.1       Christopher Luey        05/17/20		Compatibility with widget id system
 
 
-from UI.GUI import GUI
+from UI import GUI
+from Reservation.Reservation import Reservation, Passenger
+from Passenger.BoardingPass import BoardingPass
+from Flight.FlightManager import Flight, Airport, FlightManager
+from Flight.Path.DijkstraSP import DijkstraSP
+import Flight.Time as timezone
 
 
 def main():
-    gui = GUI()
+    gui = GUI.GUI()
     clicked = 0
     screens = gui.getScreenIDs()
     while clicked != 'quit':

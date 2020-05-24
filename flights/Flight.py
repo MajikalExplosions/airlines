@@ -125,4 +125,4 @@ class Flight:
         return (startTime - time).total_seconds() / 3600
     
     def toString(self):
-        return "Flight " + self.airline + str(self.number) + " from " + self.origin.getSearchString() + " to " + self.destination.getSearchString() + " (" + str(self.getTravelTime()) + "h)"
+        return "Flight " + self.airline + str(self.number) + " from " + self.origin.toString() + " to " + self.destination.toString() + " (" + str(self.getTravelTime()) + "h)"

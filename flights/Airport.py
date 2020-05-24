@@ -47,7 +47,7 @@ class Airport:
 	def getName(self):
 		return self.name + ", " + self.city
 	
-	def getSearchString(self):
+	def toString(self):
 		return self.name + ", " + self.city + " (" + self.code + ")"
 
 	def assignId(self, ID):

@@ -2,42 +2,44 @@
 # Description: Finds the K shortest paths between two airports using Yen's algorithm
 
 # Ver.	Writer			        Date			Notes
-# 1.0   Joseph Liu              05/15/20		Original
+# 1.0   Joseph Liu              05/23/20		Original
 
 from flights.paths.DijkstraSP import DijkstraSP
+from flights.paths.Path import Path
 
 class YenKSP:
     def __init__(self, graph, origin, dest, k):
-        A = [DijkstraSP(graph, origin).getPathNode(dest)]
+        A = [DijkstraSP(graph, origin).getPath(dest)]
         B = []
 
         for pathNum in range(1, k):
-            pathNodes = A[pathNum - 1]
+            path = A[pathNum - 1]
 
-            for i in range(len(A[pathNum - 1]) - 1):
-                spurNode = pathNodes[i]
-                rootPath = pathNodes[:i + 1]
+            for i in range(len(A[pathNum - 1].getNodes()) - 1):
+                rootPath = path.sliceToPath(0, i)
             
                 removedEdges = []
-                removedNodes = []
-                for path in A:
-                    if rootPath == path.getPathNode(dest)[:i + 1]:
-                        removedEdges.append(graph.getNodes()[i + 1].getEdgeIn())
+
+                for p2 in A:
+                    if rootPath.equals(p2.sliceToPath(0, i)):
+                        removedEdges.append(p2.getEdges()[i])
                 
                 graph.removeEdges(removedEdges)
+                spurNode = path.getNodes()[i]
+                graph.reset()
+                spurPath = DijkstraSP(graph, spurNode).getPath(dest)
                 
-                for node in rootPath[:-1]:
-                    removedNodes.append(node)
-                
-                graph.removeNodes(removedNodes)
+                totalPath = Path()
+                totalPath.fromTwo(rootPath, spurPath)
 
-                spurPath = DijkstraSP(graph, spurNode)
+                inB = False
+                for p2 in B:
+                    if p2.equals(totalPath):
+                        inB = True
                 
-                totalPath = rootPath + spurPath
-                if totalPath not in B:
+                if not inB:
                     B.append(totalPath)
-                
-                graph.addNodes(removedNodes)
+
                 graph.addEdges(removedEdges)
 
                 if len(B) == 0:
@@ -47,10 +49,13 @@ class YenKSP:
                 A.append(B[0])
                 B = B[1:]
         
+        #Reset graph so that we get correct values
+        graph.reset()
+        DijkstraSP(graph, origin)
         self.paths = A
     
     def getPath(self, k):
         return self.paths[k]
 
-def yksp_pathLength(a):
-    return a[-1].getDist()
+def yksp_pathLength(path):
+    return path.getDist()

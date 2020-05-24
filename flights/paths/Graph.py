@@ -28,19 +28,11 @@ class Graph:
 
     def removeEdges(self, remove):
         for e in remove:
-            self.nodes[e.u].getEdges().remove(e)
+            e.r = True
     
     def addEdges(self, add):
         for e in add:
-            self.nodes[e.u].addEdge(e)
-    
-    def removeNodes(self, remove):
-        for n in remove:
-            self.nodes[n.nid] = 0
-    
-    def addNodes(self, add):
-        for n in add:
-            self.nodes[n.nid] = n
+            e.r = False
 
     def getNodes(self):
         return self.nodes
@@ -50,6 +42,10 @@ class Graph:
 
     def exists(self, i):
         return self.nodes[i] != 0
+    
+    def reset(self):
+        for node in self.nodes:
+            node.reset(self.MAX)
             
 
 class Node:
@@ -104,3 +100,7 @@ class Edge:
         self.f = flight
         self.u = start
         self.v = end
+        self.r = False
+    
+    def removed(self):
+        return self.r

@@ -45,6 +45,8 @@ class DijkstraSP:
         self.graph = graph
     
     def getPath(self, dest):
+        if not dest.visited():
+            return (False, 0)
         p = Path()
         p.fromDSP(self, dest)
-        return p
+        return True, p

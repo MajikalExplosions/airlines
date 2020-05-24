@@ -93,7 +93,7 @@ class Flight:
     def timeUntilNextFlight(self, time):
         #First convert to local time
         time += timedelta(hours=toUTCOffset(self.getOrigin().getTimezone(), time.year, time.month, time.day))
-
+        
         #Find next day that flight runs
         if time.hour * 60 + time.minute > self.getDepTimeLocal().hour * 60 + self.getDepTimeLocal().minute:
             time = time + timedelta(days=1)

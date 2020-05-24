@@ -10,7 +10,8 @@ from flights.paths.Path import Path
 class YenKSP:
     def __init__(self, graph, origin, dest, k, fm=0):
         graph.resetAll()
-        A = [DijkstraSP(graph, origin).getPath(dest)]
+        validPath, _path = DijkstraSP(graph, origin).getPath(dest)
+        A = [_path]
         B = []
 
         for pathNum in range(1, k):
@@ -30,7 +31,12 @@ class YenKSP:
                 #You can't reset the nodes along the root path, for obvious reasons.
                 
                 graph.reset(rootPath)
-                spurPath = DijkstraSP(graph, spurNode, rootVal=rootPath.getDists()[-1]).getPath(dest)
+                validPath, spurPath = DijkstraSP(graph, spurNode, rootVal=rootPath.getDists()[-1]).getPath(dest)
+
+                if not validPath:
+                    self.paths = A
+                    graph.resetAll()
+                    return
                 
                 totalPath = Path()
                 totalPath.fromTwo(rootPath, spurPath)

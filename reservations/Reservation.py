@@ -1,15 +1,11 @@
-# Name: reservation.py
+# Name: Reservation.py
 # Description: Class to hold an airline reservation
 
 # Ver.  Writer              Date            Notes
 # 1.0   Shuvam Chatterjee   05/08/20        Original
 
 from random import randrange
-<<<<<<< HEAD:reservation/Reservation.py
-from reservation.Passenger import Passenger
-=======
 from reservations.Passenger import Passenger
->>>>>>> parent of f29ca94... Minor Restructure:reservations/Reservation.py
 
 class Reservation:
     def __init__(self):
@@ -18,11 +14,7 @@ class Reservation:
         self.flights = []
 
     def loadFromFile(self, confirmationNumber, lastName):
-<<<<<<< HEAD:reservation/Reservation.py
-        readFile = open("reservation/data_reservation/reservation.txt", "r")
-=======
         readFile = open("reservations/data_reservation/reservations.txt", "r")
->>>>>>> parent of f29ca94... Minor Restructure:reservations/Reservation.py
         fileLines = readFile.readlines()
         reservationStartInd = self.__fileContainsConfirmationNumber(confirmationNumber, fileLines)
 
@@ -42,21 +34,13 @@ class Reservation:
         if self.confirmationNumber == "":
             self.confirmationNumber = self.issueConfirmationNumer()
 
-<<<<<<< HEAD:reservation/Reservation.py
-        readFile = open("reservation/data_reservation/reservation.txt", "r")
-=======
         readFile = open("reservations/data_reservation/reservations.txt", "r")
->>>>>>> parent of f29ca94... Minor Restructure:reservations/Reservation.py
         reservationStartInd = self.__fileContainsConfirmationNumber(self.confirmationNumber, readFile.readlines())
         readFile.close()
 
         #means that this reservation has not already been serialized
         if reservationStartInd == -1:
-<<<<<<< HEAD:reservation/Reservation.py
-            reservationFile = open("reservation/data_reservation/reservation.txt", "a")
-=======
             reservationFile = open("reservations/data_reservation/reservations.txt", "a")
->>>>>>> parent of f29ca94... Minor Restructure:reservations/Reservation.py
             print(self.__toString(), file=reservationFile)
 
         #it has been serialized and we have to override it
@@ -64,9 +48,9 @@ class Reservation:
             pass
 
     def __toString(self):
-        string = "reservation {\n"
+        string = "Reservation {\n"
         string += "Confirmation Number: " + self.confirmationNumber + "\n"
-        string += "flights: " + str(self.flights) + "\n"
+        string += "Flights: " + str(self.flights) + "\n"
 
         for passenger in self.passengers:
             string += passenger.toString()
@@ -181,21 +165,13 @@ class Reservation:
 
         #continuously generates a new number until we get one that has not already been issued
         self.confirmationNumber = self.__generateRandomConfirmation()
-<<<<<<< HEAD:reservation/Reservation.py
-        while self.__fileContainsString("reservation/data_reservation/confirmation_numbers.txt", self.confirmationNumber):
-=======
         while self.__fileContainsString("reservations/data_reservation/confirmation_numbers.txt", self.confirmationNumber):
->>>>>>> parent of f29ca94... Minor Restructure:reservations/Reservation.py
             confirmationNumber = self.__generateRandomConfirmation()
 
         self.confirmationNumber = confirmationNumber
 
         #stores the issued code in a file to prevent future repeats
-<<<<<<< HEAD:reservation/Reservation.py
-        confirmationFile = open("reservation/data_reservation/confirmation_numbers.txt", "a")
-=======
         confirmationFile = open("reservations/data_reservation/confirmation_numbers.txt", "a")
->>>>>>> parent of f29ca94... Minor Restructure:reservations/Reservation.py
         print(confirmationNumber, file=confirmationFile)
         confirmationFile.close()
 

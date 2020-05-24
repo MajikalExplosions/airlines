@@ -1,0 +1,941 @@
+Code	Timezone	Name	City	Size
+KEF	Atlantic/Reykjavik	Keflavik International Airport	Reykjavik	2
+PRN	Europe/Belgrade	Pristina International Airport	Prishtina	2
+INC	Asia/Shanghai	Yinchuan Hedong International Airport	Yinchuan	1
+YNT	Asia/Shanghai	Duplicate --Yantai Penglai International Airport	Yantai	1
+PZI	Asia/Shanghai	Bao'anying Airport	Panzhihua	1
+JGS	Asia/Shanghai	Jinggangshan Airport	Ji'an	1
+DDG	Asia/Shanghai	Dandong Airport	Dandong	1
+NTG	Asia/Shanghai	Nantong Airport	Nantong	0
+YAM	America/Toronto	Sault Ste Marie Airport	Sault Ste Marie	1
+YBC	America/Toronto	Baie Comeau Airport	Baie-Comeau	1
+YBG	America/Toronto	CFB Bagotville	Bagotville	1
+YCD	America/Vancouver	Nanaimo Airport	Nanaimo	1
+YCG	America/Vancouver	Castlegar/West Kootenay Regional Airport	Castlegar	1
+YDF	America/St_Johns	Deer Lake Airport	Deer Lake	1
+YEG	America/Edmonton	Edmonton International Airport	Edmonton	2
+YFC	America/Moncton	Fredericton Airport	Fredericton	1
+YGK	America/Toronto	Kingston Norman Rogers Airport	Kingston	1
+YGP	America/Toronto	Gaspe (Michel-Pouliot) Airport	Gaspe	1
+YGR	America/Halifax	Iles-de-la-Madeleine Airport	Iles-de-la-Madeleine	1
+YHZ	America/Halifax	Halifax / Stanfield International Airport	Halifax	2
+YKA	America/Vancouver	Kamloops Airport	Kamloops	1
+YLW	America/Vancouver	Kelowna International Airport	Kelowna	1
+YMM	America/Edmonton	Fort McMurray Airport	Fort McMurray	1
+YOW	America/Toronto	Ottawa Macdonald-Cartier International Airport	Ottawa	2
+YPR	America/Vancouver	Prince Rupert Airport	Prince Rupert	1
+YQB	America/Toronto	Quebec Jean Lesage International Airport	Quebec	1
+YQG	America/Toronto	Windsor Airport	Windsor	1
+YQL	America/Edmonton	Lethbridge County Airport	Lethbridge	1
+YQM	America/Moncton	Greater Moncton Romeo LeBlanc International Airport	Moncton	1
+YQR	America/Regina	Regina International Airport	Regina	1
+YQT	America/Thunder_Bay	Thunder Bay Airport	Thunder Bay	1
+YQU	America/Edmonton	Grande Prairie Airport	Grande Prairie	1
+YQX	America/St_Johns	Gander International Airport	Gander	1
+YQY	America/Glace_Bay	Sydney / J.A. Douglas McCurdy Airport	Sydney	1
+YSB	America/Toronto	Sudbury Airport	Sudbury	1
+YSJ	America/Moncton	Saint John Airport	Saint John	1
+YTS	America/Toronto	Timmins/Victor M. Power	Timmins	1
+YUL	America/Toronto	Montreal / Pierre Elliott Trudeau International Airport	Montreal	2
+YUY	America/Toronto	Rouyn Noranda Airport	Rouyn-Noranda	1
+YVO	America/Toronto	Val-d'Or Airport	Val-d'Or	1
+YVR	America/Vancouver	Vancouver International Airport	Vancouver	2
+YWG	America/Winnipeg	Winnipeg / James Armstrong Richardson International Airport	Winnipeg	2
+YXC	America/Edmonton	Cranbrook/Canadian Rockies International Airport	Cranbrook	1
+YXE	America/Regina	Saskatoon John G. Diefenbaker International Airport	Saskatoon	1
+YXH	America/Edmonton	Medicine Hat Airport	Medicine Hat	1
+YXJ	America/Dawson_Creek	Fort St John Airport	Fort St.John	1
+YXS	America/Vancouver	Prince George Airport	Prince George	1
+YXT	America/Vancouver	Northwest Regional Airport Terrace-Kitimat	Terrace	1
+YXU	America/Toronto	London Airport	London	1
+YXY	America/Whitehorse	Whitehorse / Erik Nielsen International Airport	Whitehorse	1
+YYB	America/Toronto	North Bay Jack Garland Airport	North Bay	1
+YYC	America/Edmonton	Calgary International Airport	Calgary	2
+YYD	America/Vancouver	Smithers Airport	Smithers	1
+YYF	America/Vancouver	Penticton Airport	Penticton	1
+YYG	America/Halifax	Charlottetown Airport	Charlottetown	1
+YYJ	America/Vancouver	Victoria International Airport	Victoria	2
+YYR	America/Goose_Bay	Goose Bay Airport	Goose Bay	1
+YYT	America/St_Johns	St. John's International Airport	St. John's	2
+YYY	America/Toronto	Mont Joli Airport	Mont-Joli	1
+YYZ	America/Toronto	Lester B. Pearson International Airport	Toronto	2
+YZF	America/Yellowknife	Yellowknife Airport	Yellowknife	1
+YZP	America/Vancouver	Sandspit Airport	Sandspit	1
+YZR	America/Toronto	Chris Hadfield Airport	Sarnia	1
+ZBF	America/Moncton	Bathurst Airport	Bathurst	1
+ALG	Africa/Algiers	Houari Boumediene Airport	Algiers	2
+ACC	Africa/Accra	Kotoka International Airport	Accra	2
+ABJ	Africa/Abidjan	Port Bouet Airport	Abidjan	1
+ABV	Africa/Lagos	Nnamdi Azikiwe International Airport	Abuja	2
+KAN	Africa/Lagos	Mallam Aminu International Airport	Kano	2
+LOS	Africa/Lagos	Murtala Muhammed International Airport	Lagos	2
+MIR	Africa/Tunis	Monastir Habib Bourguiba International Airport	Monastir	1
+TUN	Africa/Tunis	Tunis Carthage International Airport	Tunis	2
+DJE	Africa/Tunis	Djerba Zarzis International Airport	Djerba	1
+BRU	Europe/Brussels	Brussels Airport	Brussels	2
+SXF	Europe/Berlin	Berlin-Schonefeld Airport	Berlin	2
+DRS	Europe/Berlin	Dresden Airport	Dresden	2
+ERF	Europe/Berlin	Erfurt Airport	Erfurt	1
+FRA	Europe/Berlin	Frankfurt am Main Airport	Frankfurt am Main	2
+FMO	Europe/Berlin	Munster Osnabruck Airport	Munster	2
+HAM	Europe/Berlin	Hamburg Airport	Hamburg	2
+CGN	Europe/Berlin	Cologne Bonn Airport	Cologne	2
+DUS	Europe/Berlin	Dusseldorf Airport	Dusseldorf	2
+MUC	Europe/Berlin	Munich Airport	Munich	2
+NUE	Europe/Berlin	Nuremberg Airport	Nuremberg	2
+LEJ	Europe/Berlin	Leipzig/Halle Airport	Leipzig	2
+SCN	Europe/Berlin	Saarbrucken Airport	Saarbrucken	1
+STR	Europe/Berlin	Stuttgart Airport	Stuttgart	2
+TXL	Europe/Berlin	Berlin-Tegel Airport	Berlin	2
+HAJ	Europe/Berlin	Hannover Airport	Hannover	2
+BRE	Europe/Berlin	Bremen Airport	Bremen	2
+MHG	Europe/Berlin	Mannheim-City Airport	Mannheim	1
+PAD	Europe/Berlin	Paderborn Lippstadt Airport	Paderborn	1
+FDH	Europe/Berlin	Friedrichshafen Airport	Friedrichshafen	1
+HOQ	Europe/Berlin	Hof-Plauen Airport	Hof	1
+GWT	Europe/Berlin	Westerland Sylt Airport	Westerland	1
+TLL	Europe/Tallinn	Lennart Meri Tallinn Airport	Tallinn	2
+HEL	Europe/Helsinki	Helsinki Vantaa Airport	Helsinki	2
+KUO	Europe/Helsinki	Kuopio Airport	Kuopio / Siilinjarvi	1
+OUL	Europe/Helsinki	Oulu Airport	Oulu / Oulunsalo	1
+TMP	Europe/Helsinki	Tampere-Pirkkala Airport	Tampere / Pirkkala	1
+TKU	Europe/Helsinki	Turku Airport	Turku	1
+VAA	Europe/Helsinki	Vaasa Airport	Vaasa	1
+BHD	Europe/London	George Best Belfast City Airport	Belfast	2
+BHX	Europe/London	Birmingham International Airport	Birmingham	2
+MAN	Europe/London	Manchester Airport	Manchester	2
+NQY	Europe/London	Newquay Cornwall Airport	Newquay	1
+JER	Europe/Jersey	Jersey Airport	Saint Helier	1
+LGW	Europe/London	London Gatwick Airport	London	2
+LCY	Europe/London	London City Airport	London	1
+LHR	Europe/London	London Heathrow Airport	London	2
+LBA	Europe/London	Leeds Bradford Airport	Leeds	2
+NCL	Europe/London	Newcastle Airport	Newcastle	2
+EMA	Europe/London	East Midlands Airport	Nottingham	2
+ABZ	Europe/London	Aberdeen Dyce Airport	Aberdeen	2
+INV	Europe/London	Inverness Airport	Inverness	1
+GLA	Europe/London	Glasgow International Airport	Glasgow	2
+EDI	Europe/London	Edinburgh Airport	Edinburgh	2
+NWI	Europe/London	Norwich International Airport	Norwich	2
+STN	Europe/London	London Stansted Airport	London	2
+AMS	Europe/Amsterdam	Amsterdam Airport Schiphol	Amsterdam	2
+GRQ	Europe/Amsterdam	Eelde Airport	Groningen	1
+DUB	Europe/Dublin	Dublin Airport	Dublin	2
+SNN	Europe/Dublin	Shannon Airport	Shannon	2
+AAR	Europe/Copenhagen	Aarhus Airport	Aarhus	1
+BLL	Europe/Copenhagen	Billund Airport	Billund	2
+CPH	Europe/Copenhagen	Copenhagen Kastrup Airport	Copenhagen	2
+EBJ	Europe/Copenhagen	Esbjerg Airport	Esbjerg	1
+AAL	Europe/Copenhagen	Aalborg Airport	Aalborg	2
+LUX	Europe/Luxembourg	Luxembourg-Findel International Airport	Luxembourg	2
+AES	Europe/Oslo	Alesund Airport	Alesund	1
+ALF	Europe/Oslo	Alta Airport	Alta	1
+BOO	Europe/Oslo	Bodo Airport	Bodo	2
+BGO	Europe/Oslo	Bergen Airport Flesland	Bergen	2
+KRS	Europe/Oslo	Kristiansand Airport	Kjevik	1
+OSL	Europe/Oslo	Oslo Gardermoen Airport	Oslo	2
+HAU	Europe/Oslo	Haugesund Airport	Karmoy	1
+KSU	Europe/Oslo	Kristiansund Airport (Kvernberget)	Kvernberget	1
+KKN	Europe/Oslo	Kirkenes Airport (Hoybuktmoen)	Kirkenes	1
+MOL	Europe/Oslo	Molde Airport	Aro	1
+TOS	Europe/Oslo	Tromso Airport	Tromso	2
+TRD	Europe/Oslo	Trondheim Airport Vaernes	Trondheim	2
+SVG	Europe/Oslo	Stavanger Airport Sola	Stavanger	2
+GDN	Europe/Warsaw	Gdansk Lech Walesa Airport	Gdansk	2
+KRK	Europe/Warsaw	Krakow John Paul II International Airport	Krakow	2
+KTW	Europe/Warsaw	Katowice International Airport	Katowice	2
+POZ	Europe/Warsaw	Poznan-Lawica Airport	Poznan	2
+RZE	Europe/Warsaw	Rzeszow-Jasionka Airport	Rzeszow	1
+SZZ	Europe/Warsaw	Szczecin-Goleniow ""Solidarnosc"" Airport	Goleniow	1
+WAW	Europe/Warsaw	Warsaw Chopin Airport	Warsaw	2
+WRO	Europe/Warsaw	Copernicus Wroclaw Airport	Wroclaw	2
+RNB	Europe/Stockholm	Ronneby Airport		1
+GOT	Europe/Stockholm	Gothenburg-Landvetter Airport	Gothenburg	2
+KLR	Europe/Stockholm	Kalmar Airport		1
+MMX	Europe/Stockholm	Malmo Sturup Airport	Malmo	2
+SDL	Europe/Stockholm	Sundsvall-Harnosand Airport	Sundsvall/ Harnosand	1
+KRN	Europe/Stockholm	Kiruna Airport	Kiruna	1
+SFT	Europe/Stockholm	Skelleftea Airport	Skelleftea	1
+UME	Europe/Stockholm	Umea Airport	Umea	1
+OSD	Europe/Stockholm	Are Ostersund Airport	Ostersund	1
+LLA	Europe/Stockholm	Lulea Airport	Lulea	2
+ARN	Europe/Stockholm	Stockholm-Arlanda Airport	Stockholm	2
+AGH	Europe/Stockholm	Angelholm-Helsingborg Airport	Angelholm	1
+RIX	Europe/Riga	Riga International Airport	Riga	2
+PLQ	Europe/Vilnius	Palanga International Airport	Palanga	1
+VNO	Europe/Vilnius	Vilnius International Airport	Vilnius	2
+CPT	Africa/Johannesburg	Cape Town International Airport	Cape Town	2
+ELS	Africa/Johannesburg	Ben Schoeman Airport	East London	1
+JNB	Africa/Johannesburg	OR Tambo International Airport	Johannesburg	2
+DUR	Africa/Johannesburg	King Shaka International Airport	Durban	2
+PLZ	Africa/Johannesburg	Port Elizabeth Airport	Port Elizabeth	1
+GBE	Africa/Gaborone	Sir Seretse Khama International Airport	Gaborone	2
+MRU	Indian/Mauritius	Sir Seewoosagur Ramgoolam International Airport	Port Louis	2
+DLA	Africa/Douala	Douala International Airport	Douala	1
+LVI	Africa/Lusaka	Harry Mwanga Nkumbula International Airport	Livingstone	1
+LUN	Africa/Lusaka	Kenneth Kaunda International Airport	Lusaka	2
+LAD	Africa/Luanda	Quatro de Fevereiro Airport	Luanda	2
+TMS	Africa/Sao_Tome	Sao Tome International Airport	Sao Tome	1
+MPM	Africa/Maputo	Maputo Airport	Maputo	2
+VFA	Africa/Harare	Victoria Falls International Airport	Victoria Falls	1
+HRE	Africa/Harare	Robert Gabriel Mugabe International Airport	Harare	2
+BLZ	Africa/Blantyre	Chileka International Airport	Blantyre	1
+LLW	Africa/Blantyre	Lilongwe International Airport	Lilongwe	1
+WDH	Africa/Windhoek	Hosea Kutako International Airport	Windhoek	2
+FIH	Africa/Kinshasa	Ndjili International Airport	Kinshasa	2
+BJL	Africa/Banjul	Banjul International Airport	Banjul	1
+FUE	Atlantic/Canary	Fuerteventura Airport	Fuerteventura Island	1
+LPA	Atlantic/Canary	Gran Canaria Airport	Gran Canaria Island	2
+ACE	Atlantic/Canary	Lanzarote Airport	Lanzarote Island	1
+TFS	Atlantic/Canary	Tenerife South Airport	Tenerife Island	2
+TFN	Atlantic/Canary	Tenerife Norte Airport	Tenerife Island	2
+FNA	Africa/Freetown	Lungi International Airport	Freetown	2
+OXB	Africa/Bissau	Osvaldo Vieira International Airport	Bissau	1
+CMN	Africa/Casablanca	Mohammed V International Airport	Casablanca	2
+DKR	Africa/Dakar	Leopold Sedar Senghor International Airport	Dakar	2
+SID	Atlantic/Cape_Verde	Amilcar Cabral International Airport	Espargos	2
+RAI	Atlantic/Cape_Verde	Praia International Airport	Praia	1
+ADD	Africa/Addis_Ababa	Addis Ababa Bole International Airport	Addis Ababa	2
+ATZ	Africa/Cairo	Assiut International Airport	Assiut	1
+ALY	Africa/Cairo	El Nouzha Airport	Alexandria	1
+HBE	Africa/Cairo	Borg El Arab International Airport	Alexandria	1
+ABS	Africa/Cairo	Abu Simbel Airport	Abu Simbel	1
+CAI	Africa/Cairo	Cairo International Airport	Cairo	2
+HRG	Africa/Cairo	Hurghada International Airport	Hurghada	2
+LXR	Africa/Cairo	Luxor International Airport	Luxor	2
+RMF	Africa/Cairo	Marsa Alam International Airport	Marsa Alam	1
+MUH	Africa/Cairo	Mersa Matruh Airport	Mersa Matruh	1
+SSH	Africa/Cairo	Sharm El Sheikh International Airport	Sharm el-Sheikh	1
+ASW	Africa/Cairo	Aswan International Airport	Aswan	1
+ASM	Africa/Asmara	Asmara International Airport	Asmara	1
+NBO	Africa/Nairobi	Jomo Kenyatta International Airport	Nairobi	2
+BEN	Africa/Tripoli	Benina International Airport	Benghazi	1
+TIP	Africa/Tripoli	Tripoli International Airport	Tripoli	2
+KRT	Africa/Khartoum	Khartoum International Airport	Khartoum	2
+DAR	Africa/Dar_es_Salaam	Julius Nyerere International Airport	Dar es Salaam	2
+EBB	Africa/Kampala	Entebbe International Airport	Kampala	2
+ISG	Asia/Tokyo	New Ishigaki Airport	Ishigaki	1
+ABE	America/New_York	Lehigh Valley International Airport	Allentown	1
+ABQ	America/Denver	Albuquerque International Sunport	Albuquerque	2
+ACK	America/New_York	Nantucket Memorial Airport	Nantucket	1
+ACV	America/Los_Angeles	California Redwood Coast-Humboldt County Airport	Arcata/Eureka	1
+AGS	America/New_York	Augusta Regional At Bush Field	Augusta	2
+ALB	America/New_York	Albany International Airport	Albany	1
+AOO	America/New_York	Altoona Blair County Airport	Altoona	1
+ASE	America/Denver	Aspen-Pitkin Co/Sardy Field	Aspen	1
+ATL	America/New_York	Hartsfield Jackson Atlanta International Airport	Atlanta	2
+ATW	America/Chicago	Appleton International Airport	Appleton	0
+AUG	America/New_York	Augusta State Airport	Augusta	1
+AUS	America/Chicago	Austin Bergstrom International Airport	Austin	2
+AVL	America/New_York	Asheville Regional Airport	Asheville	2
+AVP	America/New_York	Wilkes Barre Scranton International Airport	Wilkes-Barre/Scranton	1
+BDL	America/New_York	Bradley International Airport	Hartford	2
+BFL	America/Los_Angeles	Meadows Field	Bakersfield	1
+BGM	America/New_York	Greater Binghamton/Edwin A Link field	Binghamton	1
+BGR	America/New_York	Bangor International Airport	Bangor	2
+BHB	America/New_York	Hancock County-Bar Harbor Airport	Bar Harbor	1
+BHM	America/Chicago	Birmingham-Shuttlesworth International Airport	Birmingham	2
+BIL	America/Denver	Billings Logan International Airport	Billings	2
+BIS	America/Chicago	Bismarck Municipal Airport	Bismarck	1
+BKW	America/New_York	Raleigh County Memorial Airport	Beckley	1
+BNA	America/Chicago	Nashville International Airport	Nashville	2
+BOI	America/Boise	Boise Air Terminal/Gowen Field	Boise	2
+BOS	America/New_York	General Edward Lawrence Logan International Airport	Boston	2
+BTV	America/New_York	Burlington International Airport	Burlington	1
+BUF	America/New_York	Buffalo Niagara International Airport	Buffalo	2
+BUR	America/Los_Angeles	Bob Hope Airport	Burbank	1
+BWI	America/New_York	Baltimore/Washington International Thurgood Marshall Airport	Baltimore	2
+BZN	America/Denver	Gallatin Field	Bozeman	1
+CAE	America/New_York	Columbia Metropolitan Airport	Columbia	2
+CAK	America/New_York	Akron Canton Regional Airport	Akron	1
+CEC	America/Los_Angeles	Jack Mc Namara Field Airport	Crescent City	1
+CHA	America/New_York	Lovell Field	Chattanooga	2
+CHO	America/New_York	Charlottesville Albemarle Airport	Charlottesville	1
+CHS	America/New_York	Charleston Air Force Base-International Airport	Charleston	2
+CIC	America/Los_Angeles	Chico Municipal Airport	Chico	0
+CID	America/Chicago	The Eastern Iowa Airport	Cedar Rapids	2
+CKB	America/New_York	North Central West Virginia Airport	Clarksburg	1
+CLE	America/New_York	Cleveland Hopkins International Airport	Cleveland	2
+CLT	America/New_York	Charlotte Douglas International Airport	Charlotte	2
+CMH	America/New_York	John Glenn Columbus International Airport	Columbus	2
+COD	America/Denver	Yellowstone Regional Airport	Cody	1
+COS	America/Denver	City of Colorado Springs Municipal Airport	Colorado Springs	2
+CPR	America/Denver	Casper-Natrona County International Airport	Casper	1
+CLD	America/Los_Angeles	Mc Clellan-Palomar Airport	Carlsbad	1
+CRW	America/New_York	Yeager Airport	Charleston	2
+CVG	America/New_York	Cincinnati Northern Kentucky International Airport	Cincinnati	2
+CWA	America/Chicago	Central Wisconsin Airport	Mosinee	1
+KCZ	Asia/Tokyo	Kochi Airport (Gao Zhi Kong Gang )	Nankoku	1
+DAB	America/New_York	Daytona Beach International Airport	Daytona Beach	2
+DAY	America/New_York	James M Cox Dayton International Airport	Dayton	2
+DCA	America/New_York	Ronald Reagan Washington National Airport	Washington	2
+DEN	America/Denver	Denver International Airport	Denver	2
+DFW	America/Chicago	Dallas Fort Worth International Airport	Dallas-Fort Worth	2
+DRO	America/Denver	Durango La Plata County Airport	Durango	0
+DSM	America/Chicago	Des Moines International Airport	Des Moines	2
+DTW	America/Detroit	Detroit Metropolitan Wayne County Airport	Detroit	2
+ELM	America/New_York	Elmira Corning Regional Airport	Elmira/Corning	1
+ELP	America/Denver	El Paso International Airport	El Paso	1
+ERI	America/New_York	Erie International Tom Ridge Field	Erie	2
+EUG	America/Los_Angeles	Mahlon Sweet Field	Eugene	1
+EWN	America/New_York	Coastal Carolina Regional Airport	New Bern	1
+EWR	America/New_York	Newark Liberty International Airport	Newark	2
+EYW	America/New_York	Key West International Airport	Key West	1
+FAR	America/Chicago	Hector International Airport	Fargo	1
+FAT	America/Los_Angeles	Fresno Yosemite International Airport	Fresno	1
+FAY	America/New_York	Fayetteville Regional Grannis Field	Fayetteville	1
+FLG	America/Phoenix	Flagstaff Pulliam Airport	Flagstaff	1
+FLL	America/New_York	Fort Lauderdale Hollywood International Airport	Fort Lauderdale	2
+FLO	America/New_York	Florence Regional Airport	Florence	1
+FSD	America/Chicago	Joe Foss Field Airport	Sioux Falls	1
+FWA	America/Indiana/Indianapolis	Fort Wayne International Airport	Fort Wayne	2
+GCC	America/Denver	Gillette Campbell County Airport	Gillette	1
+GEG	America/Los_Angeles	Spokane International Airport	Spokane	2
+GJT	America/Denver	Grand Junction Regional Airport	Grand Junction	1
+GNV	America/New_York	Gainesville Regional Airport	Gainesville	1
+FCA	America/Denver	Glacier Park International Airport	Kalispell	1
+GPT	America/Chicago	Gulfport Biloxi International Airport	Gulfport	2
+GRB	America/Chicago	Austin Straubel International Airport	Green Bay	2
+GRR	America/Detroit	Gerald R. Ford International Airport	Grand Rapids	1
+GSO	America/New_York	Piedmont Triad International Airport	Greensboro	2
+GSP	America/New_York	Greenville Spartanburg International Airport	Greenville	2
+GTF	America/Denver	Great Falls International Airport	Great Falls	1
+GUC	America/Denver	Gunnison Crested Butte Regional Airport	Gunnison	0
+HDN	America/Denver	Yampa Valley Airport	Hayden	0
+HLN	America/Denver	Helena Regional Airport	Helena	1
+HPN	America/New_York	Westchester County Airport	White Plains	1
+HSV	America/Chicago	Huntsville International Carl T Jones Field	Huntsville	2
+HTS	America/New_York	Tri-State/Milton J. Ferguson Field	Huntington	2
+HVN	America/New_York	Tweed New Haven Airport	New Haven	1
+HHH	America/New_York	Hilton Head Airport	Hilton Head Island	0
+HYA	America/New_York	Barnstable Municipal Boardman Polando Field	Hyannis	1
+IAD	America/New_York	Washington Dulles International Airport	Washington	2
+IAH	America/Chicago	George Bush Intercontinental Houston Airport	Houston	2
+ICT	America/Chicago	Wichita Eisenhower National Airport	Wichita	2
+IDA	America/Boise	Idaho Falls Regional Airport	Idaho Falls	1
+ILM	America/New_York	Wilmington International Airport	Wilmington	1
+IND	America/Indiana/Indianapolis	Indianapolis International Airport	Indianapolis	2
+IPL	America/Los_Angeles	Imperial County Airport	Imperial	1
+IPT	America/New_York	Williamsport Regional Airport	Williamsport	1
+ISP	America/New_York	Long Island Mac Arthur Airport	Islip	1
+ITH	America/New_York	Ithaca Tompkins Regional Airport	Ithaca	1
+IYK	America/Los_Angeles	Inyokern Airport	Inyokern	0
+JAC	America/Denver	Jackson Hole Airport	Jackson	1
+JAN	America/Chicago	Jackson-Medgar Wiley Evers International Airport	Jackson	2
+JAX	America/New_York	Jacksonville International Airport	Jacksonville	2
+JFK	America/New_York	John F Kennedy International Airport	New York	2
+JST	America/New_York	John Murtha Johnstown Cambria County Airport	Johnstown	1
+LAN	America/Detroit	Capital City Airport	Lansing	1
+LAS	America/Los_Angeles	McCarran International Airport	Las Vegas	2
+LAX	America/Los_Angeles	Los Angeles International Airport	Los Angeles	2
+LEX	America/New_York	Blue Grass Airport	Lexington	2
+LGA	America/New_York	La Guardia Airport	New York	2
+LGB	America/Los_Angeles	Long Beach /Daugherty Field/ Airport	Long Beach	1
+LIT	America/Chicago	Bill & Hillary Clinton National Airport/Adams Field	Little Rock	2
+LMT	America/Los_Angeles	Crater Lake-Klamath Regional Airport	Klamath Falls	1
+LNK	America/Chicago	Lincoln Airport	Lincoln	1
+LYH	America/New_York	Lynchburg Regional Preston Glenn Field	Lynchburg	1
+MBS	America/Detroit	MBS International Airport	Saginaw	2
+MCI	America/Chicago	Kansas City International Airport	Kansas City	2
+MCO	America/New_York	Orlando International Airport	Orlando	2
+MDT	America/New_York	Harrisburg International Airport	Harrisburg	1
+MEM	America/Chicago	Memphis International Airport	Memphis	2
+MFR	America/Los_Angeles	Rogue Valley International Medford Airport	Medford	1
+MGM	America/Chicago	Montgomery Regional (Dannelly Field) Airport	Montgomery	2
+MGW	America/New_York	Morgantown Municipal Walter L. Bill Hart Field	Morgantown	1
+MHT	America/New_York	Manchester-Boston Regional Airport	Manchester	2
+MIA	America/New_York	Miami International Airport	Miami	2
+MKE	America/Chicago	General Mitchell International Airport	Milwaukee	2
+MLI	America/Chicago	Quad City International Airport	Moline	2
+MOB	America/Chicago	Mobile Regional Airport	Mobile	2
+MOD	America/Los_Angeles	Modesto City Co-Harry Sham Field	Modesto	1
+MRY	America/Los_Angeles	Monterey Peninsula Airport	Monterey	1
+MSN	America/Chicago	Dane County Regional Truax Field	Madison	2
+MSO	America/Denver	Missoula International Airport	Missoula	1
+MSP	America/Chicago	Minneapolis-St Paul International/Wold-Chamberlain Airport	Minneapolis	2
+MSY	America/Chicago	Louis Armstrong New Orleans International Airport	New Orleans	2
+MTJ	America/Denver	Montrose Regional Airport	Montrose	1
+MVY	America/New_York	Martha's Vineyard Airport	Martha's Vineyard	0
+MWH	America/Los_Angeles	Grant County International Airport	Moses Lake	1
+MYR	America/New_York	Myrtle Beach International Airport	Myrtle Beach	1
+YUM	America/Phoenix	Yuma MCAS/Yuma International Airport	Yuma	1
+OAJ	America/New_York	Albert J Ellis Airport	Jacksonville	1
+OAK	America/Los_Angeles	Metropolitan Oakland International Airport	Oakland	2
+OKC	America/Chicago	Will Rogers World Airport	Oklahoma City	2
+OMA	America/Chicago	Eppley Airfield	Omaha	2
+ONT	America/Los_Angeles	Ontario International Airport	Ontario	2
+ORD	America/Chicago	Chicago O'Hare International Airport	Chicago	2
+ORF	America/New_York	Norfolk International Airport	Norfolk	2
+OTH	America/Los_Angeles	Southwest Oregon Regional Airport	North Bend	1
+OXR	America/Los_Angeles	Oxnard Airport	Oxnard	1
+PBI	America/New_York	Palm Beach International Airport	West Palm Beach	2
+PDX	America/Los_Angeles	Portland International Airport	Portland	2
+PGV	America/New_York	Pitt Greenville Airport	Greenville	1
+PHF	America/New_York	Newport News Williamsburg International Airport	Newport News	2
+PHL	America/New_York	Philadelphia International Airport	Philadelphia	2
+PHX	America/Phoenix	Phoenix Sky Harbor International Airport	Phoenix	2
+PIA	America/Chicago	General Wayne A. Downing Peoria International Airport	Peoria	2
+PIT	America/New_York	Pittsburgh International Airport	Pittsburgh	2
+PKB	America/New_York	Mid Ohio Valley Regional Airport	Parkersburg	1
+PNS	America/Chicago	Pensacola International Airport	Pensacola	1
+PQI	America/New_York	Presque Isle International Airport	Presque Isle	1
+PSC	America/Los_Angeles	Tri Cities Airport	Pasco	1
+PSP	America/Los_Angeles	Palm Springs International Airport	Palm Springs	1
+PVD	America/New_York	Theodore Francis Green State Airport	Providence	2
+PWM	America/New_York	Portland International Jetport	Portland	2
+RAP	America/Denver	Rapid City Regional Airport	Rapid City	1
+RDD	America/Los_Angeles	Redding Municipal Airport	Redding	1
+RDM	America/Los_Angeles	Roberts Field	Redmond	1
+RDU	America/New_York	Raleigh Durham International Airport	Raleigh/Durham	2
+RIC	America/New_York	Richmond International Airport	Richmond	2
+RKS	America/Denver	Southwest Wyoming Regional Airport	Rock Springs	1
+RNO	America/Los_Angeles	Reno Tahoe International Airport	Reno	2
+ROA	America/New_York	Roanoke-Blacksburg Regional Airport	Roanoke	2
+ROC	America/New_York	Greater Rochester International Airport	Rochester	2
+RSW	America/New_York	Southwest Florida International Airport	Fort Myers	2
+SAN	America/Los_Angeles	San Diego International Airport	San Diego	2
+SAT	America/Chicago	San Antonio International Airport	San Antonio	2
+SAV	America/New_York	Savannah Hilton Head International Airport	Savannah	2
+SBA	America/Los_Angeles	Santa Barbara Municipal Airport	Santa Barbara	1
+SBN	America/Indiana/Indianapolis	South Bend Regional Airport	South Bend	2
+SBP	America/Los_Angeles	San Luis County Regional Airport	San Luis Obispo	1
+SBY	America/New_York	Salisbury Ocean City Wicomico Regional Airport	Salisbury	1
+SDF	America/Kentucky/Louisville	Louisville Muhammad Ali International Airport	Louisville	2
+SEA	America/Los_Angeles	Seattle Tacoma International Airport	Seattle	2
+SFO	America/Los_Angeles	San Francisco International Airport	San Francisco	2
+SGF	America/Chicago	Springfield Branson National Airport	Springfield	2
+SHD	America/New_York	Shenandoah Valley Regional Airport	Staunton/Waynesboro/Harrisonburg	0
+SJC	America/Los_Angeles	Norman Y. Mineta San Jose International Airport	San Jose	2
+SLC	America/Denver	Salt Lake City International Airport	Salt Lake City	2
+SMF	America/Los_Angeles	Sacramento International Airport	Sacramento	2
+SMX	America/Los_Angeles	Santa Maria Pub/Capt G Allan Hancock Field	Santa Maria	1
+SNA	America/Los_Angeles	John Wayne Airport-Orange County Airport	Santa Ana	2
+SPI	America/Chicago	Abraham Lincoln Capital Airport	Springfield	2
+SRQ	America/New_York	Sarasota Bradenton International Airport	Sarasota/Bradenton	2
+STL	America/Chicago	St Louis Lambert International Airport	St Louis	2
+SWF	America/New_York	New York Stewart International Airport	Newburgh	1
+SYR	America/New_York	Syracuse Hancock International Airport	Syracuse	2
+TLH	America/New_York	Tallahassee Regional Airport	Tallahassee	2
+TPA	America/New_York	Tampa International Airport	Tampa	2
+TRI	America/New_York	Tri-Cities Regional TN/VA Airport	Bristol/Johnson/Kingsport	2
+TUL	America/Chicago	Tulsa International Airport	Tulsa	2
+TUS	America/Phoenix	Tucson International Airport	Tucson	2
+TVC	America/Detroit	Cherry Capital Airport	Traverse City	1
+TYS	America/New_York	McGhee Tyson Airport	Knoxville	2
+SCE	America/New_York	University Park Airport	State College	1
+VPS	America/Chicago	Destin-Ft Walton Beach Airport	Valparaiso	2
+XNA	America/Chicago	Northwest Arkansas Regional Airport	Fayetteville/Springdale/Rogers	1
+TIA	Europe/Tirane	Tirana International Airport Mother Teresa	Tirana	2
+SOF	Europe/Sofia	Sofia Airport	Sofia	2
+VAR	Europe/Sofia	Varna Airport	Varna	2
+ECN	Asia/Nicosia	Ercan International Airport	Nicosia	1
+LCA	Asia/Nicosia	Larnaca International Airport	Larnarca	2
+DBV	Europe/Zagreb	Dubrovnik Airport	Dubrovnik	1
+OSI	Europe/Zagreb	Osijek Airport	Osijek	1
+PUY	Europe/Zagreb	Pula Airport	Pula	1
+RJK	Europe/Zagreb	Rijeka Airport	Rijeka	1
+BWK	Europe/Zagreb	Bol Airport	Brac Island	1
+SPU	Europe/Zagreb	Split Airport	Split	1
+ZAG	Europe/Zagreb	Zagreb Airport	Zagreb	2
+ZAD	Europe/Zagreb	Zadar Airport	Zemunik (Zadar)	1
+ALC	Europe/Madrid	Alicante International Airport	Alicante	2
+LEI	Europe/Madrid	Almeria International Airport	Almeria	1
+OVD	Europe/Madrid	Asturias Airport	Ranon	1
+BIO	Europe/Madrid	Bilbao Airport	Bilbao	1
+BCN	Europe/Madrid	Barcelona International Airport	Barcelona	2
+LCG	Europe/Madrid	A Coruna Airport	Culleredo	1
+GRX	Europe/Madrid	Federico Garcia Lorca Airport	Granada	1
+IBZ	Europe/Madrid	Ibiza Airport	Ibiza	1
+XRY	Europe/Madrid	Jerez Airport	Jerez de la Forntera	1
+MAD	Europe/Madrid	Adolfo Suarez Madrid-Barajas Airport	Madrid	2
+AGP	Europe/Madrid	Malaga Airport	Malaga	2
+MAH	Europe/Madrid	Menorca Airport	Menorca Island	1
+PMI	Europe/Madrid	Palma De Mallorca Airport	Palma De Mallorca	2
+PNA	Europe/Madrid	Pamplona Airport	Pamplona	1
+SCQ	Europe/Madrid	Santiago de Compostela Airport	Santiago de Compostela	2
+VLC	Europe/Madrid	Valencia Airport	Valencia	1
+VGO	Europe/Madrid	Vigo Airport	Vigo	1
+SVQ	Europe/Madrid	Sevilla Airport	Sevilla	1
+TLS	Europe/Paris	Toulouse-Blagnac Airport	Toulouse/Blagnac	2
+BIQ	Europe/Paris	Biarritz-Anglet-Bayonne Airport	Biarritz/Anglet/Bayonne	1
+BIA	Europe/Paris	Bastia-Poretta Airport	Bastia/Poretta	1
+LYS	Europe/Paris	Lyon Saint-Exupery Airport	Lyon	2
+MRS	Europe/Paris	Marseille Provence Airport	Marseille	2
+NCE	Europe/Paris	Nice-Cote d'Azur Airport	Nice	2
+CDG	Europe/Paris	Charles de Gaulle International Airport	Paris	2
+ORY	Europe/Paris	Paris-Orly Airport	Paris	2
+BSL	Europe/Paris	EuroAirport Basel-Mulhouse-Freiburg Airport	Bale/Mulhouse	2
+ATH	Europe/Athens	Eleftherios Venizelos International Airport	Athens	2
+HER	Europe/Athens	Heraklion International Nikos Kazantzakis Airport	Heraklion	2
+EFL	Europe/Athens	Kefallinia Airport	Kefallinia Island	1
+KGS	Europe/Athens	Kos Airport	Kos Island	1
+AOK	Europe/Athens	Karpathos Airport	Karpathos Island	1
+CFU	Europe/Athens	Ioannis Kapodistrias International Airport	Kerkyra Island	1
+KVA	Europe/Athens	Alexander the Great International Airport	Kavala	1
+JMK	Europe/Athens	Mikonos Airport	Mykonos Island	1
+MJT	Europe/Athens	Mytilene International Airport	Mytilene	1
+PVK	Europe/Athens	Aktion National Airport	Preveza/Lefkada	1
+RHO	Europe/Athens	Diagoras Airport	Rodes Island	1
+CHQ	Europe/Athens	Chania International Airport	Souda	1
+JSI	Europe/Athens	Skiathos Island National Airport	Skiathos	1
+SMI	Europe/Athens	Samos Airport	Samos Island	1
+JTR	Europe/Athens	Santorini Airport	Santorini Island	1
+SKG	Europe/Athens	Thessaloniki Macedonia International Airport	Thessaloniki	2
+ZTH	Europe/Athens	Zakynthos International Airport ""Dionysios Solomos	Zakynthos Island	1
+BUD	Europe/Budapest	Budapest Liszt Ferenc International Airport	Budapest	2
+SOB	Europe/Budapest	Heviz-Balaton Airport	Sarmellek	1
+BRI	Europe/Rome	Bari Karol Wojtyla Airport	Bari	2
+SUF	Europe/Rome	Lamezia Terme Airport	Lamezia Terme (CZ)	1
+CTA	Europe/Rome	Catania-Fontanarossa Airport	Catania	2
+PMO	Europe/Rome	Falcone-Borsellino Airport	Palermo	2
+AHO	Europe/Rome	Alghero-Fertilia Airport	Alghero	1
+CAG	Europe/Rome	Cagliari Elmas Airport	Cagliari	2
+OLB	Europe/Rome	Olbia Costa Smeralda Airport	Olbia (SS)	1
+MXP	Europe/Rome	Malpensa International Airport	Milan	2
+TRN	Europe/Rome	Turin Airport	Torino	2
+GOA	Europe/Rome	Genoa Cristoforo Colombo Airport	Genova	2
+LIN	Europe/Rome	Milano Linate Airport	Milan	2
+BLQ	Europe/Rome	Bologna Guglielmo Marconi Airport	Bologna	2
+TRS	Europe/Rome	Trieste-Friuli Venezia Giulia Airport	Trieste	1
+VRN	Europe/Rome	Verona Villafranca Airport	Verona	2
+AOI	Europe/Rome	Ancona Falconara Airport	Ancona	1
+VCE	Europe/Rome	Venice Marco Polo Airport	Venice	2
+FCO	Europe/Rome	Leonardo da Vinci-Fiumicino Airport	Rome	2
+NAP	Europe/Rome	Naples International Airport	Napoli	2
+PSA	Europe/Rome	Pisa International Airport	Pisa	2
+FLR	Europe/Rome	Peretola Airport	Firenze	1
+LJU	Europe/Ljubljana	Ljubljana Joze Pucnik Airport	Ljubljana	2
+PRG	Europe/Prague	Vaclav Havel Airport Prague	Prague	2
+TLV	Asia/Jerusalem	Ben Gurion International Airport	Tel Aviv	2
+MLA	Europe/Malta	Malta International Airport	Valletta	2
+GRZ	Europe/Vienna	Graz Airport	Graz	1
+INN	Europe/Vienna	Innsbruck Airport	Innsbruck	1
+KLU	Europe/Vienna	Klagenfurt Airport	Klagenfurt am Worthersee	1
+LNZ	Europe/Vienna	Linz Horsching Airport	Linz	1
+SZG	Europe/Vienna	Salzburg Airport	Salzburg	1
+VIE	Europe/Vienna	Vienna International Airport	Vienna	2
+FAO	Europe/Lisbon	Faro Airport	Faro	2
+HOR	Atlantic/Azores	Horta Airport	Horta	1
+TER	Atlantic/Azores	Lajes Airport	Praia da Vitoria	2
+FNC	Atlantic/Madeira	Madeira Airport	Funchal	1
+PDL	Atlantic/Azores	Joao Paulo II Airport	Ponta Delgada	2
+PIX	Atlantic/Azores	Pico Airport	Pico Island	1
+OPO	Europe/Lisbon	Francisco de Sa Carneiro Airport	Porto	2
+PXO	Atlantic/Madeira	Porto Santo Airport	Vila Baleira	1
+LIS	Europe/Lisbon	Humberto Delgado Airport (Lisbon Portela Airport)	Lisbon	2
+SJJ	Europe/Sarajevo	Sarajevo International Airport	Sarajevo	2
+CLJ	Europe/Bucharest	Cluj-Napoca International Airport	Cluj-Napoca	1
+IAS	Europe/Bucharest	Iasi Airport	Iasi	1
+OTP	Europe/Bucharest	Henri Coanda International Airport	Bucharest	2
+SBZ	Europe/Bucharest	Sibiu International Airport	Sibiu	1
+TSR	Europe/Bucharest	Timisoara Traian Vuia Airport	Timisoara	1
+GVA	Europe/Zurich	Geneva Cointrin International Airport	Geneva	2
+LUG	Europe/Zurich	Lugano Airport	Lugano	1
+BRN	Europe/Zurich	Bern Belp Airport	Bern	1
+ZRH	Europe/Zurich	Zurich Airport	Zurich	2
+ACH	Europe/Zurich	St Gallen Altenrhein Airport	Altenrhein	1
+ESB	Europe/Istanbul	Esenboga International Airport	Ankara	2
+ADA	Europe/Istanbul	Adana Airport	Adana	2
+AYT	Europe/Istanbul	Antalya International Airport	Antalya	2
+GZT	Europe/Istanbul	Gaziantep International Airport	Gaziantep	2
+KYA	Europe/Istanbul	Konya Airport	Konya	1
+MZH	Europe/Istanbul	Amasya Merzifon Airport	Amasya	0
+VAS	Europe/Istanbul	Sivas Nuri Demirag Airport	Sivas	0
+MLX	Europe/Istanbul	Malatya Erhac Airport	Malatya	1
+ASR	Europe/Istanbul	Kayseri Erkilet Airport	Kayseri	1
+DNZ	Europe/Istanbul	Cardak Airport	Denizli	1
+NAV	Europe/Istanbul	Nevsehir Kapadokya Airport	Nevsehir	0
+CKZ	Europe/Istanbul	Canakkale Airport	Canakkale	1
+ADB	Europe/Istanbul	Adnan Menderes International Airport	Izmir	2
+USQ	Europe/Istanbul	Usak Airport	Usak	0
+DLM	Europe/Istanbul	Dalaman International Airport	Dalaman	2
+AOE	Europe/Istanbul	Anadolu Airport	Eskisehir	1
+EZS	Europe/Istanbul	Elazig Airport	Elazig	1
+DIY	Europe/Istanbul	Diyarbakir Airport	Diyarbakir	1
+ERC	Europe/Istanbul	Erzincan Airport	Erzincan	1
+ERZ	Europe/Istanbul	Erzurum International Airport	Erzurum	2
+KSY	Europe/Istanbul	Kars Airport	Kars	1
+TZX	Europe/Istanbul	Trabzon International Airport	Trabzon	2
+VAN	Europe/Istanbul	Van Ferit Melen Airport	Van	1
+BAL	Europe/Istanbul	Batman Airport	Batman	1
+MSR	Europe/Istanbul	Mus Airport	Mus	1
+KCM	Europe/Istanbul	Kahramanmaras Airport	Kahramanmaras	1
+AJI	Europe/Istanbul	Agri Airport		1
+ADF	Europe/Istanbul	Adiyaman Airport	Adiyaman	1
+MQM	Europe/Istanbul	Mardin Airport	Mardin	1
+GNY	Europe/Istanbul	Sanliurfa GAP Airport	Sanliurfa	1
+HTY	Europe/Istanbul	Hatay Airport	Hatay	1
+BJV	Europe/Istanbul	Milas Bodrum International Airport	Bodrum	2
+SZF	Europe/Istanbul	Samsun Carsamba Airport	Samsun	0
+SAW	Europe/Istanbul	Sabiha Gokcen International Airport	Istanbul	2
+IST	Europe/Istanbul	Istanbul Airport	Istanbul	2
+KIV	Europe/Chisinau	Chisinau International Airport	Chisinau	1
+OHD	Europe/Skopje	Ohrid St. Paul the Apostle Airport	Ohrid	1
+SKP	Europe/Skopje	Skopje International Airport	Skopje	2
+BEG	Europe/Belgrade	Belgrade Nikola Tesla Airport	Belgrade	2
+TGD	Europe/Podgorica	Podgorica Airport	Podgorica	2
+KSC	Europe/Bratislava	Kosice Airport	Kosice	1
+PLS	America/Grand_Turk	Providenciales Airport	Providenciales Island	1
+AZS	America/Santo_Domingo	Samana El Catey International Airport	Samana	1
+PUJ	America/Santo_Domingo	Punta Cana International Airport	Punta Cana	2
+POP	America/Santo_Domingo	Gregorio Luperon International Airport	Puerto Plata	1
+SDQ	America/Santo_Domingo	Las Americas International Airport	Santo Domingo	2
+KIN	America/Jamaica	Norman Manley International Airport	Kingston	2
+MBJ	America/Jamaica	Sangster International Airport	Montego Bay	1
+ACA	America/Mexico_City	General Juan N Alvarez International Airport	Acapulco	2
+CZM	America/Cancun	Cozumel International Airport	Cozumel	1
+GDL	America/Mexico_City	Don Miguel Hidalgo Y Costilla International Airport	Guadalajara	2
+GYM	America/Hermosillo	General Jose Maria Yanez International Airport	Guaymas	1
+HMO	America/Hermosillo	General Ignacio P. Garcia International Airport	Hermosillo	2
+MEX	America/Mexico_City	Licenciado Benito Juarez International Airport	Mexico City	2
+MZT	America/Mazatlan	General Rafael Buelna International Airport	Mazatlan	1
+PVR	America/Mexico_City	Licenciado Gustavo Diaz Ordaz International Airport	Puerto Vallarta	2
+SJD	America/Mazatlan	Los Cabos International Airport	San Jose del Cabo	2
+CUN	America/Cancun	Cancun International Airport	Cancun	2
+ZIH	America/Mexico_City	Ixtapa Zihuatanejo International Airport	Ixtapa	1
+ZLO	America/Mexico_City	Playa De Oro International Airport	Manzanillo	1
+LIR	America/Costa_Rica	Daniel Oduber Quiros International Airport	Liberia	2
+SJO	America/Costa_Rica	Juan Santamaria International Airport	San Jose	1
+PAP	America/Port-au-Prince	Toussaint Louverture International Airport	Port-au-Prince	1
+CCC	America/Havana	Jardines Del Rey Airport	Cayo Coco	1
+HAV	America/Havana	Jose Marti International Airport	Havana	2
+HOG	America/Havana	Frank Pais International Airport	Holguin	1
+SNU	America/Havana	Abel Santamaria Airport	Santa Clara	1
+VRA	America/Havana	Juan Gualberto Gomez International Airport	Varadero	2
+GCM	America/Cayman	Owen Roberts International Airport	Georgetown	2
+FPO	America/Nassau	Grand Bahama International Airport	Freeport	1
+NAS	America/Nassau	Lynden Pindling International Airport	Nassau	2
+BZE	America/Belize	Philip S. W. Goldson International Airport	Belize City	2
+RAR	Pacific/Rarotonga	Rarotonga International Airport	Avarua	2
+NAN	Pacific/Fiji	Nadi International Airport	Nadi	1
+TBU	Pacific/Tongatapu	Fua'amotu International Airport	Nuku'alofa	1
+IUE	Pacific/Niue	Niue International Airport	Alofi	1
+APW	Pacific/Apia	Faleolo International Airport	Apia	1
+PPT	Pacific/Tahiti	Faa'a International Airport	Papeete	2
+VLI	Pacific/Efate	Bauerfield International Airport	Port Vila	1
+NOU	Pacific/Noumea	La Tontouta International Airport	Noumea	1
+AKL	Pacific/Auckland	Auckland International Airport	Auckland	2
+TUO	Pacific/Auckland	Taupo Airport	Taupo	1
+CHC	Pacific/Auckland	Christchurch International Airport	Christchurch	2
+DUD	Pacific/Auckland	Dunedin Airport	Dunedin	1
+GIS	Pacific/Auckland	Gisborne Airport	Gisborne	1
+HKK	Pacific/Auckland	Hokitika Airfield		1
+HLZ	Pacific/Auckland	Hamilton International Airport	Hamilton	1
+KKE	Pacific/Auckland	Kerikeri Airport	Kerikeri	1
+KAT	Pacific/Auckland	Kaitaia Airport	Kaitaia	1
+MRO	Pacific/Auckland	Hood Airport	Masterton	1
+NPL	Pacific/Auckland	New Plymouth Airport	New Plymouth	1
+NPE	Pacific/Auckland	Hawke's Bay Airport	Napier	1
+NSN	Pacific/Auckland	Nelson Airport	Nelson	1
+IVC	Pacific/Auckland	Invercargill Airport	Invercargill	1
+OAM	Pacific/Auckland	Oamaru Airport		1
+PMR	Pacific/Auckland	Palmerston North Airport		1
+ZQN	Pacific/Auckland	Queenstown International Airport	Queenstown	1
+ROT	Pacific/Auckland	Rotorua Regional Airport	Rotorua	1
+TRG	Pacific/Auckland	Tauranga Airport	Tauranga	1
+TIU	Pacific/Auckland	Timaru Airport		1
+BHE	Pacific/Auckland	Woodbourne Airport	Blenheim	1
+WKA	Pacific/Auckland	Wanaka Airport		1
+WHK	Pacific/Auckland	Whakatane Airport		1
+WLG	Pacific/Auckland	Wellington International Airport	Wellington	2
+WRE	Pacific/Auckland	Whangarei Airport		1
+WSZ	Pacific/Auckland	Westport Airport		1
+WAG	Pacific/Auckland	Wanganui Airport	Wanganui	1
+BAH	Asia/Bahrain	Bahrain International Airport	Manama	2
+DMM	Asia/Riyadh	King Fahd International Airport	Ad Dammam	2
+JED	Asia/Riyadh	King Abdulaziz International Airport	Jeddah	2
+MED	Asia/Riyadh	Prince Mohammad Bin Abdulaziz Airport	Medina	2
+RUH	Asia/Riyadh	King Khaled International Airport	Riyadh	2
+IKA	Asia/Tehran	Imam Khomeini International Airport	Tehran	2
+MHD	Asia/Tehran	Mashhad International Airport	Mashhad	2
+TBZ	Asia/Tehran	Tabriz International Airport	Tabriz	2
+AMM	Asia/Amman	Queen Alia International Airport	Amman	2
+KWI	Asia/Kuwait	Kuwait International Airport	Kuwait City	2
+BEY	Asia/Beirut	Beirut Rafic Hariri International Airport	Beirut	2
+AUH	Asia/Dubai	Abu Dhabi International Airport	Abu Dhabi	2
+DXB	Asia/Dubai	Dubai International Airport	Dubai	2
+SHJ	Asia/Dubai	Sharjah International Airport	Sharjah	2
+MCT	Asia/Muscat	Muscat International Airport	Muscat	2
+ISB	Asia/Karachi	Islamabad International Airport	Islamabad	2
+KHI	Asia/Karachi	Jinnah International Airport	Karachi	1
+LHE	Asia/Karachi	Alama Iqbal International Airport	Lahore	1
+BGW	Asia/Baghdad	Baghdad International Airport	Baghdad	2
+EBL	Asia/Baghdad	Erbil International Airport	Arbil	1
+ALP	Asia/Damascus	Aleppo International Airport	Aleppo	2
+DAM	Asia/Damascus	Damascus International Airport	Damascus	2
+DOH	Asia/Qatar	Hamad International Airport	Doha	2
+SAH	Asia/Aden	Sana'a International Airport	Sana'a	1
+ANC	America/Anchorage	Ted Stevens Anchorage International Airport	Anchorage	2
+SPN	Pacific/Saipan	Saipan International Airport	Saipan Island	1
+KOA	Pacific/Honolulu	Ellison Onizuka Kona International At Keahole Airport	Kailua/Kona	1
+LIH	Pacific/Honolulu	Lihue Airport	Lihue	1
+HNL	Pacific/Honolulu	Daniel K Inouye International Airport	Honolulu	2
+OGG	Pacific/Honolulu	Kahului Airport	Kahului	1
+ROR	Pacific/Palau	Babelthuap Airport	Babelthuap Island	1
+TSA	Asia/Taipei	Taipei Songshan Airport	Taipei City	1
+TPE	Asia/Taipei	Taiwan Taoyuan International Airport	Taipei	2
+NRT	Asia/Tokyo	Narita International Airport	Tokyo	2
+KIX	Asia/Tokyo	Kansai International Airport	Osaka	2
+UKB	Asia/Tokyo	Kobe Airport	Kobe	1
+CTS	Asia/Tokyo	New Chitose Airport	Chitose / Tomakomai	2
+HKD	Asia/Tokyo	Hakodate Airport	Hakodate	1
+KUH	Asia/Tokyo	Kushiro Airport	Kushiro	1
+MMB	Asia/Tokyo	Memanbetsu Airport	Ozora	1
+SHB	Asia/Tokyo	Nakashibetsu Airport	Nakashibetsu	1
+OKD	Asia/Tokyo	Okadama Airport	Sapporo	1
+WKJ	Asia/Tokyo	Wakkanai Airport	Wakkanai	1
+UBJ	Asia/Tokyo	Yamaguchi Ube Airport	Ube	1
+TSJ	Asia/Tokyo	Tsushima Airport	Tsushima	1
+MBE	Asia/Tokyo	Monbetsu Airport	Monbetsu	1
+AKJ	Asia/Tokyo	Asahikawa Airport	Asahikawa / Hokkaido	1
+RIS	Asia/Tokyo	Rishiri Airport	Rishiri	1
+FUJ	Asia/Tokyo	Fukue Airport	Goto	1
+FUK	Asia/Tokyo	Fukuoka Airport	Fukuoka	2
+KOJ	Asia/Tokyo	Kagoshima Airport	Kagoshima	2
+KMI	Asia/Tokyo	Miyazaki Airport	Miyazaki	1
+OIT	Asia/Tokyo	Oita Airport	Oita	1
+KKJ	Asia/Tokyo	Kitakyushu Airport	Kitakyushu	1
+HSG	Asia/Tokyo	Saga Airport	Saga	1
+KMJ	Asia/Tokyo	Kumamoto Airport	Kumamoto	1
+NGS	Asia/Tokyo	Nagasaki Airport	Nagasaki	1
+NGO	Asia/Tokyo	Chubu Centrair International Airport	Tokoname	2
+KMQ	Asia/Tokyo	Komatsu Airport	Kanazawa	1
+FSZ	Asia/Tokyo	Mt. Fuji Shizuoka Airport	Makinohara / Shimada	2
+TOY	Asia/Tokyo	Toyama Airport	Toyama	1
+NTQ	Asia/Tokyo	Noto Airport	Wajima	1
+HIJ	Asia/Tokyo	Hiroshima Airport	Hiroshima	1
+OKJ	Asia/Tokyo	Okayama Airport	Okayama City	1
+YGJ	Asia/Tokyo	Miho Yonago Airport	Yonago	1
+MYJ	Asia/Tokyo	Matsuyama Airport	Matsuyama	1
+ITM	Asia/Tokyo	Osaka International Airport	Osaka	2
+TTJ	Asia/Tokyo	Tottori Airport	Tottori	1
+TKS	Asia/Tokyo	Tokushima Airport/JMSDF Air Base	Tokushima	1
+TAK	Asia/Tokyo	Takamatsu Airport	Takamatsu	1
+IWJ	Asia/Tokyo	Iwami Airport	Masuda	1
+FKS	Asia/Tokyo	Fukushima Airport	Sukagawa	1
+AXT	Asia/Tokyo	Akita Airport	Akita	1
+KIJ	Asia/Tokyo	Niigata Airport	Niigata	1
+ONJ	Asia/Tokyo	Odate Noshiro Airport	Odate	1
+SDJ	Asia/Tokyo	Sendai Airport	Sendai	1
+SYO	Asia/Tokyo	Shonai Airport	Shonai	1
+HAC	Asia/Tokyo	Hachijojima Airport	Hachijojima	1
+OIM	Asia/Tokyo	Oshima Airport	Izu Oshima	1
+MYE	Asia/Tokyo	Miyakejima Airport	Miyakejima	1
+HND	Asia/Tokyo	Tokyo Haneda International Airport	Tokyo	2
+MWX	Asia/Seoul	Muan International Airport	Piseo-ri (Muan)	2
+KWJ	Asia/Seoul	Gwangju Airport	Gwangju	1
+RSU	Asia/Seoul	Yeosu Airport	Yeosu	1
+CJU	Asia/Seoul	Jeju International Airport	Jeju City	2
+PUS	Asia/Seoul	Gimhae International Airport	Busan	2
+HIN	Asia/Seoul	Sacheon Air Base/Airport	Sacheon	1
+USN	Asia/Seoul	Ulsan Airport	Ulsan	1
+ICN	Asia/Seoul	Incheon International Airport	Seoul	2
+GMP	Asia/Seoul	Gimpo International Airport	Seoul	2
+KPO	Asia/Seoul	Pohang Airport (G-815/K-3)	Pohang	1
+TAE	Asia/Seoul	Daegu Airport	Daegu	1
+CJJ	Asia/Seoul	Cheongju International Airport/Cheongju Air Base (K-59/G-513)	Cheongju	2
+OKA	Asia/Tokyo	Naha Airport	Naha	2
+MMY	Asia/Tokyo	Miyako Airport	Miyako City	1
+CRK	Asia/Manila	Diosdado Macapagal International Airport	Angeles/Mabalacat	2
+MNL	Asia/Manila	Ninoy Aquino International Airport	Manila	2
+CEB	Asia/Manila	Mactan Cebu International Airport	Lapu-Lapu City	2
+EZE	America/Argentina/Buenos_Aires	Ministro Pistarini International Airport	Buenos Aires	2
+BSB	America/Sao_Paulo	Presidente Juscelino Kubistschek International Airport	Brasilia	2
+CNF	America/Sao_Paulo	Tancredo Neves International Airport	Belo Horizonte	2
+FOR	America/Fortaleza	Pinto Martins International Airport	Fortaleza	1
+GIG	America/Sao_Paulo	Rio Galeao - Tom Jobim International Airport	Rio De Janeiro	2
+GRU	America/Sao_Paulo	Guarulhos - Governador Andre Franco Montoro International Airport	Sao Paulo	2
+REC	America/Recife	Guararapes - Gilberto Freyre International Airport	Recife	1
+NAT	America/Fortaleza	Governador Aluizio Alves International Airport	Natal	2
+SSA	America/Bahia	Deputado Luiz Eduardo Magalhaes International Airport	Salvador	2
+SCL	America/Santiago	Comodoro Arturo Merino Benitez International Airport	Santiago	2
+SIC	America/Panama	San Jose Island Airport	Las Perlas	0
+BOG	America/Bogota	El Dorado International Airport	Bogota	2
+LIM	America/Lima	Jorge Chavez International Airport	Lima	2
+CCS	America/Caracas	Simon Bolivar International Airport	Caracas	2
+ANU	America/Antigua	V.C. Bird International Airport	St. John's	1
+BGI	America/Barbados	Grantley Adams International Airport	Bridgetown	1
+FDF	America/Martinique	Martinique Aime Cesaire International Airport	Fort-de-France	1
+PTP	America/Guadeloupe	Pointe-a-Pitre Le Raizet	Pointe-a-Pitre	2
+STX	America/St_Thomas	Henry E Rohlsen Airport	Christiansted	1
+SJU	America/Puerto_Rico	Luis Munoz Marin International Airport	San Juan	2
+SKB	America/St_Kitts	Robert L. Bradshaw International Airport	Basseterre	1
+UVF	America/St_Lucia	Hewanorra International Airport	Vieux Fort	1
+AUA	America/Aruba	Queen Beatrix International Airport	Oranjestad	1
+SXM	America/Lower_Princes	Princess Juliana International Airport	Saint Martin	2
+BDA	Atlantic/Bermuda	L.F. Wade International International Airport	Hamilton	1
+ALA	Asia/Almaty	Almaty Airport	Almaty	2
+TSE	Asia/Almaty	Astana International Airport	Astana	2
+FRU	Asia/Bishkek	Manas International Airport	Bishkek	2
+GYD	Asia/Baku	Heydar Aliyev International Airport	Baku	2
+EVN	Asia/Yerevan	Zvartnots International Airport	Yerevan	2
+BUS	Asia/Tbilisi	Batumi International Airport	Batumi	1
+TBS	Asia/Tbilisi	Tbilisi International Airport	Tbilisi	2
+KHV	Asia/Vladivostok	Khabarovsk-Novy Airport	Khabarovsk	2
+UUS	Asia/Sakhalin	Yuzhno-Sakhalinsk Airport	Yuzhno-Sakhalinsk	1
+HTA	Asia/Yakutsk	Chita-Kadala Airport	Chita	1
+KBP	Europe/Kiev	Boryspil International Airport	Kiev	2
+DOK	Europe/Zaporozhye	Donetsk International Airport	Donetsk	2
+DNK	Europe/Zaporozhye	Dnipropetrovsk International Airport	Dnipropetrovsk	1
+SIP	Europe/Simferopol	Simferopol International Airport	Simferopol	2
+HRK	Europe/Zaporozhye	Kharkiv International Airport	Kharkiv	2
+LWO	Europe/Uzhgorod	Lviv International Airport	Lviv	1
+ODS	Europe/Simferopol	Odessa International Airport	Odessa	2
+LED	Europe/Moscow	Pulkovo Airport	St. Petersburg	2
+KRR	Europe/Moscow	Krasnodar Pashkovsky International Airport	Krasnodar	1
+ROV	Europe/Moscow	Platov International Airport	Rostov-on-Don	2
+AER	Europe/Moscow	Sochi International Airport	Sochi	2
+SVX	Asia/Yekaterinburg	Koltsovo Airport	Yekaterinburg	2
+ASB	Asia/Ashgabat	Ashgabat International Airport	Ashgabat	2
+DYU	Asia/Dushanbe	Dushanbe Airport	Dushanbe	1
+TAS	Asia/Tashkent	Tashkent International Airport	Tashkent	2
+DME	Europe/Moscow	Domodedovo International Airport	Moscow	2
+SVO	Europe/Moscow	Sheremetyevo International Airport	Moscow	2
+GOJ	Europe/Moscow	Nizhny Novgorod Strigino International Airport	Nizhny Novgorod	1
+KZN	Europe/Moscow	Kazan International Airport	Kazan	2
+UFA	Asia/Yekaterinburg	Ufa International Airport	Ufa	2
+KUF	Europe/Samara	Kurumoch International Airport	Samara	2
+AMD	Asia/Kolkata	Sardar Vallabhbhai Patel International Airport	Ahmedabad	1
+BOM	Asia/Kolkata	Chhatrapati Shivaji International Airport	Mumbai	2
+PNQ	Asia/Kolkata	Pune Airport	Pune	1
+CMB	Asia/Colombo	Bandaranaike International Colombo Airport	Colombo	2
+PNH	Asia/Phnom_Penh	Phnom Penh International Airport	Phnom Penh	2
+REP	Asia/Phnom_Penh	Siem Reap International Airport	Siem Reap	2
+CCU	Asia/Kolkata	Netaji Subhash Chandra Bose International Airport	Kolkata	2
+DAC	Asia/Dhaka	Hazrat Shahjalal International Airport	Dhaka	2
+HKG	Asia/Hong_Kong	Hong Kong International Airport	Hong Kong	2
+DEL	Asia/Kolkata	Indira Gandhi International Airport	New Delhi	2
+VTE	Asia/Vientiane	Wattay International Airport	Vientiane	1
+MFM	Asia/Macau	Macau International Airport	Macau	2
+KTM	Asia/Kathmandu	Tribhuvan International Airport	Kathmandu	2
+BLR	Asia/Kolkata	Kempegowda International Airport	Bangalore	2
+HYD	Asia/Kolkata	Rajiv Gandhi International Airport	Hyderabad	2
+MAA	Asia/Kolkata	Chennai International Airport	Chennai	2
+MLE	Indian/Maldives	Male International Airport	Male	2
+BKK	Asia/Bangkok	Suvarnabhumi Airport	Bangkok	2
+CNX	Asia/Bangkok	Chiang Mai International Airport	Chiang Mai	2
+HGN	Asia/Bangkok	Mae Hong Son Airport		1
+CEI	Asia/Bangkok	Chiang Rai International Airport	Chiang Rai	1
+PHS	Asia/Bangkok	Phitsanulok Airport		1
+URT	Asia/Bangkok	Surat Thani Airport	Surat Thani	1
+KBV	Asia/Bangkok	Krabi Airport	Krabi	1
+USM	Asia/Bangkok	Samui Airport	Na Thon (Ko Samui Island)	1
+HKT	Asia/Bangkok	Phuket International Airport	Phuket	2
+HDY	Asia/Bangkok	Hat Yai International Airport	Hat Yai	1
+UTH	Asia/Bangkok	Udon Thani Airport	Udon Thani	1
+KKC	Asia/Bangkok	Khon Kaen Airport	Khon Kaen	1
+UBP	Asia/Bangkok	Ubon Ratchathani Airport	Ubon Ratchathani	1
+HAN	Asia/Ho_Chi_Minh	Noi Bai International Airport	Hanoi	2
+SGN	Asia/Ho_Chi_Minh	Tan Son Nhat International Airport	Ho Chi Minh City	2
+RGN	Asia/Yangon	Yangon International Airport	Yangon	2
+DPS	Asia/Makassar	Ngurah Rai (Bali) International Airport	Denpasar-Bali Island	2
+BKI	Asia/Kuching	Kota Kinabalu International Airport	Kota Kinabalu	1
+BWN	Asia/Brunei	Brunei International Airport	Bandar Seri Begawan	2
+CGK	Asia/Jakarta	Soekarno-Hatta International Airport	Jakarta	2
+KUL	Asia/Kuala_Lumpur	Kuala Lumpur International Airport	Kuala Lumpur	2
+PEN	Asia/Kuala_Lumpur	Penang International Airport	Penang	1
+SIN	Asia/Singapore	Singapore Changi Airport	Singapore	2
+BNE	Australia/Brisbane	Brisbane International Airport	Brisbane	2
+OOL	Australia/Brisbane	Gold Coast Airport	Gold Coast	1
+CNS	Australia/Brisbane	Cairns International Airport	Cairns	1
+MEL	Australia/Melbourne	Melbourne International Airport	Melbourne	2
+ADL	Australia/Adelaide	Adelaide International Airport	Adelaide	2
+PER	Australia/Perth	Perth International Airport	Perth	2
+NLK	Pacific/Norfolk	Norfolk Island International Airport	Burnt Pine	1
+SYD	Australia/Sydney	Sydney Kingsford Smith International Airport	Sydney	2
+PEK	Asia/Shanghai	Beijing Capital International Airport	Beijing	2
+CIF	Asia/Shanghai	Chifeng Airport	Chifeng	1
+CIH	Asia/Shanghai	Changzhi Airport	Changzhi	0
+DSN	Asia/Shanghai	Ordos Ejin Horo Airport	Ordos	1
+DAT	Asia/Shanghai	Datong Airport	Datong	0
+HET	Asia/Shanghai	Baita International Airport	Hohhot	2
+HLD	Asia/Shanghai	Dongshan Airport	Hailar	1
+BAV	Asia/Shanghai	Baotou Airport	Baotou	1
+SJW	Asia/Shanghai	Shijiazhuang Daguocun International Airport	Shijiazhuang	1
+TSN	Asia/Shanghai	Tianjin Binhai International Airport	Tianjin	2
+TGO	Asia/Shanghai	Tongliao Airport	Tongliao	1
+XIL	Asia/Shanghai	Xilinhot Airport	Xilinhot	1
+YCU	Asia/Shanghai	Yuncheng Guangong Airport	Yuncheng	0
+TYN	Asia/Shanghai	Taiyuan Wusu Airport	Taiyuan	2
+BHY	Asia/Shanghai	Beihai Airport	Beihai	0
+DYG	Asia/Shanghai	Dayong Airport	Dayong	0
+CAN	Asia/Shanghai	Guangzhou Baiyun International Airport	Guangzhou	2
+CSX	Asia/Shanghai	Changsha Huanghua International Airport	Changsha	2
+KWL	Asia/Shanghai	Guilin Liangjiang International Airport	Guilin City	2
+NNG	Asia/Shanghai	Nanning Wuxu Airport	Nanning	2
+SWA	Asia/Shanghai	Jieyang Chaoshan International Airport	Shantou	1
+ZUH	Asia/Shanghai	Zhuhai Jinwan Airport	Zhuhai	1
+SZX	Asia/Shanghai	Shenzhen Bao'an International Airport	Shenzhen	2
+LZH	Asia/Shanghai	Liuzhou Bailian Airport	Liuzhou	1
+CGO	Asia/Shanghai	Zhengzhou Xinzheng International Airport	Zhengzhou	2
+WUH	Asia/Shanghai	Wuhan Tianhe International Airport	Wuhan	2
+XFN	Asia/Shanghai	Xiangyang Liuji Airport	Xiangfan	0
+YIH	Asia/Shanghai	Yichang Sanxia Airport	Yichang	1
+HAK	Asia/Shanghai	Haikou Meilan International Airport	Haikou	2
+SYX	Asia/Shanghai	Sanya Phoenix International Airport	Sanya	2
+FNJ	Asia/Pyongyang	Pyongyang Sunan International Airport	Pyongyang	1
+DNH	Asia/Urumqi	Dunhuang Airport	Dunhuang	1
+JNG	Asia/Shanghai	Jining Qufu Airport	Jining	1
+JGN	Asia/Shanghai	Jiayuguan Airport	Jiayuguan	1
+LHW	Asia/Shanghai	Lanzhou Zhongchuan Airport	Lanzhou	1
+XNN	Asia/Shanghai	Xining Caojiabu Airport	Xining	1
+XIY	Asia/Shanghai	Xi'an Xianyang International Airport	Xi'an	2
+ENY	Asia/Shanghai	Yan'an Ershilipu Airport	Yan'an	0
+ULN	Asia/Ulaanbaatar	Chinggis Khaan International Airport	Ulan Bator	2
+JHG	Asia/Shanghai	Xishuangbanna Gasa Airport	Jinghong	1
+LJG	Asia/Shanghai	Lijiang Airport	Lijiang	1
+KMG	Asia/Shanghai	Kunming Changshui International Airport	Kunming	2
+XMN	Asia/Shanghai	Xiamen Gaoqi International Airport	Xiamen	2
+CZX	Asia/Shanghai	Changzhou Benniu Airport	Changzhou	0
+KHN	Asia/Shanghai	Nanchang Changbei International Airport	Nanchang	1
+FOC	Asia/Shanghai	Fuzhou Changle International Airport	Fuzhou	2
+HGH	Asia/Shanghai	Hangzhou Xiaoshan International Airport	Hangzhou	2
+JDZ	Asia/Shanghai	Jingdezhen Airport	Jingdezhen	1
+JIU	Asia/Shanghai	Jiujiang Lushan Airport	Jiujiang	0
+TNA	Asia/Shanghai	Yaoqiang Airport	Jinan	2
+HYN	Asia/Shanghai	Huangyan Luqiao Airport	Huangyan	1
+LYI	Asia/Shanghai	Shubuling Airport	Linyi	0
+NGB	Asia/Shanghai	Ningbo Lishe International Airport	Ningbo	2
+NKG	Asia/Shanghai	Nanjing Lukou Airport	Nanjing	2
+HFE	Asia/Shanghai	Hefei Luogang International Airport	Hefei	1
+PVG	Asia/Shanghai	Shanghai Pudong International Airport	Shanghai	2
+TAO	Asia/Shanghai	Liuting Airport	Qingdao	1
+JJN	Asia/Shanghai	Quanzhou Jinjiang International Airport	Quanzhou	1
+SHA	Asia/Shanghai	Shanghai Hongqiao International Airport	Shanghai	2
+TXN	Asia/Shanghai	Tunxi International Airport	Huangshan	1
+WEH	Asia/Shanghai	Weihai Airport	Weihai	1
+WUX	Asia/Shanghai	Sunan Shuofang International Airport	Wuxi	1
+WUS	Asia/Shanghai	Nanping Wuyishan Airport	Wuyishan	1
+WNZ	Asia/Shanghai	Wenzhou Longwan International Airport	Wenzhou	2
+XUZ	Asia/Shanghai	Xuzhou Guanyin Airport	Xuzhou	1
+YNZ	Asia/Shanghai	Yancheng Airport	Yancheng	0
+BPX	Asia/Urumqi	Qamdo Bangda Airport	Bangda	1
+CKG	Asia/Shanghai	Chongqing Jiangbei International Airport	Chongqing	2
+DAX	Asia/Shanghai	Dachuan Airport	Dazhou	0
+GYS	Asia/Shanghai	Guangyuan Airport	Guangyuan	1
+KWE	Asia/Shanghai	Longdongbao Airport	Guiyang	2
+JZH	Asia/Shanghai	Jiuzhai Huanglong Airport	Jiuzhaigou	1
+LXA	Asia/Urumqi	Lhasa Gonggar Airport	Lhasa	1
+LZO	Asia/Shanghai	Luzhou Airport	Luzhou	0
+MIG	Asia/Shanghai	Mianyang Airport	Mianyang	1
+LZY	Asia/Urumqi	Nyingchi Airport	Nyingchi	1
+CTU	Asia/Shanghai	Chengdu Shuangliu International Airport	Chengdu	2
+WXN	Asia/Shanghai	Wanxian Airport	Wanxian	0
+XIC	Asia/Shanghai	Xichang Qingshan Airport	Xichang	1
+YBP	Asia/Shanghai	Yibin Caiba Airport	Yibin	0
+HTN	Asia/Shanghai	Hotan Airport	Hotan	1
+URC	Asia/Urumqi	Urumqi Diwopu International Airport	Urumqi	2
+CGQ	Asia/Shanghai	Longjia Airport	Changchun	1
+HRB	Asia/Shanghai	Taiping Airport	Harbin	2
+JMU	Asia/Shanghai	Jiamusi Airport	Jiamusi	1
+JNZ	Asia/Shanghai	Jinzhou Airport	Jinzhou	1
+MDG	Asia/Shanghai	Mudanjiang Hailang International Airport	Mudanjiang	1
+NDG	Asia/Shanghai	Qiqihar Sanjiazi Airport	Qiqihar	1
+DLC	Asia/Shanghai	Zhoushuizi Airport	Dalian	2
+SHE	Asia/Shanghai	Taoxian Airport	Shenyang	2
+YNJ	Asia/Shanghai	Yanji Chaoyangchuan Airport	Yanji	1
+SHP	Asia/Shanghai	Qinhuangdao Shanhaiguan Airport	Qinhuangdao	0
+EVE	Europe/Oslo	Harstad/Narvik Airport	NO-18	1
+LYR	Arctic/Longyearbyen	Svalbard Airport	NO-21	1
+TRF	Europe/Oslo	Sandefjord Airport	NO-07	1
+STT	America/St_Thomas	Santo Tomas Airport	Suchiate	0

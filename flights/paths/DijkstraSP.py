@@ -7,7 +7,7 @@
 
 import heapq
 from flights.paths.Graph import Graph
-from flights import FlightManager
+from flights.FlightManager import FlightManager
 
 
 class DijkstraSP:

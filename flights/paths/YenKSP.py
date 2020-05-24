@@ -1,10 +1,10 @@
 # Name: YenKSP.py
-# Description: Finds the K shortest paths between two airports using a modified Eppstein's KSP algorithm optimized for small values of K.
+# Description: Finds the K shortest paths between two airports using Yen's algorithm
 
 # Ver.	Writer			        Date			Notes
 # 1.0   Joseph Liu              05/15/20		Original
 
-from DijkstraSP import *
+from flights.paths.DijkstraSP import DijkstraSP
 
 class YenKSP:
     def __init__(self, graph, origin, dest, k):
@@ -43,7 +43,7 @@ class YenKSP:
                 if len(B) == 0:
                     break
 
-                B.sort(key=pathLength)
+                B.sort(key=yksp_pathLength)
                 A.append(B[0])
                 B = B[1:]
         
@@ -52,5 +52,5 @@ class YenKSP:
     def getPath(self, k):
         return self.paths[k]
 
-    def pathLength(a):
-        return a[-1].getDist()
+def yksp_pathLength(a):
+    return a[-1].getDist()

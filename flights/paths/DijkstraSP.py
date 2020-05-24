@@ -7,7 +7,6 @@
 
 import heapq
 from flights.paths.Graph import Graph
-from flights.FlightManager import FlightManager
 
 
 class DijkstraSP:
@@ -62,16 +61,3 @@ class DijkstraSP:
             path.insert(0, self.graph.getNodes()[path[0].getEdgeIn().u])
         
         return path
-
-def test():
-    fm = FlightManager.FlightManager("Data/airports.tsv", "Data/flights.tsv")
-    graph = Graph(fm)
-    sp = DijkstraSP(graph, fm.airports[69])
-    print("Path from", fm.airports[69].getName(), "to", fm.airports[419].getName(), "takes", fm.airports[419].getNode().dist, "hours")
-
-    for f in sp.getPath(fm.airports[419]):
-        print(f.toString())
-    #print(sp.getPath(fm.airports[12]))
-
-if __name__ == "__main__":
-    test()

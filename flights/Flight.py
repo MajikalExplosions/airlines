@@ -31,7 +31,7 @@ class Flight:
 
             self.arrivalTime = self.arrivalTime[:-2]
 
-        self.arrivalTime = Time.toUTC(self.destination.getTimezone(), Time.flightToDatetime(self.arrivalTime))
+        self.arrivalTime = toUTC(self.destination.getTimezone(), flightToDatetime(self.arrivalTime))
 
         if arrivalTimeAdd:
             self.arrivalTime += timedelta(hours = 24)
@@ -39,10 +39,7 @@ class Flight:
         elif arrivalTimeSubtract:
             self.arrivalTime -= timedelta(hours = 24)
 
-        self.departureTime = Time.toUTC(self.origin.getTimezone(), Time.flightToDatetime(self.departureTime))
-        
-        td = (Time.toUTC(self.destination.getTimezone(), self.arrivalTime) - Time.toUTC(self.origin.getTimezone(), self.departureTime))
-        self.td = (td.total_seconds() / 3600) % 24
+        self.departureTime = toUTC(self.origin.getTimezone(), flightToDatetime(self.departureTime))
 
         #Add days where flight is run
         if days == "Daily":

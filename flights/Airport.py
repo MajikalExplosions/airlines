@@ -9,23 +9,24 @@
 
 class Airport:
 
-	def __init__(self, code, city, name, timezone):
+	def __init__(self, code, city, name, timezone, size):
 		self.code = code
 		self.city = city
 		self.name = name
 		self.timezone = timezone
 		self.flights = []
-		self.node = 0
-		self.serviced = False
 		self.flightNum = 0
 		self.ID = -1
+		
+		if size > 2 or size < 0:
+			size = 2
+		self.size = size
 
 	def getFlightNum(self):
 		return self.flightNum
 
 
 	def addFlight(self, f):
-		self.serviced = True
 		if f.getOrigin() == self:
 			self.flights.append(f)
 
@@ -42,9 +43,6 @@ class Airport:
 
 	def getTimezone(self):
 		return self.timezone
-	
-	def hasFlight(self):
-		return self.serviced
 	
 	def getName(self):
 		return self.name + ", " + self.city

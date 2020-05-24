@@ -4,6 +4,7 @@ from flights.FlightManager import *
 from flights.paths.DijkstraSP import *
 from flights.paths.Graph import *
 from datetime import timedelta
+from flights.Time import *
 
 def test(a, b):
     fm = FlightManager("data/airports.tsv", "data/flights.tsv")
@@ -14,7 +15,7 @@ def test(a, b):
     print("\nPath from", fm.airports[a].getName(), "to", fm.airports[b].getName(), "takes", graph.getNodeFromAirport(fm.airports[b]).dist, "hours\n")
 
     for node in sp.getPathNode(graph.getNodeFromAirport(fm.airports[b])):
-        print("Arrival at", fm.getAirport(graph.ntoa[node.nid]).getSearchString(), "at", offsetStartTime(timedelta(hours=round(node.dist, 3))))
+        print("Arrival at", fm.getAirport(graph.ntoa[node.nid]).getSearchString(), "at", timedelta(hours=toUTCOffset(fm.getAirport(graph.ntoa[node.nid]).getTimezone(), t_starttime.year, t_starttime.month, t_starttime.day)) + offsetStartTime(timedelta(hours=round(node.dist, 3))))
     
     print()
     for edge in sp.getPathEdge(graph.getNodeFromAirport(fm.airports[b])):

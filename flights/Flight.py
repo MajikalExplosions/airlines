@@ -31,14 +31,15 @@ class Flight:
 
             self.arrivalTime = self.arrivalTime[:-2]
 
+        self.arrivalTimeLocal = flightToDatetime(self.arrivalTime)
         self.arrivalTime = toUTC(self.destination.getTimezone(), flightToDatetime(self.arrivalTime))
-
         if arrivalTimeAdd:
             self.arrivalTime += timedelta(hours = 24)
 
         elif arrivalTimeSubtract:
             self.arrivalTime -= timedelta(hours = 24)
 
+        self.departureTimeLocal = flightToDatetime(self.departureTime)
         self.departureTime = toUTC(self.origin.getTimezone(), flightToDatetime(self.departureTime))
 
         #Add days where flight is run
@@ -88,10 +89,13 @@ class Flight:
         #td.total_seconds / 3600
         return (td.total_seconds() / 3600) % 24
 
+    #Note: this function needs optimizing.
     def timeUntilNextFlight(self, time):
+        #First convert to local time
+        time += timedelta(hours=toUTCOffset(self.getOrigin().getTimezone(), time.year, time.month, time.day))
 
         #Find next day that flight runs
-        if time.hour * 60 + time.minute > self.getDepTime().hour * 60 + self.getDepTime().minute:
+        if time.hour * 60 + time.minute > self.getDepTimeLocal().hour * 60 + self.getDepTimeLocal().minute:
             time = time + timedelta(days=1)
             offset = True
         else:
@@ -111,7 +115,7 @@ class Flight:
         
         runDay = time.replace(hour=0, minute=0) + timedelta(days=day - initialDay)
         negativeOffset = time.replace(hour=0, minute=0) - time
-        startTime = runDay + timedelta(hours=time.hour, minutes=time.minute) + negativeOffset + timedelta(hours=self.getDepTime().hour, minutes=self.getDepTime().minute)
+        startTime = runDay + timedelta(hours=time.hour, minutes=time.minute) + negativeOffset + timedelta(hours=self.getDepTimeLocal().hour, minutes=self.getDepTimeLocal().minute)
 
         if (startTime - time).total_seconds() < 0:
             #We know that we can get the time until flight minus days

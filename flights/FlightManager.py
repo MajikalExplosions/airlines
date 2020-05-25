@@ -10,9 +10,6 @@
 from flights.Airport import Airport
 from flights.Flight import Flight
 
-def getFlightNum(airport):
-	return airport.getFlightNum()
-
 class FlightManager:
 	def __init__(self, airportFile, flightFile):
 		self.flights = []
@@ -57,36 +54,6 @@ class FlightManager:
 
 	def getAirports(self):
 		return self.airports
-
-	def searchAirport(self,string):
-		matchingAirports = []
-		for airport in self.airports:
-			if len(string) == 3 and airport.getCode().lower() == string.lower():
-				matchingAirports.append(airport)
-
-			if airport.getCity().lower() == string.lower():
-				matchingAirports.append(airport)
-
-			if airport.getName().lower() == string.lower():
-				matchingAirports.append(airport)
-
-			if airport.toString().lower() == string.lower():
-				matchingAirports.append(airport)
-
-			if len(matchingAirports) == 10:
-				return matchingAirports
-
-		for airport in self.airports:
-			if (len(string) <= len(airport.getCity())) and (airport.getCity()[:len(string)].lower() == string.lower()) and not airport in matchingAirports:
-		 		matchingAirports.append(airport)
-
-			if len(string) <= len(airport.toString()) and airport.toString()[:len(string)].lower() == string.lower() and not airport in matchingAirports:
-				matchingAirports.append(airport)
-
-			if len(matchingAirports) == 10:
-				return matchingAirports
-
-		return matchingAirports
 
 	def getAirport(self,accessNum):
 		return self.airports[accessNum]

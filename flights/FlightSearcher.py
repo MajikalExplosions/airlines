@@ -9,9 +9,6 @@ from flights.Flight import Flight
 from flights.paths.Graph import Graph
 from flights.paths.YenKSP import YenKSP
 
-def getFlightNum(airport):
-	return airport.getFlightNum()
-
 class FlightSearcher:
 	def __init__(self, fm):
 		self.flightManager = fm

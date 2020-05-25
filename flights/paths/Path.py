@@ -86,6 +86,21 @@ class Path:
             nextFlightTime = self.edges[i].f.timeUntilNextFlight(offsetStartTime(timedelta(hours=self.distToNode[-1])))
             flightTime = self.edges[i].f.getTravelTime()
             self.distToNode.append(self.distToNode[-1] + nextFlightTime + flightTime)
+    
+    def toAirports(self, fm):
+        a = []
+        for i in range(len(self.nodes)):
+            a.append(fm.getAirport(self.graph.ntoa[self.nodes[i].nid]))
+        return a
+
+    def toFlights(self, fm):
+        f = []
+        for i in range(len(self.edges)):
+            f.append(self.edges[i].f)
+        return f
+
+    def timeToNode(self, index):
+        return self.distToNode[index]
 
     def equals(self, other):
         p1 = self.edges

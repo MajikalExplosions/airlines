@@ -2,7 +2,8 @@
 # Description: Searches a flightmanager for flights
 
 # Ver.	Writer			    Date			Notes
-# 0.1   Joseph Liu			05/25/20		Original airport search ported from FlightManager, create searchForFlights
+# 1.0   Joseph Liu			05/25/20		Original airport search ported from FlightManager, create searchForFlights
+# 1.1   Joseph Liu			05/25/20		Add example code
 
 from flights.FlightManager import FlightManager
 from flights.Flight import Flight
@@ -20,25 +21,24 @@ class FlightSearcher:
 		fullMatch, partMatch = [], []
 		searchString = searchString.lower()
 		for airport in self.flightManager.getAirports():
-			if len(searchString) == 3 and airport.getCode().lower() == searchString:
-				fullMatch.append(airport)
-			details = [airport.getCity().lower(), airport.getName().lower(), airport.toString().lower()]
+			details = [airport.getCode().lower(), airport.getCity().lower(), airport.getName().lower(), airport.toString().lower()]
 
 			match = False
 			for d in details:
-				if d == searchString:
+				if d == searchString and not match:
 					fullMatch.append(airport)
 					match = True
 					break
 			
 			for d in details:
-				if not match and d.index(searchString) != -1:
+				if not match and d.find(searchString) != -1:
 					partMatch.append(airport)
+					match = True
 					break
 		
 			if len(fullMatch) == 10:
 				return fullMatch
-
+			
 		return fullMatch + partMatch[:10 - len(fullMatch)]
 	
 	def searchForFlights(self, origin, dest, k):
@@ -52,3 +52,23 @@ class FlightSearcher:
 			res.append(search.getPath(i))
 		
 		return res
+
+def test_search():
+    fm = FlightManager("data/airports.tsv", "data/flights.tsv")
+    fs = FlightSearcher(fm)
+    inp = ""
+    while inp != "quit":
+        inp = input(">>> ").lower()
+        t = inp.split()
+        try:
+            if t[0] == "search":
+                if t[1] == "airport":
+                    for airport in fs.searchForAirports(t[2]):
+                        print(airport.toString())
+                elif t[1] == "flight":
+                    if len(t) == 4:
+                        t.append(5)
+                    for airport in fs.searchForFlights(fs.searchForAirports(t[2])[0], fs.searchForAirports(t[3])[0], int(t[4]))[0].toFlights(fm):
+                        print(airport.toString())
+        except IndexError:
+            print("Invalid command")

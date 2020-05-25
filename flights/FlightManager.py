@@ -6,6 +6,7 @@
 # 0.2   Joseph Liu			05/15/20		Add useful functions
 # 0.3   Joseph Liu			05/15/20		Add file I/O with new data format
 # 0.4 	Kyler Rosen 		05/20/20		Added searchAirport, sorts the airports
+# 1.0 	Joseph Liu	 		05/25/20		General cleanup and moved search to flightsearcher
 
 from flights.Airport import Airport
 from flights.Flight import Flight
@@ -41,7 +42,7 @@ class FlightManager:
 			self.flights[-1].getDestination().addFlight(self.flights[-1])
 			index += 1
 
-		self.airports.sort(key = getFlightNum,reverse = True)
+		self.airports.sort(key = fm_getFlightNum,reverse = True)
 
 		for index in range(len(self.airports)):
 			self.airports[index].assignId(index)
@@ -58,28 +59,5 @@ class FlightManager:
 	def getAirport(self,accessNum):
 		return self.airports[accessNum]
 
-
-def test():
-	FlightMan = FlightManager("data/airports.tsv", "data/flights.tsv")
-	
-
-	print("Flights from", FlightMan.airports[0].getName(), "\n")
-	for f in FlightMan.airports[0].getFlights():
-	 	print(f.toString())
-	print("\n\nFlights from", FlightMan.airports[1].getName(), "\n")
-	for f in FlightMan.airports[1].getFlights():
-	 	print(f.toString())
-
-	for airport in FlightMan.airports[0:10]:
-		print(airport.toString())
-		print(airport.getFlightNum())
-
-
-	airports = FlightMan.searchAirport("SAN")
-
-	for airport in airports:
-		print(airport.toString())
-		print(airport.getFlightNum())
-
-if __name__ == '__main__':
-	test()
+def fm_getFlightNum(airport):
+	return airport.getFlightNum()

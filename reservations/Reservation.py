@@ -6,12 +6,18 @@
 
 from random import randrange
 from reservations.Passenger import Passenger
+from reservations.SingleFlight import SingleFlight
 
 class Reservation:
     def __init__(self):
         self.confirmationNumber = ""
         self.passengers = []
+
         self.flights = []
+
+    def addFlight(self, flight, depDate, arrDate):
+        flight = SingleFlight(flight, depDate, arrDate)
+        self.flights.append(flight)
 
     def loadFromFile(self, confirmationNumber, lastName):
         readFile = open("reservations/data_reservation/reservations.txt", "r")
@@ -163,11 +169,14 @@ class Reservation:
         if self.confirmationNumber != "":
             return self.confirmationNumber
 
+        readFile = open("reservations/data_reservation/confirmation_numbers.txt", "r")
+
         #continuously generates a new number until we get one that has not already been issued
         self.confirmationNumber = self.__generateRandomConfirmation()
-        while self.__fileContainsString("reservations/data_reservation/confirmation_numbers.txt", self.confirmationNumber):
+        while self.__fileContainsString(readFile, self.confirmationNumber):
             confirmationNumber = self.__generateRandomConfirmation()
 
+        readFile.close()
         self.confirmationNumber = confirmationNumber
 
         #stores the issued code in a file to prevent future repeats
@@ -177,15 +186,13 @@ class Reservation:
 
         return confirmationNumber
 
-    def __fileContainsString(self, fileName, string):
-        file = open(fileName, "r")
+    def __fileContainsString(self, file, string):
+        file.seek(0)
 
         for line in file:
             if string in line:
-                file.close()
                 return True
 
-        file.close()
         return False
 
     def __generateRandomConfirmation(self):

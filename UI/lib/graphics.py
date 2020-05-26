@@ -160,7 +160,8 @@ __version__ = "5.0"
 #     Added ability to set text atttributes.
 #     Added Entry boxes.
 
-import time, os, sys
+import os
+import time
 
 try:  # import as appropriate for 2.x vs. 3.x
    import tkinter as tk
@@ -724,6 +725,10 @@ class Polygon(GraphicsObject):
 class Text(GraphicsObject):
     
     def __init__(self, p, text):
+        """
+
+        :rtype:
+        """
         GraphicsObject.__init__(self, ["justify","fill","text","font"])
         self.setText(text)
         self.anchor = p.clone()

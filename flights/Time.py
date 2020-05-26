@@ -31,7 +31,7 @@ def toUTCOffset(tzName, y, m, d):
 
 def toUTC(tzName, time):
     offset = toUTCOffset(tzName, time.year, time.month, time.day)
-    return (time + timedelta(hours=offset * -1)).dateReplace(day = t_starttime.day)
+    return (time + timedelta(hours=offset * -1)).replace(day = t_starttime.day)
 
 def flightToDatetime(s):
     s = s.split(":")

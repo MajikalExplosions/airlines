@@ -11,8 +11,8 @@ from flights.FlightSearcher import *
 
 
 def main():
-    fm = FlightManager("data/airports.tsv", "data/flights.tsv")
-    fs = FlightSearcher(fm)
+    # fm = FlightManager("data/airports.tsv", "data/flights.tsv")
+    # fs = FlightSearcher(fm)
 
 
     gui = GUI()
@@ -56,7 +56,7 @@ def test():
 
 
 if __name__ == '__main__':
-    #main()
-    test()
+    main()
+    #test()
 
 

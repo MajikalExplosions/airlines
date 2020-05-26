@@ -1,12 +1,13 @@
 # Name: UI.py
-# Description: File for UI and screens
+# Description: File for UI
 
-# Ver.	       Writer			 Date			Notes
-# 1.0     Christopher Luey     05/08/20		    Master
-# 1.1     Christopher Luey     05/15/20	        Add switchScreen method
-# 1.2     Christopher Luey     05/15/20	        Add parsing method
-# 1.3     Christopher Luey     05/23/20         Add widget id system & minor bug fixes
-# 1.4     Christopher Luey     05/23/20         Add json compatibility
+# Ver.	       Writer			 Date		Notes
+# 1.0     Christopher Luey     05/08/20     Master
+# 1.1     Christopher Luey     05/15/20     Add switchScreen method
+# 1.2     Christopher Luey     05/15/20	    Add parsing method for legacy .txt
+# 1.3     Christopher Luey     05/23/20     Add widget id system & minor bug fixes
+# 1.4     Christopher Luey     05/23/20     Add json compatibility, remove .txt parsing
+# 1.5     Christopher Luey     05/26/20     Begin integration
 
 
 import json
@@ -169,7 +170,12 @@ class Screen:
                                      item["textSize"], self.win), item["id"]])
                 attrs[len(attrs) - 1][0].undraw()
             elif str(key).find("Entry") != -1:
-                attrs.append([Entry(Point(item["x"], item["y"]), )])
+                attrs.append([Entry(Point(item["x"], item["y"]), item["width"]), item["id"]])
+                attrs[len(attrs) - 1][0].setTextColor(color_rgb(item["textColor"]["r"], item["textColor"]["g"], item["textColor"]["b"]))
+                attrs[len(attrs) - 1][0].setSize(item["size"])
+                attrs[len(attrs) - 1][0].setText(item["text"])
+                attrs[len(attrs) - 1][0].setFill(color_rgb(item["fill"]["r"], item["fill"]["g"], item["fill"]["b"]))
+                attrs[len(attrs) - 1][0].setStyle(item["style"])
             elif str(key).find("Text") != -1:
                 attrs.append([Text(Point(item["x"], item["y"]), item["text"]), item["id"]])
                 attrs[len(attrs) - 1][0].setTextColor(

@@ -1,6 +1,6 @@
 {
   "Text1": {
-    "id": "FlightStatus",
+    "id": "FlightStatus_Title",
     "x": 225,
     "y": 150,
     "text": "Flight Status",
@@ -25,12 +25,25 @@
     },
     "style": "normal"
   },
-  "Entry1": {
-    "x": 600,
+  "Text3": {
+    "id": "FlightNumber_Text",
+    "x": 225,
     "y": 300,
-    "width": 30,
+    "text": "Flight Number:",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
+  "Entry1": {
+    "x": 475,
+    "y": 300,
+    "width": 7,
     "size": 30,
-    "text": "Enter",
+    "text": "",
     "fill": {
       "r": 255,
       "g": 255,
@@ -42,9 +55,86 @@
       "b": 255
     },
     "textColor": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold",
+    "id": "flight_status: flight_number"
+  },
+  "Text4": {
+    "id": "FlightDestination_Text",
+    "x": 248,
+    "y": 375,
+    "text": "Flight Destination:",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
+  "Entry2": {
+    "x": 475,
+    "y": 375,
+    "width": 7,
+    "size": 30,
+    "text": "",
+    "fill": {
       "r": 255,
       "g": 255,
       "b": 255
+    },
+    "outline": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textColor": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold",
+    "id": "flight_status: flight_destination"
+  },
+  "Text5": {
+    "id": "FlightDestination_Text",
+    "x": 248,
+    "y": 375,
+    "text": "Flight Destination:",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
+  "Text6": {
+    "id": "flight_status: status",
+    "x": 900,
+    "y": 275,
+    "text": "Status: Unavailable",
+    "size": 50,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold"
+  },
+  "Text7": {
+    "id": "flight_status: status",
+    "x": 900,
+    "y": 275,
+    "text": "Amount: Unavailable",
+    "size": 40,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
     },
     "style": "bold"
   }

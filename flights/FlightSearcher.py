@@ -6,7 +6,6 @@
 # 1.1   Joseph Liu			05/25/20		Add example code
 
 from flights.FlightManager import FlightManager
-from flights.Flight import Flight
 from flights.paths.Graph import Graph
 from flights.paths.YenKSP import YenKSP
 

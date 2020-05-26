@@ -9,8 +9,9 @@
 # 1.4     Christopher Luey     05/23/20         Add json compatibility
 
 
-from UI.lib.Button import *
 import json
+
+from UI.lib.Button import *
 
 
 class GUI:
@@ -21,18 +22,17 @@ class GUI:
 
         ids = ["main", "start", "create_reservation", "modify_reservation", "flight_status", "checkin"]
         # self.screens - Hash: screenID : Screen()
-        self.screens = {x:y for x,y in zip(ids, [Screen(i, self.win) for i in ids])}
+        self.screens = {x: y for x, y in zip(ids, [Screen(i, self.win) for i in ids])}
 
         for i in self.screens.values():
-            self.id_widget.update({x[1]:x[0] for x in i.getAttr()})
-            self.widget_id.update({x[0]:x[1] for x in i.getAttr()})
+            self.id_widget.update({x[1]: x[0] for x in i.getAttr()})
+            self.widget_id.update({x[0]: x[1] for x in i.getAttr()})
 
         print(self.id_widget)
         self.previousScreen = self.screens["main"]
         self.activeScreen = self.screens["main"]
         self.attrs = self.activeScreen.inflate()
         self.inflate_header()
-
 
     def switchScreen(self, screen):
         """
@@ -63,7 +63,7 @@ class GUI:
             self.previousScreen, self.activeScreen = self.activeScreen, self.previousScreen
             self.attrs = self.activeScreen.inflate()
         else:
-            raise("Could not locate screen")
+            raise Exception("Could not locate screen")
 
         print("ID:", screen, "- Switch to Screen")
 
@@ -89,7 +89,6 @@ class GUI:
         self.activeScreen = screen
         self.attrs = self.activeScreen.inflate()
 
-
     def setOnButtonClickListener(self):
         p = self.win.getMouse()
         while not self.quitButton.isClicked(p):
@@ -99,15 +98,16 @@ class GUI:
             if self.backButton.isClicked(p):
                 return "back"
             p = self.win.getMouse()
+        self.win.close()
         return "quit"
 
-
     def inflate_header(self):
-        self.home = Button(595, 75/2 - 5, 1205, 80, 0, color_rgb(8, 76, 97), "ᴀɪʀᴘᴏʀᴛ ᴘʀᴏɢʀᴀᴍ", "white", 26, self.win)
+        self.home = Button(595, 75 / 2 - 5, 1205, 80, 0, color_rgb(8, 76, 97), "ᴀɪʀᴘᴏʀᴛ ᴘʀᴏɢʀᴀᴍ", "white", 26, self.win)
         self.home.setInactiveColor(color_rgb(8, 76, 97))
         self.home.toggleActivation()
         self.home.toggleActivation()
-        self.quitButton = Button(1125, 75 / 2, 100, 50, 5, color_rgb(219, 80, 74), "Exit", "white", 20, self.win).toggleActivation()
+        self.quitButton = Button(1125, 75 / 2, 100, 50, 5, color_rgb(219, 80, 74), "Exit", "white", 20,
+                                 self.win).toggleActivation()
         self.backButton = Button(75, 75 / 2, 100, 50, 5, color_rgb(219, 80, 74), "Back", "white", 20, self.win)
 
 
@@ -121,13 +121,12 @@ class Screen:
         """
         self.name = name
         self.win = win
-        # self.ids = ids
         path = "UI/Screens/" + name + ".json"
         try:
             self.source_file = open(path, "r")
             self.attr = self._parse(self.source_file)
         except:
-            raise("Could not locate file: " + path)
+            raise ("Could not locate file: " + path)
 
     def deflate(self):
         for i in self.attr:
@@ -163,22 +162,28 @@ class Screen:
         d = json.load(s)
         for key, item in d.items():
             if str(key).find("Button") != -1:
-                attrs.append([Button(item["x"], item["y"], item["width"], item["height"], item["radius"], color_rgb(item["color"]["r"], item["color"]['g'], item["color"]['b']), item["text"], color_rgb(item["textColor"]['r'], item["textColor"]['g'], item["textColor"]['b']), item["textSize"], self.win), item["id"]])
-                attrs[len(attrs)-1][0].undraw()
+                attrs.append([Button(item["x"], item["y"], item["width"], item["height"], item["radius"],
+                                     color_rgb(item["color"]["r"], item["color"]['g'], item["color"]['b']),
+                                     item["text"],
+                                     color_rgb(item["textColor"]['r'], item["textColor"]['g'], item["textColor"]['b']),
+                                     item["textSize"], self.win), item["id"]])
+                attrs[len(attrs) - 1][0].undraw()
             elif str(key).find("Entry") != -1:
-                pass
+                attrs.append([Entry(Point(item["x"], item["y"]), )])
             elif str(key).find("Text") != -1:
                 attrs.append([Text(Point(item["x"], item["y"]), item["text"]), item["id"]])
-                attrs[len(attrs) - 1][0].setTextColor(color_rgb(item["color"]["r"], item["color"]["g"], item["color"]["b"]))
+                attrs[len(attrs) - 1][0].setTextColor(
+                    color_rgb(item["color"]["r"], item["color"]["g"], item["color"]["b"]))
                 attrs[len(attrs) - 1][0].setStyle(item["style"])
-                attrs[len(attrs)-1][0].setSize(item["size"])
+                attrs[len(attrs) - 1][0].setSize(item["size"])
                 pass
             elif str(key).find("Rectangle") != -1:
                 pass
             elif str(key).find("Circle") != -1:
                 attrs.append([Circle(Point(item["x"], item["y"]), item["radius"]), item["id"]])
-                attrs[len(attrs)-1][0].setFill(color_rgb(item["fill"]["r"], item["fill"]["g"], item["fill"]["b"]))
-                attrs[len(attrs)-1][0].setOutline(color_rgb(item["outline"]["r"], item["outline"]["g"], item["outline"]["b"]))
+                attrs[len(attrs) - 1][0].setFill(color_rgb(item["fill"]["r"], item["fill"]["g"], item["fill"]["b"]))
+                attrs[len(attrs) - 1][0].setOutline(
+                    color_rgb(item["outline"]["r"], item["outline"]["g"], item["outline"]["b"]))
 
             elif str(key).find("Point") != -1:
                 pass
@@ -194,6 +199,6 @@ class Screen:
         return attrs
 
 
-class Gradient():
+class Gradient:
     def __init__(self):
         pass

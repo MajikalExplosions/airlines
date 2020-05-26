@@ -44,7 +44,6 @@ class YenKSP:
             validPath, spurPath = DijkstraSP(self.graph, spurNode, rootVal=rootPath.getDists()[-1]).getPath(self.dest)
 
             if not validPath:
-                graph.resetAll()
                 return
             
             totalPath = Path()

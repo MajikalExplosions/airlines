@@ -3,6 +3,7 @@
 
 # Ver.	Writer			    Date			Notes
 # 1.0   Joseph Liu          05/15/20		Original
+# 0.2   Kyler Rosen         05/25/20        Changed date assignments for toUTC
 
 from datetime import datetime, timedelta
 from pytz import timezone
@@ -30,7 +31,7 @@ def toUTCOffset(tzName, y, m, d):
 
 def toUTC(tzName, time):
     offset = toUTCOffset(tzName, time.year, time.month, time.day)
-    return time + timedelta(hours=offset * -1)
+    return (time + timedelta(hours=offset * -1)).dateReplace(day = t_starttime.day)
 
 def flightToDatetime(s):
     s = s.split(":")

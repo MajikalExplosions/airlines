@@ -5,6 +5,7 @@
 # 0.1   Kyler Rosen         05/09/20		Add flight info from file except days
 # 0.2   Joseph Liu			05/15/20		Renaming, add parsing for days, add travel time
 # 0.3   Kyler Rosen         05/20/20        Fixed consideration for days, timezones, etc
+# 0.4   Kyler Rosen         05/26/20        Fixed negative flight times
 
 from flights.Time import *
 from datetime import timedelta

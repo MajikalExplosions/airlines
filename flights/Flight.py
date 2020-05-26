@@ -21,13 +21,18 @@ class Flight:
         self.arrivalTime = arrTime
         arrivalTimeAdd = False
         arrivalTimeSubtract = False
+        arrivalTimeAdd2 = False
 
         if self.arrivalTime.find("-") != -1 or self.arrivalTime.find("+") != -1:
             if self.arrivalTime.find("-") != -1:
                 arrivalTimeSubtract = True
 
-            if self.arrivalTime.find("+") != -1:
+            if self.arrivalTime.find("+1") != -1:
                 arrivalTimeAdd = True
+
+            if self.arrivalTime.find("+2") != -1:
+                arrivalTimeAdd2 = True
+
 
             self.arrivalTime = self.arrivalTime[:-2]
 
@@ -35,6 +40,9 @@ class Flight:
         self.arrivalTime = toUTC(self.destination.getTimezone(), flightToDatetime(self.arrivalTime))
         if arrivalTimeAdd:
             self.arrivalTime += timedelta(hours = 24)
+
+        elif arrivalTimeAdd:
+            self.arrivalTime += timedelta(hours = 48)
 
         elif arrivalTimeSubtract:
             self.arrivalTime -= timedelta(hours = 24)

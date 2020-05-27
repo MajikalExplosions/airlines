@@ -117,30 +117,30 @@
     "x": 900,
     "y": 275,
     "text": "Status: Unavailable",
-    "size": 50,
+    "size": 45,
     "color": {
       "r": 27,
       "g": 73,
       "b": 101
     },
-    "style": "bold"
+    "style": "normal"
   },
   "Text7": {
     "id": "flight_status: time",
     "x": 900,
-    "y": 275,
-    "text": "Amount: Unavailable",
-    "size": 40,
+    "y": 335,
+    "text": "",
+    "size": 28,
     "color": {
-      "r": 27,
-      "g": 73,
-      "b": 101
+      "r": 150,
+      "g": 193,
+      "b": 192
     },
-    "style": "bold"
+    "style": "normal"
   },
   "Button1": {
     "x": 600,
-    "y": 425,
+    "y": 475,
     "width": 600,
     "height": 75,
     "radius": 20,

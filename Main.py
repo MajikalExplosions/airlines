@@ -6,6 +6,8 @@
 # 1.1       Christopher Luey        05/17/20		Compatibility with widget id system
 # 1.2       Christopher Luey        05/27/20		Lookup flight
 
+from random import randint
+
 from UI.GUI import GUI
 from flights.FlightSearcher import *
 
@@ -16,6 +18,7 @@ def main():
     gui = GUI()
     clicked = 0
     screens = gui.getScreenIDs()
+    cache = {}
 
     while clicked != 'quit':
         screen = gui.getScreen()
@@ -28,24 +31,36 @@ def main():
         else:
             print("ID:", clicked, "- Not Switch Screen")
             if clicked == "flight_status: lookup":
-                lookup(gui, fs)
+                lookup(gui, fs, cache)
 
 
-def lookup(gui, fs):
+def lookup(gui, fs, cache):
     dest = gui.findWidgetByID("flight_status: flight_destination").getText()
     num = gui.findWidgetByID("flight_status: flight_number").getText()
     status = gui.findWidgetByID("flight_status: status")
     time = gui.findWidgetByID("flight_status: time")
-    flight = fs.lookup(dest, num)
+    try:
+        if len(dest) == 0 or len(num) == 0:
+            time.setText("Your input is empty.")
+        elif len(dest) == 3 and fs.isValidAirport(dest) and type(int(num)) == int:
+            flight = fs.lookup(dest, num)
+            if type(flight) == str:
+                time.setText(flight)
+            else:
+                if not (dest + num) in cache.keys():
+                    x = randint(0, 2)
+                    cache[dest + num] = ("Status: {}".format(["On Time", "Delayed", "Cancelled"][x]),
+                                         "{}".format(["", str(randint(20, 120)) + " minutes", ""][x]))
+                status.setText(cache[dest + num][0])
+                time.setText(cache[dest + num][1])
+        else:
+            status.setText("Error")
+            time.setText("Flight Number '{}' and\nDestination '{}' are not Valid".format(num, dest))
 
-    if type(flight) == str:
-        # TODO Error message
-        pass
-    else:
-        pass
-        status.setText("")
-        time.setText("")
-        # TODO Display flight
+
+    except ValueError:
+        status.setText("Error")
+        time.setText("Flight Number {} is Not Valid".format(num))
 
 
 def test():

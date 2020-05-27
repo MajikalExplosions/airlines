@@ -58,12 +58,15 @@ class FlightSearcher:
 
     def lookup(self, dest, flightnum):
         for flight in self.flightManager.getFlights():
-            try:
-                if flight.getDestination() == dest and flight.getNumber() == int(flightnum):
-                    return flight
-            except ValueError:
-                return "Flight Number Must Be Valid"
-        return "Could not find flight with destination: {} and flight number: {}".format(dest, flightnum)
+            if flight.getDestination().getCode() == dest and flight.getNumber() == int(flightnum):
+                return flight
+        return "No Flight Exists"
+
+    def isValidAirport(self, s):
+        for airport in self.flightManager.getAirports():
+            if airport.getCode() == s:
+                return True
+        return False
 
 
 def test_search():

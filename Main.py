@@ -11,10 +11,8 @@ from flights.FlightSearcher import *
 
 
 def main():
-    # fm = FlightManager("data/airports.tsv", "data/flights.tsv")
-    # fs = FlightSearcher(fm)
-
-
+    fm = FlightManager("data/airports.tsv", "data/flights.tsv")
+    fs = FlightSearcher(fm)
     gui = GUI()
     clicked = 0
     screens = gui.getScreenIDs()
@@ -29,7 +27,11 @@ def main():
             gui.switchScreen(clicked)
         else:
             print("ID:", clicked, "- Not Switch Screen")
-
+            if clicked == "flight_status: lookup":
+                dest = gui.findWidgetByID("flight_status: flight_destination").getText()
+                num = gui.findWidgetByID("flight_status: flight_number").getText()
+                # TODO Check Input
+                fs.lookup(dest, num)
 
 
 

@@ -4,6 +4,8 @@
 # Ver.	Writer			    Date			Notes
 # 1.0   Joseph Liu			05/25/20		Original airport search ported from FlightManager, create searchForFlights
 # 1.1   Joseph Liu			05/25/20		Add example code
+# 1.2   Chris Luey			05/27/20		Add lookup
+
 
 from flights.FlightManager import FlightManager
 from flights.paths.Graph import Graph
@@ -51,6 +53,16 @@ class FlightSearcher:
 			res.append(search.getPath(i))
 		
 		return res
+
+    def lookup(self, dest, flightnum):
+        for flight in self.flightManager.getFlights():
+            try:
+                if flight.getDestination() == dest and flight.getNumber() == int(flightnum):
+                    return flight
+            except ValueError:
+                return "Flight Number Must Be Valid"
+        return "Could not find flight with destination: {} and flight number: {}".format(dest, flightnum)
+
 
 def test_search():
     fm = FlightManager("data/airports.tsv", "data/flights.tsv")

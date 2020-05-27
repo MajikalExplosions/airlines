@@ -126,7 +126,7 @@
     "style": "bold"
   },
   "Text7": {
-    "id": "flight_status: status",
+    "id": "flight_status: time",
     "x": 900,
     "y": 275,
     "text": "Amount: Unavailable",
@@ -137,5 +137,25 @@
       "b": 101
     },
     "style": "bold"
+  },
+  "Button1": {
+    "x": 600,
+    "y": 425,
+    "width": 600,
+    "height": 75,
+    "radius": 20,
+    "color": {
+      "r": 95,
+      "g": 168,
+      "b": 211
+    },
+    "text": "Lookup Flight Status",
+    "textColor": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textSize": 25,
+    "id": "flight_status: lookup"
   }
 }

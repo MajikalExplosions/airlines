@@ -4,7 +4,7 @@
 # Ver.	    Writer			        Date			Notes
 # 1.0       Christopher Luey        05/17/20		Original
 # 1.1       Christopher Luey        05/17/20		Compatibility with widget id system
-
+# 1.2       Christopher Luey        05/27/20		Lookup flight
 
 from UI.GUI import GUI
 from flights.FlightSearcher import *
@@ -28,11 +28,23 @@ def main():
         else:
             print("ID:", clicked, "- Not Switch Screen")
             if clicked == "flight_status: lookup":
-                dest = gui.findWidgetByID("flight_status: flight_destination").getText()
-                num = gui.findWidgetByID("flight_status: flight_number").getText()
-                # TODO Check Input
-                fs.lookup(dest, num)
+                lookup(gui, fs)
 
+
+def lookup(gui, fs):
+    dest = gui.findWidgetByID("flight_status: flight_destination").getText()
+    num = gui.findWidgetByID("flight_status: flight_number").getText()
+    status = gui.findWidgetByID("flight_status: status")
+    time = gui.findWidgetByID("flight_status: time")
+    flight = fs.lookup(dest, num)
+
+    if type(flight) == str:
+        # TODO Status set, random time delay
+        status.setText("")
+        time.setText("")
+    else:
+        pass
+        # TODO Display flight
 
 
 def test():

@@ -26,8 +26,8 @@
     "style": "normal"
   },
   "Button1": {
-    "x": 600,
-    "y": 500,
+    "x": 340,
+    "y": 525,
     "width": 400,
     "height": 75,
     "radius": 20,
@@ -43,12 +43,12 @@
       "b": 255
     },
     "textSize": 32,
-    "id": "create_reservation: create"
+    "id": "create_reservation: find_flights"
   },
   "Entry1": {
-    "x": 225,
+    "x": 210,
     "y": 350,
-    "width": 7,
+    "width": 10,
     "size": 30,
     "text": "",
     "fill": {
@@ -70,9 +70,9 @@
     "id": "create_reservation: start"
   },
   "Entry2": {
-    "x": 450,
+    "x": 460,
     "y": 350,
-    "width": 7,
+    "width": 11,
     "size": 30,
     "text": "",
     "fill": {
@@ -95,7 +95,7 @@
   },
   "Text3": {
     "id": "FlightStartText",
-    "x": 200,
+    "x": 160,
     "y": 300,
     "text": "Start:",
     "size": 32,
@@ -108,7 +108,7 @@
   },
   "Text4": {
     "id": "FlightDestinationText",
-    "x": 465,
+    "x": 448,
     "y": 300,
     "text": "Destination:",
     "size": 32,
@@ -120,7 +120,7 @@
     "style": "normal"
   },
   "NoShadow1": {
-    "x": 250,
+    "x": 220,
     "y": 425,
     "width": 200,
     "height": 60,
@@ -141,7 +141,7 @@
   },
   "Circle1": {
     "id": "create_reservation: roundtrip_outer_circle",
-    "x": 170,
+    "x": 135,
     "y": 425,
     "radius": 10,
     "fill": {
@@ -157,7 +157,7 @@
     "width": 3
   },
   "NoShadow2": {
-    "x": 485,
+    "x": 470,
     "y": 425,
     "width": 230,
     "height": 60,
@@ -178,7 +178,7 @@
   },
   "Circle2": {
     "id": "create_reservation: oneway_outer_circle",
-    "x": 385,
+    "x": 370,
     "y": 425,
     "radius": 10,
     "fill": {
@@ -195,9 +195,9 @@
   },
   "Circle3": {
     "id": "create_reservation: moving_circle",
-    "x": 385,
+    "x": 135,
     "y": 425,
-    "radius": 5,
+    "radius": 4,
     "fill": {
       "r": 98,
       "g": 182,
@@ -209,6 +209,117 @@
       "b": 203
     },
     "width": 3
+  },
+  "Entry3": {
+    "x": 730,
+    "y": 350,
+    "width": 10,
+    "size": 30,
+    "text": "",
+    "fill": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "outline": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textColor": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold",
+    "id": "create_reservation: start_date"
+  },
+  "Text5": {
+    "id": "FlightStartDateText",
+    "x": 715,
+    "y": 300,
+    "text": "Start Date:",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
+  "Entry4": {
+    "x": 730,
+    "y": 475,
+    "width": 10,
+    "size": 30,
+    "text": "",
+    "fill": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "outline": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textColor": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold",
+    "id": "create_reservation: return_date"
+  },
+  "Text6": {
+    "id": "FlightReturnDateText",
+    "x": 730,
+    "y": 425,
+    "text": "Return Date:",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
+  "Entry5": {
+    "x": 950,
+    "y": 350,
+    "width": 6,
+    "size": 30,
+    "text": "",
+    "fill": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "outline": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textColor": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold",
+    "id": "create_reservation: travelers"
+  },
+  "Text7": {
+    "id": "FlightTravelerText",
+    "x": 995,
+    "y": 300,
+    "text": "# of Travelers:",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
   }
 
 }

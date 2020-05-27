@@ -22,7 +22,7 @@ class GUI:
         self.win = GraphWin(title="Airport", width=1200, height=800, autoflush=False)
         self.id_widget, self.widget_id = {}, {}
 
-        ids = ["main", "start", "create_reservation", "modify_reservation", "flight_status", "checkin"]
+        ids = ["main", "list_flights", "create_reservation", "modify_reservation", "flight_status", "checkin"]
         # self.screens - Hash: screenID : Screen()
         self.id_screen = {x: y for x, y in zip(ids, [Screen(i, self.win) for i in ids])}
         self.screen_id = {y: x for x, y in self.id_screen.items()}
@@ -50,16 +50,7 @@ class GUI:
             self.screen.append(self.id_screen["main"])
             self.activeScreen = self.screen[self.index - 1]
             self.attrs = self.activeScreen.inflate()
-        elif screen == "create_reservation":
-            self._switchScreen(self.id_screen["create_reservation"])
-        elif screen == "modify_reservation":
-            self._switchScreen(self.id_screen["modify_reservation"])
-        elif screen == "flight_status":
-            self._switchScreen(self.id_screen["flight_status"])
-        elif screen == "checkin":
-            self._switchScreen(self.id_screen["checkin"])
-        elif screen == "start":
-            self._switchScreen(self.id_screen["start"])
+
         elif screen == "back":
             if self.screen[self.index - 2] == self.id_screen["main"] and self.backButton.isActive():
                 self.backButton.toggleActivation()
@@ -69,7 +60,7 @@ class GUI:
             self.activeScreen = self.screen[self.index - 1]
             self.attrs = self.activeScreen.inflate()
         else:
-            raise Exception("Could not locate screen")
+            self._switchScreen(self.id_screen[screen])
 
         print("ID:", screen, "- Switch to Screen")
 
@@ -96,6 +87,9 @@ class GUI:
 
     def getScreenIDs(self):
         return self.id_screen
+
+    def getWin(self):
+        return self.win
 
     def _switchScreen(self, screen):
         if not self.backButton.isActive(): self.backButton.toggleActivation()
@@ -155,7 +149,10 @@ class Screen:
         for i in self.attr:
             if type(i[0]) == Button:
                 i[0].toggleActivation()
-            i[0].undraw()
+            try:
+                i[0].undraw()
+            except:
+                pass
 
     def inflate(self):
         for i in self.attr:
@@ -165,7 +162,10 @@ class Screen:
                 if not i[0].isActive():
                     i[0].toggleActivation()
             else:
-                i[0].draw(self.win)
+                try:
+                    i[0].draw(self.win)
+                except:
+                    pass
         return self.attr
 
     def getName(self):
@@ -207,7 +207,11 @@ class Screen:
                 attrs[len(attrs) - 1][0].setSize(item["size"])
                 pass
             elif str(key).find("Rectangle") != -1:
-                pass
+                attrs.append([Rectangle(Point(item["x"], item["y"]), Point(item["x2"], item["y2"])), item["id"]])
+                attrs[len(attrs) - 1][0].setFill(color_rgb(item["color"]["r"], item["color"]["g"], item["color"]["b"]))
+                attrs[len(attrs) - 1][0].setOutline(
+                    color_rgb(item["color"]["r"], item["color"]["g"], item["color"]["b"]))
+
             elif str(key).find("Circle") != -1:
                 attrs.append([Circle(Point(item["x"], item["y"]), item["radius"]), item["id"]])
                 attrs[len(attrs) - 1][0].setFill(color_rgb(item["fill"]["r"], item["fill"]["g"], item["fill"]["b"]))

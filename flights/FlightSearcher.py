@@ -47,9 +47,10 @@ class FlightSearcher:
     def searchForFlights(self, origin, dest, k):
         c1, c2 = origin.getCode(), dest.getCode()
         if c1 + c2 in self._flightCache:
-            search = self._flightCache(c1 + c2)
+            search = self._flightCache[c1 + c2]
         else:
             search = YenKSP(self.graph, self.graph.getNodeFromAirport(origin), self.graph.getNodeFromAirport(dest))
+            self._flightCache[c1 + c2] = search
 
         res = []
         for i in range(k):

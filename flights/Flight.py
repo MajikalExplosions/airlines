@@ -25,7 +25,7 @@ class Flight:
         arrivalTimeAdd2 = False
 
         if self.arrivalTime.find("-") != -1 or self.arrivalTime.find("+") != -1:
-            if self.arrivalTime.find("-") != -1:
+            if self.arrivalTime.find("-1") != -1:
                 arrivalTimeSubtract = True
 
             if self.arrivalTime.find("+1") != -1:
@@ -36,20 +36,26 @@ class Flight:
 
 
             self.arrivalTime = self.arrivalTime[:-2]
+        
 
         self.arrivalTimeLocal = flightToDatetime(self.arrivalTime)
-        self.arrivalTime = toUTC(self.destination.getTimezone(), flightToDatetime(self.arrivalTime))
+        self.arrivalTime = toUTC(self.destination.getTimezone(), self.arrivalTimeLocal)
+        self.departureTimeLocal = flightToDatetime(self.departureTime)
+        self.departureTime = toUTC(self.origin.getTimezone(), self.departureTimeLocal)
+
         if arrivalTimeAdd:
             self.arrivalTime += timedelta(hours = 24)
 
-        elif arrivalTimeAdd:
+        elif arrivalTimeAdd2:
             self.arrivalTime += timedelta(hours = 48)
 
         elif arrivalTimeSubtract:
             self.arrivalTime -= timedelta(hours = 24)
+        
+        if self.arrivalTime < self.departureTime:
+            print(self.airline, self.number, self.departureTimeLocal, self.arrivalTimeLocal, self.departureTime, self.arrivalTime, toUTCOffset(self.origin.getTimezone()), toUTCOffset(self.destination.getTimezone()), sep=" | ")
 
-        self.departureTimeLocal = flightToDatetime(self.departureTime)
-        self.departureTime = toUTC(self.origin.getTimezone(), flightToDatetime(self.departureTime))
+
 
         #Add days where flight is run
         if days == "Daily":

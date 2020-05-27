@@ -91,12 +91,12 @@ def test():
             elif t[1] == "flight":
                 if len(t) == 4:
                     t.append(5)
-                for airport in fs.searchForFlights(fs.searchForAirports(t[2])[0], fs.searchForAirports(t[3])[0],int(t[4]))[0].toFlights(fm):
+                for airport in fs.searchForFlights(fs.searchForAirports(t[2])[0], fs.searchForAirports(t[3])[0], int(t[4]), fm)[0].toFlights(fm):
                     print(airport.toString())
 
 
 if __name__ == '__main__':
-    main()
-    #test()
+    #main()
+    test()
 
 

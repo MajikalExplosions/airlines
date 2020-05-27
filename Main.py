@@ -12,15 +12,34 @@ from UI.GUI import GUI
 from flights.FlightSearcher import *
 
 
+def checkForDraw(gui, trip):
+    if gui.getScreen().getName() == "create_reservation":
+        if trip == "round":
+            try:
+                gui.findWidgetByID("FlightReturnDateText").draw(gui.getWin())
+                gui.findWidgetByID("create_reservation: return_date").draw(gui.getWin())
+            except:
+                pass
+        else:
+            try:
+                gui.findWidgetByID("FlightReturnDateText").undraw()
+                gui.findWidgetByID("create_reservation: return_date").undraw()
+            except:
+                pass
+
+
 def main():
-    fm = FlightManager("data/airports.tsv", "data/flights.tsv")
-    fs = FlightSearcher(fm)
+    # fm = FlightManager("data/airports.tsv", "data/flights.tsv")
+    # fs = FlightSearcher(fm)
+    fs, fm = None, None
     gui = GUI()
     clicked = 0
     screens = gui.getScreenIDs()
     cache = {}
+    trip = "round"
 
     while clicked != 'quit':
+        checkForDraw(gui, trip)
         clicked = gui.setOnButtonClickListener()
         if clicked == 'quit':
             break
@@ -35,13 +54,26 @@ def main():
             elif clicked == "create_reservation: oneway-trip":
                 trip = "one"
                 gui.findWidgetByID("create_reservation: moving_circle").move(
-                    385 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getX(),
+                    370 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getX(),
                     425 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getY())
+                try:
+                    gui.findWidgetByID("FlightReturnDateText").undraw()
+                    gui.findWidgetByID("create_reservation: return_date").undraw()
+                except:
+                    pass
             elif clicked == "create_reservation: round-trip":
                 trip = "round"
                 gui.findWidgetByID("create_reservation: moving_circle").move(
-                    170 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getX(),
+                    135 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getX(),
                     425 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getY())
+                try:
+                    gui.findWidgetByID("FlightReturnDateText").draw(gui.getWin())
+                    gui.findWidgetByID("create_reservation: return_date").draw(gui.getWin())
+                except:
+                    pass
+            elif clicked == "create_reservation: find_flights":
+                gui.switchScreen("list_flights")
+
 
 def lookup(gui, fs, cache):
     dest = gui.findWidgetByID("flight_status: flight_destination").getText()

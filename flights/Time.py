@@ -26,12 +26,12 @@ def timeSinceStart(t):
 def offsetStartTime(time):
     return t_starttime + time
 
-def toUTCOffset(tzName, y, m, d):
+def toUTCOffset(tzName):
     return o_tzs[tzName]
 
 def toUTC(tzName, time):
-    offset = toUTCOffset(tzName, time.year, time.month, time.day)
-    return (time + timedelta(hours=offset * -1)).replace(day = t_starttime.day)
+    offset = toUTCOffset(tzName)
+    return (time + timedelta(hours=offset * -1))
 
 def flightToDatetime(s):
     s = s.split(":")

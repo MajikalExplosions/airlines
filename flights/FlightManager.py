@@ -56,7 +56,7 @@ class FlightManager:
 	def getAirports(self):
 		return self.airports
 
-	def getAirport(self,accessNum):
+	def getAirport(self, accessNum):
 		return self.airports[accessNum]
 
 def fm_getFlightNum(airport):

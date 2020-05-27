@@ -16,7 +16,7 @@ class Path:
         self.distToNode = []
         self.graph = 0
     
-    def fromDSP(self, dsp, dest, fm):
+    def fromDSP(self, dsp, dest):
         self.nodes = [dest]
         self.edges = []
         while not self.nodes[0].isRoot():

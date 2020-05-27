@@ -76,10 +76,10 @@ class YenKSP:
     def getPath(self, k):
         for k2 in range(self.k, k + 1):
             if not self.hasNext:
-                return self.A[-1]
+                return "No other paths."
             found = self.solve()
             if not found:
-                return self.A[-1]
+                return "No other paths."
             
         return self.A[k]
 

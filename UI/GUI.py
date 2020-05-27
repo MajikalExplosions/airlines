@@ -9,6 +9,8 @@
 # 1.4     Christopher Luey     05/23/20     Add json compatibility, remove .txt parsing
 # 1.5     Christopher Luey     05/26/20     Begin integration
 # 1.6     Christopher Luey     05/27/20     Back button saves state
+# 1.7     Christopher Luey     05/27/20     Display airports and flights
+
 
 
 import json

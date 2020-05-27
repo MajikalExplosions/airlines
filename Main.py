@@ -165,25 +165,12 @@ def lookup(gui, fs, cache):
         else:
             time.setText("Flight Number '{}' is Not Valid".format(num))
 
-
-def test():
-    fm = FlightManager("data/airports.tsv", "data/flights.tsv")
-    fs = FlightSearcher(fm)
-    inp = ""
-    while inp != "quit":
-        inp = input(">>> ").lower()
-        t = inp.split()
-        print(t)
-        if t[0] == "search":
-            if t[1] == "airport":
-                for airport in fs.searchForAirports(t[2]): #Returns 10 airports with char
-                    print(airport.toString())
-            elif t[1] == "flight":
-                if len(t) == 4:
-                    t.append(5)
-                for airport in fs.searchForFlights(fs.searchForAirports(t[2])[0], fs.searchForAirports(t[3])[0], int(t[4]))[0].toFlights(fm):
-                    print(airport.toString())
-
+    except IndexError:
+        status.setText("Error")
+        if not fs.isValidAirport(dest):
+            time.setText("Flight Number '{}'\nand Destination '{}' is Not Valid".format(num, dest))
+        else:
+            time.setText("Flight Number '{}' is Not Valid".format(num))
 
 if __name__ == '__main__':
     main()

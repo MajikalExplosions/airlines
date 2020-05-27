@@ -115,7 +115,7 @@
   "Text6": {
     "id": "flight_status: status",
     "x": 900,
-    "y": 275,
+    "y": 300,
     "text": "Status: Unavailable",
     "size": 45,
     "color": {
@@ -128,7 +128,7 @@
   "Text7": {
     "id": "flight_status: time",
     "x": 900,
-    "y": 335,
+    "y": 365,
     "text": "",
     "size": 28,
     "color": {
@@ -140,7 +140,7 @@
   },
   "Button1": {
     "x": 600,
-    "y": 475,
+    "y": 485,
     "width": 600,
     "height": 75,
     "radius": 20,

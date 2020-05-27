@@ -8,6 +8,7 @@
 # 1.3     Christopher Luey     05/23/20     Add widget id system & minor bug fixes
 # 1.4     Christopher Luey     05/23/20     Add json compatibility, remove .txt parsing
 # 1.5     Christopher Luey     05/26/20     Begin integration
+# 1.6     Christopher Luey     05/27/20     Back button saves state
 
 
 import json
@@ -23,17 +24,18 @@ class GUI:
 
         ids = ["main", "start", "create_reservation", "modify_reservation", "flight_status", "checkin"]
         # self.screens - Hash: screenID : Screen()
-        self.screens = {x: y for x, y in zip(ids, [Screen(i, self.win) for i in ids])}
+        self.id_screen = {x: y for x, y in zip(ids, [Screen(i, self.win) for i in ids])}
+        self.screen_id = {y: x for x, y in self.id_screen.items()}
 
-        for i in self.screens.values():
+        for i in self.id_screen.values():
             self.id_widget.update({x[1]: x[0] for x in i.getAttr()})
             self.widget_id.update({x[0]: x[1] for x in i.getAttr()})
 
-        print(self.id_widget)
-        self.previousScreen = self.screens["main"]
-        self.activeScreen = self.screens["main"]
-        self.attrs = self.activeScreen.inflate()
-        self.inflate_header()
+        self._inflate_header()
+        self.activeScreen = self.id_screen["main"]
+        self.screen, self.index = [], 0
+        self.activeScreen.inflate()
+        self.switchScreen("main")
 
     def switchScreen(self, screen):
         """
@@ -44,24 +46,27 @@ class GUI:
             if self.backButton.isActive():
                 self.backButton.toggleActivation()
             self.activeScreen.deflate()
-            self.previousScreen = self.activeScreen
-            self.activeScreen = self.screens["main"]
+            self.index += 1
+            self.screen.append(self.id_screen["main"])
+            self.activeScreen = self.screen[self.index - 1]
             self.attrs = self.activeScreen.inflate()
         elif screen == "create_reservation":
-            self._switchScreen(self.screens["create_reservation"])
+            self._switchScreen(self.id_screen["create_reservation"])
         elif screen == "modify_reservation":
-            self._switchScreen(self.screens["modify_reservation"])
+            self._switchScreen(self.id_screen["modify_reservation"])
         elif screen == "flight_status":
-            self._switchScreen(self.screens["flight_status"])
+            self._switchScreen(self.id_screen["flight_status"])
         elif screen == "checkin":
-            self._switchScreen(self.screens["checkin"])
+            self._switchScreen(self.id_screen["checkin"])
         elif screen == "start":
-            self._switchScreen(self.screens["start"])
+            self._switchScreen(self.id_screen["start"])
         elif screen == "back":
-            if self.previousScreen == self.screens["main"] and self.backButton.isActive():
+            if self.screen[self.index - 2] == self.id_screen["main"] and self.backButton.isActive():
                 self.backButton.toggleActivation()
             self.activeScreen.deflate()
-            self.previousScreen, self.activeScreen = self.activeScreen, self.previousScreen
+            self.index -= 1
+            self.screen.append(self.screen[self.index - 1])
+            self.activeScreen = self.screen[self.index - 1]
             self.attrs = self.activeScreen.inflate()
         else:
             raise Exception("Could not locate screen")
@@ -72,22 +77,32 @@ class GUI:
         return self.activeScreen
 
     def findWidgetByID(self, id):
-        return self.id_widget[id]
+        try:
+            return self.id_widget[id]
+        except:
+            raise Exception("Invalid Widget ID")
 
     def findIDByWidget(self, wid):
-        return self.widget_id[wid]
+        try:
+            return self.widget_id[wid]
+        except:
+            raise Exception("Invalid Widget")
 
     def getWidgetIDs(self):
         return self.widget_id
 
+    def getScreenID(self, screen):
+        return self.screen_id[screen]
+
     def getScreenIDs(self):
-        return self.screens
+        return self.id_screen
 
     def _switchScreen(self, screen):
         if not self.backButton.isActive(): self.backButton.toggleActivation()
         self.activeScreen.deflate()
-        self.previousScreen = self.activeScreen
-        self.activeScreen = screen
+        self.screen.append(screen)
+        self.index = len(self.screen)
+        self.activeScreen = self.screen[self.index - 1]
         self.attrs = self.activeScreen.inflate()
 
     def setOnButtonClickListener(self):
@@ -102,7 +117,7 @@ class GUI:
         self.win.close()
         return "quit"
 
-    def inflate_header(self):
+    def _inflate_header(self):
         self.home = Button(595, 75 / 2 - 5, 1205, 80, 0, color_rgb(8, 76, 97), "ᴀɪʀᴘᴏʀᴛ ᴘʀᴏɢʀᴀᴍ", "white", 26, self.win)
         self.home.setInactiveColor(color_rgb(8, 76, 97))
         self.home.toggleActivation()
@@ -110,6 +125,13 @@ class GUI:
         self.quitButton = Button(1125, 75 / 2, 100, 50, 5, color_rgb(219, 80, 74), "Exit", "white", 20,
                                  self.win).toggleActivation()
         self.backButton = Button(75, 75 / 2, 100, 50, 5, color_rgb(219, 80, 74), "Back", "white", 20, self.win)
+
+    def resetScreen(self, screen):
+        if screen == "flight_status":
+            self.findWidgetByID("flight_status: flight_destination").setText("")
+            self.findWidgetByID("flight_status: flight_number").setText("")
+            self.findWidgetByID("flight_status: status").setText("Status: Unavailable")
+            self.findWidgetByID("flight_status: time").setText("")
 
 
 class Screen:
@@ -171,7 +193,8 @@ class Screen:
                 attrs[len(attrs) - 1][0].undraw()
             elif str(key).find("Entry") != -1:
                 attrs.append([Entry(Point(item["x"], item["y"]), item["width"]), item["id"]])
-                attrs[len(attrs) - 1][0].setTextColor(color_rgb(item["textColor"]["r"], item["textColor"]["g"], item["textColor"]["b"]))
+                attrs[len(attrs) - 1][0].setTextColor(
+                    color_rgb(item["textColor"]["r"], item["textColor"]["g"], item["textColor"]["b"]))
                 attrs[len(attrs) - 1][0].setSize(item["size"])
                 attrs[len(attrs) - 1][0].setText(item["text"])
                 attrs[len(attrs) - 1][0].setFill(color_rgb(item["fill"]["r"], item["fill"]["g"], item["fill"]["b"]))
@@ -190,7 +213,7 @@ class Screen:
                 attrs[len(attrs) - 1][0].setFill(color_rgb(item["fill"]["r"], item["fill"]["g"], item["fill"]["b"]))
                 attrs[len(attrs) - 1][0].setOutline(
                     color_rgb(item["outline"]["r"], item["outline"]["g"], item["outline"]["b"]))
-
+                attrs[len(attrs) - 1][0].setWidth(item["width"])
             elif str(key).find("Point") != -1:
                 pass
             elif str(key).find("Oval") != -1:
@@ -201,6 +224,16 @@ class Screen:
                 pass
             elif str(key).find("Image") != -1:
                 pass
+            elif str(key).find("NoShadow") != -1:
+                attrs.append([Button(item["x"], item["y"], item["width"], item["height"], item["radius"],
+                                     color_rgb(item["color"]["r"], item["color"]['g'], item["color"]['b']),
+                                     item["text"],
+                                     color_rgb(item["textColor"]['r'], item["textColor"]['g'], item["textColor"]['b']),
+                                     item["textSize"], self.win), item["id"]])
+                attrs[len(attrs) - 1][0].adjustShadowColor('white')
+                attrs[len(attrs) - 1][0].undraw()
+
+
 
         return attrs
 

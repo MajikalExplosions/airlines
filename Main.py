@@ -21,18 +21,27 @@ def main():
     cache = {}
 
     while clicked != 'quit':
-        screen = gui.getScreen()
         clicked = gui.setOnButtonClickListener()
         if clicked == 'quit':
             break
         print("ID:", clicked, "- Action Performed")
         if clicked in screens or clicked == 'back':
+            if clicked == 'back':
+                gui.resetScreen(gui.getScreenID(gui.getScreen()))
             gui.switchScreen(clicked)
         else:
-            print("ID:", clicked, "- Not Switch Screen")
             if clicked == "flight_status: lookup":
                 lookup(gui, fs, cache)
-
+            elif clicked == "create_reservation: oneway-trip":
+                trip = "one"
+                gui.findWidgetByID("create_reservation: moving_circle").move(
+                    385 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getX(),
+                    425 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getY())
+            elif clicked == "create_reservation: round-trip":
+                trip = "round"
+                gui.findWidgetByID("create_reservation: moving_circle").move(
+                    170 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getX(),
+                    425 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getY())
 
 def lookup(gui, fs, cache):
     dest = gui.findWidgetByID("flight_status: flight_destination").getText()
@@ -42,7 +51,7 @@ def lookup(gui, fs, cache):
     try:
         if len(dest) == 0 or len(num) == 0:
             time.setText("Your input is empty.")
-        elif len(dest) == 3 and fs.isValidAirport(dest) and type(int(num)) == int:
+        elif type(int(num)) == int and len(dest) == 3 and fs.isValidAirport(dest):
             flight = fs.lookup(dest, num)
             if type(flight) == str:
                 time.setText(flight)
@@ -50,17 +59,21 @@ def lookup(gui, fs, cache):
                 if not (dest + num) in cache.keys():
                     x = randint(0, 2)
                     cache[dest + num] = ("Status: {}".format(["On Time", "Delayed", "Cancelled"][x]),
-                                         "{}".format(["", str(randint(20, 120)) + " minutes", ""][x]))
+                                         "Flight Number {} to {}\n{}".format(num, dest,
+                                                                             ["", str(randint(20, 120)) + " minutes",
+                                                                              ""][x]))
                 status.setText(cache[dest + num][0])
                 time.setText(cache[dest + num][1])
         else:
             status.setText("Error")
-            time.setText("Flight Number '{}' and\nDestination '{}' are not Valid".format(num, dest))
-
+            time.setText("Destination '{}' is not Valid".format(num, dest))
 
     except ValueError:
         status.setText("Error")
-        time.setText("Flight Number {} is Not Valid".format(num))
+        if not fs.isValidAirport(dest):
+            time.setText("Flight Number '{}'\nand Destination '{}' is Not Valid".format(num, dest))
+        else:
+            time.setText("Flight Number '{}' is Not Valid".format(num))
 
 
 def test():

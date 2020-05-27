@@ -8,6 +8,7 @@ from flights.paths.Graph import *
 from datetime import timedelta
 from flights.Time import *
 
+
 class Path:
     def __init__(self):
         self.nodes = []
@@ -15,25 +16,18 @@ class Path:
         self.distToNode = []
         self.graph = 0
     
-    def fromDSP(self, dsp, dest):
-        try:
-            self.nodes = [dest]
-            self.edges = []
-            while not self.nodes[0].isRoot():
-                self.edges.insert(0, self.nodes[0].getEdgeIn())
-                self.nodes.insert(0, dsp.graph.getNodes()[self.nodes[0].getEdgeIn().u])
-            
-            self.distToNode = []
-            for node in self.nodes:
-                self.distToNode.append(node.getDist())
-            
-            self.graph = dsp.graph
-        except:
-            self.nodes = []
-            self.edges = []
-            self.distToNode = []
-            print("Can't get path from DSP.")
-            return
+    def fromDSP(self, dsp, dest, fm):
+        self.nodes = [dest]
+        self.edges = []
+        while not self.nodes[0].isRoot():
+            self.edges.insert(0, self.nodes[0].getEdgeIn())
+            self.nodes.insert(0, dsp.graph.getNodes()[self.nodes[0].getEdgeIn().u])
+        
+        self.distToNode = []
+        for node in self.nodes:
+            self.distToNode.append(node.getDist())
+        
+        self.graph = dsp.graph
     
     def fromTwo(self, p1, p2):
         #Combines to paths.

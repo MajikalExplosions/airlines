@@ -35,14 +35,16 @@ class YenKSP:
             for p2 in self.A:
                 if rootPath.equals(p2.sliceToPath(0, i)):
                     removedEdges.append(p2.getEdges()[i])
-            self.graph.removeEdges(removedEdges)
 
             #Find the spur path
             spurNode = rootPath.getNodes()[i]
             #You can't reset the nodes along the root path, for obvious reasons.
             
+            self.graph.removeEdges(removedEdges)
             self.graph.reset(rootPath)
             validPath, spurPath = DijkstraSP(self.graph, spurNode, rootVal=rootPath.getDists()[-1]).getPath(self.dest)
+            self.graph.addEdges(removedEdges)
+
             if not validPath:
                 continue
             
@@ -56,8 +58,6 @@ class YenKSP:
             
             if not inB:
                 self.B.append(totalPath)
-
-            self.graph.addEdges(removedEdges)
 
         
         if len(self.B) == 0:

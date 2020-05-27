@@ -83,7 +83,7 @@ def lookup(gui, fs, cache):
     try:
         if len(dest) == 0 or len(num) == 0:
             time.setText("Your input is empty.")
-        elif type(int(num)) == int and len(dest) == 3 and fs.isValidAirport(dest):
+        elif type(int(num[2:])) == int and len(dest) == 3 and fs.isValidAirport(dest):
             flight = fs.lookup(dest, num)
             if type(flight) == str:
                 time.setText(flight)
@@ -123,12 +123,12 @@ def test():
             elif t[1] == "flight":
                 if len(t) == 4:
                     t.append(5)
-                for airport in fs.searchForFlights(fs.searchForAirports(t[2])[0], fs.searchForAirports(t[3])[0], int(t[4]), fm)[0].toFlights(fm):
+                for airport in \
+                        fs.searchForFlights(fs.searchForAirports(t[2])[0], fs.searchForAirports(t[3])[0], int(t[4]))[
+                            0].toFlights(fm):
                     print(airport.toString())
 
 
 if __name__ == '__main__':
-    #main()
-    test()
-
-
+    main()
+    # test()

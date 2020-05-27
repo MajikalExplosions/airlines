@@ -16,6 +16,7 @@ class YenKSP:
         self.k = 0
         self.A = []
         self.B = []
+        self.hasNext = True
 
     def solve(self):
         self.graph.resetAll()
@@ -23,7 +24,7 @@ class YenKSP:
             validPath, _path = DijkstraSP(self.graph, self.origin).getPath(self.dest)
             self.A = [_path]
             self.k = 1
-            return
+            return True
 
         path = self.A[-1]
         for i in range(len(self.A[-1].getNodes()) - 2, -1, -1):
@@ -42,9 +43,8 @@ class YenKSP:
             
             self.graph.reset(rootPath)
             validPath, spurPath = DijkstraSP(self.graph, spurNode, rootVal=rootPath.getDists()[-1]).getPath(self.dest)
-
             if not validPath:
-                return
+                continue
             
             totalPath = Path()
             totalPath.fromTwo(rootPath, spurPath)
@@ -59,8 +59,11 @@ class YenKSP:
 
             self.graph.addEdges(removedEdges)
 
-            if len(self.B) == 0:
-                break
+        
+        if len(self.B) == 0:
+            self.hasNext = False
+            return False
+
         self.B.sort(key=yksp_pathLength)
         self.A.append(self.B[0])
         self.B = self.B[1:]
@@ -68,11 +71,19 @@ class YenKSP:
         #Reset graph
         self.graph.resetAll()
         self.k += 1
+        return True
     
     def getPath(self, k):
         for k2 in range(self.k, k + 1):
-            self.solve()
+            if not self.hasNext:
+                return self.A[-1]
+            found = self.solve()
+            if not found:
+                return self.A[-1]
+            
         return self.A[k]
+
+
 
 def yksp_pathLength(path):
     path.recalculateDist(0)

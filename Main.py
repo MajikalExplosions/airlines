@@ -83,7 +83,7 @@ def lookup(gui, fs, cache):
     try:
         if len(dest) == 0 or len(num) == 0:
             time.setText("Your input is empty.")
-        elif type(int(num)) == int and len(dest) == 3 and fs.isValidAirport(dest):
+        elif type(int(num[2:])) == int and len(dest) == 3 and fs.isValidAirport(dest):
             flight = fs.lookup(dest, num)
             if type(flight) == str:
                 time.setText(flight)

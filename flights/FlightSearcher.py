@@ -59,7 +59,7 @@ class FlightSearcher:
 
     def lookup(self, dest, flightnum):
         for flight in self.flightManager.getFlights():
-            if flight.getDestination().getCode() == dest and flight.getNumber() == int(flightnum):
+            if flight.getDestination().getCode() == dest and flight.getAirline() + flight.getNumber() == flightnum:
                 return flight
         return "Flight {} to {} Doesn't Exist".format(flightnum, dest)
 
@@ -85,10 +85,7 @@ def test_search():
                 elif t[1] == "flight":
                     if len(t) == 4:
                         t.append(5)
-                    for airport in \
-                            fs.searchForFlights(fs.searchForAirports(t[2])[0], fs.searchForAirports(t[3])[0],
-                                                int(t[4]))[
-                                0].toFlights(fm):
+                    for airport in fs.searchForFlights(fs.searchForAirports(t[2])[0], fs.searchForAirports(t[3])[0], int(t[4]))[0].toFlights(fm):
                         print(airport.toString())
         except IndexError:
             print("Invalid command")

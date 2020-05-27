@@ -39,11 +39,12 @@ def lookup(gui, fs):
     flight = fs.lookup(dest, num)
 
     if type(flight) == str:
-        # TODO Status set, random time delay
-        status.setText("")
-        time.setText("")
+        # TODO Error message
+        pass
     else:
         pass
+        status.setText("")
+        time.setText("")
         # TODO Display flight
 
 

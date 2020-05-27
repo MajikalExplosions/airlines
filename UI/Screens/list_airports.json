@@ -1,6 +1,6 @@
 {
   "Text1": {
-    "id": "ListFlight_Title",
+    "id": "ListAirport_Title",
     "x": 180,
     "y": 150,
     "text": "Select",
@@ -13,10 +13,10 @@
     "style": "bold"
   },
   "Text2": {
-    "id": "ListFlight_Description",
+    "id": "ListAirport_Description",
     "x": 240,
     "y": 200,
-    "text": "Select a valid flight",
+    "text": "Select a valid airport",
     "size": 32,
     "color": {
       "r": 150,
@@ -25,5 +25,5 @@
     },
     "style": "normal"
   },
-  "Flight10": {}
+  "List10": {}
 }

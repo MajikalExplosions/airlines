@@ -4,7 +4,9 @@
 # Ver.	    Writer			        Date			Notes
 # 1.0       Christopher Luey        05/17/20		Original
 # 1.1       Christopher Luey        05/17/20		Compatibility with widget id system
-# 1.2       Christopher Luey        05/27/20		Lookup flight
+# 1.2       Christopher Luey        05/27/20		Complete Lookup flight
+# 1.3       Christopher Luey        05/27/20		Complete Reservation
+
 
 from random import randint
 
@@ -28,15 +30,32 @@ def checkForDraw(gui, trip):
                 pass
 
 
+def searchAirport(gui, fs, t):
+    query = gui.findWidgetByID("create_reservation: " + t).getText()
+    if query:
+        r = fs.searchForAirports(query)
+        if r:
+            gui.switchScreen("list_airports")
+            for i in range(10):
+                try:
+                    gui.findWidgetByID("selection_airport" + str(i)).setText(r[i].toString())
+                except:
+                    gui.findWidgetByID("selection_circle" + str(i)).undraw()
+                    gui.findWidgetByID("selection_airport" + str(i)).toggleActivation()
+                    gui.findWidgetByID("selection_airport" + str(i)).undraw()
+            return r
+
+
 def main():
-    # fm = FlightManager("data/airports.tsv", "data/flights.tsv")
-    # fs = FlightSearcher(fm)
-    fs, fm = None, None
+    fm = FlightManager("data/airports.tsv", "data/flights.tsv")
+    fs = FlightSearcher(fm)
     gui = GUI()
     clicked = 0
     screens = gui.getScreenIDs()
     cache = {}
     trip = "round"
+    selecting = "start"
+    start, destination = None, None
 
     while clicked != 'quit':
         checkForDraw(gui, trip)
@@ -55,7 +74,7 @@ def main():
                 trip = "one"
                 gui.findWidgetByID("create_reservation: moving_circle").move(
                     370 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getX(),
-                    425 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getY())
+                    475 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getY())
                 try:
                     gui.findWidgetByID("FlightReturnDateText").undraw()
                     gui.findWidgetByID("create_reservation: return_date").undraw()
@@ -65,14 +84,53 @@ def main():
                 trip = "round"
                 gui.findWidgetByID("create_reservation: moving_circle").move(
                     135 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getX(),
-                    425 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getY())
+                    475 - gui.findWidgetByID("create_reservation: moving_circle").getCenter().getY())
                 try:
                     gui.findWidgetByID("FlightReturnDateText").draw(gui.getWin())
                     gui.findWidgetByID("create_reservation: return_date").draw(gui.getWin())
                 except:
                     pass
             elif clicked == "create_reservation: find_flights":
+
+                # TODO Check date, traveler and airport inputs
+
                 gui.switchScreen("list_flights")
+                s, dest, flights = start, destination, []
+                for k in range(10):
+                    flights = fs.searchForFlights(start, destination, k)
+                for i in range(10):
+                    try:
+                        # TODO Can Someone Format The Paths Cuz I Dont Really Know & IHave Other Work
+                        gui.findWidgetByID("selection_flight" + str(i)).setText(flights[i].toString(fm))
+                    except:
+                        gui.findWidgetByID("selection_circle_flight" + str(i)).undraw()
+                        gui.findWidgetByID("selection_flight" + str(i)).toggleActivation()
+                        gui.findWidgetByID("selection_flight" + str(i)).undraw()
+
+            elif clicked == "create_reservation: find_start_airport":
+                selecting = "start"
+                startSelect = searchAirport(gui, fs, "start")
+
+            elif clicked == "create_reservation: find_destination_airport":
+                selecting = "destination"
+                destSelect = searchAirport(gui, fs, "destination")
+
+            elif clicked.find("selection_airport") != -1:
+                if selecting == "destination":
+                    gui.findWidgetByID("create_reservation: destination").setText(
+                        destSelect[int(clicked[-1])].getCode())
+                    destination = destSelect[int(clicked[-1])]
+                    gui.switchScreen("create_reservation")
+                else:
+                    gui.findWidgetByID("create_reservation: start").setText(startSelect[int(clicked[-1])].getCode())
+                    gui.switchScreen("create_reservation")
+                    start = startSelect[int(clicked[-1])]
+
+            elif clicked.find("selection_flight") != -1:
+                pass
+                # TODO Create a reservation
+                # TODO Switch screen to passenger information
+
 
 
 def lookup(gui, fs, cache):

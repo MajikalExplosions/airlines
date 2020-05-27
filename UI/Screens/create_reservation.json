@@ -26,8 +26,8 @@
     "style": "normal"
   },
   "Button1": {
-    "x": 340,
-    "y": 525,
+    "x": 600,
+    "y": 575,
     "width": 400,
     "height": 75,
     "radius": 20,
@@ -121,7 +121,7 @@
   },
   "NoShadow1": {
     "x": 220,
-    "y": 425,
+    "y": 475,
     "width": 200,
     "height": 60,
     "radius": 20,
@@ -142,7 +142,7 @@
   "Circle1": {
     "id": "create_reservation: roundtrip_outer_circle",
     "x": 135,
-    "y": 425,
+    "y": 475,
     "radius": 10,
     "fill": {
       "r": 255,
@@ -158,7 +158,7 @@
   },
   "NoShadow2": {
     "x": 470,
-    "y": 425,
+    "y": 475,
     "width": 230,
     "height": 60,
     "radius": 20,
@@ -179,7 +179,7 @@
   "Circle2": {
     "id": "create_reservation: oneway_outer_circle",
     "x": 370,
-    "y": 425,
+    "y": 475,
     "radius": 10,
     "fill": {
       "r": 255,
@@ -196,7 +196,7 @@
   "Circle3": {
     "id": "create_reservation: moving_circle",
     "x": 135,
-    "y": 425,
+    "y": 475,
     "radius": 4,
     "fill": {
       "r": 98,
@@ -320,6 +320,47 @@
       "b": 101
     },
     "style": "normal"
+  },
+  "Button2": {
+    "x": 210,
+    "y": 410,
+    "width": 200,
+    "height": 50,
+    "radius": 10,
+    "color": {
+      "r": 95,
+      "g": 168,
+      "b": 211
+    },
+    "text": "Find Start",
+    "textColor": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textSize": 25,
+    "id": "create_reservation: find_start_airport"
+  },
+  "Button3": {
+    "x": 460,
+    "y": 410,
+    "width": 200,
+    "height": 50,
+    "radius": 10,
+    "color": {
+      "r": 95,
+      "g": 168,
+      "b": 211
+    },
+    "text": "Find Destination",
+    "textColor": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textSize": 25,
+    "id": "create_reservation: find_destination_airport"
   }
+
 
 }

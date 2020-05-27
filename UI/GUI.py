@@ -22,7 +22,8 @@ class GUI:
         self.win = GraphWin(title="Airport", width=1200, height=800, autoflush=False)
         self.id_widget, self.widget_id = {}, {}
 
-        ids = ["main", "list_flights", "create_reservation", "modify_reservation", "flight_status", "checkin"]
+        ids = ["main", "list_flights", "create_reservation", "modify_reservation", "flight_status", "checkin",
+               "list_airports"]
         # self.screens - Hash: screenID : Screen()
         self.id_screen = {x: y for x, y in zip(ids, [Screen(i, self.win) for i in ids])}
         self.screen_id = {y: x for x, y in self.id_screen.items()}
@@ -94,9 +95,14 @@ class GUI:
     def _switchScreen(self, screen):
         if not self.backButton.isActive(): self.backButton.toggleActivation()
         self.activeScreen.deflate()
-        self.screen.append(screen)
-        self.index = len(self.screen)
-        self.activeScreen = self.screen[self.index - 1]
+        if screen.getName() != "list_airports":
+            self.screen.append(screen)
+            self.index = len(self.screen)
+            self.activeScreen = self.screen[self.index - 1]
+        else:
+            self.screen.pop(-1)
+            self.index = len(self.screen)
+            self.activeScreen = screen
         self.attrs = self.activeScreen.inflate()
 
     def setOnButtonClickListener(self):
@@ -237,7 +243,28 @@ class Screen:
                 attrs[len(attrs) - 1][0].adjustShadowColor('white')
                 attrs[len(attrs) - 1][0].undraw()
 
-
+            elif str(key).find("List10") != -1:
+                for i in range(10):
+                    attrs.append(
+                        [Button(600, i * 50 + 275, 1200, 50, 20, 'white', "", color_rgb(27, 73, 101), 25, self.win),
+                         "selection_airport" + str(i)])
+                    attrs[len(attrs) - 1][0].adjustShadowColor('white')
+                    attrs[len(attrs) - 1][0].undraw()
+                    attrs.append([Circle(Point(100, i * 50 + 275), 10), "selection_circle" + str(i)])
+                    attrs[len(attrs) - 1][0].setFill(color_rgb(255, 255, 255))
+                    attrs[len(attrs) - 1][0].setOutline(color_rgb(98, 182, 203))
+                    attrs[len(attrs) - 1][0].setWidth(3)
+            elif str(key).find("Flight10") != -1:
+                for i in range(10):
+                    attrs.append(
+                        [Button(600, i * 50 + 275, 1200, 50, 20, 'white', "", color_rgb(27, 73, 101), 25, self.win),
+                         "selection_flight" + str(i)])
+                    attrs[len(attrs) - 1][0].adjustShadowColor('white')
+                    attrs[len(attrs) - 1][0].undraw()
+                    attrs.append([Circle(Point(100, i * 50 + 275), 10), "selection_circle_flight" + str(i)])
+                    attrs[len(attrs) - 1][0].setFill(color_rgb(255, 255, 255))
+                    attrs[len(attrs) - 1][0].setOutline(color_rgb(98, 182, 203))
+                    attrs[len(attrs) - 1][0].setWidth(3)
 
         return attrs
 

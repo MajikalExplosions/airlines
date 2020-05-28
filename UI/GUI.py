@@ -12,7 +12,6 @@
 # 1.7     Christopher Luey     05/27/20     Display airports and flights
 
 
-
 import json
 
 from UI.lib.Button import *
@@ -78,7 +77,7 @@ class GUI:
     def findWidgetByID(self, id):
         try:
             return self.id_widget[id]
-        except:
+        except KeyError:
             raise Exception("Invalid Widget ID")
 
     def findIDByWidget(self, wid):
@@ -100,7 +99,8 @@ class GUI:
         return self.win
 
     def _switchScreen(self, screen):
-        if not self.backButton.isActive(): self.backButton.toggleActivation()
+        if not self.backButton.isActive():
+            self.backButton.toggleActivation()
         self.activeScreen.deflate()
 
         if screen.getName() != "list_airports":
@@ -109,7 +109,7 @@ class GUI:
             try:
                 if self.screen[-1] == self.screen[len(self.screen) - 2]:
                     self.screen.pop()
-            except:
+            except IndexError:
                 pass
             self.index = len(self.screen) - 1
             self.activeScreen = self.screen[self.index]
@@ -167,7 +167,7 @@ class Screen:
             self.source_file = open(path, "r")
             self.attr = self._parse(self.source_file)
         except:
-            raise ("Could not locate file: " + path)
+            raise Exception("Could not locate file: " + path)
 
     def deflate(self):
         for i in self.attr:
@@ -176,7 +176,7 @@ class Screen:
                     i[0].toggleActivation()
             try:
                 i[0].undraw()
-            except:
+            except GraphicsError:
                 pass
 
     def inflate(self):
@@ -189,7 +189,7 @@ class Screen:
             else:
                 try:
                     i[0].draw(self.win)
-                except:
+                except GraphicsError:
                     pass
         return self.attr
 

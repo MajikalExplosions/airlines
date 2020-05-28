@@ -144,7 +144,7 @@ class ActionManager:
         print("Selected flight.")
         path = self._paths[i]
         for flight in path.toFlights(self.fm):
-            
+            pass
 
         # TODO Create a reservation
         # TODO Switch screen to passenger information
@@ -156,4 +156,4 @@ class ActionManager:
         cn, ln = self.gui.findWidgetByID("modify_reservation: reservation_number").getText(), self.gui.findWidgetByID("modify_reservation: last_name").getText()
         reservation = self.rm.loadReservation(cn, ln)
         if reservation != 0:
-
+            pass

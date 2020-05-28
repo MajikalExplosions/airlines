@@ -1,0 +1,98 @@
+{
+  "Text1": {
+    "id": "Payment_Title",
+    "x": 338,
+    "y": 150,
+    "text": "Payment Details",
+    "size": 60,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold"
+  },
+  "Text2": {
+    "id": "Payment_Description",
+    "x": 375,
+    "y": 200,
+    "text": "Enter valid credit card details to proceed.",
+    "size": 32,
+    "color": {
+      "r": 150,
+      "g": 193,
+      "b": 192
+    },
+    "style": "normal"
+  },
+  "Entry1": {
+    "x": 210,
+    "y": 350,
+    "width": 10,
+    "size": 30,
+    "text": "",
+    "fill": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "outline": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textColor": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold",
+    "id": "credit_card: creditcard"
+  },
+  "Text3": {
+    "id": "CreditCard",
+    "x": 160,
+    "y": 300,
+    "text": "Credit Card #:",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
+  "Text4": {
+    "id": "credit_card: output",
+    "x": 600,
+    "y": 500,
+    "text": "",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
+  "Button1": {
+    "x": 600,
+    "y": 575,
+    "width": 400,
+    "height": 75,
+    "radius": 20,
+    "color": {
+      "r": 95,
+      "g": 168,
+      "b": 211
+    },
+    "text": "Create Reservation",
+    "textColor": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textSize": 32,
+    "id": "credit_card: create"
+  }
+}

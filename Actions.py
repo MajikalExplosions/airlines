@@ -130,6 +130,7 @@ class ActionManager:
                 return
 
             self._startDate = datetime(year=int(startD[2]), month=int(startD[0]), day=int(startD[1]))
+            setStartDate(self._startDate.year, self._startDate.month, self._startDate.date)
             if self._tripType == 1:
                 self._endDate = datetime(year=int(endD[2]), month=int(endD[0]), day=int(endD[1]))
         except ValueError:
@@ -216,7 +217,7 @@ class ActionManager:
             self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
             self._seatSelectionMode = 0
             
-            self.gui.findWidgetByID("select_seating: text").setText("Choose " + self._passengers[0].getFirstName() + " " + self._passengers[0].getLastName() + "'s seat on " + self._selectedPaths[0].toFlights()[0].getFullNumber())
+            self.gui.findWidgetByID("select_seating: text").setText("Choose " + self._passengers[0].getFirstName() + " " + self._passengers[0].getLastName() + "'s seat on " + self._selectedPaths[0].toFlights(self.fm)[0].getFullNumber())
         else:
             self.gui.findWidgetByID("select_passenger: first_name").setText("")
             self.gui.findWidgetByID("select_passenger: last_name").setText("")
@@ -280,6 +281,13 @@ class ActionManager:
                                                                                  month=int(startdate[0]),
                                                                                  day=int(startdate[1])):
                 self._seatSelectionMode = 1
+
+                totalFlightTime = 0
+                setStartTime()
+                for i in range(len(self._currentReservation.getFlights())):
+                    nextFlightTime = self.edges[i].f.timeUntilNextFlight(offsetStartTime(timedelta(hours=self.distToNode[-1])))
+                    flightTime = self.edges[i].f.getTravelTime()
+                    self.distToNode.append(self.distToNode[-1] + nextFlightTime + flightTime)
                 # TODO Recompute flight if dates are different
                 # TODO Allow user to select new flight
                 # setStartDate()

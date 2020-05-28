@@ -16,7 +16,7 @@
     "id": "SelectSeating_Description",
     "x": 375,
     "y": 200,
-    "text": "Choose a valid seat.",
+    "text": "Choose a seat for passenger 1",
     "size": 32,
     "color": {
       "r": 150,

@@ -285,12 +285,14 @@ class ActionManager:
                 self._seatSelectionMode = 1
 
                 totalFlightTime = 0
-                setStartTime()
+                setStartTime(startdate[2], startdate[0], startdate[1])
+
                 for i in range(len(self._currentReservation.getFlights())):
-                    nextFlightTime = self.edges[i].f.timeUntilNextFlight(offsetStartTime(timedelta(hours=self.distToNode[-1])))
-                    flightTime = self.edges[i].f.getTravelTime()
-                    self.distToNode.append(self.distToNode[-1] + nextFlightTime + flightTime)
-                # TODO Recompute flight if dates are different
+                    nextFlightTime = self._currentReservation.getFlights()[i].timeUntilNextFlight(offsetStartTime(timedelta(hours=totalFlightTime)))
+                    flightTime = self._currentReservation.getFlights()[i].getTravelTime()
+                    totalFlightTime += nextFlightTime + flightTime
+                
+                #totalflighttime is in hours since starttime
                 # TODO Allow user to select new flight
                 # setStartDate()
                 # TODO create new reservation set it to _currentReservation, update reservation manager

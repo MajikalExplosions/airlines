@@ -22,7 +22,7 @@ class YenKSP:
     def solve(self):
         self.graph.resetAll()
         if self.k == 0:
-            validPath, _path = DijkstraSP(self.graph, self.origin, rootVal=self.w).getPath(self.dest)
+            validPath, _path = DijkstraSP(self.graph, self.origin, self.dest, rootVal=self.w).getPath()
             self.A = [_path]
             self.k = 1
             return True
@@ -43,10 +43,11 @@ class YenKSP:
             
             self.graph.removeEdges(removedEdges)
             self.graph.reset(rootPath)
-            validPath, spurPath = DijkstraSP(self.graph, spurNode, rootVal=rootPath.getDists()[-1] + self.w).getPath(self.dest)
+            validPath, spurPath = DijkstraSP(self.graph, spurNode, self.dest, rootVal=rootPath.getDists()[-1] + self.w).getPath()
             self.graph.addEdges(removedEdges)
 
             if not validPath:
+                print("No valid paths")
                 continue
             
             totalPath = Path()

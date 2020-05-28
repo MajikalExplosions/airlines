@@ -101,7 +101,7 @@ class ActionManager:
         count, startD = self.gui.findWidgetByID("create_reservation: travelers").getText(), self.gui.findWidgetByID("create_reservation: start_date").getText()
         if self._tripType == 1:
             endD = self.gui.findWidgetByID("create_reservation: return_date").getText()
-        if self._start == 0 or self._end == 0:
+        if self._start == 0 or self._end == 0 or self._start == self._end:
             print("Invalid start or end airports.")
             return
 
@@ -132,7 +132,7 @@ class ActionManager:
             return
 
         for k in range(self.k):
-            print(k)
+            print("Found path", k)
             self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year, self._startDate.month, self._startDate.day)
             if k == 0:
                 if not self._paths:
@@ -216,7 +216,9 @@ class ActionManager:
         self._passengers.append(Passenger(f, l, ""))
         if len(self._passengers) == self._passengerCount:
             print("Complete")
-            self.gui.switchScreen("select_seats")
+            self.gui.switchScreen("select_seating")
+            for p in self._passenger:
+                print(p.toString())
         else:
             self.gui.findWidgetByID("select_passenger: first_name").setText("")
             self.gui.findWidgetByID("select_passenger: last_name").setText("")

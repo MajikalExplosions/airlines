@@ -14,7 +14,7 @@ from flights.paths.Path import Path
 from time import time
 
 class DijkstraSP:
-    def __init__(self, graph, origin, rootVal = 0):
+    def __init__(self, graph, origin, target, rootVal = 0):
         nodes = graph.getNodes()
         pq = [(0, origin)]
         origin.root(rootVal)
@@ -23,10 +23,12 @@ class DijkstraSP:
         
         while len(pq) > 0:
             cur = heapq.heappop(pq)
-            if cur[1].visited():
-                continue
-
+            
             cur[1].visit()
+
+            if cur[1] == target:
+                break
+            
             for edge in cur[1].getEdges():
                 if not graph.exists(edge.v) or edge.removed():
                     continue
@@ -40,11 +42,12 @@ class DijkstraSP:
                     dest.setEdgeIn(edge)
                     heapq.heappush(pq, (cur[1].getDist() + timeSpent, dest))
         
+        self.dest = target
         self.graph = graph
     
-    def getPath(self, dest):
-        if not dest.visited():
+    def getPath(self):
+        if not self.dest.visited():
             return (False, 0)
         p = Path()
-        p.fromDSP(self, dest)
+        p.fromDSP(self, self.dest)
         return True, p

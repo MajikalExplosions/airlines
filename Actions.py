@@ -9,10 +9,15 @@
 from random import randint
 
 
-# Don't delete these.  I get errors when you do.
+# @Chris don't delete these.  I get errors when you do.  Please.
+from UI.GUI import GUI
+from flights.FlightManager import FlightManager
+from flights.FlightSearcher import FlightSearcher
+from reservations.ReservationManager import ReservationManager
 
 class ActionManager:
-    def __init__(self, fs, gui, rm):
+    def __init__(self, fm, fs, gui, rm):
+        self.fm = fm
         self.fs = fs
         self.gui = gui
         self.rm = rm
@@ -22,6 +27,7 @@ class ActionManager:
         self._paths = []
         self._start, self._end = 0, 0
         self._flightInfo = {}
+        self.k = 5
 
     def runFlightStatusLookup(self):
         # TODO fix this up after Considine replies.
@@ -45,6 +51,7 @@ class ActionManager:
                                                                                             ["", str(randint(20,
                                                                                                              120)) + " minutes",
                                                                                              ""][x]))
+                    
                     status.setText(self._flightInfo[dest + num][0])
                     time.setText(self._flightInfo[dest + num][1])
             else:
@@ -81,11 +88,8 @@ class ActionManager:
     def runCreateReservationRoundtrip(self):
         # Draw prompt for return flight date
         if self._tripType != 1:
-            try:
-                self.gui.findWidgetByID("FlightReturnDateText").draw(self.gui.getWin())
-                self.gui.findWidgetByID("create_reservation: return_date").draw(self.gui.getWin())
-            except:
-                pass
+            self.gui.findWidgetByID("FlightReturnDateText").draw(self.gui.getWin())
+            self.gui.findWidgetByID("create_reservation: return_date").draw(self.gui.getWin())
 
         # Move selection dot thing over if necessary
         self.gui.findWidgetByID("create_reservation: moving_circle").move(
@@ -95,16 +99,19 @@ class ActionManager:
         self._tripType = 1
 
     def runCreateReservationSearchFlights(self):
-        # TODO Check date, traveler and airport inputs
+        # TODO Check date, traveler inputs
         if self._start == 0 or self._end == 0:
             print("Invalid start or end airports.")
             return
-        # TODO Check if self._start == the Entry, otherwise user has changed entry without selecting airport
+
         self.gui.switchScreen("list_flights")
-        for k in range(10):
-            self._paths = self.fs.searchForFlights(self._start, self._end, k, 2020, 5, 27)
+        print("Switched screens.")
+        for k in range(self.k):
+            print(k)
+            self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, 2020, 5, 27)
+            print(self._paths[k].toShortString(self.fm))
             try:
-                self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._flights[k].toShortString(self.fm))
+                self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._paths[k].toShortString(self.fm))
             except:
                 self.gui.findWidgetByID("selection_circle_flight" + str(k)).undraw()
                 self.gui.findWidgetByID("selection_flight" + str(k)).toggleActivation()
@@ -121,8 +128,8 @@ class ActionManager:
             if self._airportLists[mode]:
                 self.gui.switchScreen("list_airports")
 
-                # Try to draw the queries, if the returned list is less than 10 long it will undraw the rest.
-                for i in range(10):
+                # Try to draw the queries, if the returned list is less than self.k long it will undraw the rest.
+                for i in range(self.k):
                     try:
                         self.gui.findWidgetByID("selection_airport" + str(i)).setText(
                             self._airportLists[mode][i].toString())

@@ -236,7 +236,7 @@ class ActionManager:
         row, seat = int(i[:-1]), int(i[-1])
         if self._seatSelectionMode == 0:
 
-            self.runCreateReservationSelectSeat(row, seat, self._passengers[self._passengerSeatingIndex])
+            self.runCreateReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
             self._passengerSeatingIndex += 1
             if self._passengerSeatingIndex >= self._passengerCount:
                 self._passengerSeatingIndex -= self._passengerCount
@@ -266,7 +266,6 @@ class ActionManager:
             self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
                 reservation.getFlights()[0].getDepDate())
             self._currentReservation = reservation
-            pass
 
     def runModifyReservationChangeDate(self):
         # This is run after they enter a new date and submit it
@@ -308,5 +307,3 @@ class ActionManager:
     def runModifyReservationSelectSeats(self, row, seat, passenger):
         #This is run after a seat is selected for modify reservation.
         self._currentReservation.modifySeat(row,seat,passenger.getFirstName(),passenger.getLastName(),self._flightSeatingIndex)
-
-        

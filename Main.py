@@ -70,6 +70,9 @@ def main():
         
         if clicked == "select_passenger: next":
             am.runSelectPassengerNext()
+        
+        if clicked == "credit_card: create":
+            am.runCreditCardCreateReservation()
 
         if clicked.find("selection_airport") != -1:
             am.runCreateReservationSelectAirport(int(clicked[-1]))

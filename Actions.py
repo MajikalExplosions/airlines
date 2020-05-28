@@ -241,16 +241,14 @@ class ActionManager:
             if self._passengerSeatingIndex >= self._passengerCount:
                 self._passengerSeatingIndex -= self._passengerCount
                 self._flightSeatingIndex += 1
-                if self._flightSeatingIndex == 1 and self._tripType == 0:
-                    #Finish selecting seats for single trip
-                    pass
-                if self._flightSeatingIndex == 2:
-                    #Finish selecting seats for round trip
-                    pass
+                if (self._flightSeatingIndex == 1 and self._tripType == 0) or self._flightSeatingIndex == 2:
+                    #Finish selecting seats so move on to credit card
+                    self.gui.switchScreen("credit_card")
         elif self._seatSelectionMode == 1:
             self.runModifyReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
             self._passengerSeatingIndex += 1
             if self._passengeSeatingIndex == len(self._passengers):
+                self.gui.switchScreen("main")
                 #Finish reselecting seats.
                 pass
     
@@ -302,7 +300,9 @@ class ActionManager:
         except ValueError:
             print("Input is invalid")
 
-        pass
+    def runCreditCardCreateReservation(self):
+        print("Created reservation")
+        self.gui.switchScreen("main")
 
     def runModifyReservationSelectSeats(self, row, seat, passenger):
         #This is run after a seat is selected for modify reservation.

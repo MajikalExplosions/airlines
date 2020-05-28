@@ -1,0 +1,29 @@
+{
+  "Text1": {
+    "id": "SelectPassenger_Title",
+    "x": 338,
+    "y": 150,
+    "text": "Fill in Passenger Details",
+    "size": 60,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold"
+  },
+  "Text2": {
+    "id": "SelectPassenger_Description",
+    "x": 375,
+    "y": 200,
+    "text": "Enter valid passenger details to create a reservation.",
+    "size": 32,
+    "color": {
+      "r": 150,
+      "g": 193,
+      "b": 192
+    },
+    "style": "normal"
+  },
+  "Seating": {}
+}

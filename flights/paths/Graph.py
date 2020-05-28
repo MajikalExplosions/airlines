@@ -50,6 +50,8 @@ class Graph:
         for node in self.nodes:
             if node not in path.getNodes():
                 node.reset(self.MAX)
+            else:
+                node.q = self.MAX
             
 
 class Node:
@@ -58,6 +60,7 @@ class Node:
         #Dijkstra stuff
         self.reset(m)
         self.v = False
+        self.q = m
         self.edges = []
     
     def addEdge(self, e):
@@ -75,6 +78,18 @@ class Node:
     def visited(self):
         return self.v
     
+    def getQ(self):
+        return self.q
+
+    def setQ(self, q):
+        self.q = q
+    
+    def inQ(self):
+        return self.q < 1000000
+    
+    def rmQ(self):
+        self.q = 1000000
+    
     def visit(self):
         self.v = True
     
@@ -82,6 +97,7 @@ class Node:
         self._dist = mx
         self.edgeIn = 0
         self.v = False
+        self.q = mx
     
     def setEdgeIn(self, p):
         self.edgeIn = p

@@ -132,7 +132,7 @@ class ActionManager:
             return
 
         for k in range(self.k):
-            print("Found path", k)
+            print("Finding path", k)
             self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year, self._startDate.month, self._startDate.day)
             if k == 0:
                 if not self._paths:

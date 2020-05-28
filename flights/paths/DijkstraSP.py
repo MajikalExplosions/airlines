@@ -33,7 +33,7 @@ class DijkstraSP:
                 dest = nodes[edge.v]
                 #1 is added because layovers take T I M E
                 timeSpent = edge.f.getTravelTime() + edge.f.timeUntilNextFlight(offsetStartTime(timedelta(hours=cur[1].getDist() + 1)))
-
+                
                 #If new path shorter, update.
                 if cur[1].getDist() + timeSpent < dest.getDist():
                     dest.setDist(cur[1].getDist() + timeSpent)

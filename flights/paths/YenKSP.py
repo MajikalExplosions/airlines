@@ -9,7 +9,7 @@ from flights.paths.Path import Path
 
 class YenKSP:
 
-    def __init__(self, graph, origin, dest):
+    def __init__(self, graph, origin, dest, ow=0):
         self.graph = graph
         self.origin = origin
         self.dest = dest
@@ -17,11 +17,12 @@ class YenKSP:
         self.A = []
         self.B = []
         self.hasNext = True
+        self.w = ow
 
     def solve(self):
         self.graph.resetAll()
         if self.k == 0:
-            validPath, _path = DijkstraSP(self.graph, self.origin).getPath(self.dest)
+            validPath, _path = DijkstraSP(self.graph, self.origin, rootVal=self.w).getPath(self.dest)
             self.A = [_path]
             self.k = 1
             return True
@@ -42,7 +43,7 @@ class YenKSP:
             
             self.graph.removeEdges(removedEdges)
             self.graph.reset(rootPath)
-            validPath, spurPath = DijkstraSP(self.graph, spurNode, rootVal=rootPath.getDists()[-1]).getPath(self.dest)
+            validPath, spurPath = DijkstraSP(self.graph, spurNode, rootVal=rootPath.getDists()[-1] + self.w).getPath(self.dest)
             self.graph.addEdges(removedEdges)
 
             if not validPath:

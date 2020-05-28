@@ -40,6 +40,7 @@ def main():
             
             if clicked == 'back':
                 gui.resetScreen(gui.getScreenID(gui.getScreen()))
+                am.runCreateReservationRoundtrip()
             
             gui.switchScreen(clicked)
         
@@ -66,6 +67,9 @@ def main():
         
         if clicked == "checkin: find_reservation":
             am.runCheckinFindReservation()
+        
+        if clicked == "select_passenger: next":
+            am.runSelectPassengerNext()
 
         if clicked.find("selection_airport") != -1:
             am.runCreateReservationSelectAirport(int(clicked[-1]))

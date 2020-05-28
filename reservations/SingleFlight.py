@@ -22,15 +22,52 @@ class SingleFlight:
         #makes a list of all seat combinations of rows from 1-38 and letters from A-F
         self.seats = []
 
-        for row in range(1, 39):
-            for letter in range(65, 71):
-                self.seats.append(str(row) + chr(letter))
+        for row in range(38):
+            rowList = []
+            for col in range(6):
+                rowList.append(True)
+
+            self.seats.append(rowList)
+
+    def serialize(self):
+        readFile = open("reservations/data_reservation/single_flights.txt", "r")
+        flightStartInd = self.__fileContainsFlight(readFile.readlines())
+        readFile.close()
+
+        #means that this reservation has not already been serialized
+        if flightStartInd == -1:
+            reservationFile = open("reservations/data_reservation/single_flights.txt", "a")
+            print(self.toString(), file=reservationFile)
+
+        #it has been serialized and we have to override it
+        else:
+            pass
+
+    #searches the list of file lines to see if it contains this flight
+    #if it does, returns the line where the glith starts
+    #if it doesn't, returns -1
+    def __fileContainsFlight(self, fileLines):
+        lineNum = 0
+
+        while lineNum < len(fileLines):
+            curLine = fileLines[lineNum]
+
+            if curLine.find("Flight ID: ") != -1:
+                flightID = curLine.lstrip("Flight ID: ")
+
+                if flightID == self.flightId:
+                    depLine, arrLine = fileLines[lineNum - 2].lstrip("Departure Date: "), fileLines[lineNum - 1].lstrip("Arrival Date: ")
+                    if depLine == self.depDate and arrLine == self.arrDate:
+                        return lineNum - 3
+            else:
+                lineNum += 1
+        return -1
 
     def getFlightID(self):
         return self.flightId
 
-    def bookSeat(self, seat):
-        self.seats.remove(seat)
+    def bookSeat(self, row, col):
+        self.seats[row][col]
 
     def getAvailableSeats(self):
         return self.seats

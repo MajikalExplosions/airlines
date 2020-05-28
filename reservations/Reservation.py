@@ -36,8 +36,8 @@ class Reservation:
         flight = SingleFlight(flight, depDate, arrDate)
         self.flights.append(flight)
 
-    def addPassenger(self, firstName, lastName, birthDate):
-        self.passengers.append(Passenger(firstName, lastName, birthDate))
+    def addPassenger(self, firstName, lastName):
+        self.passengers.append(Passenger(firstName, lastName))
 
     def addSeat(self, seat, passengerFirstName, passengerLastName, flightID):
         for passenger in self.passengers:
@@ -48,15 +48,29 @@ class Reservation:
                     if flight.getFlightID() == flightID:
                         flight.bookSeat(seat)
 
+    def modifySeat(self, seat, passengerFirstName, passengerLastName, flightID):
+        pass
+
     def getPassengers(self):
         return self.passengers
+
+    def getAvailableSeatsByID(self, flightID):
+        for flight in self.flights:
+            if flight.getFlightID() == flightID:
+                return flight.getAvailableSeats()
 
     def getFlights(self):
         return self.flights
 
+    def getConfirmationNumber(self):
+        if self.confirmationNumber != "":
+            self.__issueConfirmationNumer()
+
+        return self.confirmationNumber
+
     def serialize(self):
         if self.confirmationNumber == "":
-            self.confirmationNumber = self.issueConfirmationNumer()
+            self.__issueConfirmationNumer()
 
         readFile = open("reservations/data_reservation/reservations.txt", "r")
         reservationStartInd = self.__fileContainsConfirmationNumber(self.confirmationNumber, readFile.readlines())
@@ -70,40 +84,6 @@ class Reservation:
         #it has been serialized and we have to override it
         else:
             pass
-
-    def __toString(self):
-        string = "Reservation {\n"
-        string += "Confirmation Number: " + self.confirmationNumber + "\n"
-
-        for flight in self.flights:
-            string += flight.toString()
-
-        for passenger in self.passengers:
-            string += passenger.toString()
-
-        string += "}\n"
-
-        return string
-
-    #searches the list of file lines to see if it contains a reservation with the given confirmation number
-    #if it does, returns the line where the reservation starts
-    #if it doesn't, returns -1
-    def __fileContainsConfirmationNumber(self, confirmationNumber, fileLines):
-        lineNum = 0
-
-        while lineNum < len(fileLines):
-            curLine = fileLines[lineNum]
-
-            if curLine.find("Confirmation Number: ") != -1:
-                #the string "Confirmation Number: " has length 21 so everything after that is the actual number
-                confirmationNum = curLine.lstrip("Confirmation Number: ")
-
-                if confirmationNum == confirmationNumber:
-                    #the start of a reservation will be 1 line above where it's confirmation number is
-                    return lineNum - 1
-            else:
-                lineNum += 1
-        return -1
 
     def validateCreditCard(self, creditCardNum):
         if not (16 <= len(creditCardNum) <= 19):
@@ -141,6 +121,26 @@ class Reservation:
         #if the last digit of the sum is the same as the last digit of the original, it's valid
         return (digitSum % 10) == checkDigit
 
+    #searches the list of file lines to see if it contains a reservation with the given confirmation number
+    #if it does, returns the line where the reservation starts
+    #if it doesn't, returns -1
+    def __fileContainsConfirmationNumber(self, confirmationNumber, fileLines):
+        lineNum = 0
+
+        while lineNum < len(fileLines):
+            curLine = fileLines[lineNum]
+
+            if curLine.find("Confirmation Number: ") != -1:
+                #the string "Confirmation Number: " has length 21 so everything after that is the actual number
+                confirmationNum = curLine.lstrip("Confirmation Number: ")
+
+                if confirmationNum == confirmationNumber:
+                    #the start of a reservation will be 1 line above where it's confirmation number is
+                    return lineNum - 1
+            else:
+                lineNum += 1
+        return -1
+
     #takes a number and splits it into a list of each of it's digits, the returned list will be the number reversed
     def __splitNumToList(self, number):
         list = []
@@ -151,10 +151,7 @@ class Reservation:
 
         return list
 
-    def issueConfirmationNumer(self):
-        if self.confirmationNumber != "":
-            return self.confirmationNumber
-
+    def __issueConfirmationNumer(self):
         readFile = open("reservations/data_reservation/confirmation_numbers.txt", "r")
 
         #continuously generates a new number until we get one that has not already been issued
@@ -169,8 +166,6 @@ class Reservation:
         confirmationFile = open("reservations/data_reservation/confirmation_numbers.txt", "a")
         print(confirmationNumber, file=confirmationFile)
         confirmationFile.close()
-
-        return confirmationNumber
 
     def __fileContainsString(self, file, string):
         file.seek(0)
@@ -194,5 +189,17 @@ class Reservation:
 
         return confirmation
 
-    def getConfirmationNumber(self):
-        return self.confirmationNumber
+    def __toString(self):
+        string = "Reservation {\n"
+        string += "Confirmation Number: " + self.confirmationNumber + "\n"
+
+        for flight in self.flights:
+            string += flight.toString()
+
+        for passenger in self.passengers:
+            string += passenger.toString()
+
+        string += "}\n"
+
+        return string
+

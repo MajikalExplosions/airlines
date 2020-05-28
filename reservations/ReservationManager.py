@@ -9,6 +9,14 @@ from reservations.Reservation import *
 class ReservationManager:
     def __init__(self):
         self.reservations = []
+        self.singleFlights = []
+
+    def serializeAll(self):
+        for reservation in self.reservations:
+            reservation.serialize()
+
+        for flight in self.singleFlights:
+            flight.serialize()
 
     def loadReservation(self, confirmationNumber, lastName):
         readFile = open("reservations/data_reservation/reservations.txt", "r")

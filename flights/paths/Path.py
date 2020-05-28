@@ -65,6 +65,16 @@ class Path:
     def getDists(self):
         return self.distToNode
 
+    def toShortString(self, fm):
+        if len(self.toAirports()) == 0:
+            return "Empty path."
+        s = str(round(self.timeToNode(-1), 2)) + "hrs: "
+        for a in self.toAirports(fm):
+            s += a.getCode() + " - "
+        
+        return s[:-3]
+
+
     def toString(self, fm):
         s = ""
         for i in range(len(self.edges)):

@@ -1,0 +1,143 @@
+# Name: Actions.py
+# Description: Runner program.
+
+# Ver.	    Writer			        Date			Notes
+# 1.0       Joseph Liu              05/27/20		Move actions and utils out of main and into a separate file
+
+
+
+from UI.GUI import GUI
+from flights.FlightSearcher import FlightSearcher
+from flights.FlightManager import FlightManager
+from reservations.ReservationManager import ReservationManager
+from random import randint
+
+class ActionManager:
+    def __init__(self, fs, gui, rm):
+        self.fs = fs
+        self.gui = gui
+        self.rm = rm
+        self._tripType = 1
+        self._selectMode = 0
+        self._startList, self._endList = [], []
+        self._start, self._end = 0, 0
+        self._flightInfo = {}
+    
+    def runFlightStatusLookup(self):
+        #TODO fix this up after Considine replies.
+        dest = self.gui.findWidgetByID("flight_status: flight_destination").getText()
+        num = self.gui.findWidgetByID("flight_status: flight_number").getText()
+        status = self.gui.findWidgetByID("flight_status: status")
+        time = self.gui.findWidgetByID("flight_status: time")
+        
+        try:
+            if len(dest) == 0 or len(num) == 0:
+                time.setText("Your input is empty.")
+            elif type(int(num[2:])) == int and len(dest) == 3 and self.fs.isValidAirport(dest):
+                flight = self.fs.searchForFlight(dest, num)
+                if type(flight) == str:
+                    time.setText(flight)
+                else:
+                    if not (dest + num) in self._flightInfo.keys():
+                        x = randint(0, 2)
+                        self._flightInfo[dest + num] = ("Status: {}".format(["On Time", "Delayed", "Cancelled"][x]),
+                                            "Flight Number {} to {}\n{}".format(num, dest,
+                                                                                ["", str(randint(20, 120)) + " minutes",
+                                                                                ""][x]))
+                    status.setText(self._flightInfo[dest + num][0])
+                    time.setText(self._flightInfo[dest + num][1])
+            else:
+                status.setText("Error")
+                time.setText("Destination '{}' is not Valid".format(num, dest))
+
+        except ValueError:
+            status.setText("Error")
+            if not self.fs.isValidAirport(dest):
+                time.setText("Flight Number '{}'\nand Destination '{}' is Not Valid".format(num, dest))
+            else:
+                time.setText("Flight Number '{}' is Not Valid".format(num))
+
+        except IndexError:
+            status.setText("Error")
+            if not self.fs.isValidAirport(dest):
+                time.setText("Flight Number '{}'\nand Destination '{}' is Not Valid".format(num, dest))
+            else:
+                time.setText("Flight Number '{}' is Not Valid".format(num))
+
+    def runCreateReservationOneway(self):
+        #Undraw prompt for return flight date
+        if self._tripType != 0:
+            self.gui.findWidgetByID("FlightReturnDateText").undraw()
+            self.gui.findWidgetByID("create_reservation: return_date").undraw()
+        
+        #Move selection dot thing over
+        self.gui.findWidgetByID("create_reservation: moving_circle").move(
+                    370 - self.gui.findWidgetByID("create_reservation: moving_circle").getCenter().getX(),
+                    475 - self.gui.findWidgetByID("create_reservation: moving_circle").getCenter().getY())
+        
+        self._tripType = 0
+
+    def runCreateReservationRoundtrip(self):
+        #Draw prompt for return flight date
+        if self._tripType != 1:
+            self.gui.findWidgetByID("FlightReturnDateText").draw(self.gui.getWin())
+            self.gui.findWidgetByID("create_reservation: return_date").draw(self.gui.getWin())
+        
+        #Move selection dot thing over if necessary
+        self.gui.findWidgetByID("create_reservation: moving_circle").move(
+                135 - self.gui.findWidgetByID("create_reservation: moving_circle").getCenter().getX(),
+                475 - self.gui.findWidgetByID("create_reservation: moving_circle").getCenter().getY())
+        
+        self._tripType = 1
+
+    def runCreateReservationSearchFlights(self):
+        # TODO Check date, traveler and airport inputs
+        if self._start == 0 or self._end == 0:
+            print("Invalid start or end airports.")
+            return
+        self.gui.switchScreen("list_flights")
+        for k in range(10):
+            flights = self.fs.searchForFlights(self._start, self._end, k, 2020, 5, 27)
+            try:
+                self.gui.findWidgetByID("selection_flight" + str(k)).setText(flights[k].toString(self.fm))
+            except:
+                self.gui.findWidgetByID("selection_circle_flight" + str(k)).undraw()
+                self.gui.findWidgetByID("selection_flight" + str(k)).toggleActivation()
+                self.gui.findWidgetByID("selection_flight" + str(k)).undraw()
+
+    def runCreateReservationSearchAirports(self, mode):
+        #Get the query
+        self._selectMode = mode
+        modes = ["start", "destination"]
+        query = self.gui.findWidgetByID("create_reservation: " + modes[mode]).getText()
+        print(query)
+        #Search for query
+        if query:
+            self._startList = self.fs.searchForAirports(query)
+
+            #Try to draw the queries, if the returned list is less than 10 long it will undraw the rest.
+            for i in range(10):
+                try:
+                    self.gui.findWidgetByID("selection_airport" + str(i)).setText(query[i].toString())
+                    self.gui.findWidgetByID("selection_airport" + str(i)).draw(self.gui.getWin())
+                except:
+                    self.gui.findWidgetByID("selection_circle" + str(i)).undraw()
+                    self.gui.findWidgetByID("selection_airport" + str(i)).toggleActivation()
+                    self.gui.findWidgetByID("selection_airport" + str(i)).undraw()
+
+    def runCreateReservationSelectAirport(self, i):
+        #Update text
+        if self._selectMode == 1:
+            self.gui.findWidgetByID("create_reservation: destination").setText(self._endList[i].getCode())
+            self._end = self._endList[i]
+        else:
+            self.gui.findWidgetByID("create_reservation: start").setText(self._startList[i].getCode())
+            self._start = self._startList[i]
+        
+        #Switch screen back
+        self.gui.switchScreen("create_reservation")
+
+    def runCreateReservationSelectFlight(self):
+        pass
+        # TODO Create a reservation
+        # TODO Switch screen to passenger information

@@ -11,32 +11,30 @@ import time
 import pytz
 
 
-t_starttime = datetime.now().replace(second=0, microsecond=0) - timedelta(hours=timezone("America/Los_Angeles").utcoffset(datetime.now()).total_seconds() / 3600)
+t_starttime = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(hours=timezone("America/Los_Angeles").utcoffset(datetime.now()).total_seconds() / 3600)
 t_tzs = pytz.all_timezones
 r_tzs = dict()
 o_tzs = dict()
 for i in t_tzs:
     i = str(i)
     r_tzs[i] = timezone(i)
-    o_tzs[i] = r_tzs[i].utcoffset(t_starttime).total_seconds() / 3600
+
+def setStartDate(y, m, d):
+    t_starttime = datetime(year=y, month=m, day=d) - timedelta(hours=timezone("America/Los_Angeles").utcoffset(datetime(year=y, month=m, day=d)).total_seconds() / 3600)
 
 def timeSinceStart(t):
     return (t - t_starttime).total_seconds() / 3600
-
+    
 def offsetStartTime(time):
     return t_starttime + time
 
-def toUTCOffset(tzName):
-    return o_tzs[tzName]
+def toUTCOffset(tzName, time):
+    return r_tzs[tzName].utcoffset(time).total_seconds() / 3600
 
 def toUTC(tzName, time):
-    offset = toUTCOffset(tzName)
+    offset = toUTCOffset(tzName, time)
     return (time + timedelta(hours=offset * -1))
 
 def flightToDatetime(s):
     s = s.split(":")
     return t_starttime.replace(hour=int(s[0]), minute=int(s[1]), second=0, microsecond=0)
-
-#Example code below.  Prints current time in UTC.
-#t = TZManager()
-#print(t.toUTC("US/Pacific", datetime.now()))

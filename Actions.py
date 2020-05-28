@@ -265,9 +265,9 @@ class ActionManager:
             if self._currentReservation.getFlights()[0].getDepDate() != datetime(year=int(startdate[2]),
                                                                                  month=int(startdate[0]),
                                                                                  day=int(startdate[1])):
-                # TODO Choose seats
                 self._seatSelectionMode = 1
                 # TODO Recompute flight if dates are different
+                # TODO Allow user to select new flight
                 # setStartDate()
                 # TODO create new reservation set it to _currentReservation, update reservation manager
 

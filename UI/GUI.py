@@ -285,6 +285,19 @@ class Screen:
                     attrs[len(attrs) - 1][0].setOutline(color_rgb(98, 182, 203))
                     attrs[len(attrs) - 1][0].setWidth(3)
 
+            elif str(key).find("Seating") != -1:
+                for i in range(38):
+                    for j in range(3):
+                        attrs.append(
+                            [Button(150 + 900 * i / 38, 250 + 450 * j / 6, 30, 30, 20, 'green', "",
+                                    color_rgb(27, 73, 101), 25, self.win),
+                             "selection_seat" + str(i) + str(j)])
+                    for j in range(3, 6):
+                        attrs.append(
+                            [Button(150 + 900 * i / 38, 300 + 450 * j / 6, 30, 30, 20, 'green', "",
+                                    color_rgb(27, 73, 101), 25, self.win),
+                             "selection_seat" + str(i) + str(j)])
+
         return attrs
 
 

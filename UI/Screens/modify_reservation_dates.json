@@ -1,6 +1,6 @@
 {
   "Text1": {
-    "id": "Checkin_Title",
+    "id": "ModifyReservation_Title",
     "x": 338,
     "y": 150,
     "text": "Modify a Reservation",
@@ -13,10 +13,10 @@
     "style": "bold"
   },
   "Text2": {
-    "id": "Checkin_Description",
+    "id": "ModifyReservation_Description",
     "x": 375,
     "y": 200,
-    "text": "Enter valid reservation details to modify.",
+    "text": "Enter new dates of travel. Press continue if no changes.",
     "size": 32,
     "color": {
       "r": 150,
@@ -47,7 +47,7 @@
       "b": 101
     },
     "style": "bold",
-    "id": "checkin: reservation_number"
+    "id": "modify_reservation_dates: start_date"
   },
   "Entry2": {
     "x": 460,
@@ -71,13 +71,13 @@
       "b": 101
     },
     "style": "bold",
-    "id": "checkin: last_name"
+    "id": "modify_reservation_dates: return_date"
   },
   "Text3": {
-    "id": "CheckinText",
+    "id": "ModifyReservationText",
     "x": 160,
     "y": 300,
-    "text": "Reservation Number:",
+    "text": "Start Date:",
     "size": 32,
     "color": {
       "r": 27,
@@ -87,10 +87,10 @@
     "style": "normal"
   },
   "Text4": {
-    "id": "CheckinLastText",
+    "id": "ModifyLastText",
     "x": 448,
     "y": 300,
-    "text": "Last Name:",
+    "text": "Return Date:",
     "size": 32,
     "color": {
       "r": 27,
@@ -110,13 +110,13 @@
       "g": 168,
       "b": 211
     },
-    "text": "Check-In",
+    "text": "Confirm Dates",
     "textColor": {
       "r": 255,
       "g": 255,
       "b": 255
     },
     "textSize": 32,
-    "id": "checkin: find_reservation"
+    "id": "modify_reservation_dates: confirm"
   }
 }

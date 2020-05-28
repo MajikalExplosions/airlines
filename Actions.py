@@ -130,7 +130,7 @@ class ActionManager:
                 return
 
             self._startDate = datetime(year=int(startD[2]), month=int(startD[0]), day=int(startD[1]))
-            setStartDate(self._startDate.year, self._startDate.month, self._startDate.date)
+            setStartDate(self._startDate.year, self._startDate.month, self._startDate.day)
             if self._tripType == 1:
                 self._endDate = datetime(year=int(endD[2]), month=int(endD[0]), day=int(endD[1]))
         except ValueError:

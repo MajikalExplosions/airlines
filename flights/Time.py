@@ -11,7 +11,7 @@ import time
 import pytz
 
 
-t_starttime = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(hours=timezone("America/Los_Angeles").utcoffset(datetime.now()).total_seconds() / 3600)
+t_starttime = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(hours=timezone("America/Los_Angeles").utcoffset(datetime.now()).total_seconds() // 3600)
 t_tzs = pytz.all_timezones
 r_tzs = dict()
 o_tzs = dict()
@@ -20,7 +20,7 @@ for i in t_tzs:
     r_tzs[i] = timezone(i)
 
 def setStartDate(y, m, d):
-    t_starttime = datetime(year=y, month=m, day=d) - timedelta(hours=timezone("America/Los_Angeles").utcoffset(datetime(year=y, month=m, day=d)).total_seconds() / 3600)
+    t_starttime = datetime(year=y, month=m, day=d) - timedelta(hours=timezone("America/Los_Angeles").utcoffset(datetime(year=y, month=m, day=d)).total_seconds() // 3600)
 
 def timeSinceStart(t):
     return (t - t_starttime).total_seconds() / 3600

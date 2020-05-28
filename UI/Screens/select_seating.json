@@ -38,25 +38,5 @@
       "b": 192
     },
     "style": "normal"
-  },
-  "Button1": {
-    "x": 600,
-    "y": 575,
-    "width": 400,
-    "height": 75,
-    "radius": 20,
-    "color": {
-      "r": 95,
-      "g": 168,
-      "b": 211
-    },
-    "text": "Confirm Seat",
-    "textColor": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
-    "textSize": 32,
-    "id": "select_seat: confirm"
   }
 }

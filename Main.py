@@ -33,6 +33,10 @@ def main():
 
         print("ID:", clicked, "- Action Performed")
         if clicked in gui.getScreenIDs() or clicked == 'back':
+            #Reset dot to original location
+            if clicked == "create_reservation":
+                am.runCreateReservationRoundtrip()
+            
             if clicked == 'back':
                 gui.resetScreen(gui.getScreenID(gui.getScreen()))
             

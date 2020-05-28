@@ -8,9 +8,10 @@
 
 from random import randint
 
+from flights.Time import *
 from reservations.BoardingPass import BoardingPass
 from reservations.Passenger import Passenger
-from flights.Time import *
+
 
 class ActionManager:
     def __init__(self, fm, fs, gui, rm):
@@ -98,7 +99,8 @@ class ActionManager:
         self._tripType = 1
 
     def runCreateReservationSearchFlights(self):
-        count, startD = self.gui.findWidgetByID("create_reservation: travelers").getText(), self.gui.findWidgetByID("create_reservation: start_date").getText()
+        count, startD = self.gui.findWidgetByID("create_reservation: travelers").getText(), self.gui.findWidgetByID(
+            "create_reservation: start_date").getText()
         if self._tripType == 1:
             endD = self.gui.findWidgetByID("create_reservation: return_date").getText()
         if self._start == 0 or self._end == 0 or self._start == self._end:
@@ -112,18 +114,18 @@ class ActionManager:
                 return
             self._passengerCount = count
             self._passengers = []
-            
+
             startD = startD.split("/")
             if self._tripType == 1:
                 endD = endD.split("/")
             if len(startD) != 3:
                 print("Start date is invalid")
                 return
-            
+
             if self._tripType == 1 and len(endD) != 3:
                 print("End date is invalid.")
                 return
-            
+
             self._startDate = datetime(year=int(startD[2]), month=int(startD[0]), day=int(startD[1]))
             if self._tripType == 1:
                 self._endDate = datetime(year=int(endD[2]), month=int(endD[0]), day=int(endD[1]))
@@ -133,12 +135,15 @@ class ActionManager:
 
         for k in range(self.k):
             print("Found path", k)
-            self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year, self._startDate.month, self._startDate.day)
+            self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year,
+                                                   self._startDate.month, self._startDate.day)
             if k == 0:
                 if not self._paths:
                     break
                 else:
                     self.gui.switchScreen("list_flights")
+                    time.sleep(1000)
+
             try:
                 self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._paths[k].toShortString(self.fm))
             except:
@@ -194,25 +199,28 @@ class ActionManager:
             "modify_reservation: last_name").getText()
         reservation = self.rm.loadReservation(cn, ln)
         if reservation != 0:
-            #TODO modify existing reservation
+            # TODO modify existing reservation
             pass
-    
+
     def runCheckinFindReservation(self):
-        cn, ln = self.gui.findWidgetByID("checkin: reservation_number").getText(), self.gui.findWidgetByID("checkin: last_name").getText()
+        cn, ln = self.gui.findWidgetByID("checkin: reservation_number").getText(), self.gui.findWidgetByID(
+            "checkin: last_name").getText()
         try:
             reservation = self.rm.loadReservation(cn, ln)
             boardingPass = BoardingPass(reservation)
             display = "Boarding pass exported to " + boardingPass.export()
         except:
             display = "Reservation not found. Please try again."
-        
-        #TODO update display with message somewhere
-    
+
+        # TODO update display with message somewhere
+
     def runSelectPassengerNext(self):
-        f, l = self.gui.findWidgetByID("select_passenger: first_name").getText(), self.gui.findWidgetByID("select_passenger: last_name").getText()
+        # TODO Error check input
+        f, l = self.gui.findWidgetByID("select_passenger: first_name").getText(), self.gui.findWidgetByID(
+            "select_passenger: last_name").getText()
         if len(f) == 0 or len(l) == 0:
             return
-        
+
         self._passengers.append(Passenger(f, l, ""))
         if len(self._passengers) == self._passengerCount:
             print("Complete")
@@ -222,3 +230,4 @@ class ActionManager:
         else:
             self.gui.findWidgetByID("select_passenger: first_name").setText("")
             self.gui.findWidgetByID("select_passenger: last_name").setText("")
+            # TODO add back button compatitibility

@@ -10,10 +10,6 @@ from random import randint
 
 
 # @Chris don't delete these.  I get errors when you do.  Please.
-from UI.GUI import GUI
-from flights.FlightManager import FlightManager
-from flights.FlightSearcher import FlightSearcher
-from reservations.ReservationManager import ReservationManager
 
 class ActionManager:
     def __init__(self, fm, fs, gui, rm):
@@ -51,7 +47,7 @@ class ActionManager:
                                                                                             ["", str(randint(20,
                                                                                                              120)) + " minutes",
                                                                                              ""][x]))
-                    
+
                     status.setText(self._flightInfo[dest + num][0])
                     time.setText(self._flightInfo[dest + num][1])
             else:
@@ -104,12 +100,14 @@ class ActionManager:
             print("Invalid start or end airports.")
             return
 
-        self.gui.switchScreen("list_flights")
-        print("Switched screens.")
         for k in range(self.k):
             print(k)
             self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, 2020, 5, 27)
-            print(self._paths[k].toShortString(self.fm))
+            if k == 1:
+                if not self._paths:
+                    break
+                else:
+                    self.gui.switchScreen("list_flights")
             try:
                 self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._paths[k].toShortString(self.fm))
             except:

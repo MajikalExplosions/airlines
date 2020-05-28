@@ -19,7 +19,7 @@ class SingleFlight:
         self.departureTime = flight.getDepTime()
         self.arrivalTime = flight.getArrTime()
 
-        #makes a list of all seat combinations of rows from 1-38 and letters from A-F
+        # makes a list of all seat combinations of rows from 1-38 and letters from A-F
         self.seats = []
 
         for row in range(38):
@@ -29,12 +29,24 @@ class SingleFlight:
 
             self.seats.append(rowList)
 
+    def setArrDate(self, date):
+        self.arrDate = date
+
+    def setDepDate(self, date):
+        self.depDate = date
+
+    def getArrDate(self):
+        return self.arrDate
+
+    def getDepDate(self):
+        return self.depDate
+
     def serialize(self):
         readFile = open("reservations/data_reservation/single_flights.txt", "r")
         flightStartInd = self.__fileContainsFlight(readFile.readlines())
         readFile.close()
 
-        #means that this reservation has not already been serialized
+        # means that this reservation has not already been serialized
         if flightStartInd == -1:
             reservationFile = open("reservations/data_reservation/single_flights.txt", "a")
             print(self.toString(), file=reservationFile)

@@ -245,11 +245,47 @@ class ActionManager:
         reservation = self.rm.loadReservation(cn, ln)
         if reservation != 0:
             # TODO modify existing reservation
+            if self._tripType == 0:
+                self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
+                    reservation.getFlights()[0].getDepDate())
+            else:
+                self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
+                    reservation.getFlights()[0].getDepDate())
+                self.gui.findWidgetByID("modify_reservation_dates: return_date").setText(
+                    reservation.getFlights()[1].getArrDate())
             pass
-    
-    
-    def runModifyReservationChangeDate(self):
-        #This is run after they enter a new date and submit it
+
+    def runModifyReservationChangeDate(self, reservation):
+        # This is run after they enter a new date and submit it
+        # self._seatSelectionMode = 1
+        if self._tripType == 0:
+            try:
+                self.gui.findWidgetByID("modify_reservation_dates: return_date").undraw()
+                self.gui.findWidgetByID("ModifyDateLastText").undraw()
+            except:
+                pass
+        startdate = self.gui.findWidgetByID("modify_reservation_dates: start_date").getText()
+        try:
+            startdate = startdate.split("/")
+            if self._tripType == 1:
+                returndate = self.gui.findWidgetByID("modify_reservation_dates: return_date").getText()
+                returndate = returndate.split("/")
+            if len(startdate) != 3:
+                print("Start date is invalid")
+                return
+
+            if self._tripType == 1 and len(returndate) != 3:
+                print("End date is invalid.")
+                return
+
+            # TODO set start date in reservation
+            datetime(year=int(startdate[2]), month=int(startdate[0]), day=int(startdate[1]))
+            if self._tripType == 1:
+                # TODO set return in reservation
+                datetime(year=int(returndate[2]), month=int(returndate[0]), day=int(returndate[1]))
+        except ValueError:
+            print("Input is invalid")
+
         pass
 
     def runModifyReservationSelectSeats(self, row, seat):

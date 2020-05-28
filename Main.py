@@ -14,6 +14,7 @@ from UI.GUI import GUI
 from flights.FlightManager import FlightManager
 from flights.FlightSearcher import FlightSearcher
 from reservations.ReservationManager import ReservationManager
+from reservations.BoardingPass import BoardingPass
 
 
 def main():
@@ -62,6 +63,9 @@ def main():
         
         if clicked == "modify_reservation: find_reservation":
             am.runCreateReservationSearchAirports(1)
+        
+        if clicked == "checkin: find_reservation":
+            am.runCheckinFindReservation()
 
         if clicked.find("selection_airport") != -1:
             am.runCreateReservationSelectAirport(int(clicked[-1]))

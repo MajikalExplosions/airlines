@@ -27,9 +27,9 @@
   },
   "Text3": {
     "id": "create_reservation_success: display_info",
-    "x": 160,
+    "x": 600,
     "y": 300,
-    "text": "Display reservation last name, confirmation number",
+    "text": "Display reservation last name, confirmation number\nconfirmation number of roundtrip if exists",
     "size": 32,
     "color": {
       "r": 27,

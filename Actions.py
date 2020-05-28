@@ -249,9 +249,9 @@ class ActionManager:
         elif self._seatSelectionMode == 1:
             self.runModifyReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
             self._passengerSeatingIndex += 1
-            if self._passengeSeatingIndex == len(self._passengers):
+            if self._passengerSeatingIndex == len(self._passengers):
                 self.gui.switchScreen("main")
-                #Finish reselecting seats.
+                # Finish reselecting seats.
                 pass
     
     #self._seatSelectionMode = 1 somewhere at the end

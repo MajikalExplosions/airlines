@@ -66,7 +66,6 @@ def main():
 
         if clicked.find("selection_airport") != -1:
             am.runCreateReservationSelectAirport(int(clicked[-1]))
-            gui.switchScreen("create_reservation")
 
         if clicked.find("selection_flight") != -1:
             am.runCreateReservationSelectFlight(int(clicked[-1]))

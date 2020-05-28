@@ -16,6 +16,7 @@ class ActionManager:
         self.rm = rm
         self._tripType = 1
         self._selectMode = 0
+        self._airportLists = [[], []]
         self._startList, self._endList = [], []
         self._paths = []
         self._start, self._end = 0, 0
@@ -78,8 +79,11 @@ class ActionManager:
     def runCreateReservationRoundtrip(self):
         #Draw prompt for return flight date
         if self._tripType != 1:
-            self.gui.findWidgetByID("FlightReturnDateText").draw(self.gui.getWin())
-            self.gui.findWidgetByID("create_reservation: return_date").draw(self.gui.getWin())
+            try:
+                self.gui.findWidgetByID("FlightReturnDateText").draw(self.gui.getWin())
+                self.gui.findWidgetByID("create_reservation: return_date").draw(self.gui.getWin())
+            except:
+                pass
         
         #Move selection dot thing over if necessary
         self.gui.findWidgetByID("create_reservation: moving_circle").move(
@@ -111,15 +115,16 @@ class ActionManager:
         query = self.gui.findWidgetByID("create_reservation: " + modes[mode]).getText()
         #Search for query
         if query:
-            self._startList = self.fs.searchForAirports(query)
-            if self._startList:
+            self._airportLists[mode] = self.fs.searchForAirports(query)
+            if self._airportLists[mode]:
                 self.gui.switchScreen("list_airports")
 
                 # Try to draw the queries, if the returned list is less than 10 long it will undraw the rest.
                 for i in range(10):
                     try:
-                        self.gui.findWidgetByID("selection_airport" + str(i)).setText(query[i].toString())
-                        # self.gui.findWidgetByID("selection_airport" + str(i)).draw(self.gui.getWin())
+                        self.gui.findWidgetByID("selection_airport" + str(i)).setText(
+                            self._airportLists[mode][i].toString())
+                        # self.gui.findWidgetByID("selection_circle" + str(i)).draw(self.gui.getWin())
                     except:
                         self.gui.findWidgetByID("selection_circle" + str(i)).undraw()
                         self.gui.findWidgetByID("selection_airport" + str(i)).toggleActivation()
@@ -129,11 +134,11 @@ class ActionManager:
         #Update text
         print("Selected airport.")
         if self._selectMode == 1:
-            self.gui.findWidgetByID("create_reservation: destination").setText(self._endList[i].getCode())
-            self._end = self._endList[i]
+            self.gui.findWidgetByID("create_reservation: destination").setText(self._airportLists[1][i].getCode())
+            self._end = self._airportLists[1][i]
         else:
-            self.gui.findWidgetByID("create_reservation: start").setText(self._startList[i].getCode())
-            self._start = self._startList[i]
+            self.gui.findWidgetByID("create_reservation: start").setText(self._airportLists[0][i].getCode())
+            self._start = self._airportLists[0][i]
         
         #Switch screen back
         self.gui.switchScreen("create_reservation")

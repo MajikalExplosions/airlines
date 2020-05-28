@@ -45,6 +45,11 @@ class GUI:
         Args:
             screen:
         """
+        # try:
+        #     if self.screen[-1] == self.screen[len(self.screen)-2]:
+        #         self.screen.pop(-1)
+        # except:
+        #     pass
         if screen == "main":
             if self.backButton.isActive():
                 self.backButton.toggleActivation()
@@ -57,9 +62,12 @@ class GUI:
         elif screen == "back":
             if self.screen[self.index - 1] == self.id_screen["main"] and self.backButton.isActive():
                 self.backButton.toggleActivation()
+
             self.activeScreen.deflate()
             self.index -= 1
-            print(self.screen)
+            # if self.activeScreen == self.screen[self.index]:
+            #     self.screen.pop(self.index)
+            #     self.index-=1
             self.screen.append(self.screen[self.index])
             self.activeScreen = self.screen[self.index]
             self.attrs = self.activeScreen.inflate()
@@ -67,7 +75,6 @@ class GUI:
             self._switchScreen(self.id_screen[screen])
 
         print("ID:", screen, "- Switch to Screen")
-        print(self.screen)
 
     def getScreen(self):
         return self.activeScreen
@@ -99,13 +106,23 @@ class GUI:
     def _switchScreen(self, screen):
         if not self.backButton.isActive(): self.backButton.toggleActivation()
         self.activeScreen.deflate()
+
         if screen.getName() != "list_airports":
+
             self.screen.append(screen)
+            try:
+                if self.screen[-1] == self.screen[len(self.screen) - 2]:
+                    self.screen.pop()
+            except:
+                pass
             self.index = len(self.screen) - 1
             self.activeScreen = self.screen[self.index]
         else:
-            if self.screen[-1] == self.screen[-2]:
-                self.screen.pop(-1)
+            try:
+                if self.screen[-1] == self.screen[len(self.screen) - 2]:
+                    self.screen.pop()
+            except:
+                pass
             self.index = len(self.screen)
             self.activeScreen = screen
         self.attrs = self.activeScreen.inflate()

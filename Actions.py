@@ -7,6 +7,12 @@
 
 from random import randint
 
+#Don't delete these.  I get errors when you do.
+from UI.GUI import GUI
+from flights.FlightSearcher import FlightSearcher
+from flights.FlightManager import FlightManager
+from reservations.ReservationManager import ReservationManager
+
 class ActionManager:
     def __init__(self, fs, gui, rm):
         self.fs = fs
@@ -95,7 +101,7 @@ class ActionManager:
         for k in range(10):
             self._paths = self.fs.searchForFlights(self._start, self._end, k, 2020, 5, 27)
             try:
-                self.gui.findWidgetByID("selection_flight" + str(k)).setText(flights[k].toString(self.fm))
+                self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._flights[k].toShortString(self.fm))
             except:
                 self.gui.findWidgetByID("selection_circle_flight" + str(k)).undraw()
                 self.gui.findWidgetByID("selection_flight" + str(k)).toggleActivation()

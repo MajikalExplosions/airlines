@@ -217,7 +217,9 @@ class ActionManager:
             self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
             self._seatSelectionMode = 0
             
-            self.gui.findWidgetByID("select_seating: text").setText("Choose " + self._passengers[0].getFirstName() + " " + self._passengers[0].getLastName() + "'s seat on " + self._selectedPaths[0].toFlights(self.fm)[0].getFullNumber())
+            self.gui.findWidgetByID("select_seat: text").setText(
+                "Choose " + self._passengers[0].getFirstName() + " " + self._passengers[
+                    0].getLastName() + "'s seat on " + self._selectedPaths[0].toFlights()[0].getFullNumber())
         else:
             self.gui.findWidgetByID("select_passenger: first_name").setText("")
             self.gui.findWidgetByID("select_passenger: last_name").setText("")

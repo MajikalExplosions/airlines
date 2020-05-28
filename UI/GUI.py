@@ -12,6 +12,7 @@
 # 1.7     Christopher Luey     05/27/20     Display airports and flights
 
 
+
 import json
 
 from UI.lib.Button import *
@@ -155,8 +156,7 @@ class Screen:
     def deflate(self):
         for i in self.attr:
             if type(i[0]) == Button:
-                if i[0].isActive():
-                    i[0].toggleActivation()
+                i[0].toggleActivation()
             try:
                 i[0].undraw()
             except:
@@ -259,7 +259,7 @@ class Screen:
             elif str(key).find("Flight10") != -1:
                 for i in range(10):
                     attrs.append(
-                        [Button(600, i * 50 + 275, 1200, 50, 20, 'white', "", color_rgb(27, 73, 101), 15, self.win),
+                        [Button(600, i * 50 + 275, 1200, 50, 20, 'white', "", color_rgb(27, 73, 101), 25, self.win),
                          "selection_flight" + str(i)])
                     attrs[len(attrs) - 1][0].adjustShadowColor('white')
                     attrs[len(attrs) - 1][0].undraw()

@@ -11,30 +11,42 @@ from reservations.SingleFlight import SingleFlight
 class Reservation:
     def __init__(self):
         self.confirmationNumber = ""
-        self.passengers = []
 
+        self.passengers = []
         self.flights = []
+
+    #parses a reservation string and returns a reservation object
+    def createFromFile(self, fileLines, index):
+        self.confirmationNumber = fileLines[index + 1].lstrip("Confirmation Number:")
+
+        index += 2
+        while fileLines[index].find("Flight") != -1:
+            flight = SingleFlight(None, "", "")
+            flight.createFromString(fileLines[index])
+            self.flights.append(flight)
+            index += 1
+
+        while fileLines[index].find("Passenger") != -1:
+            passenger = Passenger("", "", "")
+            passenger.createFromString(fileLines[index])
+            self.passengers.append(passenger)
+            index += 1
 
     def addFlight(self, flight, depDate, arrDate):
         flight = SingleFlight(flight, depDate, arrDate)
         self.flights.append(flight)
 
-    def loadFromFile(self, confirmationNumber, lastName):
-        readFile = open("reservations/data_reservation/reservations.txt", "r")
-        fileLines = readFile.readlines()
-        reservationStartInd = self.__fileContainsConfirmationNumber(confirmationNumber, fileLines)
+    def addPassenger(self, firstName, lastName, birthDate):
+        self.passengers.append(Passenger(firstName, lastName, birthDate))
 
-        if reservationStartInd == -1:
-            return "Confirmation number was not found."
+    def addSeat(self, seat, passengerFirstName, passengerLastName, flight):
+        pass
 
-        #fileContainsReservation only makes sure that the confirmation numbers match so we still need to check the last name
-        if not self.__reservationMatchesLastName(lastName, fileLines, reservationStartInd):
-            return "Last name was not found."
+    def getPassengers(self):
+        return self.passengers
 
-        self.__parseReservation(fileLines, reservationStartInd)
-
-        readFile.close()
-        return "Loaded successfully."
+    def getFlights(self):
+        return self.flights
 
     def serialize(self):
         if self.confirmationNumber == "":
@@ -56,45 +68,16 @@ class Reservation:
     def __toString(self):
         string = "Reservation {\n"
         string += "Confirmation Number: " + self.confirmationNumber + "\n"
-        string += "Flights: " + str(self.flights) + "\n"
+
+        for flight in self.flights:
+            string += flight.toString()
 
         for passenger in self.passengers:
             string += passenger.toString()
 
+        string += "}\n"
+
         return string
-
-
-    #parses a reservation and sets instance variables accordingly
-    def __parseReservation(self, fileLines, index):
-        self.confirmationNumber = fileLines[index + 1].lstrip("Confirmation Number:")
-
-        #TODO: Do flight parsing
-
-
-
-    def __createPassengerFromString(self, passengerString):
-        firstName = passengerString[1].lstrip("First Name: ")
-        lastName = passengerString[2].lstrip("Last Name: ")
-
-        passenger = Passenger(firstName, lastName)
-
-        seatsString = passengerString[3].lstrip("Seats: ")[1:-1]
-
-        for seat in seatsString.split(","):
-            passenger.addSeat(seat.strip())
-
-        return passenger
-
-    def __reservationMatchesLastName(self, lastName, fileLines, reservationStartInd):
-        passengerLastNameInd = reservationStartInd + 5
-
-        while passengerLastNameInd < len(fileLines) and fileLines[passengerLastNameInd].find("Last Name: ") != -1:
-            if fileLines[passengerLastNameInd].lstrip("Last Name: ") == lastName:
-                return True
-
-            passengerLastNameInd += 4
-
-        return False
 
     #searches the list of file lines to see if it contains a reservation with the given confirmation number
     #if it does, returns the line where the reservation starts
@@ -115,9 +98,6 @@ class Reservation:
             else:
                 lineNum += 1
         return -1
-
-    def addPassenger(self, firstName, lastName, birthDate, gender):
-        self.passengers.append(Passenger(firstName, lastName, birthDate, gender))
 
     def validateCreditCard(self, creditCardNum):
         if not (16 <= len(creditCardNum) <= 19):
@@ -210,6 +190,3 @@ class Reservation:
 
     def getConfirmationNumber(self):
         return self.confirmationNumber
-
-    def getPassengers(self):
-        return self.passengers

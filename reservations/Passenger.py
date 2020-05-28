@@ -32,10 +32,20 @@ class Passenger:
     def setBirth(self, birth):
         self.birth = birth
 
+    def createFromString(self, string):
+        tokens = string.split("  ")
+        self.firstName = tokens[1].lstrip("First Name: ")
+        self.lastName = tokens[2].lstrip("Last Name: ")
+
+        seats = tokens[3].lstrip("Seats: [").rstrip("]")
+        for seat in seats.split(", "):
+            self.seats.append(seat)
+
+
     def toString(self):
         string = "Passenger"
-        string += " First Name: " + self.firstName
-        string += " Last Name: " + self.lastName
-        string += " Seats: " + str(self.seats)
+        string += "  First Name: " + self.firstName
+        string += "  Last Name: " + self.lastName
+        string += "  Seats: " + str(self.seats)
 
         return string

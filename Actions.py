@@ -20,6 +20,7 @@ class ActionManager:
         self._tripType = 1
         self._selectMode = 0
         self._startList, self._endList = [], []
+        self._paths = []
         self._start, self._end = 0, 0
         self._flightInfo = {}
     
@@ -97,7 +98,7 @@ class ActionManager:
             return
         self.gui.switchScreen("list_flights")
         for k in range(10):
-            flights = self.fs.searchForFlights(self._start, self._end, k, 2020, 5, 27)
+            self._paths = self.fs.searchForFlights(self._start, self._end, k, 2020, 5, 27)
             try:
                 self.gui.findWidgetByID("selection_flight" + str(k)).setText(flights[k].toString(self.fm))
             except:
@@ -110,12 +111,13 @@ class ActionManager:
         self._selectMode = mode
         modes = ["start", "destination"]
         query = self.gui.findWidgetByID("create_reservation: " + modes[mode]).getText()
-        print(query)
+
         #Search for query
         if query:
             self._startList = self.fs.searchForAirports(query)
 
             #Try to draw the queries, if the returned list is less than 10 long it will undraw the rest.
+            #TODO figure out why nothing is drawing - is it because the json file hasn't been created yet?
             for i in range(10):
                 try:
                     self.gui.findWidgetByID("selection_airport" + str(i)).setText(query[i].toString())
@@ -127,6 +129,7 @@ class ActionManager:
 
     def runCreateReservationSelectAirport(self, i):
         #Update text
+        print("Selected airport.")
         if self._selectMode == 1:
             self.gui.findWidgetByID("create_reservation: destination").setText(self._endList[i].getCode())
             self._end = self._endList[i]
@@ -137,7 +140,20 @@ class ActionManager:
         #Switch screen back
         self.gui.switchScreen("create_reservation")
 
-    def runCreateReservationSelectFlight(self):
-        pass
+    def runCreateReservationSelectFlight(self, i):
+        print("Selected flight.")
+        path = self._paths[i]
+        for flight in path.toFlights(self.fm):
+            
+
         # TODO Create a reservation
         # TODO Switch screen to passenger information
+    
+    def runModifyReservationFindExisting(self):
+        print("Finding existing reservation.")
+
+        #TODO update the following section once Shuvam finishes ReservationManager and Chris finishes GUI
+        cn, ln = self.gui.findWidgetByID("modify_reservation: reservation_number").getText(), self.gui.findWidgetByID("modify_reservation: last_name").getText()
+        reservation = self.rm.loadReservation(cn, ln)
+        if reservation != 0:
+

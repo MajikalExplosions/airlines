@@ -103,8 +103,13 @@ class Path:
             f.append(self.edges[i].f)
         return f
 
-    def timeToNode(self, index):
+    def timeToNodeDeparture(self, index):
         return self.distToNode[index]
+    
+    def timeToNodeArrival(self, index):
+        if index == 0:
+            return 0
+        arriveLast = self.distToNode[index - 1]
 
     def equals(self, other):
         p1 = self.edges

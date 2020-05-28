@@ -22,6 +22,8 @@ def main():
     fs = FlightSearcher(fm)
     gui = GUI()
     rm = ReservationManager()
+    rm.loadAllReservations()
+    
     am = ActionManager(fs, gui, rm)
     clicked = ""
 
@@ -58,6 +60,9 @@ def main():
             am.runCreateReservationSearchAirports(0)
         
         if clicked == "create_reservation: find_destination_airport":
+            am.runCreateReservationSearchAirports(1)
+        
+        if clicked == "modify_reservation: find_reservation":
             am.runCreateReservationSearchAirports(1)
 
         if clicked.find("selection_airport") != -1:

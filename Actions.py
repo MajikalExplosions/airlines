@@ -8,7 +8,7 @@
 
 from random import randint
 
-
+from reservations.BoardingPass import BoardingPass
 # @Chris don't delete these.  I get errors when you do.  Please.
 
 class ActionManager:
@@ -168,3 +168,15 @@ class ActionManager:
         reservation = self.rm.loadReservation(cn, ln)
         if reservation != 0:
             pass
+    
+    def runCheckinFindReservation(self):
+        cn, ln = self.gui.findWidgetByID("checkin: reservation_number").getText(), self.gui.findWidgetByID("checkin: last_name").getText()
+        try:
+            reservation = self.rm.loadReservation(cn, ln)
+            boardingPass = BoardingPass(reservation)
+            display = "Boarding pass exported to " + boardingPass.export()
+        except:
+            display = "Reservation not found. Please try again."
+        
+        #TODO update display with message somewhere
+        

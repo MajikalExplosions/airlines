@@ -19,7 +19,7 @@ class ActionManager:
         self.gui = gui
         self.rm = rm
         self._tripType = 1
-        self._selectMode = 0
+        self._airportSelectMode = 0
         self._airportLists = [[], []]
         self._paths = []
         self._start, self._end = 0, 0
@@ -27,6 +27,7 @@ class ActionManager:
         self._passengerCount = 0, 0
         self._passengers = []
         self._startDate, self._returnDate = t_starttime, t_starttime
+        self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
         self.k = 2
 
     def runFlightStatusLookup(self):
@@ -148,7 +149,7 @@ class ActionManager:
 
     def runCreateReservationSearchAirports(self, mode):
         # Get the query
-        self._selectMode = mode
+        self._airportSelectMode = mode
         modes = ["start", "destination"]
         query = self.gui.findWidgetByID("create_reservation: " + modes[mode]).getText()
         # Search for query
@@ -170,7 +171,7 @@ class ActionManager:
 
     def runCreateReservationSelectAirport(self, i):
         # Update text
-        if self._selectMode == 1:
+        if self._airportSelectMode == 1:
             self.gui.findWidgetByID("create_reservation: destination").setText(self._airportLists[1][i].getCode())
             self._end = self._airportLists[1][i]
         else:
@@ -183,19 +184,6 @@ class ActionManager:
     def runCreateReservationSelectFlight(self, i):
         path = self._paths[i]
         self.gui.switchScreen("select_passenger")
-        # TODO Create a reservation
-        # TODO Switch screen to passenger information
-
-    def runModifyReservationFindExisting(self):
-        print("Finding existing reservation.")
-
-        # TODO update the following section once Shuvam finishes ReservationManager and Chris finishes GUI
-        cn, ln = self.gui.findWidgetByID("modify_reservation: reservation_number").getText(), self.gui.findWidgetByID(
-            "modify_reservation: last_name").getText()
-        reservation = self.rm.loadReservation(cn, ln)
-        if reservation != 0:
-            # TODO modify existing reservation
-            pass
 
     def runCheckinFindReservation(self):
         cn, ln = self.gui.findWidgetByID("checkin: reservation_number").getText(), self.gui.findWidgetByID("checkin: last_name").getText()
@@ -219,9 +207,34 @@ class ActionManager:
         if len(self._passengers) == self._passengerCount:
             print("Complete")
             self.gui.switchScreen("select_seating")
-            for p in self._passengers:
-                print(p.toString())
+            self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
         else:
             self.gui.findWidgetByID("select_passenger: first_name").setText("")
             self.gui.findWidgetByID("select_passenger: last_name").setText("")
-            # TODO add back button compatitibility
+    
+    def runCreateReservationSelectSeat(self, i):
+        if i[0] not in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+            i = i[1:]
+        
+        row, seat = int(i[:-1]), int(i[-1])
+    
+    def runModifyReservationFindExisting(self):
+        print("Finding existing reservation.")
+
+        # TODO update the following section once Shuvam finishes ReservationManager and Chris finishes GUI
+        cn, ln = self.gui.findWidgetByID("modify_reservation: reservation_number").getText(), self.gui.findWidgetByID(
+            "modify_reservation: last_name").getText()
+        reservation = self.rm.loadReservation(cn, ln)
+        if reservation != 0:
+            # TODO modify existing reservation
+            pass
+    
+    
+    def runModifyReservationChangeDate(self):
+        #This is run after they enter a new date and submit it
+        pass
+
+    def runModifyReservationSelectSeats(self, row, seat):
+        #This is run after a seat is selected for modify reservation.
+        pass
+        

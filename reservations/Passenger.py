@@ -4,13 +4,13 @@
 # Ver.	Writer			        Date			Notes
 # 1.0     Shuvam Chatterjee     05/10/20		Original
 # 1.1     Chris Luey            05/27/20		Add age & mutator methods
+# 1.2     Shuvam Chatterjee     05/28/20        Remove age parameter
 
 
 class Passenger:
-    def __init__(self, firstName, lastName, birth):
+    def __init__(self, firstName, lastName):
         self.firstName = firstName
         self.lastName = lastName
-        self.birth = birth  # mm/dd/yyyy
 
         self.seats = []
 
@@ -28,9 +28,6 @@ class Passenger:
 
     def setLastName(self, last):
         self.lastName = last
-
-    def setBirth(self, birth):
-        self.birth = birth
 
     def createFromString(self, string):
         tokens = string.split("  ")

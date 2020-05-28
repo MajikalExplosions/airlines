@@ -16,6 +16,20 @@
     "id": "SelectSeating_Description",
     "x": 375,
     "y": 200,
+    "text": "Choose a seat for passenger.",
+    "size": 32,
+    "color": {
+      "r": 150,
+      "g": 193,
+      "b": 192
+    },
+    "style": "normal"
+  },
+  "Seating": {},
+  "Text3": {
+    "id": "select_seat: text",
+    "x": 600,
+    "y": 700,
     "text": "Choose a seat for passenger 1",
     "size": 32,
     "color": {
@@ -25,5 +39,24 @@
     },
     "style": "normal"
   },
-  "Seating": {}
+  "Button1": {
+    "x": 600,
+    "y": 575,
+    "width": 400,
+    "height": 75,
+    "radius": 20,
+    "color": {
+      "r": 95,
+      "g": 168,
+      "b": 211
+    },
+    "text": "Confirm Seat",
+    "textColor": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textSize": 32,
+    "id": "select_seat: confirm"
+  }
 }

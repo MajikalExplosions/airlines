@@ -304,5 +304,6 @@ class ActionManager:
 
     def runModifyReservationSelectSeats(self, row, seat, passenger):
         #This is run after a seat is selected for modify reservation.
-        pass
+        self._currentReservation.modifySeat(row,seat,passenger.getFirstName(),passenger.getLastName(),self._flightSeatingIndex)
+
         

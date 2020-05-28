@@ -81,6 +81,9 @@ class Flight:
     def getNumber(self):
         return self.number
 
+    def getFullNumber(self):
+        return self.airline + str(self.numer)
+
     def getOrigin(self):
         return self.origin
 

@@ -30,6 +30,8 @@ class ActionManager:
         self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
         self._seatSelectionMode = 0
         self._currentReservation = ""
+        self._selectedPaths = [0, 0]
+        self._selectFlightMode = 0
         self.k = 2
 
     def runFlightStatusLookup(self):
@@ -184,7 +186,9 @@ class ActionManager:
         self.gui.switchScreen("create_reservation")
 
     def runCreateReservationSelectFlight(self, i):
-        path = self._paths[i]
+        self._selectedPaths[self._selectFlightMode] = self._paths[i]
+        if self._tripType == 1:
+            self._selectFlightMode = (self._selectFlightMode + 1) % 2
         self.gui.switchScreen("select_passenger")
         
 
@@ -211,6 +215,10 @@ class ActionManager:
             self.gui.switchScreen("select_seating")
             self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
             self._seatSelectionMode = 0
+            
+            self.gui.findWidgetByID("select_seat: text").setText(
+                "Choose " + self._passengers[0].getFirstName() + " " + self._passengers[
+                    0].getLastName() + "'s seat on " + self._selectedPaths[0].toFlights()[0].getFullNumber())
         else:
             self.gui.findWidgetByID("select_passenger: first_name").setText("")
             self.gui.findWidgetByID("select_passenger: last_name").setText("")
@@ -231,9 +239,18 @@ class ActionManager:
             if self._passengerSeatingIndex >= self._passengerCount:
                 self._passengerSeatingIndex -= self._passengerCount
                 self._flightSeatingIndex += 1
+                if self._flightSeatingIndex == 1 and self._tripType == 0:
+                    #Finish selecting seats for single trip
+                    pass
+                if self._flightSeatingIndex == 2:
+                    #Finish selecting seats for round trip
+                    pass
         elif self._seatSelectionMode == 1:
             self.runModifyReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
             self._passengerSeatingIndex += 1
+            if self._passengeSeatingIndex == len(self._passengers):
+                #Finish reselecting seats.
+                pass
     
     #self._seatSelectionMode = 1 somewhere at the end
     def runModifyReservationFindExisting(self):
@@ -244,45 +261,34 @@ class ActionManager:
             "modify_reservation: last_name").getText()
         reservation = self.rm.loadReservation(cn, ln)
         if reservation != 0:
-            # TODO modify existing reservation
-            if self._tripType == 0:
-                self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
-                    reservation.getFlights()[0].getDepDate())
-            else:
-                self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
-                    reservation.getFlights()[0].getDepDate())
-                self.gui.findWidgetByID("modify_reservation_dates: return_date").setText(
-                    reservation.getFlights()[1].getArrDate())
+            self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
+                reservation.getFlights()[0].getDepDate())
+            self._currentReservation = reservation
             pass
 
-    def runModifyReservationChangeDate(self, reservation):
+    def runModifyReservationChangeDate(self):
         # This is run after they enter a new date and submit it
         # self._seatSelectionMode = 1
-        if self._tripType == 0:
-            try:
-                self.gui.findWidgetByID("modify_reservation_dates: return_date").undraw()
-                self.gui.findWidgetByID("ModifyDateLastText").undraw()
-            except:
-                pass
+
         startdate = self.gui.findWidgetByID("modify_reservation_dates: start_date").getText()
         try:
             startdate = startdate.split("/")
-            if self._tripType == 1:
-                returndate = self.gui.findWidgetByID("modify_reservation_dates: return_date").getText()
-                returndate = returndate.split("/")
+
             if len(startdate) != 3:
                 print("Start date is invalid")
                 return
 
-            if self._tripType == 1 and len(returndate) != 3:
-                print("End date is invalid.")
-                return
+            if self._currentReservation.getFlights()[0].getDepDate() != datetime(year=int(startdate[2]),
+                                                                                 month=int(startdate[0]),
+                                                                                 day=int(startdate[1])):
+                self._seatSelectionMode = 1
+                # TODO Recompute flight if dates are different
+                # TODO Allow user to select new flight
+                # setStartDate()
+                # TODO create new reservation set it to _currentReservation, update reservation manager
 
-            # TODO set start date in reservation
-            datetime(year=int(startdate[2]), month=int(startdate[0]), day=int(startdate[1]))
-            if self._tripType == 1:
-                # TODO set return in reservation
-                datetime(year=int(returndate[2]), month=int(returndate[0]), day=int(returndate[1]))
+                pass
+
         except ValueError:
             print("Input is invalid")
 

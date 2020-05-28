@@ -30,6 +30,8 @@ class ActionManager:
         self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
         self._seatSelectionMode = 0
         self._currentReservation = ""
+        self._selectedPaths = [0, 0]
+        self._selectFlightMode = 0
         self.k = 2
 
     def runFlightStatusLookup(self):
@@ -184,7 +186,9 @@ class ActionManager:
         self.gui.switchScreen("create_reservation")
 
     def runCreateReservationSelectFlight(self, i):
-        path = self._paths[i]
+        self._selectedPaths[self._selectFlightMode] = self._paths[i]
+        if self._tripType == 1:
+            self._selectFlightMode = (self._selectFlightMode + 1) % 2
         self.gui.switchScreen("select_passenger")
         
 
@@ -211,6 +215,8 @@ class ActionManager:
             self.gui.switchScreen("select_seating")
             self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
             self._seatSelectionMode = 0
+            
+            self.gui.findWidgetByID("select_seating: text").setText("Choose " + self._passengers[0].getFirstName() + " " + self._passengers[0].getLastName() + "'s seat on " + self._selectedPaths[0].toFlights()[0].getFullNumber())
         else:
             self.gui.findWidgetByID("select_passenger: first_name").setText("")
             self.gui.findWidgetByID("select_passenger: last_name").setText("")
@@ -231,9 +237,18 @@ class ActionManager:
             if self._passengerSeatingIndex >= self._passengerCount:
                 self._passengerSeatingIndex -= self._passengerCount
                 self._flightSeatingIndex += 1
+                if self._flightSeatingIndex == 1 and self._tripType == 0:
+                    #Finish selecting seats for single trip
+                    pass
+                if self._flightSeatingIndex == 2:
+                    #Finish selecting seats for round trip
+                    pass
         elif self._seatSelectionMode == 1:
             self.runModifyReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
             self._passengerSeatingIndex += 1
+            if self._passengeSeatingIndex == len(self._passengers):
+                #Finish reselecting seats.
+                pass
     
     #self._seatSelectionMode = 1 somewhere at the end
     def runModifyReservationFindExisting(self):

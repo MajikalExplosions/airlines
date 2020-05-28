@@ -1,17 +1,22 @@
-# Name: Main.py
-# Description: Runner program.
+# Name: Actions.py
+# Description: Helper program containing functions that are run when GUI buttons are pressed.
 
 # Ver.	    Writer			        Date			Notes
 # 1.0       Christopher Luey        05/17/20		Original
 # 1.1       Christopher Luey        05/17/20		Compatibility with widget id system
+# 1.2       Christopher Luey        05/27/20		Lookup flight
 
+from random import randint
 
 from UI.GUI import GUI
 from flights.FlightSearcher import FlightSearcher
-from flights.FlightManager import FlightManager
 from reservations.ReservationManager import ReservationManager
-from Actions import *
 
+class ActionManager:
+    def __init__(self, fs, rm, gui):
+        self.fs = fs
+        self.rm = rm
+        self.gui = gui
 
 def checkForDraw(gui, trip):
     if gui.getScreen().getName() == "create_reservation":
@@ -30,20 +35,24 @@ def checkForDraw(gui, trip):
 
 
 def main():
-    fm = FlightManager("data/airports.tsv", "data/flights.tsv")
-    fs = FlightSearcher(fm)
-    rm = ReservationManager()
+    # fm = FlightManager("data/airports.tsv", "data/flights.tsv")
+    # fs = FlightSearcher(fm)
+    fs, fm = None, None
     gui = GUI()
-    manager = ActionManager(fs, rm, gui)
-    clicked = ""
+    clicked = 0
     screens = gui.getScreenIDs()
+    cache = {}
+    trip = "round"
+
     while clicked != 'quit':
-        screen = gui.getScreen()
+        checkForDraw(gui, trip)
         clicked = gui.setOnButtonClickListener()
         if clicked == 'quit':
             break
         print("ID:", clicked, "- Action Performed")
         if clicked in screens or clicked == 'back':
+            if clicked == 'back':
+                gui.resetScreen(gui.getScreenID(gui.getScreen()))
             gui.switchScreen(clicked)
         else:
             if clicked == "flight_status: lookup":
@@ -72,6 +81,39 @@ def main():
                 gui.switchScreen("list_flights")
 
 
+def lookup(gui, fs, cache):
+    dest = gui.findWidgetByID("flight_status: flight_destination").getText()
+    num = gui.findWidgetByID("flight_status: flight_number").getText()
+    status = gui.findWidgetByID("flight_status: status")
+    time = gui.findWidgetByID("flight_status: time")
+    try:
+        if len(dest) == 0 or len(num) == 0:
+            time.setText("Your input is empty.")
+        elif type(int(num[2:])) == int and len(dest) == 3 and fs.isValidAirport(dest):
+            flight = fs.lookup(dest, num)
+            if type(flight) == str:
+                time.setText(flight)
+            else:
+                if not (dest + num) in cache.keys():
+                    x = randint(0, 2)
+                    cache[dest + num] = ("Status: {}".format(["On Time", "Delayed", "Cancelled"][x]),
+                                         "Flight Number {} to {}\n{}".format(num, dest,
+                                                                             ["", str(randint(20, 120)) + " minutes",
+                                                                              ""][x]))
+                status.setText(cache[dest + num][0])
+                time.setText(cache[dest + num][1])
+        else:
+            status.setText("Error")
+            time.setText("Destination '{}' is not Valid".format(num, dest))
+
+    except ValueError:
+        status.setText("Error")
+        if not fs.isValidAirport(dest):
+            time.setText("Flight Number '{}'\nand Destination '{}' is Not Valid".format(num, dest))
+        else:
+            time.setText("Flight Number '{}' is Not Valid".format(num))
+
+
 def test():
     fm = FlightManager("data/airports.tsv", "data/flights.tsv")
     fs = FlightSearcher(fm)
@@ -93,3 +135,6 @@ def test():
 
 if __name__ == '__main__':
     main()
+    #test()
+
+

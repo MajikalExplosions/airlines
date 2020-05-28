@@ -1,0 +1,61 @@
+{
+  "Text1": {
+    "id": "Success_Title",
+    "x": 338,
+    "y": 150,
+    "text": "Created Reservation",
+    "size": 60,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold"
+  },
+  "Text2": {
+    "id": "Success_Description",
+    "x": 375,
+    "y": 200,
+    "text": "A reservation has been created.",
+    "size": 32,
+    "color": {
+      "r": 150,
+      "g": 193,
+      "b": 192
+    },
+    "style": "normal"
+  },
+  "Text3": {
+    "id": "create_reservation_success: display_info",
+    "x": 160,
+    "y": 300,
+    "text": "Display reservation last name, confirmation number",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
+  "Button1": {
+    "x": 600,
+    "y": 575,
+    "width": 400,
+    "height": 75,
+    "radius": 20,
+    "color": {
+      "r": 95,
+      "g": 168,
+      "b": 211
+    },
+    "text": "Return to Main",
+    "textColor": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textSize": 32,
+    "id": "create_reservation_success: main"
+  }
+}

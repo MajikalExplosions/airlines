@@ -59,16 +59,3 @@ class ReservationManager:
             else:
                 lineNum += 1
         return -1
-
-    def __createPassengerFromString(self, passengerString):
-        firstName = passengerString[1].lstrip("First Name: ")
-        lastName = passengerString[2].lstrip("Last Name: ")
-
-        passenger = Passenger(firstName, lastName)
-
-        seatsString = passengerString[3].lstrip("Seats: ")[1:-1]
-
-        for seat in seatsString.split(","):
-            passenger.addSeat(seat.strip())
-
-        return passenger

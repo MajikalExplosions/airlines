@@ -39,8 +39,14 @@ class Reservation:
     def addPassenger(self, firstName, lastName, birthDate):
         self.passengers.append(Passenger(firstName, lastName, birthDate))
 
-    def addSeat(self, seat, passengerFirstName, passengerLastName, flight):
-        pass
+    def addSeat(self, seat, passengerFirstName, passengerLastName, flightID):
+        for passenger in self.passengers:
+            if passenger.getFirstName() == passengerFirstName and passenger.getLastName() == passengerLastName:
+                passenger.addSeat(seat)
+
+                for flight in self.flights:
+                    if flight.getFlightID() == flightID:
+                        flight.bookSeat(seat)
 
     def getPassengers(self):
         return self.passengers

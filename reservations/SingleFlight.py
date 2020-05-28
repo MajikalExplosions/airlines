@@ -26,6 +26,9 @@ class SingleFlight:
             for letter in range(65, 71):
                 self.seats.append(str(row) + chr(letter))
 
+    def getFlightID(self):
+        return self.flightId
+
     def bookSeat(self, seat):
         self.seats.remove(seat)
 

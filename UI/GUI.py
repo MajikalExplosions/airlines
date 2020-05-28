@@ -24,7 +24,7 @@ class GUI:
         self.id_widget, self.widget_id = {}, {}
 
         ids = ["main", "list_flights", "create_reservation", "modify_reservation", "flight_status", "checkin",
-               "list_airports"]
+               "list_airports", "select_passenger"]
         # self.screens - Hash: screenID : Screen()
         self.id_screen = {x: y for x, y in zip(ids, [Screen(i, self.win) for i in ids])}
         self.screen_id = {y: x for x, y in self.id_screen.items()}

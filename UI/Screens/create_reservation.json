@@ -360,5 +360,18 @@
     },
     "textSize": 25,
     "id": "create_reservation: find_destination_airport"
+  },
+  "Text8": {
+    "id": "create_reservation: error",
+    "x": 600,
+    "y": 600,
+    "text": "",
+    "size": 25,
+    "color": {
+      "r": 150,
+      "g": 193,
+      "b": 192
+    },
+    "style": "normal"
   }
 }

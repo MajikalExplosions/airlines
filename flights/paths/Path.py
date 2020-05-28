@@ -66,12 +66,14 @@ class Path:
         return self.distToNode
 
     def toShortString(self, fm):
-        if len(self.toAirports()) == 0:
+        if len(self.toAirports(fm)) == 0:
             return "Empty path."
-        s = str(round(self.timeToNode(-1), 2)) + "hrs: "
+        s = str(round(self.timeToNodeArrival(-1, fm), 2)) + " hrs: "
         for a in self.toAirports(fm):
             s += a.getCode() + " - "
-        
+        s = s[:-3] + "\n"
+        for f in self.toFlights(fm):
+            s += f.getAirline() + str(f.getNumber()) + " - "
         return s[:-3]
 
 
@@ -106,10 +108,15 @@ class Path:
     def timeToNodeDeparture(self, index):
         return self.distToNode[index]
     
-    def timeToNodeArrival(self, index):
+    def timeToNodeArrival(self, index, fm):
         if index == 0:
             return 0
+        
+        if index == -1 or index >= len(self.distToNode) - 1:
+            return self.distToNode[-1]
         arriveLast = self.distToNode[index - 1]
+        flightToCurrent = self.toFlights(fm)[index - 1]
+        return arriveLast + flightToCurrent
 
     def equals(self, other):
         p1 = self.edges

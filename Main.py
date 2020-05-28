@@ -21,9 +21,8 @@ def main():
     fs = FlightSearcher(fm)
     gui = GUI()
     rm = ReservationManager()
-    rm.loadAllReservations()
     
-    am = ActionManager(fs, gui, rm)
+    am = ActionManager(fm, fs, gui, rm)
     clicked = ""
 
     while clicked != 'quit':

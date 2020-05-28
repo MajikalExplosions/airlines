@@ -1,4 +1,30 @@
 {
+  "Text1": {
+    "id": "ModifyReservation_Title",
+    "x": 338,
+    "y": 150,
+    "text": "Modify a Reservation",
+    "size": 60,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold"
+  },
+  "Text2": {
+    "id": "ModifyReservation_Description",
+    "x": 375,
+    "y": 200,
+    "text": "Enter valid reservation details to modify.",
+    "size": 32,
+    "color": {
+      "r": 150,
+      "g": 193,
+      "b": 192
+    },
+    "style": "normal"
+  },
   "Entry1": {
     "x": 210,
     "y": 350,

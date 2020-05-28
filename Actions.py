@@ -29,6 +29,7 @@ class ActionManager:
         self._startDate, self._returnDate = t_starttime, t_starttime
         self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
         self._seatSelectionMode = 0
+        self._currentReservation = ""
         self.k = 2
 
     def runFlightStatusLookup(self):
@@ -198,7 +199,6 @@ class ActionManager:
         # TODO update display with message somewhere
 
     def runSelectPassengerNext(self):
-        # TODO Error check input
         f, l = self.gui.findWidgetByID("select_passenger: first_name").getText(), self.gui.findWidgetByID(
             "select_passenger: last_name").getText()
         if len(f) == 0 or len(l) == 0:
@@ -222,6 +222,7 @@ class ActionManager:
             i = i[1:]
         
         row, seat = int(i[:-1]), int(i[-1])
+
         if self._seatSelectionMode == 0:
             self.runCreateReservationSelectSeat(row, seat, passenger)
         elif self._seatSelectionMode == 1:

@@ -9,13 +9,12 @@
 # 2.0       Joseph Liu              05/27/20        Move helper functions into Actions.py
 
 
-from random import randint
-
-from UI.GUI import GUI
-from flights.FlightSearcher import FlightSearcher
-from flights.FlightManager import FlightManager
-from reservations.ReservationManager import ReservationManager
 from Actions import ActionManager
+from UI.GUI import GUI
+from flights.FlightManager import FlightManager
+from flights.FlightSearcher import FlightSearcher
+from reservations.ReservationManager import ReservationManager
+
 
 def main():
     fm = FlightManager("data/airports.tsv", "data/flights.tsv")
@@ -71,24 +70,6 @@ def main():
         if clicked.find("selection_flight") != -1:
             am.runCreateReservationSelectFlight(int(clicked[-1]))
 
-
-def test():
-    fm = FlightManager("data/airports.tsv", "data/flights.tsv")
-    fs = FlightSearcher(fm)
-    inp = ""
-    while inp != "quit":
-        inp = input(">>> ").lower()
-        t = inp.split()
-        print(t)
-        if t[0] == "search":
-            if t[1] == "airport":
-                for airport in fs.searchForAirports(t[2]): #Returns 10 airports with char
-                    print(airport.toString())
-            elif t[1] == "flight":
-                if len(t) == 4:
-                    t.append(5)
-                for airport in fs.searchForFlights(fs.searchForAirports(t[2])[0], fs.searchForAirports(t[3])[0], int(t[4]))[0].toFlights(fm):
-                    print(airport.toString())
 
 if __name__ == '__main__':
     main()

@@ -5,11 +5,6 @@
 # 1.0       Joseph Liu              05/27/20		Move actions and utils out of main and into a separate file
 
 
-
-from UI.GUI import GUI
-from flights.FlightSearcher import FlightSearcher
-from flights.FlightManager import FlightManager
-from reservations.ReservationManager import ReservationManager
 from random import randint
 
 class ActionManager:
@@ -111,7 +106,6 @@ class ActionManager:
         self._selectMode = mode
         modes = ["start", "destination"]
         query = self.gui.findWidgetByID("create_reservation: " + modes[mode]).getText()
-
         #Search for query
         if query:
             self._startList = self.fs.searchForAirports(query)

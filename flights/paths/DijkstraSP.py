@@ -16,15 +16,20 @@ from time import time
 class DijkstraSP:
     def __init__(self, graph, origin, target, rootVal = 0):
         nodes = graph.getNodes()
-        pq = [(0, origin)]
+        pq = [(rootVal, origin)]
         origin.root(rootVal)
         origin.v = False
+        origin.setQ(rootVal)
         heapq.heapify(pq)
+
+        #Whether to manage the heap or not; it's slow if you do but takes less memory.
+        self.manage = False
         
         while len(pq) > 0:
             cur = heapq.heappop(pq)
             
             cur[1].visit()
+            cur[1].rmQ()
 
             if cur[1] == target:
                 break
@@ -40,7 +45,29 @@ class DijkstraSP:
                 if cur[1].getDist() + timeSpent < dest.getDist():
                     dest.setDist(cur[1].getDist() + timeSpent)
                     dest.setEdgeIn(edge)
-                    heapq.heappush(pq, (cur[1].getDist() + timeSpent, dest))
+
+                    #If it's in queue and this new one is better, update.
+                    if dest.inQ() and self.manage:
+                        if cur[1].getDist() + timeSpent < dest.getQ():
+
+                            #Find its location in queue
+                            ind = -1
+                            for i in range(len(pq)):
+                                if pq[i][1] == dest:
+                                    ind = i
+                            if ind == -1:
+                                print("Uh oh.")
+                                print(dest.getQ())
+
+                            #Remove from queue and add new key
+                            pq = pq[:ind] + pq[ind + 1:]
+                            heapq.heapify(pq)
+                            heapq.heappush(pq, (cur[1].getDist() + timeSpent, dest))
+
+                            dest.setQ(cur[1].getDist() + timeSpent)
+                    else:
+                        heapq.heappush(pq, (cur[1].getDist() + timeSpent, dest))
+                        dest.setQ(cur[1].getDist() + timeSpent)
         
         self.dest = target
         self.graph = graph

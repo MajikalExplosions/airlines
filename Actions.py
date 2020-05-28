@@ -8,10 +8,9 @@
 
 from random import randint
 
-from flights.Time import *
 from reservations.BoardingPass import BoardingPass
 from reservations.Passenger import Passenger
-
+from flights.Time import *
 
 class ActionManager:
     def __init__(self, fm, fs, gui, rm):
@@ -99,8 +98,7 @@ class ActionManager:
         self._tripType = 1
 
     def runCreateReservationSearchFlights(self):
-        count, startD = self.gui.findWidgetByID("create_reservation: travelers").getText(), self.gui.findWidgetByID(
-            "create_reservation: start_date").getText()
+        count, startD = self.gui.findWidgetByID("create_reservation: travelers").getText(), self.gui.findWidgetByID("create_reservation: start_date").getText()
         if self._tripType == 1:
             endD = self.gui.findWidgetByID("create_reservation: return_date").getText()
         if self._start == 0 or self._end == 0 or self._start == self._end:
@@ -134,15 +132,13 @@ class ActionManager:
             return
 
         for k in range(self.k):
-            print("Found path", k)
-            self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year,
-                                                   self._startDate.month, self._startDate.day)
+            print("Finding path", k)
+            self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year, self._startDate.month, self._startDate.day)
             if k == 0:
                 if not self._paths:
                     break
                 else:
                     self.gui.switchScreen("list_flights")
-
             try:
                 self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._paths[k].toShortString(self.fm))
             except:
@@ -202,8 +198,7 @@ class ActionManager:
             pass
 
     def runCheckinFindReservation(self):
-        cn, ln = self.gui.findWidgetByID("checkin: reservation_number").getText(), self.gui.findWidgetByID(
-            "checkin: last_name").getText()
+        cn, ln = self.gui.findWidgetByID("checkin: reservation_number").getText(), self.gui.findWidgetByID("checkin: last_name").getText()
         try:
             reservation = self.rm.loadReservation(cn, ln)
             boardingPass = BoardingPass(reservation)

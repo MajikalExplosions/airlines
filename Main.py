@@ -93,19 +93,21 @@ def main():
             elif clicked == "create_reservation: find_flights":
 
                 # TODO Check date, traveler and airport inputs
+                # TODO Check airport code in entry is same as saved flight object
 
-                gui.switchScreen("list_flights")
                 s, dest, flights = start, destination, []
-                for k in range(10):
-                    flights = fs.searchForFlights(start, destination, k)
-                for i in range(10):
-                    try:
-                        # TODO Can Someone Format The Paths Cuz I Dont Really Know & IHave Other Work
-                        gui.findWidgetByID("selection_flight" + str(i)).setText(flights[i].toString(fm))
-                    except:
-                        gui.findWidgetByID("selection_circle_flight" + str(i)).undraw()
-                        gui.findWidgetByID("selection_flight" + str(i)).toggleActivation()
-                        gui.findWidgetByID("selection_flight" + str(i)).undraw()
+                if dest != None and s != None:
+                    gui.switchScreen("list_flights")
+                    for k in range(10):
+                        flights = fs.searchForFlights(start, destination, k)
+                    for i in range(10):
+                        try:
+                            # TODO Can Someone Format The Paths Cuz I Dont Really Know & I Have Other Work
+                            gui.findWidgetByID("selection_flight" + str(i)).setText(flights[i].toString(fm))
+                        except:
+                            gui.findWidgetByID("selection_circle_flight" + str(i)).undraw()
+                            gui.findWidgetByID("selection_flight" + str(i)).toggleActivation()
+                            gui.findWidgetByID("selection_flight" + str(i)).undraw()
 
             elif clicked == "create_reservation: find_start_airport":
                 selecting = "start"
@@ -127,10 +129,9 @@ def main():
                     start = startSelect[int(clicked[-1])]
 
             elif clicked.find("selection_flight") != -1:
-                pass
                 # TODO Create a reservation
                 # TODO Switch screen to passenger information
-
+                pass
 
 
 def lookup(gui, fs, cache):

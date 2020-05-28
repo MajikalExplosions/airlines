@@ -244,7 +244,7 @@ class ActionManager:
         #This is run after they enter a new date and submit it
         pass
 
-    def runModifyReservationSelectSeats(self, row, seat):
+    def runModifyReservationSelectSeats(self, row, seat, passenger):
         #This is run after a seat is selected for modify reservation.
         pass
         

@@ -45,11 +45,7 @@ class GUI:
         Args:
             screen:
         """
-        # try:
-        #     if self.screen[-1] == self.screen[len(self.screen)-2]:
-        #         self.screen.pop(-1)
-        # except:
-        #     pass
+
         if screen == "main":
             if self.backButton.isActive():
                 self.backButton.toggleActivation()

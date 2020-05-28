@@ -28,6 +28,7 @@ class ActionManager:
         self._passengers = []
         self._startDate, self._returnDate = t_starttime, t_starttime
         self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
+        self._seatSelectionMode = 0
         self.k = 2
 
     def runFlightStatusLookup(self):
@@ -203,21 +204,30 @@ class ActionManager:
         if len(f) == 0 or len(l) == 0:
             return
 
-        self._passengers.append(Passenger(f, l, ""))
+        self._passengers.append(Passenger(f, l))
         if len(self._passengers) == self._passengerCount:
             print("Complete")
             self.gui.switchScreen("select_seating")
             self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
+            self._seatSelectionMode = 0
         else:
             self.gui.findWidgetByID("select_passenger: first_name").setText("")
             self.gui.findWidgetByID("select_passenger: last_name").setText("")
     
-    def runCreateReservationSelectSeat(self, i):
+    def runCreateReservationSelectSeats(self, row, seat, passenger):
+        pass
+
+    def runSelectSeats(self, i):
         if i[0] not in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
             i = i[1:]
         
         row, seat = int(i[:-1]), int(i[-1])
+        if self._seatSelectionMode == 0:
+            self.runCreateReservationSelectSeat(row, seat, passenger)
+        elif self._seatSelectionMode == 1:
+            self.runModifyReservationSelectSeats(row, seat, passenger)
     
+    #self._seatSelectionMode = 1 somewhere at the end
     def runModifyReservationFindExisting(self):
         print("Finding existing reservation.")
 

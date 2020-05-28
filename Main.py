@@ -78,7 +78,9 @@ def main():
             am.runCreateReservationSelectFlight(int(clicked[-1]))
         
         if clicked.find("selection_seat") != -1:
-            am.runCreateReservationSelectSeat(int(clicked[-3:]))
+            am.runSelectSeats(int(clicked[-3:]))
+        
+        rm.serializeAll()
 
 
 if __name__ == '__main__':

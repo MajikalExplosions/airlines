@@ -226,6 +226,8 @@ class ActionManager:
     
     def runCreateReservationSelectSeats(self, row, seat, passenger):
         passenger.addSeat(str(row + 1) + ["A", "B", "C", "D", "E", "F"][seat])
+        self.gui.findWidgetByID("select_seat: text").setText(
+                "Choose " + passenger.getFirstName() + " " + passenger.getLastName() + "'s seat on " + self._selectedPaths[0].toFlights(self.fm)[self._flightSeatingIndex].getFullNumber())
 
 
     def runSelectSeats(self, i):
@@ -302,7 +304,7 @@ class ActionManager:
 
     def runCreditCardCreateReservation(self):
         print("Created reservation")
-        self.gui.switchScreen("main")
+        self.gui.switchScreen("create_reservation_success")
 
     def runModifyReservationSelectSeats(self, row, seat, passenger):
         #This is run after a seat is selected for modify reservation.

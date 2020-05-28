@@ -224,32 +224,34 @@ class ActionManager:
             self.gui.findWidgetByID("select_passenger: first_name").setText("")
             self.gui.findWidgetByID("select_passenger: last_name").setText("")
     
-    def runCreateReservationSelectSeats(self, row, seat, passenger):
-        passenger.addSeat(str(row + 1) + ["A", "B", "C", "D", "E", "F"][seat])
-        self.gui.findWidgetByID("select_seat: text").setText(
-                "Choose " + passenger.getFirstName() + " " + passenger.getLastName() + "'s seat on " + self._selectedPaths[0].toFlights(self.fm)[self._flightSeatingIndex].getFullNumber())
+    def runCreateReservationSelectSeats(self, row, seat, passengerIndex):
+        self._passengers[passengerIndex].addSeat(str(row + 1) + ["A", "B", "C", "D", "E", "F"][seat])
+        print("HI!")
 
 
     def runSelectSeats(self, i):
-        i = str(i)
         if i[0] not in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
             i = i[1:]
         
         row, seat = int(i[:-1]), int(i[-1])
         if self._seatSelectionMode == 0:
 
-            self.runCreateReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
+            self.runCreateReservationSelectSeats(row, seat, self._passengerSeatingIndex)
             self._passengerSeatingIndex += 1
             if self._passengerSeatingIndex >= self._passengerCount:
                 self._passengerSeatingIndex -= self._passengerCount
                 self._flightSeatingIndex += 1
-                if (self._flightSeatingIndex == 1 and self._tripType == 0) or self._flightSeatingIndex == 2:
+                if (self._flightSeatingIndex == len(self._selectedPaths[0].toFlights(self.fm)) and self._tripType == 0) or (self._tripType == 1 and self._flightSeatingIndex == len(self._selectedPaths[0].toFlights(self.fm)) + len(self._selectedPaths[1].toFlights(self.fm))):
                     #Finish selecting seats so move on to credit card
                     self.gui.switchScreen("credit_card")
+                    return
+                
+            self.gui.findWidgetByID("select_seat: text").setText("Choose " + self._passengers[self._passengerSeatingIndex].getFirstName() + " " + self._passengers[self._passengerSeatingIndex].getLastName() + "'s seat on " + self._selectedPaths[0].toFlights(self.fm)[self._flightSeatingIndex].getFullNumber())
+        
         elif self._seatSelectionMode == 1:
             self.runModifyReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
             self._passengerSeatingIndex += 1
-            if self._passengeSeatingIndex == len(self._passengers):
+            if self._passengerSeatingIndex == len(self._passengers):
                 self.gui.switchScreen("main")
                 #Finish reselecting seats.
                 pass
@@ -305,6 +307,9 @@ class ActionManager:
     def runCreditCardCreateReservation(self):
         print("Created reservation")
         self.gui.switchScreen("create_reservation_success")
+    
+    def runCreateReservationSuccess(self):
+        self.gui.switchScreen("main")
 
     def runModifyReservationSelectSeats(self, row, seat, passenger):
         #This is run after a seat is selected for modify reservation.

@@ -62,6 +62,10 @@ def main():
         if clicked == "create_reservation: find_destination_airport":
             am.runCreateReservationSearchAirports(1)
         
+        if clicked == "create_reservation_success: main":
+            am.runCreateReservationSuccess()
+
+        
         if clicked == "modify_reservation: find_reservation":
             am.runCreateReservationSearchAirports(1)
         
@@ -81,7 +85,7 @@ def main():
             am.runCreateReservationSelectFlight(int(clicked[-1]))
         
         if clicked.find("selection_seat") != -1:
-            am.runSelectSeats(int(clicked[-3:]))
+            am.runSelectSeats(clicked[-3:])
         
         rm.serializeAll()
 

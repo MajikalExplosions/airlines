@@ -24,7 +24,7 @@ class ActionManager:
         self._paths = []
         self._start, self._end = 0, 0
         self._flightInfo = {}
-        self._passengerCount = 0, 0
+        self._passengerCount = 0
         self._passengers = []
         self._startDate, self._returnDate = t_starttime, t_starttime
         self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
@@ -186,6 +186,7 @@ class ActionManager:
     def runCreateReservationSelectFlight(self, i):
         path = self._paths[i]
         self.gui.switchScreen("select_passenger")
+        
 
     def runCheckinFindReservation(self):
         cn, ln = self.gui.findWidgetByID("checkin: reservation_number").getText(), self.gui.findWidgetByID("checkin: last_name").getText()
@@ -215,18 +216,24 @@ class ActionManager:
             self.gui.findWidgetByID("select_passenger: last_name").setText("")
     
     def runCreateReservationSelectSeats(self, row, seat, passenger):
-        pass
+        passenger.addSeat(str(row + 1) + ["A", "B", "C", "D", "E", "F"][seat])
+
 
     def runSelectSeats(self, i):
         if i[0] not in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
             i = i[1:]
         
         row, seat = int(i[:-1]), int(i[-1])
-
         if self._seatSelectionMode == 0:
-            self.runCreateReservationSelectSeat(row, seat, passenger)
+
+            self.runCreateReservationSelectSeat(row, seat, self._passengers[self._passengerSeatingIndex])
+            self._passengerSeatingIndex += 1
+            if self._passengerSeatingIndex >= self._passengerCount:
+                self._passengerSeatingIndex -= self._passengerCount
+                self._flightSeatingIndex += 1
         elif self._seatSelectionMode == 1:
-            self.runModifyReservationSelectSeats(row, seat, passenger)
+            self.runModifyReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
+            self._passengerSeatingIndex += 1
     
     #self._seatSelectionMode = 1 somewhere at the end
     def runModifyReservationFindExisting(self):

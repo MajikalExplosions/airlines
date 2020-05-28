@@ -103,7 +103,7 @@ class ActionManager:
         for k in range(self.k):
             print(k)
             self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, 2020, 5, 27)
-            if k == 1:
+            if k == 0:
                 if not self._paths:
                     break
                 else:

@@ -1,22 +1,96 @@
 {
+  "Entry1": {
+    "x": 210,
+    "y": 350,
+    "width": 10,
+    "size": 30,
+    "text": "",
+    "fill": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "outline": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textColor": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold",
+    "id": "modify_reservation: reservation_number"
+  },
+  "Entry2": {
+    "x": 460,
+    "y": 350,
+    "width": 11,
+    "size": 30,
+    "text": "",
+    "fill": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "outline": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textColor": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold",
+    "id": "modify_reservation: last_name"
+  },
+  "Text3": {
+    "id": "ModifyReservationText",
+    "x": 160,
+    "y": 300,
+    "text": "Reservation Number:",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
+  "Text4": {
+    "id": "ModifyLastText",
+    "x": 448,
+    "y": 300,
+    "text": "Last Name:",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
   "Button1": {
     "x": 600,
-    "y": 200,
-    "width": 500,
-    "height": 100,
+    "y": 575,
+    "width": 400,
+    "height": 75,
     "radius": 20,
     "color": {
-      "r": 86,
-      "g": 163,
-      "b": 166
+      "r": 95,
+      "g": 168,
+      "b": 211
     },
-    "text": "Create a Reservation",
+    "text": "Find Reservation",
     "textColor": {
       "r": 255,
       "g": 255,
       "b": 255
     },
-    "textSize": 22,
-    "id": "create_reservation2"
+    "textSize": 32,
+    "id": "modify_reservation: find_reservation"
   }
 }

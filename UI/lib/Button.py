@@ -5,6 +5,7 @@
 
 from UI.lib.graphics import *
 
+
 class Button:
     """
     This is a class that creates a Button using Zelle's Graphics Library.
@@ -62,7 +63,6 @@ class Button:
         self.drawn = False
         self.draw(win)
 
-
     def draw(self, win):
         """
         Function draws the button on the referenced window.
@@ -80,7 +80,9 @@ class Button:
             self.p4 = Point((self.centerX + self.width / 2 + 3) - self.radius,
                             (self.centerY - self.height / 2 + 5) + self.radius)
 
-            self.shadowCircle1, self.shadowCircle2, self.shadowCircle3, self.shadowCircle4 = Circle(self.p1, self.radius), Circle(self.p2, self.radius), Circle(self.p3, self.radius), Circle(self.p4, self.radius)
+            self.shadowCircle1, self.shadowCircle2, self.shadowCircle3, self.shadowCircle4 = Circle(self.p1,
+                                                                                                    self.radius), Circle(
+                self.p2, self.radius), Circle(self.p3, self.radius), Circle(self.p4, self.radius)
             self.shadowCircle1.setOutline(self.shadowColor)
             self.shadowCircle2.setOutline(self.shadowColor)
             self.shadowCircle3.setOutline(self.shadowColor)
@@ -110,12 +112,18 @@ class Button:
             self.polyShadow.draw(win)
 
             # Create circles in 4 corners of Button
-            self.p1 = Point((self.centerX - self.width / 2 + 3) + self.radius, (self.centerY - self.height / 2 + 5) + self.radius)
-            self.p3 = Point((self.centerX + self.width / 2 + 3) - self.radius, (self.centerY + self.height / 2 + 5) - self.radius)
-            self.p2 = Point((self.centerX - self.width / 2 + 3) + self.radius, (self.centerY + self.height / 2 + 5) - self.radius)
-            self.p4 = Point((self.centerX + self.width / 2 + 3) - self.radius, (self.centerY - self.height / 2 + 5) + self.radius)
+            self.p1 = Point((self.centerX - self.width / 2 + 3) + self.radius,
+                            (self.centerY - self.height / 2 + 5) + self.radius)
+            self.p3 = Point((self.centerX + self.width / 2 + 3) - self.radius,
+                            (self.centerY + self.height / 2 + 5) - self.radius)
+            self.p2 = Point((self.centerX - self.width / 2 + 3) + self.radius,
+                            (self.centerY + self.height / 2 + 5) - self.radius)
+            self.p4 = Point((self.centerX + self.width / 2 + 3) - self.radius,
+                            (self.centerY - self.height / 2 + 5) + self.radius)
 
-            self.circle1, self.circle2, self.circle3, self.circle4 = Circle(self.p1, self.radius), Circle(self.p2, self.radius), Circle(self.p3, self.radius), Circle(self.p4, self.radius)
+            self.circle1, self.circle2, self.circle3, self.circle4 = Circle(self.p1, self.radius), Circle(self.p2,
+                                                                                                          self.radius), Circle(
+                self.p3, self.radius), Circle(self.p4, self.radius)
             self.circle1.setOutline(self.color)
             self.circle2.setOutline(self.color)
             self.circle3.setOutline(self.color)
@@ -174,7 +182,7 @@ class Button:
         self.poly.undraw()
         self.polyShadow.undraw()
         self.textBox.undraw()
-        #self.shadow.undraw()
+        # self.shadow.undraw()
         if self.radiusInd:
             # If there are circles that form the Button:
             self.circle1.undraw()
@@ -186,6 +194,7 @@ class Button:
             self.shadowCircle3.undraw()
             self.shadowCircle4.undraw()
         self.drawn = False
+        return self
 
     def isDrawn(self):
         return self.drawn
@@ -205,9 +214,8 @@ class Button:
         if not self.isActive():
             self.setCenter(Point(self.centerX + 3, self.centerY + 5))
         else:
-            self.setCenter(Point(self.centerX-3, self.centerY-5))
+            self.setCenter(Point(self.centerX - 3, self.centerY - 5))
         return self
-
 
     def isActive(self):
         """
@@ -490,5 +498,3 @@ class Button:
         self.shadowCircle2.setFill(self.shadowColor)
         self.shadowCircle3.setFill(self.shadowColor)
         self.shadowCircle4.setFill(self.shadowColor)
-
-

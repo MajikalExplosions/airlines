@@ -28,7 +28,7 @@ class ActionManager:
         self._passengerCount = 0, 0
         self._passengers = []
         self._startDate, self._returnDate = t_starttime, t_starttime
-        self.k = 5
+        self.k = 2
 
     def runFlightStatusLookup(self):
         dest = self.gui.findWidgetByID("flight_status: flight_destination").getText()
@@ -142,7 +142,6 @@ class ActionManager:
                     break
                 else:
                     self.gui.switchScreen("list_flights")
-                    time.sleep(1000)
 
             try:
                 self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._paths[k].toShortString(self.fm))
@@ -225,7 +224,7 @@ class ActionManager:
         if len(self._passengers) == self._passengerCount:
             print("Complete")
             self.gui.switchScreen("select_seating")
-            for p in self._passenger:
+            for p in self._passengers:
                 print(p.toString())
         else:
             self.gui.findWidgetByID("select_passenger: first_name").setText("")

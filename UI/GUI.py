@@ -24,7 +24,7 @@ class GUI:
         self.id_widget, self.widget_id = {}, {}
 
         ids = ["main", "list_flights", "create_reservation", "modify_reservation", "flight_status", "checkin",
-               "list_airports", "select_passenger"]
+               "list_airports", "select_passenger", "select_seating"]
         # self.screens - Hash: screenID : Screen()
         self.id_screen = {x: y for x, y in zip(ids, [Screen(i, self.win) for i in ids])}
         self.screen_id = {y: x for x, y in self.id_screen.items()}
@@ -289,14 +289,33 @@ class Screen:
                 for i in range(38):
                     for j in range(3):
                         attrs.append(
-                            [Button(150 + 900 * i / 38, 250 + 450 * j / 6, 30, 30, 20, 'green', "",
-                                    color_rgb(27, 73, 101), 25, self.win),
+                            [Button(50 + 1100 * i / 38, 350 + 450 * j / 12, 15, 30, 1, 'green', "",
+                                    color_rgb(27, 73, 101), 25, self.win).undraw(),
                              "selection_seat" + str(i) + str(j)])
+                        attrs[len(attrs) - 1][0].adjustShadowColor('white')
+                    attrs.append([Text(Point(50 + 1100 * i / 38, 315), str(i + 1)), "row"])
+                    attrs[len(attrs) - 1][0].setSize(18)
+                    attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
+
                     for j in range(3, 6):
                         attrs.append(
-                            [Button(150 + 900 * i / 38, 300 + 450 * j / 6, 30, 30, 20, 'green', "",
-                                    color_rgb(27, 73, 101), 25, self.win),
+                            [Button(50 + 1100 * i / 38, 425 + 450 * j / 12, 15, 30, 1, 'green', "",
+                                    color_rgb(27, 73, 101), 25, self.win).undraw(),
                              "selection_seat" + str(i) + str(j)])
+                        attrs[len(attrs) - 1][0].adjustShadowColor('white')
+                    attrs.append([Text(Point(50 + 1100 * i / 38, 450 / 2 + 425), str(i + 1)), "row"])
+                    attrs[len(attrs) - 1][0].setSize(18)
+                    attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
+
+                for j in range(3):
+                    attrs.append([Text(Point(25, 350 + 450 * j / 12), ["A", "B", "C"][j]), "col"])
+                    attrs[len(attrs) - 1][0].setSize(18)
+                    attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
+
+                for j in range(3, 6):
+                    attrs.append([Text(Point(25, 425 + 450 * j / 12), ["A", "B", "C", "D", "E", "F"][j]), "col"])
+                    attrs[len(attrs) - 1][0].setSize(18)
+                    attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
 
         return attrs
 

@@ -285,7 +285,7 @@ class ActionManager:
                 self._seatSelectionMode = 1
 
                 totalFlightTime = 0
-                setStartTime(int(startdate[2]), int(startdate[0]), int(startdate[1]))
+                setStartDate(int(startdate[2]), int(startdate[0]), int(startdate[1]))
 
                 for i in range(len(self._currentReservation.getFlights())):
                     nextFlightTime = self._currentReservation.getFlights()[i].timeUntilNextFlight(offsetStartTime(timedelta(hours=totalFlightTime)))

@@ -275,7 +275,6 @@ class ActionManager:
             if len(startdate) != 3:
                 print("Start date is invalid")
                 return
-            # TODO set start date in reservation
 
             if self._currentReservation.getFlights()[0].getDepDate() != datetime(year=int(startdate[2]),
                                                                                  month=int(startdate[0]),

@@ -219,7 +219,7 @@ class ActionManager:
             
             self.gui.findWidgetByID("select_seat: text").setText(
                 "Choose " + self._passengers[0].getFirstName() + " " + self._passengers[
-                    0].getLastName() + "'s seat on " + self._selectedPaths[0].toFlights()[0].getFullNumber())
+                    0].getLastName() + "'s seat on " + self._selectedPaths[0].toFlights(self.fm)[0].getFullNumber())
         else:
             self.gui.findWidgetByID("select_passenger: first_name").setText("")
             self.gui.findWidgetByID("select_passenger: last_name").setText("")
@@ -229,6 +229,7 @@ class ActionManager:
 
 
     def runSelectSeats(self, i):
+        i = str(i)
         if i[0] not in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
             i = i[1:]
         

@@ -55,17 +55,19 @@ class GUI:
             self.attrs = self.activeScreen.inflate()
 
         elif screen == "back":
-            if self.screen[self.index - 2] == self.id_screen["main"] and self.backButton.isActive():
+            if self.screen[self.index - 1] == self.id_screen["main"] and self.backButton.isActive():
                 self.backButton.toggleActivation()
             self.activeScreen.deflate()
             self.index -= 1
-            self.screen.append(self.screen[self.index - 1])
-            self.activeScreen = self.screen[self.index - 1]
+            print(self.screen)
+            self.screen.append(self.screen[self.index])
+            self.activeScreen = self.screen[self.index]
             self.attrs = self.activeScreen.inflate()
         else:
             self._switchScreen(self.id_screen[screen])
 
         print("ID:", screen, "- Switch to Screen")
+        print(self.screen)
 
     def getScreen(self):
         return self.activeScreen
@@ -99,10 +101,11 @@ class GUI:
         self.activeScreen.deflate()
         if screen.getName() != "list_airports":
             self.screen.append(screen)
-            self.index = len(self.screen)
-            self.activeScreen = self.screen[self.index - 1]
+            self.index = len(self.screen) - 1
+            self.activeScreen = self.screen[self.index]
         else:
-            self.screen.pop(-1)
+            if self.screen[-1] == self.screen[-2]:
+                self.screen.pop(-1)
             self.index = len(self.screen)
             self.activeScreen = screen
         self.attrs = self.activeScreen.inflate()
@@ -156,7 +159,8 @@ class Screen:
     def deflate(self):
         for i in self.attr:
             if type(i[0]) == Button:
-                i[0].toggleActivation()
+                if i[0].isActive():
+                    i[0].toggleActivation()
             try:
                 i[0].undraw()
             except:

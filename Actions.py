@@ -8,10 +8,6 @@
 from random import randint
 
 #Don't delete these.  I get errors when you do.
-from UI.GUI import GUI
-from flights.FlightSearcher import FlightSearcher
-from flights.FlightManager import FlightManager
-from reservations.ReservationManager import ReservationManager
 
 class ActionManager:
     def __init__(self, fs, gui, rm):
@@ -97,6 +93,7 @@ class ActionManager:
         if self._start == 0 or self._end == 0:
             print("Invalid start or end airports.")
             return
+        # TODO Check if self._start == the Entry, otherwise user has changed entry without selecting airport
         self.gui.switchScreen("list_flights")
         for k in range(10):
             self._paths = self.fs.searchForFlights(self._start, self._end, k, 2020, 5, 27)
@@ -115,17 +112,18 @@ class ActionManager:
         #Search for query
         if query:
             self._startList = self.fs.searchForAirports(query)
+            if self._startList:
+                self.gui.switchScreen("list_airports")
 
-            #Try to draw the queries, if the returned list is less than 10 long it will undraw the rest.
-            #TODO figure out why nothing is drawing - is it because the json file hasn't been created yet?
-            for i in range(10):
-                try:
-                    self.gui.findWidgetByID("selection_airport" + str(i)).setText(query[i].toString())
-                    self.gui.findWidgetByID("selection_airport" + str(i)).draw(self.gui.getWin())
-                except:
-                    self.gui.findWidgetByID("selection_circle" + str(i)).undraw()
-                    self.gui.findWidgetByID("selection_airport" + str(i)).toggleActivation()
-                    self.gui.findWidgetByID("selection_airport" + str(i)).undraw()
+                # Try to draw the queries, if the returned list is less than 10 long it will undraw the rest.
+                for i in range(10):
+                    try:
+                        self.gui.findWidgetByID("selection_airport" + str(i)).setText(query[i].toString())
+                        # self.gui.findWidgetByID("selection_airport" + str(i)).draw(self.gui.getWin())
+                    except:
+                        self.gui.findWidgetByID("selection_circle" + str(i)).undraw()
+                        self.gui.findWidgetByID("selection_airport" + str(i)).toggleActivation()
+                        self.gui.findWidgetByID("selection_airport" + str(i)).undraw()
 
     def runCreateReservationSelectAirport(self, i):
         #Update text
@@ -148,7 +146,7 @@ class ActionManager:
 
         # TODO Create a reservation
         # TODO Switch screen to passenger information
-    
+
     def runModifyReservationFindExisting(self):
         print("Finding existing reservation.")
 

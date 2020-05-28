@@ -10,7 +10,7 @@
 from flights.FlightManager import FlightManager
 from flights.paths.Graph import Graph
 from flights.paths.YenKSP import YenKSP
-
+from flights.Time import *
 
 class FlightSearcher:
     def __init__(self, fm):
@@ -44,7 +44,8 @@ class FlightSearcher:
 
         return fullMatch + partMatch[:10 - len(fullMatch)]
 
-    def searchForFlights(self, origin, dest, k):
+    def searchForFlights(self, origin, dest, k, y, m, d):
+        setStartDate(y, m, d)
         c1, c2 = origin.getCode(), dest.getCode()
         if c1 + c2 in self._flightCache:
             search = self._flightCache[c1 + c2]
@@ -57,11 +58,11 @@ class FlightSearcher:
             res.append(search.getPath(i))
         return res
 
-    def lookup(self, dest, flightnum):
+    def searchForFlight(self, destinationCode, flightNumber):
         for flight in self.flightManager.getFlights():
-            if flight.getDestination().getCode() == dest and flight.getAirline() + flight.getNumber() == flightnum:
+            if flight.getDestination().getCode() == destinationCode and flight.getAirline() + str(flight.getNumber()) == flightNumber:
                 return flight
-        return "Flight {} to {} Doesn't Exist".format(flightnum, dest)
+        return "Flight {} to {} Doesn't Exist".format(flightNumber, destinationCode)
 
     def isValidAirport(self, s):
         for airport in self.flightManager.getAirports():

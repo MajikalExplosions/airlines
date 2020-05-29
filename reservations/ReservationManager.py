@@ -94,7 +94,7 @@ class ReservationManager:
             singleFlight.createFromString(fileLines[flightInd])
         else:
             singleFlight.create(flight, depDate)
-            
+
         self.singleFlights.append(singleFlight)
         return singleFlight
 

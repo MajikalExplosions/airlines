@@ -111,43 +111,6 @@ class Reservation:
             print(self.__toString(), file=reservationFile)
 
 
-
-    def validateCreditCard(self, creditCardNum):
-        if not (16 <= len(creditCardNum) <= 19):
-            return False
-
-        try:
-            creditCardNum = int(creditCardNum)
-
-            if creditCardNum <= 0:
-                return False
-        except:
-            return False
-
-        #check digit is the last digit of the number
-        checkDigit = creditCardNum % 10
-
-        #creates a backwards list of the digits of the number except the check digit
-        sequence = self.__splitNumToList(creditCardNum // 10)
-
-        digitSum = 0
-
-        #iterates through list right to left and adds each digit to the digit sum
-        for i in range(len(sequence)):
-            #for every other digit, multiplies by 2 and then turns that number into the sum of it's digits
-            if i % 2 == 0:
-                digit = sequence[i] * 2
-                digit = (digit % 10) + (digit // 10)
-            else:
-                digit = sequence[i]
-
-            digitSum += digit
-
-        digitSum *= 9
-
-        #if the last digit of the sum is the same as the last digit of the original, it's valid
-        return (digitSum % 10) == checkDigit
-
     #searches the list of file lines to see if it contains a reservation with the given confirmation number
     #if it does, returns the line where the reservation starts
     #if it doesn't, returns -1

@@ -372,6 +372,11 @@ class ActionManager:
             print("Input is invalid")
 
     def runCreditCardCreateReservation(self):
+        cardIsValid = self.rm.validateCreditCard(self.gui.findWidgetByID("credit_card: creditcard").getText())
+
+        while not cardIsValid:
+            self.gui.findWidgetByID("credit_card: output").setText("Invalid credit card - try again.")
+
         self._currentReservation = self.rm.createReservation()
 
         flightData = self._selectedPaths[0].toFlights(self.fm)

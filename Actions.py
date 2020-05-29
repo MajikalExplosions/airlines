@@ -330,6 +330,8 @@ class ActionManager:
                     for j in range(len(seatA[i])):
                         if not seatA[i][j]:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
+                            self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).toggleActivation()
+
                         else:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")
 
@@ -357,22 +359,6 @@ class ActionManager:
 
         if self._seatSelectionMode == 0:
             #This is creating reservation
-            
-            #Gray out taken seats
-            seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex], self._startDate, self._currentTripSelect == 0)
-            
-            bad = False
-            for i in range(len(seatA)):
-                for j in range(len(seatA[i])):
-                    if i == row and j == seat and not seatA[i][j]:
-                        bad = True
-                    if not seatA[i][j]:
-                        self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
-                    else:
-                        self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")
-
-            if bad:
-                return
 
             self.runCreateReservationSelectSeats(row, seat, self._passengerSeatingIndex)
             self._passengerSeatingIndex += 1

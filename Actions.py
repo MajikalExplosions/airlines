@@ -403,24 +403,24 @@ class ActionManager:
 
         self.gui.switchScreen("create_reservation_success")
         self._start, self._end = 0, 0
-        self.gui.getWidgetByID("create_reservation: start").setText("")
-        self.gui.getWidgetByID("create_reservation: destination").setText("")
-        self.gui.getWidgetByID("create_reservation: travelers").setText("")
-        self.gui.getWidgetByID("create_reservation: return_date").setText("")
-        self.gui.getWidgetByID("create_reservation: start_date").setText("")
+        self.gui.findWidgetByID("create_reservation: start").setText("")
+        self.gui.findWidgetByID("create_reservation: destination").setText("")
+        self.gui.findWidgetByID("create_reservation: travelers").setText("")
+        self.gui.findWidgetByID("create_reservation: return_date").setText("")
+        self.gui.findWidgetByID("create_reservation: start_date").setText("")
 
     def runCreateReservationSuccess(self):
         reservationInfo = "Last Name: " + self._currentReservation.getLastName()
 
         if self._tripType == 0:
-            self.gui.getWidgetByID("Success_Description").setText("A one-way reservation has been created.")
+            self.gui.findWidgetByID("Success_Description").setText("A one-way reservation has been created.")
             reservationInfo += "Confirmation Number: " + self._currentReservation.getConfirmationNumber()
         else:
-            self.gui.getWidgetByID("Success_Description").setText("A round-trip reservation has been created.")
+            self.gui.findWidgetByID("Success_Description").setText("A round-trip reservation has been created.")
             reservationInfo += "Outbound Confirmation Number: " + self._currentReservation.getConfirmationNumber()
             reservationInfo += "Inbound Confirmation Number: " + self._currentReservationAlt.getConfirmationNumber()
 
-        self.gui.getWidgetByID("create_reservation_success: display_info").setText(reservationInfo)
+        self.gui.findWidgetByID("create_reservation_success: display_info").setText(reservationInfo)
         self.gui.switchScreen("main")
 
     def runModifyReservationSelectSeats(self, row, seat, passenger):

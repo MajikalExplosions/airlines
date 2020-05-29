@@ -126,15 +126,15 @@ class SingleFlight:
 
     def toString(self):
         string = "Flight"
-        string += "  Departure Date: " + self.depDate
-        string += "  Arrival Date" + self.arrDate
-        string += "  Flight ID: " + self.flightId
-        string += "  Airline: " + self.airline
-        string += "  Number: " + self.number
-        string += "  Origin: " + self.origin
-        string += "  Destination: " + self.destination
-        string += "  Departure Time: " + self.departureTime
-        string += "  Arrival Time: " + self.arrivalTime
+        string += "  Departure Date: " + str(self.depDate)
+        string += "  Arrival Date" + str(self.arrDate)
+        string += "  Flight ID: " + str(self.flightId)
+        string += "  Airline: " + str(self.airline)
+        string += "  Number: " + str(self.number)
+        string += "  Origin: " + str(self.origin)
+        string += "  Destination: " + str(self.destination)
+        string += "  Departure Time: " + str(self.departureTime)
+        string += "  Arrival Time: " + str(self.arrivalTime)
         string += "  Booked Seats: "
 
         for row in range(38):

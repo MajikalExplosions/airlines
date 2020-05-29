@@ -35,11 +35,11 @@ class ReservationManager:
         reservationStartInd = self.__fileContainsConfirmationNumber(confirmationNumber, fileLines)
 
         if reservationStartInd == -1:
-            raise("Confirmation number was not found.")
+            raise Exception("Confirmation number was not found.")
 
         #fileContainsReservation only makes sure that the confirmation numbers match so we still need to check the last name
         if not self.__reservationMatchesLastName(lastName, fileLines, reservationStartInd):
-            raise("Last name was not found.")
+            raise Exception("Last name was not found.")
 
         reservation = Reservation()
         reservation.createFromFile(fileLines, reservationStartInd)

@@ -473,7 +473,7 @@ class ActionManager:
                 tempRes = self.rm.createReservation()
 
                 for flight in self._currentReservation.getFlights():
-                    tempRes.addFlight(flight, newTime, flight.getArrivalTime() + (newTime - flight.getDepTime()))
+                    tempRes.addFlight(flight, newTime)
 
                 for passenger in self._currentReservation.getPassengers():
                     tempRes.addPassenger(passenger)
@@ -499,17 +499,16 @@ class ActionManager:
 
         self._currentReservation = self.rm.createReservation()
         self._currentReservation.setFlights(self.singleFlights)
-        self._currentReservation.matchSeats()
         for passenger in self._passengers:
             self._currentReservation.addPassenger(passenger)
+        self._currentReservation.matchSeats()
 
         if self._tripType == 1:
             self._currentReservationAlt = self.rm.createReservation()
             self._currentReservationAlt.setFlights(self.singleFlightsAlt)
-            self._currentReservationAlt.matchSeats()
-
             for passenger in self._passengersAlt:
                 self._currentReservationAlt.addPassenger(passenger)
+            self._currentReservationAlt.matchSeats()
 
         self.rm.serializeAll()
         self.singleFlights, self.singleFlightsAlt = [], []

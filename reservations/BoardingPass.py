@@ -12,8 +12,8 @@ class BoardingPass:
         self.export()
 
     def export(self):
-        fileName = "reservations/boarding_passes/reservation_" + self.reservation.getConfirmationNumber() + ".txt"
-        file = open(fileName, "w")
+        fileName = "reservations/data_reservation/boarding_passes"
+        file = open(fileName, "a")
 
         flights = self.reservation.getFlights()
         string = ""
@@ -26,7 +26,7 @@ class BoardingPass:
                 string += passenger.getLastName() + " / " + passenger.getFirstName() + "\n"
                 string += "FROM: " + flight.getOrigin() + "\n"
                 string += "TO: " + flight.getDestination() + "\n"
-                string += "SEAT: " + passenger.getSeats()[i] + "\n"
+                string += "SEAT: " + passenger.getSeats()[i]
                 string += "GATE: " + str(gate) + "\n"
                 string += "\n\n"
 

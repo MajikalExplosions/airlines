@@ -428,7 +428,7 @@ class ActionManager:
         reservation = self.rm.loadReservation(cn, ln)
         if reservation != 0:
             self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
-                reservation.getFlights()[0].getDepartureDate())
+                "{}/{}/{}".format(reservation.getFlights()[0].getDepartureDate().year,reservation.getFlights()[0].getDepartureDate().month,reservation.getFlights()[0].getDepartureDate().day))
             self._currentReservation = reservation
             self.gui.switchScreen("modify_reservation_dates")
 
@@ -453,6 +453,7 @@ class ActionManager:
                 setStartDate(int(startdate[2]), int(startdate[0]), int(startdate[1]))
 
                 for i in range(len(self._currentReservation.getFlights())):
+                    flightNumber = self._currentReservation.getFlights()[i].getNumber()
                     nextFlightTime = self._currentReservation.getFlights()[i].timeUntilNextFlight(offsetStartTime(timedelta(hours=totalFlightTime)))
                     flightTime = self._currentReservation.getFlights()[i].getTravelTime()
                     totalFlightTime += nextFlightTime + flightTime

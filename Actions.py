@@ -453,6 +453,7 @@ class ActionManager:
                 setStartDate(int(startdate[2]), int(startdate[0]), int(startdate[1]))
 
                 for i in range(len(self._currentReservation.getFlights())):
+                    flightNumber = self._currentReservation.getFlights()[i].getNumber()
                     nextFlightTime = self._currentReservation.getFlights()[i].timeUntilNextFlight(offsetStartTime(timedelta(hours=totalFlightTime)))
                     flightTime = self._currentReservation.getFlights()[i].getTravelTime()
                     totalFlightTime += nextFlightTime + flightTime

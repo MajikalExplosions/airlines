@@ -3,7 +3,7 @@
 
 # Ver.  Writer              Date            Notes
 # 1.0   Shuvam Chatterjee   05/08/20        Original
-
+import copy
 from random import randrange
 from reservations.Passenger import Passenger
 from reservations.SingleFlight import SingleFlight

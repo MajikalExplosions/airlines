@@ -1,0 +1,98 @@
+{
+  "Text1": {
+    "id": "CheckinBag_Title",
+    "x": 338,
+    "y": 150,
+    "text": "Check-In Bags",
+    "size": 60,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold"
+  },
+  "Text2": {
+    "id": "CheckinBag_Description",
+    "x": 375,
+    "y": 200,
+    "text": "Enter the number of bags for each passenger.",
+    "size": 32,
+    "color": {
+      "r": 150,
+      "g": 193,
+      "b": 192
+    },
+    "style": "normal"
+  },
+  "Entry1": {
+    "x": 210,
+    "y": 350,
+    "width": 10,
+    "size": 30,
+    "text": "",
+    "fill": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "outline": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textColor": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "bold",
+    "id": "checkin_bags: bags"
+  },
+  "Text3": {
+    "id": "Checkinbags",
+    "x": 160,
+    "y": 300,
+    "text": "Number of Bags:",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
+  "Text4": {
+    "id": "checkin_bags: output",
+    "x": 600,
+    "y": 500,
+    "text": "",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
+  "Button1": {
+    "x": 600,
+    "y": 575,
+    "width": 400,
+    "height": 75,
+    "radius": 20,
+    "color": {
+      "r": 95,
+      "g": 168,
+      "b": 211
+    },
+    "text": "Next",
+    "textColor": {
+      "r": 255,
+      "g": 255,
+      "b": 255
+    },
+    "textSize": 32,
+    "id": "checkin_bags: next"
+  }
+}

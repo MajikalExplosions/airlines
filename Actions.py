@@ -258,17 +258,18 @@ class ActionManager:
 
                 self.gui.switchScreen("select_seating")
 
+
+                self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
+                self._seatSelectionMode = 0
+                
                 #Gray out taken seats
-                seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0], self._startDate, self._currentTripSelect == 0)
+                seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex], self._startDate, self._currentTripSelect == 0)
                 for i in range(len(seatA)):
                     for j in range(len(seatA[i])):
                         if not seatA[i][j]:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
                         else:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")
-
-                self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
-                self._seatSelectionMode = 0
                 
                 self.gui.findWidgetByID("select_seat: text").setText(
                     "Choose " + self._passengersAlt[0].getFirstName() + " " + self._passengersAlt[
@@ -296,18 +297,19 @@ class ActionManager:
             if len(self._passengers) == self._passengerCount:
                 self.gui.switchScreen("select_seating")
 
+
+                self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
+                self._seatSelectionMode = 0
+
+                
                 #Gray out taken seats
-                seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0], self._startDate, self._currentTripSelect == 0)
+                seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex], self._startDate, self._currentTripSelect == 0)
                 for i in range(len(seatA)):
                     for j in range(len(seatA[i])):
                         if not seatA[i][j]:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
                         else:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")
-
-
-                self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
-                self._seatSelectionMode = 0
                 
                 self.gui.findWidgetByID("select_seat: text").setText(
                     "Choose " + self._passengers[0].getFirstName() + " " + self._passengers[
@@ -333,12 +335,12 @@ class ActionManager:
             #This is creating reservation
             
             #Gray out taken seats
-            seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0], self._startDate, self._currentTripSelect == 0)
+            seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex], self._startDate, self._currentTripSelect == 0)
             
             bad = False
             for i in range(len(seatA)):
                 for j in range(len(seatA[i])):
-                    if i == row and j == seat and seatA[i][j]:
+                    if i == row and j == seat and not seatA[i][j]:
                         bad = True
                     if not seatA[i][j]:
                         self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
@@ -373,12 +375,12 @@ class ActionManager:
         elif self._seatSelectionMode == 1:
             
             #Gray out taken seats
-            seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0], self._startDate, self._currentTripSelect == 0)
+            seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex], self._startDate, self._currentTripSelect == 0)
             
             bad = False
             for i in range(len(seatA)):
                 for j in range(len(seatA[i])):
-                    if i == row and j == seat and seatA[i][j]:
+                    if i == row and j == seat and not seatA[i][j]:
                         bad = True
                     if not seatA[i][j]:
                         self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")

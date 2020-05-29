@@ -576,6 +576,7 @@ class ActionManager:
             self.gui.findWidgetByID("checkin: output").setText("")
             self.gui.findWidgetByID("checkin: reservation_number").setText("")
             self.gui.findWidgetByID("checkin: last_name").setText("")
+            self.gui.findWidgetByID("checkin_bags: bags").setText("")
 
     def __getSeatAvailability(self, flightId, depDate, isOutbound):
         singleFlight = self.rm.createSingleFlight(flightId, depDate)

@@ -52,7 +52,7 @@ class ReservationManager:
             passengerInd += 1
 
         while fileLines[passengerInd].find("}") == -1:
-            lastNameFile = fileLines[passengerInd].split("  ")[2].lstrip("Last Name: ")
+            lastNameFile = fileLines[passengerInd].split("  ")[2].lstrip("Last Name: ").strip()
 
             if lastNameFile == lastName:
                 return True
@@ -65,19 +65,15 @@ class ReservationManager:
     #if it does, returns the line where the reservation starts
     #if it doesn't, returns -1
     def __fileContainsConfirmationNumber(self, confirmationNumber, fileLines):
-        lineNum = 0
-
-        while lineNum < len(fileLines):
-            curLine = fileLines[lineNum]
+        for i in range(len(fileLines)):
+            curLine = fileLines[i]
 
             if curLine.find("Confirmation Number: ") != -1:
-                #the string "Confirmation Number: " has length 21 so everything after that is the actual number
-                confirmationNum = curLine.lstrip("Confirmation Number: ")
+                confirmationNum = curLine.lstrip("Confirmation Number: ").strip()
 
                 if confirmationNum == confirmationNumber:
                     #the start of a reservation will be 1 line above where it's confirmation number is
-                    return lineNum - 1
-            lineNum += 1
+                    return i - 1
         return -1
 
     def createSingleFlight(self, flight, depDate):
@@ -108,10 +104,10 @@ class ReservationManager:
             curLine = fileLines[lineNum]
 
             if curLine.find("Flight ID: ") != -1:
-                idLine = curLine.lstrip("Flight ID: ")
+                idLine = curLine.lstrip("Flight ID: ").strip()
 
                 if idLine == flightID:
-                    depLine = fileLines[lineNum - 1].lstrip("Departure Date: ")
+                    depLine = fileLines[lineNum - 1].lstrip("Departure Date: ").strip()
                     if depLine == depDate:
                         return lineNum - 2
             lineNum += 1

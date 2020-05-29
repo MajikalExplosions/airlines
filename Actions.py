@@ -30,7 +30,7 @@ class ActionManager:
         self._startDate, self._returnDate = t_starttime, t_starttime
         self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
         self._seatSelectionMode = 0
-        self._currentReservation = ""
+        self._currentReservation, self._currentReservationAlt = "", ""
         self._selectedPaths = [0, 0]
         self._selectFlightMode = 0
         self.k = 2

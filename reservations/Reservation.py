@@ -131,16 +131,6 @@ class Reservation:
 
         return -1
 
-    #takes a number and splits it into a list of each of it's digits, the returned list will be the number reversed
-    def __splitNumToList(self, number):
-        list = []
-
-        while number > 0:
-            list.append(number % 10)
-            number //= 10
-
-        return list
-
     def __issueConfirmationNumer(self):
         readFile = open("reservations/data_reservation/confirmation_numbers.txt", "r")
 

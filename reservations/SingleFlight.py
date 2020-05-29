@@ -67,8 +67,29 @@ class SingleFlight:
     def getFlightID(self):
         return self.flightId
 
+    def getDepartureTime(self):
+        return self.departureTime
+
+    def getArrivalTime(self):
+        return self.arrivalTime
+
+    def getDepartureDate(self):
+        return self.depDate
+
     def getArrivalDate(self):
         return self.arrDate
+
+    def getOrigin(self):
+        return self.origin
+
+    def getDestination(self):
+        return self.destination
+
+    def getAirline(self):
+        return self.airline
+
+    def getNumber(self):
+        return self.number
 
     def bookSeat(self, row, col):
         self.seats[row][col] = True

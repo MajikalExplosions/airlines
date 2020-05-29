@@ -9,6 +9,7 @@ from random import randint
 class BoardingPass:
     def __init__(self, reservation):
         self.reservation = reservation
+        self.export()
 
     def export(self):
         fileName = "reservations/boarding_passes/reservation_" + self.reservation.getConfirmationNumber() + ".txt"

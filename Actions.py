@@ -361,11 +361,34 @@ class ActionManager:
             print("Input is invalid")
 
     def runCreditCardCreateReservation(self):
+        self._currentReservation = self.rm.createReservation()
+
+        flightData = self._selectedPaths[0].toFlights(self.fm)
+
+        for i in range(len(flightData)):
+            depTime = self._selectedPaths[0].timeToNodeDeparture(i)
+            arrTime = self._selectedPaths[0].timeToNodeArrival(i + 1)
+            self._currentReservation.addFlight(flightData[i], depTime, arrTime)
+
+        for passenger in self._passengers:
+            self._currentReservation.addPassenger(passenger)
+
+        if self._tripType == 1:
+            self._currentReservationAlt = self.rm.createReservation()
+
+            flightData = self._selectedPaths[1].toFlights(self.fm)
+
+            for i in range(len(flightData)):
+                depTime = self._selectedPaths[1].timeToNodeDeparture(i)
+                arrTime = self._selectedPaths[1].timeToNodeArrival(i + 1)
+                self._currentReservationAlt.addFlight(flightData[i], depTime, arrTime)
+
+            for passenger in self._passengersAlt:
+                self._currentReservationAlt.addPassenger(passenger)
+
+        self.rm.serializeAll()
+
         print("Created reservation")
-        # Create reservation object in self._currentReservation
-        # Flight data is in self._selectedPaths[0].toFlights(self.fm) for outbound and self._selectedPaths[1].toFlights(self.fm) for inbound (only for roundtrip flights)
-        #    - If self._tripType == 1, it's a roundtrip, and if it's 0 then it's a one way flight
-        # Passengers is in self._passengers for outbound, and in roundtrips they're in self._passengersAlt
 
         self.gui.switchScreen("create_reservation_success")
         self._start, self._end = 0, 0

@@ -40,8 +40,8 @@ class Reservation:
         singleFlight.create(flight, depDate, arrDate)
         self.flights.append(singleFlight)
 
-    def addPassenger(self, firstName, lastName):
-        self.passengers.append(Passenger(firstName, lastName))
+    def addPassenger(self, passenger):
+        self.passengers.append(passenger)
 
     def addSeat(self, seat, passengerFirstName, passengerLastName, flightID):
         for passenger in self.passengers:
@@ -94,10 +94,9 @@ class Reservation:
 
             reservationFile = open("reservations/data_reservation/reservations.txt", "w")
 
-            index = 0
-            while index < len(fileLines):
-                if index < reservationStartInd and index >= endInd:
-                    print(fileLines[index], file=reservationFile)
+            for i in range(len(fileLines)):
+                if i < reservationStartInd and i >= endInd:
+                    print(fileLines[i], file=reservationFile)
 
             print(self.__toString(), file=reservationFile)
 

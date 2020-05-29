@@ -1,9 +1,9 @@
 {
   "Text1": {
-    "id": "Checkin_Title",
+    "id": "CheckinBag_Title",
     "x": 338,
     "y": 150,
-    "text": "Check-In Online",
+    "text": "Check-In Bags",
     "size": 60,
     "color": {
       "r": 27,
@@ -13,10 +13,10 @@
     "style": "bold"
   },
   "Text2": {
-    "id": "Checkin_Description",
+    "id": "CheckinBag_Description",
     "x": 375,
     "y": 200,
-    "text": "Enter valid reservation details to check-in.",
+    "text": "Enter the number of bags for each passenger.",
     "size": 32,
     "color": {
       "r": 150,
@@ -47,37 +47,13 @@
       "b": 101
     },
     "style": "bold",
-    "id": "checkin: reservation_number"
-  },
-  "Entry2": {
-    "x": 460,
-    "y": 350,
-    "width": 11,
-    "size": 30,
-    "text": "",
-    "fill": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
-    "outline": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
-    "textColor": {
-      "r": 27,
-      "g": 73,
-      "b": 101
-    },
-    "style": "bold",
-    "id": "checkin: last_name"
+    "id": "checkin_bags: bags"
   },
   "Text3": {
-    "id": "CheckinText",
+    "id": "Checkinbags",
     "x": 160,
     "y": 300,
-    "text": "Reservation Number:",
+    "text": "Number of Bags:",
     "size": 32,
     "color": {
       "r": 27,
@@ -87,20 +63,7 @@
     "style": "normal"
   },
   "Text4": {
-    "id": "CheckinLastText",
-    "x": 448,
-    "y": 300,
-    "text": "Last Name:",
-    "size": 32,
-    "color": {
-      "r": 27,
-      "g": 73,
-      "b": 101
-    },
-    "style": "normal"
-  },
-  "Text5": {
-    "id": "checkin: output",
+    "id": "checkin_bags: output",
     "x": 600,
     "y": 500,
     "text": "",
@@ -123,13 +86,13 @@
       "g": 168,
       "b": 211
     },
-    "text": "Check-In",
+    "text": "Next",
     "textColor": {
       "r": 255,
       "g": 255,
       "b": 255
     },
     "textSize": 32,
-    "id": "checkin: find_reservation"
+    "id": "checkin_bags: next"
   }
 }

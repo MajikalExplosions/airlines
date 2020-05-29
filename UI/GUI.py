@@ -28,7 +28,8 @@ class GUI:
 
         # List of valid screens
         ids = ["main", "list_flights", "create_reservation", "modify_reservation", "flight_status", "checkin",
-               "list_airports", "select_passenger", "select_seating", "credit_card", "create_reservation_success"]
+               "list_airports", "select_passenger", "select_seating", "credit_card", "create_reservation_success",
+               "checkin_bag"]
 
         # Create hash with ID to screen and screen to ID
         self.id_screen = {x: y for x, y in zip(ids, [Screen(i, self.win) for i in ids])}

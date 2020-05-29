@@ -34,6 +34,7 @@ class ActionManager:
         self._selectedPaths = [0, 0]
         self._selectFlightMode = 0
         self.k = 2
+        self._checkinReservation, self._checkinCurrentPassenger = None, 0
 
     def runFlightStatusLookup(self):
         dest = self.gui.findWidgetByID("flight_status: flight_destination").getText()
@@ -228,9 +229,10 @@ class ActionManager:
     def runCheckinFindReservation(self):
         cn, ln = self.gui.findWidgetByID("checkin: reservation_number").getText(), self.gui.findWidgetByID("checkin: last_name").getText()
         try:
-            reservation = self.rm.loadReservation(cn, ln)
-            boardingPass = BoardingPass(reservation)
-            display = "Boarding pass exported to " + boardingPass.export()
+            self._checkinReservation = self.rm.loadReservation(cn, ln)
+            # display = "Boarding pass exported to " + boardingPass.export()
+            self._checkinCurrentPassenger = len(self._checkinReservation.getPassengers()) - 1
+            self.gui.switchScreen("checkin_bag")
         except:
             display = "Reservation not found. Please try again."
 
@@ -383,3 +385,25 @@ class ActionManager:
         # This is run after a seat is selected for modify reservation.
         self._currentReservation.modifySeat(row, seat, passenger.getFirstName(), passenger.getLastName(),
                                             self._flightSeatingIndex)
+
+    def runCheckinBagsNext(self):
+        self.gui.findWidgetByID("checkin_bags: output").setText("Enter Number of Bags to Check-In for ",
+                                                                self._checkinReservation.getPassengers()[
+                                                                    self._checkinCurrentPassenger].getFirstName(), " ",
+                                                                self._checkinReservation.getPassengers()[
+                                                                    self._checkinCurrentPassenger].getLastName())
+        self._checkinCurrentPassenger -= 1
+        if self._checkinCurrentPassenger >= -1:
+            try:
+                x = int(self.gui.findWidgetByID("checkin_bags: bags").getText())
+                if x < 1:
+                    self.gui.findWidgetByID("checkin_bags: output").setText("Invalid Number of Bags")
+                else:
+                    pass
+            except ValueError:
+                self.gui.findWidgetByID("checkin_bags: output").setText("Invalid Number of Bags")
+        else:
+            BoardingPass(self._checkinReservation)
+            self.gui.findWidgetByID("checkin_bags: output").setText(
+                "Boarding Passes Generated for " + self._checkinReservation.getConfirmationNumber())
+            self._checkinReservation, self._checkinCurrentPassenger = None, 0

@@ -481,3 +481,5 @@ class ActionManager:
             self.singleFlights.append(singleFlight)
         else:
             self.singleFlightsAlt.append(singleFlight)
+
+        return singleFlight.getAvailableSeats()

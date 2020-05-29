@@ -3,7 +3,7 @@
     "id": "Checkin_Title",
     "x": 338,
     "y": 150,
-    "text": "Modify a Reservation",
+    "text": "Check-In Online",
     "size": 60,
     "color": {
       "r": 27,
@@ -16,7 +16,7 @@
     "id": "Checkin_Description",
     "x": 375,
     "y": 200,
-    "text": "Enter valid reservation details to modify.",
+    "text": "Enter valid reservation details to check-in.",
     "size": 32,
     "color": {
       "r": 150,

@@ -132,7 +132,7 @@ class SingleFlight:
 
         for row in range(38):
             for col in range(6):
-                if self.seats[row][col]:
-                    string += str(row) + "," + str(col)
+                if not self.seats[row][col]:
+                    string += str(row) + "," + str(col) + " "
 
         return string

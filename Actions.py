@@ -407,8 +407,17 @@ class ActionManager:
         self.gui.getWidgetByID("create_reservation: start_date").setText("")
 
     def runCreateReservationSuccess(self):
-        # TODO update screen with info & reservation number or numbers
-        
+        reservationInfo = "Last Name: " + self._currentReservation.getLastName()
+
+        if self._tripType == 0:
+            self.gui.getWidgetByID("Success_Description").setText("A one-way reservation has been created.")
+            reservationInfo += "Confirmation Number: " + self._currentReservation.getConfirmationNumber()
+        else:
+            self.gui.getWidgetByID("Success_Description").setText("A round-trip reservation has been created.")
+            reservationInfo += "Outbound Confirmation Number: " + self._currentReservation.getConfirmationNumber()
+            reservationInfo += "Inbound Confirmation Number: " + self._currentReservationAlt.getConfirmationNumber()
+
+        self.gui.getWidgetByID("create_reservation_success: display_info").setText(reservationInfo)
         self.gui.switchScreen("main")
 
     def runModifyReservationSelectSeats(self, row, seat, passenger):

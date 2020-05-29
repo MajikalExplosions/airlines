@@ -15,6 +15,9 @@ class Reservation:
         self.passengers = []
         self.flights = []
 
+    def getLastName(self):
+        return self.passengers[0].getLastName()
+
     #parses a reservation string and returns a reservation object
     def createFromFile(self, fileLines, index):
         self.confirmationNumber = fileLines[index + 1].lstrip("Confirmation Number:")

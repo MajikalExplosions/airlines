@@ -8,6 +8,17 @@ from flights import Flight
 
 class SingleFlight:
     def __init__(self, flight, depDate, arrDate):
+        #makes a list of all seat combinations of rows from 1-38 and letters from A-F
+        self.seats = []
+
+        for row in range(38):
+            rowList = []
+            for col in range(6):
+                rowList.append(True)
+
+            self.seats.append(rowList)
+
+    def create(self, flight, depDate, arrDate):
         self.depDate = depDate
         self.arrDate = arrDate
 
@@ -19,34 +30,12 @@ class SingleFlight:
         self.departureTime = flight.getDepTime()
         self.arrivalTime = flight.getArrTime()
 
-        # makes a list of all seat combinations of rows from 1-38 and letters from A-F
-        self.seats = []
-
-        for row in range(38):
-            rowList = []
-            for col in range(6):
-                rowList.append(True)
-
-            self.seats.append(rowList)
-
-    def setArrDate(self, date):
-        self.arrDate = date
-
-    def setDepDate(self, date):
-        self.depDate = date
-
-    def getArrDate(self):
-        return self.arrDate
-
-    def getDepDate(self):
-        return self.depDate
-
     def serialize(self):
         readFile = open("reservations/data_reservation/single_flights.txt", "r")
         flightStartInd = self.__fileContainsFlight(readFile.readlines())
         readFile.close()
 
-        # means that this reservation has not already been serialized
+        #means that this reservation has not already been serialized
         if flightStartInd == -1:
             reservationFile = open("reservations/data_reservation/single_flights.txt", "a")
             print(self.toString(), file=reservationFile)
@@ -78,11 +67,23 @@ class SingleFlight:
     def getFlightID(self):
         return self.flightId
 
+    def getArrivalDate(self):
+        return self.arrDate
+
     def bookSeat(self, row, col):
-        self.seats[row][col]
+        self.seats[row][col] = True
 
     def getAvailableSeats(self):
         return self.seats
+
+    def createFromID(self, id):
+        readFile = open("reservations/data_reservation/single_flights.txt", "r")
+
+        for line in readFile:
+            if line.find(id) != -1:
+                self.createFromString(line)
+
+        readFile.close()
 
     def createFromString(self, string):
         tokens = string.split("  ")
@@ -97,6 +98,11 @@ class SingleFlight:
         self.departureTime = tokens[8].lstrip("Departure Time: ")
         self.arrivalTime = tokens[9].lstrip("Arrival Time: ")
 
+        seatList = tokens[10].lstrip("Booked Seats: ")
+        for seat in seatList.split(" "):
+            row, col = seat.split(",")
+            self.seats[row][col] = True
+
     def toString(self):
         string = "Flight"
         string += "  Departure Date: " + self.depDate
@@ -108,4 +114,11 @@ class SingleFlight:
         string += "  Destination: " + self.destination
         string += "  Departure Time: " + self.departureTime
         string += "  Arrival Time: " + self.arrivalTime
+        string += "  Booked Seats: "
+
+        for row in range(38):
+            for col in range(6):
+                if self.seats[row][col]:
+                    string += str(row) + "," + str(col)
+
         return string

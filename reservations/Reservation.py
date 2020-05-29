@@ -30,6 +30,7 @@ class Reservation:
     def createFromFile(self, fileLines, index):
         self.confirmationNumber = fileLines[index + 1].lstrip("Confirmation Number:")
 
+        #loops through each lines for a flight object
         index += 2
         while fileLines[index].find("Flight") != -1:
             flight = SingleFlight()
@@ -37,6 +38,7 @@ class Reservation:
             self.flights.append(flight)
             index += 1
 
+        #loops through each lines for a passenger object
         while fileLines[index].find("Passenger") != -1:
             passenger = Passenger("", "")
             passenger.createFromString(fileLines[index])
@@ -49,6 +51,7 @@ class Reservation:
     def addPassenger(self, passenger):
         self.passengers.append(passenger)
 
+    #passenger/flight order got swapped in Actions.py so this matches their seat data after both are set in the new order
     def matchSeats(self):
         for i in range(len(self.flights)):
             flight = self.flights[i]
@@ -65,11 +68,14 @@ class Reservation:
                 passenger.addSeat(seat)
 
     def modifySeat(self, seat, passengerFirstName, passengerLastName, flightID):
+        #flights and seats correspond with their place in the lists so first find the index that this flight is at
+        flightIndex = 0
         for i in range(len(self.flights)):
             if self.flights[i].getFlightID() == flightID:
                 flightIndex = i
                 break
 
+        #modify the seat at the index of the new flight each time
         for passenger in self.passengers:
             if passenger.getFirstName() == passengerFirstName and passenger.getLastName() == passengerLastName:
                 passenger.setSeatAt(seat, flightIndex)
@@ -156,6 +162,7 @@ class Reservation:
         confirmationFile.close()
 
     def __fileContainsString(self, file, string):
+        #resets the file pointer
         file.seek(0)
 
         for line in file:

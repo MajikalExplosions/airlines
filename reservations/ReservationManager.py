@@ -76,6 +76,8 @@ class ReservationManager:
                     return i - 1
         return -1
 
+    #Actions.py needs to make flights without access to the reservation object so moved it to the wrapper
+    #we don't want to have duplicates of the same single flight object so if one is already created, just return that one
     def createSingleFlight(self, flight, depDate):
         for singleFlight in self.singleFlights:
             if singleFlight.getFlightID() == flight.getID() and singleFlight.getDepartureDate() == depDate:

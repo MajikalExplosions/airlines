@@ -43,17 +43,19 @@ class GUI:
         self._inflate_header()
         self.activeScreen = self.id_screen["main"]
         self.screen, self.index = [], 0
-        self.activeScreen.inflate()
         self.switchScreen("main")
 
     def switchScreen(self, screen):
         # Disable back button on main screen
         if screen == "main":
+            if len(self.screen) != 0:
+                self.activeScreen.deflate()
             self.screen.append(self.id_screen[screen])
             self.index = len(self.screen) - 1
             self.activeScreen = self.screen[self.index]
             if self.backButton.isActive():
                 self.backButton.toggleActivation()
+            self.activeScreen.inflate()
 
         elif screen == "back":
             if self.screen[self.index - 1] == self.id_screen["main"] and self.backButton.isActive():

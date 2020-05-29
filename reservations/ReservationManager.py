@@ -81,11 +81,41 @@ class ReservationManager:
         return -1
 
     def createSingleFlight(self, flight, depDate):
-        singleFlight = SingleFlight()
-        singleFlight.create(flight, depDate)
-        self.singleFlights.append(singleFlight)
+        for singleFlight in self.singleFlights:
+            if singleFlight.getFlightID() == flight.getID() and singleFlight.getDepartureDate() == depDate:
+                return singleFlight
 
+        singleFlight = SingleFlight()
+
+        fileLines = open("reservations/data_reservation/single_flights.txt", "r").readlines()
+        flightInd = self.__fileContainsFlight(flight.getID, depDate, fileLines)
+
+        if flightInd != -1:
+            singleFlight.createFromString(fileLines[flightInd])
+        else:
+            singleFlight.create(flight, depDate)
+
+        self.singleFlights.append(singleFlight)
         return singleFlight
+
+    #searches the list of file lines to see if it contains this flight
+    #if it does, returns the line where the flight starts
+    #if it doesn't, returns -1
+    def __fileContainsFlight(self, flightID, depDate, fileLines):
+        lineNum = 0
+
+        while lineNum < len(fileLines):
+            curLine = fileLines[lineNum]
+
+            if curLine.find("Flight ID: ") != -1:
+                idLine = curLine.lstrip("Flight ID: ")
+
+                if idLine == flightID:
+                    depLine = fileLines[lineNum - 1].lstrip("Departure Date: ")
+                    if depLine == depDate:
+                        return lineNum - 2
+            lineNum += 1
+        return -1
 
     def validateCreditCard(self, creditCardNum):
         if not (16 <= len(creditCardNum) <= 19):

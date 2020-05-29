@@ -15,6 +15,9 @@ class Reservation:
         self.passengers = []
         self.flights = []
 
+    def setFlights(self, flights):
+        self.flights = flights
+
     def getLastName(self):
         return self.passengers[0].getLastName()
 

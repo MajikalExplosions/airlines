@@ -10,6 +10,7 @@
 
 from random import randint
 
+from flights.Airport import Airport
 from reservations.BoardingPass import BoardingPass
 from reservations.Passenger import Passenger
 from flights.Time import *
@@ -113,17 +114,30 @@ class ActionManager:
         self._tripType = 1
 
     def runCreateReservationSearchFlights(self):
-        count, startD = self.gui.findWidgetByID("create_reservation: travelers").getText(), self.gui.findWidgetByID("create_reservation: start_date").getText()
+        count, startD = self.gui.findWidgetByID("create_reservation: travelers").getText(), self.gui.findWidgetByID(
+            "create_reservation: start_date").getText()
         if self._tripType == 1:
             endD = self.gui.findWidgetByID("create_reservation: return_date").getText()
-        if self._start == 0 or self._end == 0 or self._start == self._end:
-            print("Invalid start or end airports.")
+        if self._start == 0 or self._end == 0:
+            self.gui.findWidgetByID("create_reservation: output").setText(
+                "Invalid Airports.\nPlease press Find Start or Find Destination to select your airport.")
+            return
+        if self._start == self._end:
+            self.gui.findWidgetByID("create_reservation: output").setText(
+                "Invalid Airports.\nDeparture airport is the same as arrival airport.")
+            return
+        if self._start.getCode() != self.gui.findWidgetByID(
+                "create_reservation: start").getText() or self._end.getCode() != self.gui.findWidgetByID(
+            "create_reservation: destination").getText():
+            self.gui.findWidgetByID("create_reservation: output").setText(
+                "Changes to your input detected.\nPlease press Find Start or Find Destination to select the airport")
             return
 
         try:
             count = int(count)
             if count <= 0:
-                print("You need to have at least 1 passenger.")
+                self.gui.findWidgetByID("create_reservation: output").setText(
+                    "You need to have at least 1 passenger")
                 return
             self._passengerCount = count
             self._passengers = []
@@ -132,11 +146,13 @@ class ActionManager:
             if self._tripType == 1:
                 endD = endD.split("/")
             if len(startD) != 3:
-                print("Start date is invalid")
+                self.gui.findWidgetByID("create_reservation: output").setText(
+                    "Start date is invalid.")
                 return
 
             if self._tripType == 1 and len(endD) != 3:
-                print("End date is invalid.")
+                self.gui.findWidgetByID("create_reservation: output").setText(
+                    "Return date is invalid.")
                 return
 
             self._startDate = datetime(year=int(startD[2]), month=int(startD[0]), day=int(startD[1]))
@@ -145,12 +161,15 @@ class ActionManager:
             if self._tripType == 1:
                 self._endDate = datetime(year=int(endD[2]), month=int(endD[0]), day=int(endD[1]))
         except ValueError:
-            print("Input is invalid")
+            self.gui.findWidgetByID("Invalid input for passengers. Must be a number.")
             return
 
         for k in range(self.k):
             print("Finding path", k)
-            self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year, self._startDate.month, self._startDate.day)
+            self.gui.findWidgetByID("create_reservation: output").setText(
+                "Calculating Flight Paths...")
+            self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year,
+                                                   self._startDate.month, self._startDate.day)
             if k == 0:
                 if not self._paths:
                     break
@@ -412,24 +431,37 @@ class ActionManager:
                     totalFlightTime += nextFlightTime + flightTime
                 
                 #totalflighttime is in hours since starttime
-                for k in range(self.k):
-                    print("Finding path", k)
-                    self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year, self._startDate.month, self._startDate.day)
-                    if k == 0:
-                        if not self._paths:
-                            break
-                        else:
-                            self.gui.switchScreen("list_flights")
-                    try:
-                        self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._paths[k].toShortString(self.fm))
-                    except:
-                        self.gui.findWidgetByID("selection_circle_flight" + str(k)).undraw()
-                        self.gui.findWidgetByID("selection_flight" + str(k)).toggleActivation()
-                        self.gui.findWidgetByID("selection_flight" + str(k)).undraw()
+                # for k in range(self.k):
+                #     print("Finding path", k)
+                #     self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year, self._startDate.month, self._startDate.day)
+                #     if k == 0:
+                #         if not self._paths:
+                #             break
+                #         else:
+                #             self.gui.switchScreen("list_flights")
+                #     try:
+                #         self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._paths[k].toShortString(self.fm))
+                #     except:
+                #         self.gui.findWidgetByID("selection_circle_flight" + str(k)).undraw()
+                #         self.gui.findWidgetByID("selection_flight" + str(k)).toggleActivation()
+                #         self.gui.findWidgetByID("selection_flight" + str(k)).undraw()
 
                 # setStartDate()
 
                 # TODO create new reservation set it to _currentReservation, update reservation manager
+                newTime = self._currentReservation.getFlights()[0].getDepDate()
+                newTime.replace(year=int(startdate[2]), month = int(startdate[0]), day = int(startdate[1]))
+
+                tempRes = self.rm.createReservation()
+                
+                for flight in self._currentReservation.getFlights();
+                    tempRes.addFlight(flight,newTime,flight.getArrivalTime()+(newTime-flight.getDepTime()))
+
+                for passenger in self._currentReservation.getPassengers():
+                    tempRes.addPassenger(passenger)
+
+                self.rm.serializeAll()
+
 
         except ValueError:
             print("Input is invalid")
@@ -442,27 +474,13 @@ class ActionManager:
             return
 
         self._currentReservation = self.rm.createReservation()
-
-        flightData = self._selectedPaths[0].toFlights(self.fm)
-
-        for i in range(len(flightData)):
-            depTime = self._selectedPaths[0].timeToNodeDeparture(i)
-            arrTime = self._selectedPaths[0].timeToNodeArrival(i + 1, self.fm)
-            self._currentReservation.addFlight(flightData[i], depTime, arrTime)
-
-
+        self._currentReservation.setFlights(self.singleFlights)
         for passenger in self._passengers:
             self._currentReservation.addPassenger(passenger)
 
         if self._tripType == 1:
             self._currentReservationAlt = self.rm.createReservation()
-
-            flightData = self._selectedPaths[1].toFlights(self.fm)
-
-            for i in range(len(flightData)):
-                depTime = self._selectedPaths[1].timeToNodeDeparture(i)
-                arrTime = self._selectedPaths[1].timeToNodeArrival(i + 1, self.fm)
-                self._currentReservationAlt.addFlight(flightData[i], depTime, arrTime)
+            self._currentReservationAlt.setFlights(self.singleFlightsAlt)
 
             for passenger in self._passengersAlt:
                 self._currentReservationAlt.addPassenger(passenger)

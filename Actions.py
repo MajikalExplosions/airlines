@@ -40,6 +40,7 @@ class ActionManager:
         self._checkinReservation, self._checkinCurrentPassenger = None, 0
         self.singleFlights, self.singleFlightsAlt = [], []
 
+
     def runFlightStatusLookup(self):
         dest = self.gui.findWidgetByID("flight_status: flight_destination").getText()
         num = self.gui.findWidgetByID("flight_status: flight_number").getText()
@@ -441,9 +442,12 @@ class ActionManager:
 
                 for i in range(len(self._currentReservation.getFlights())):
                     flightNumber = self._currentReservation.getFlights()[i].getNumber()
-                    nextFlightTime = self._currentReservation.getFlights()[i].timeUntilNextFlight(
-                        offsetStartTime(timedelta(hours=totalFlightTime)))
-                    flightTime = self._currentReservation.getFlights()[i].getTravelTime()
+                    flightDestinationCode = self._currentReservation.getFlights()[i].getDestination()[-4:-1]
+                    flight = self.fs.searchForFlight(flightDestinationCode,flightNumber)
+
+                    nextFlightTime = flight.timeUntilNextFlight(offsetStartTime(timedelta(hours=totalFlightTime)))
+                    flightTime = flight.getTravelTime()
+
                     totalFlightTime += nextFlightTime + flightTime
                 
                 #totalflighttime is in hours since starttime

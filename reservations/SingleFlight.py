@@ -22,7 +22,7 @@ class SingleFlight:
         self.depDate = depDate
         self.arrDate = arrDate
 
-        self.flightId = flight.getId()
+        self.flightId = flight.getID()
         self.airline = flight.getAirline()
         self.number = flight.getNumber()
         self.origin = flight.getOrigin().toString()

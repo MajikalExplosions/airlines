@@ -63,7 +63,8 @@ def main():
             am.runCreateReservationSearchAirports(1)
 
         if clicked == "create_reservation_success: main":
-            am.runCreateReservationSuccess()
+            # am.runCreateReservationSuccess()
+            gui.switchScreen("main")
 
         if clicked == "modify_reservation: find_reservation":
             am.runModifyReservationFindExisting()

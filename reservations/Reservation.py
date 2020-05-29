@@ -38,11 +38,6 @@ class Reservation:
     def setConfirmationNumber(self, confirmationNumber):
         self.confirmationNumber = confirmationNumber
 
-    def addFlight(self, flight, depDate, arrDate):
-        singleFlight = SingleFlight()
-        singleFlight.create(flight, depDate, arrDate)
-        self.flights.append(singleFlight)
-
     def addPassenger(self, passenger):
         self.passengers.append(passenger)
 

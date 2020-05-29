@@ -80,6 +80,13 @@ class ReservationManager:
             lineNum += 1
         return -1
 
+    def createSingleFlight(self, flight, depDate):
+        singleFlight = SingleFlight()
+        singleFlight.create(flight, depDate)
+        self.singleFlights.append(singleFlight)
+
+        return singleFlight
+
     def validateCreditCard(self, creditCardNum):
         if not (16 <= len(creditCardNum) <= 19):
             return False

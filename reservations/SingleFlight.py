@@ -18,9 +18,8 @@ class SingleFlight:
 
             self.seats.append(rowList)
 
-    def create(self, flight, depDate, arrDate):
+    def create(self, flight, depDate):
         self.depDate = depDate
-        self.arrDate = arrDate
 
         self.flightId = flight.getID()
         self.airline = flight.getAirline()
@@ -57,8 +56,8 @@ class SingleFlight:
                 flightID = curLine.lstrip("Flight ID: ")
 
                 if flightID == self.flightId:
-                    depLine, arrLine = fileLines[lineNum - 2].lstrip("Departure Date: "), fileLines[lineNum - 1].lstrip("Arrival Date: ")
-                    if depLine == self.depDate and arrLine == self.arrDate:
+                    depLine = fileLines[lineNum - 2].lstrip("Departure Date: ")
+                    if depLine == self.depDate:
                         return lineNum - 3
             else:
                 lineNum += 1
@@ -75,9 +74,6 @@ class SingleFlight:
 
     def getDepartureDate(self):
         return self.depDate
-
-    def getArrivalDate(self):
-        return self.arrDate
 
     def getOrigin(self):
         return self.origin
@@ -110,16 +106,15 @@ class SingleFlight:
         tokens = string.split("  ")
 
         self.depDate = tokens[1].lstrip("Departure Date: ")
-        self.arrDate = tokens[2].lstrip("Arrival Date: ")
-        self.flightId = tokens[3].lstrip("Flight ID: ")
-        self.airline = tokens[4].lstrip("Airline: ")
-        self.number = tokens[5].lstrip("Number: ")
-        self.origin = tokens[6].lstrip("Origin: ")
-        self.destination = tokens[7].lstrip("Destination: ")
-        self.departureTime = tokens[8].lstrip("Departure Time: ")
-        self.arrivalTime = tokens[9].lstrip("Arrival Time: ")
+        self.flightId = tokens[2].lstrip("Flight ID: ")
+        self.airline = tokens[3].lstrip("Airline: ")
+        self.number = tokens[4].lstrip("Number: ")
+        self.origin = tokens[5].lstrip("Origin: ")
+        self.destination = tokens[6].lstrip("Destination: ")
+        self.departureTime = tokens[7].lstrip("Departure Time: ")
+        self.arrivalTime = tokens[8].lstrip("Arrival Time: ")
 
-        seatList = tokens[10].lstrip("Booked Seats: ")
+        seatList = tokens[9].lstrip("Booked Seats: ")
         for seat in seatList.split(" "):
             row, col = seat.split(",")
             self.seats[row][col] = True
@@ -127,7 +122,6 @@ class SingleFlight:
     def toString(self):
         string = "Flight"
         string += "  Departure Date: " + str(self.depDate)
-        string += "  Arrival Date" + str(self.arrDate)
         string += "  Flight ID: " + str(self.flightId)
         string += "  Airline: " + str(self.airline)
         string += "  Number: " + str(self.number)

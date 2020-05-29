@@ -419,14 +419,14 @@ class ActionManager:
         self.gui.findWidgetByID("create_reservation: start_date").setText("")
 
     def runCreateReservationSuccess(self):
-        reservationInfo = "Last Name: " + self._currentReservation.getLastName() + " "
+        reservationInfo = "Last Name: " + self._currentReservation.getLastName() + "\n"
 
         if self._tripType == 0:
             self.gui.findWidgetByID("Success_Description").setText("A one-way reservation has been created.")
             reservationInfo += "Confirmation Number: " + self._currentReservation.getConfirmationNumber()
         else:
             self.gui.findWidgetByID("Success_Description").setText("A round-trip reservation has been created.")
-            reservationInfo += "Outbound Confirmation Number: " + self._currentReservation.getConfirmationNumber()
+            reservationInfo += "Outbound Confirmation Number: " + self._currentReservation.getConfirmationNumber() + "\n"
             reservationInfo += "Inbound Confirmation Number: " + self._currentReservationAlt.getConfirmationNumber()
 
         self.gui.findWidgetByID("create_reservation_success: display_info").setText(reservationInfo)

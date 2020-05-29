@@ -374,8 +374,9 @@ class ActionManager:
     def runCreditCardCreateReservation(self):
         cardIsValid = self.rm.validateCreditCard(self.gui.findWidgetByID("credit_card: creditcard").getText())
 
-        while not cardIsValid:
+        if not cardIsValid:
             self.gui.findWidgetByID("credit_card: output").setText("Invalid credit card - try again.")
+            return
 
         self._currentReservation = self.rm.createReservation()
 

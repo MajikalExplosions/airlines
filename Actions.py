@@ -134,6 +134,7 @@ class ActionManager:
                 return
 
             self._startDate = datetime(year=int(startD[2]), month=int(startD[0]), day=int(startD[1]))
+            # TODO Check date time
             setStartDate(self._startDate.year, self._startDate.month, self._startDate.day)
             if self._tripType == 1:
                 self._endDate = datetime(year=int(endD[2]), month=int(endD[0]), day=int(endD[1]))
@@ -374,8 +375,9 @@ class ActionManager:
     def runCreditCardCreateReservation(self):
         cardIsValid = self.rm.validateCreditCard(self.gui.findWidgetByID("credit_card: creditcard").getText())
 
-        while not cardIsValid:
+        if not cardIsValid:
             self.gui.findWidgetByID("credit_card: output").setText("Invalid credit card - try again.")
+            return
 
         self._currentReservation = self.rm.createReservation()
 
@@ -408,6 +410,7 @@ class ActionManager:
         print("Created reservation")
 
         self.gui.switchScreen("create_reservation_success")
+        self.runCreateReservationSuccess()
         self._start, self._end = 0, 0
         self.gui.findWidgetByID("create_reservation: start").setText("")
         self.gui.findWidgetByID("create_reservation: destination").setText("")
@@ -427,7 +430,6 @@ class ActionManager:
             reservationInfo += "Inbound Confirmation Number: " + self._currentReservationAlt.getConfirmationNumber()
 
         self.gui.findWidgetByID("create_reservation_success: display_info").setText(reservationInfo)
-        self.gui.switchScreen("main")
 
     def runModifyReservationSelectSeats(self, row, seat, passenger):
         # This is run after a seat is selected for modify reservation.

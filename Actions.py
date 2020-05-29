@@ -477,12 +477,14 @@ class ActionManager:
 
         self._currentReservation = self.rm.createReservation()
         self._currentReservation.setFlights(self.singleFlights)
+        self._currentReservation.matchSeats()
         for passenger in self._passengers:
             self._currentReservation.addPassenger(passenger)
 
         if self._tripType == 1:
             self._currentReservationAlt = self.rm.createReservation()
             self._currentReservationAlt.setFlights(self.singleFlightsAlt)
+            self._currentReservationAlt.matchSeats()
 
             for passenger in self._passengersAlt:
                 self._currentReservationAlt.addPassenger(passenger)

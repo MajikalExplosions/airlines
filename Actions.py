@@ -427,8 +427,9 @@ class ActionManager:
             "modify_reservation: last_name").getText()
         reservation = self.rm.loadReservation(cn, ln)
         if reservation != 0:
+            date = reservation.getFlights()[0].getDepartureDate()[0:10].lstrip("0").split("-")
             self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
-                "{}/{}/{}".format(reservation.getFlights()[0].getDepartureDate().year,reservation.getFlights()[0].getDepartureDate().month,reservation.getFlights()[0].getDepartureDate().day))
+                "{}/{}/{}".format(date[2], date[1], date[0]))
             self._currentReservation = reservation
             self.gui.switchScreen("modify_reservation_dates")
 
@@ -437,16 +438,16 @@ class ActionManager:
         # self._seatSelectionMode = 1
 
         startdate = self.gui.findWidgetByID("modify_reservation_dates: start_date").getText()
+
         try:
             startdate = startdate.split("/")
 
             if len(startdate) != 3:
                 print("Start date is invalid")
                 return
+            date = self._currentReservation.getFlights()[0].getDepartureDate()[0:10].lstrip("0").split("-")
 
-            if self._currentReservation.getFlights()[0].getDepartureDate() != datetime(year=int(startdate[2]),
-                                                                                 month=int(startdate[0]),
-                                                                                 day=int(startdate[1])):
+            if date != startdate:
                 self._seatSelectionMode = 1
 
                 totalFlightTime = 0
@@ -454,7 +455,8 @@ class ActionManager:
 
                 for i in range(len(self._currentReservation.getFlights())):
                     flightNumber = self._currentReservation.getFlights()[i].getNumber()
-                    nextFlightTime = self._currentReservation.getFlights()[i].timeUntilNextFlight(offsetStartTime(timedelta(hours=totalFlightTime)))
+                    nextFlightTime = self._currentReservation.getFlights()[i].timeUntilNextFlight(
+                        offsetStartTime(timedelta(hours=totalFlightTime)))
                     flightTime = self._currentReservation.getFlights()[i].getTravelTime()
                     totalFlightTime += nextFlightTime + flightTime
                 
@@ -474,21 +476,26 @@ class ActionManager:
                 #         self.gui.findWidgetByID("selection_flight" + str(k)).toggleActivation()
                 #         self.gui.findWidgetByID("selection_flight" + str(k)).undraw()
 
-                # setStartDate()
 
-                # TODO create new reservation set it to _currentReservation, update reservation manager
                 newTime = self._currentReservation.getFlights()[0].getDepartureDate()
                 newTime.replace(year=int(startdate[2]), month = int(startdate[0]), day = int(startdate[1]))
 
                 tempRes = self.rm.createReservation()
-                
+
                 for flight in self._currentReservation.getFlights():
-                    tempRes.addFlight(flight,newTime,flight.getArrivalTime()+(newTime-flight.getDepTime()))
+                    tempRes.addFlight(flight, newTime, flight.getArrivalTime() + (newTime - flight.getDepTime()))
 
                 for passenger in self._currentReservation.getPassengers():
                     tempRes.addPassenger(passenger)
 
                 self.rm.serializeAll()
+
+                # TODO user selects a new seat
+                self.gui.switchScreen("select_seating")
+            else:
+                # TODO no date change user selects new seat if they want
+                self.gui.switchScreen("select_seating")
+
 
 
         except ValueError:

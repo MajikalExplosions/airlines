@@ -573,6 +573,7 @@ class ActionManager:
             self.gui.findWidgetByID("checkin_bags: bags").setText("")
 
     def __getSeatAvailability(self, flightId, depDate, isOutbound):
+        print(flightId.toString())
         singleFlight = self.rm.createSingleFlight(flightId, depDate)
 
         if isOutbound:

@@ -111,11 +111,12 @@ class Reservation:
             while fileLines[endInd].strip() != "}":
                 endInd += 1
 
-            reservationFile = open("reservations/data_reservation/reservations.txt", "a")
+            reservationFile = open("reservations/data_reservation/reservations.txt", "w")
 
+            string = ""
             for i in range(len(fileLines)):
                 if i < reservationStartInd and i > endInd:
-                    print(fileLines[i], file=reservationFile)
+                    string += fileLines[i] + "\n"
 
             print(self.__toString(), file=reservationFile)
 
@@ -124,10 +125,8 @@ class Reservation:
     #if it does, returns the line where the reservation starts
     #if it doesn't, returns -1
     def __fileContainsConfirmationNumber(self, confirmationNumber, fileLines):
-        lineNum = 0
-
-        while lineNum < len(fileLines):
-            curLine = fileLines[lineNum]
+        for i in range(len(fileLines)):
+            curLine = fileLines[i]
 
             if curLine.find("Confirmation Number: ") != -1:
                 #the string "Confirmation Number: " has length 21 so everything after that is the actual number
@@ -135,8 +134,8 @@ class Reservation:
 
                 if confirmationNum == confirmationNumber:
                     #the start of a reservation will be 1 line above where it's confirmation number is
-                    return lineNum - 1
-            lineNum += 1
+                    return i - 1
+            i += 1
 
         return -1
 

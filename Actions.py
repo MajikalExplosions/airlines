@@ -472,3 +472,6 @@ class ActionManager:
             self.gui.findWidgetByID("checkin_bags: output").setText(
                 "Boarding Passes Generated for " + self._checkinReservation.getConfirmationNumber())
             self._checkinReservation, self._checkinCurrentPassenger = None, 0
+
+    def __getSeatAvailability(self, flightId, y, m, d):
+        pass

@@ -36,8 +36,9 @@ class Reservation:
         self.confirmationNumber = confirmationNumber
 
     def addFlight(self, flight, depDate, arrDate):
-        flight = SingleFlight(flight, depDate, arrDate)
-        self.flights.append(flight)
+        singleFlight = SingleFlight()
+        singleFlight.create(flight, depDate, arrDate)
+        self.flights.append(singleFlight)
 
     def addPassenger(self, firstName, lastName):
         self.passengers.append(Passenger(firstName, lastName))
@@ -76,7 +77,8 @@ class Reservation:
             self.__issueConfirmationNumer()
 
         readFile = open("reservations/data_reservation/reservations.txt", "r")
-        reservationStartInd = self.__fileContainsConfirmationNumber(self.confirmationNumber, readFile.readlines())
+        fileLines = readFile.readlines()
+        reservationStartInd = self.__fileContainsConfirmationNumber(self.confirmationNumber, fileLines)
         readFile.close()
 
         #means that this reservation has not already been serialized
@@ -86,7 +88,20 @@ class Reservation:
 
         #it has been serialized and we have to override it
         else:
-            pass
+            endInd = reservationStartInd
+            while fileLines[endInd].strip() != "":
+                endInd += 1
+
+            reservationFile = open("reservations/data_reservation/reservations.txt", "w")
+
+            index = 0
+            while index < len(fileLines):
+                if index < reservationStartInd and index >= endInd:
+                    print(fileLines[index], file=reservationFile)
+
+            print(self.__toString(), file=reservationFile)
+
+
 
     def validateCreditCard(self, creditCardNum):
         if not (16 <= len(creditCardNum) <= 19):

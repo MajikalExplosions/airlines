@@ -25,7 +25,7 @@ class ActionManager:
         self._start, self._end = 0, 0
         self._flightInfo = {}
         self._passengerCount = 0
-        self._passengers = []
+        self._passengers, self.passengersAlt = [], []
         self._startDate, self._returnDate = t_starttime, t_starttime
         self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
         self._seatSelectionMode = 0
@@ -233,7 +233,7 @@ class ActionManager:
         
         row, seat = int(i[:-1]), int(i[-1])
         if self._seatSelectionMode == 0:
-
+            #This is creating reservation
             self.runCreateReservationSelectSeats(row, seat, self._passengerSeatingIndex)
             self._passengerSeatingIndex += 1
             if self._passengerSeatingIndex >= self._passengerCount:
@@ -308,20 +308,31 @@ class ActionManager:
                         self.gui.findWidgetByID("selection_flight" + str(k)).undraw()
 
                 # setStartDate()
-                # TODO create new reservation set it to _currentReservation, update reservation manager
 
-                pass
+                # TODO create new reservation set it to _currentReservation, update reservation manager
 
         except ValueError:
             print("Input is invalid")
 
     def runCreditCardCreateReservation(self):
         print("Created reservation")
+        # Create reservation object in self._currentReservation
+        # Flight data is in self._selectedPaths[0].toFlights(self.fm) for outbound and self._selectedPaths[1].toFlights(self.fm) for inbound (only for roundtrip flights)
+        #    - If self._tripType == 1, it's a roundtrip, and if it's 0 then it's a one way flight
+        # Passengers is in self._passengers for outbound, and in roundtrips they're in self._passengersAlt
+
         self.gui.switchScreen("create_reservation_success")
-    
+        self._start, self._end = 0, 0
+        self.gui.getWidgetByID("create_reservation: start").setText("")
+        self.gui.getWidgetByID("create_reservation: destination").setText("")
+        self.gui.getWidgetByID("create_reservation: travelers").setText("")
+        self.gui.getWidgetByID("create_reservation: return_date").setText("")
+        self.gui.getWidgetByID("create_reservation: start_date").setText("")
+
     def runCreateReservationSuccess(self):
         self.gui.switchScreen("main")
 
     def runModifyReservationSelectSeats(self, row, seat, passenger):
-        #This is run after a seat is selected for modify reservation.
-        self._currentReservation.modifySeat(row,seat,passenger.getFirstName(),passenger.getLastName(),self._flightSeatingIndex)
+        # This is run after a seat is selected for modify reservation.
+        self._currentReservation.modifySeat(row, seat, passenger.getFirstName(), passenger.getLastName(),
+                                            self._flightSeatingIndex)

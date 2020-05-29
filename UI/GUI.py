@@ -49,11 +49,7 @@ class GUI:
         if screen == "main":
             if self.backButton.isActive():
                 self.backButton.toggleActivation()
-            self.activeScreen.deflate()
-            self.screen.append(self.id_screen["main"])
-            self.activeScreen = self.screen[self.index]
-            self.index += 1
-            self.attrs = self.activeScreen.inflate()
+            self._switchScreen((self.id_screen[screen]))
 
         elif screen == "back":
             if self.screen[self.index - 1] == self.id_screen["main"] and self.backButton.isActive():
@@ -64,6 +60,10 @@ class GUI:
             self.screen.append(self.screen[self.index])
             self.activeScreen = self.screen[self.index]
             self.attrs = self.activeScreen.inflate()
+        elif screen == "create_reservation_success":
+            if self.backButton.isActive():
+                self.backButton.toggleActivation()
+            self._switchScreen((self.id_screen[screen]))
         else:
             self._switchScreen(self.id_screen[screen])
 

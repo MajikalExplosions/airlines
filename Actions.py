@@ -19,13 +19,14 @@ class ActionManager:
         self.gui = gui
         self.rm = rm
         self._tripType = 1
+        self._currentTripSelect = 0
         self._airportSelectMode = 0
         self._airportLists = [[], []]
         self._paths = []
         self._start, self._end = 0, 0
         self._flightInfo = {}
         self._passengerCount = 0
-        self._passengers, self.passengersAlt = [], []
+        self._passengers, self._passengersAlt = [], []
         self._startDate, self._returnDate = t_starttime, t_starttime
         self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
         self._seatSelectionMode = 0
@@ -151,6 +152,23 @@ class ActionManager:
                 self.gui.findWidgetByID("selection_circle_flight" + str(k)).undraw()
                 self.gui.findWidgetByID("selection_flight" + str(k)).toggleActivation()
                 self.gui.findWidgetByID("selection_flight" + str(k)).undraw()
+        
+    #This is called for the inbound flight
+    def runCreateReservationSearchFlightsAlt(self):
+        for k in range(self.k):
+            print("Finding path", k)
+            self._paths = self.fs.searchForFlights(self._end, self._start, k + 1, self._endDate.year, self._endDate.month, self._endDate.day)
+            if k == 0:
+                if not self._paths:
+                    break
+                else:
+                    self.gui.switchScreen("list_flights")
+            try:
+                self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._paths[k].toShortString(self.fm))
+            except:
+                self.gui.findWidgetByID("selection_circle_flight" + str(k)).undraw()
+                self.gui.findWidgetByID("selection_flight" + str(k)).toggleActivation()
+                self.gui.findWidgetByID("selection_flight" + str(k)).undraw()
 
     def runCreateReservationSearchAirports(self, mode):
         # Get the query
@@ -190,7 +208,22 @@ class ActionManager:
         self._selectedPaths[self._selectFlightMode] = self._paths[i]
         if self._tripType == 1:
             self._selectFlightMode = (self._selectFlightMode + 1) % 2
-        self.gui.switchScreen("select_passenger")
+        if self._currentTripSelect == 0:
+            self.gui.switchScreen("select_passenger")
+
+        elif self._currentTripSelect == 1:            
+        
+            if self._currentTripSelect == 1:
+                for passenger in self._passengers:
+                    self._passengersAlt.append(Passenger(passenger.getFirstName(), passenger.getLastName()))
+
+                self.gui.switchScreen("select_seating")
+                self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
+                self._seatSelectionMode = 0
+                
+                self.gui.findWidgetByID("select_seat: text").setText(
+                    "Choose " + self._passengersAlt[0].getFirstName() + " " + self._passengersAlt[
+                        0].getLastName() + "'s seat on " + self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0].getFullNumber())
         
     def runCheckinFindReservation(self):
         cn, ln = self.gui.findWidgetByID("checkin: reservation_number").getText(), self.gui.findWidgetByID("checkin: last_name").getText()
@@ -208,23 +241,26 @@ class ActionManager:
             "select_passenger: last_name").getText()
         if len(f) == 0 or len(l) == 0:
             return
-
-        self._passengers.append(Passenger(f, l))
-        if len(self._passengers) == self._passengerCount:
-            print("Complete")
-            self.gui.switchScreen("select_seating")
-            self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
-            self._seatSelectionMode = 0
-            
-            self.gui.findWidgetByID("select_seat: text").setText(
-                "Choose " + self._passengers[0].getFirstName() + " " + self._passengers[
-                    0].getLastName() + "'s seat on " + self._selectedPaths[0].toFlights(self.fm)[0].getFullNumber())
-        else:
-            self.gui.findWidgetByID("select_passenger: first_name").setText("")
-            self.gui.findWidgetByID("select_passenger: last_name").setText("")
+        
+        if self._currentTripSelect == 0:
+            self._passengers.append(Passenger(f, l))
+            if len(self._passengers) == self._passengerCount:
+                self.gui.switchScreen("select_seating")
+                self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
+                self._seatSelectionMode = 0
+                
+                self.gui.findWidgetByID("select_seat: text").setText(
+                    "Choose " + self._passengers[0].getFirstName() + " " + self._passengers[
+                        0].getLastName() + "'s seat on " + self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0].getFullNumber())
+            else:
+                self.gui.findWidgetByID("select_passenger: first_name").setText("")
+                self.gui.findWidgetByID("select_passenger: last_name").setText("")
     
     def runCreateReservationSelectSeats(self, row, seat, passengerIndex):
-        self._passengers[passengerIndex].addSeat(str(row + 1) + ["A", "B", "C", "D", "E", "F"][seat])
+        if self._currentTripSelect == 0:
+            self._passengers[passengerIndex].addSeat(str(row + 1) + ["A", "B", "C", "D", "E", "F"][seat])
+        if self._currentTripSelect == 1:
+            self._passengersAlt[passengerIndex].addSeat(str(row + 1) + ["A", "B", "C", "D", "E", "F"][seat])
 
 
     def runSelectSeats(self, i):
@@ -239,12 +275,22 @@ class ActionManager:
             if self._passengerSeatingIndex >= self._passengerCount:
                 self._passengerSeatingIndex -= self._passengerCount
                 self._flightSeatingIndex += 1
-                if (self._flightSeatingIndex == len(self._selectedPaths[0].toFlights(self.fm)) and self._tripType == 0) or (self._tripType == 1 and self._flightSeatingIndex == len(self._selectedPaths[0].toFlights(self.fm)) + len(self._selectedPaths[1].toFlights(self.fm))):
+                if self._flightSeatingIndex == len(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)):
                     #Finish selecting seats so move on to credit card
-                    self.gui.switchScreen("credit_card")
-                    return
-                
-            self.gui.findWidgetByID("select_seat: text").setText("Choose " + self._passengers[self._passengerSeatingIndex].getFirstName() + " " + self._passengers[self._passengerSeatingIndex].getLastName() + "'s seat on " + self._selectedPaths[0].toFlights(self.fm)[self._flightSeatingIndex].getFullNumber())
+                    if self._currentTripSelect == self._tripType:
+                        self.gui.switchScreen("credit_card")
+                        return
+                    else:
+                        #Now start the inbound flight
+                        self.runCreateReservationSearchFlightsAlt()
+                        self._currentTripSelect = 1
+                        return
+
+            if self._currentTripSelect == 0:
+                self.gui.findWidgetByID("select_seat: text").setText("Choose " + self._passengers[self._passengerSeatingIndex].getFirstName() + " " + self._passengers[self._passengerSeatingIndex].getLastName() + "'s seat on " + self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex].getFullNumber())
+            
+            if self._currentTripSelect == 1:
+                self.gui.findWidgetByID("select_seat: text").setText("Choose " + self._passengers[self._passengerSeatingIndex].getFirstName() + " " + self._passengers[self._passengerSeatingIndex].getLastName() + "'s seat on " + self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex].getFullNumber())
         
         elif self._seatSelectionMode == 1:
             self.runModifyReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
@@ -301,7 +347,7 @@ class ActionManager:
     def runCreditCardCreateReservation(self):
         print("Created reservation")
         #Create reservation object in self._currentReservation
-        #Flight data is in self._selectedPaths[0].toFlights(self.fm) for outbound and self._selectedPaths[1].toFlights(self.fm) for inbound (only for roundtrip flights)
+        #Flight data is in self._selectedPaths[self._currentTripSelect].toFlights(self.fm) for outbound and self._selectedPaths[1].toFlights(self.fm) for inbound (only for roundtrip flights)
         #    - If self._tripType == 1, it's a roundtrip, and if it's 0 then it's a one way flight
         #Passengers is in self._passengers for outbound, and in roundtrips they're in self._passengersAlt
 

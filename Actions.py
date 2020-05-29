@@ -429,6 +429,7 @@ class ActionManager:
             self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
                 reservation.getFlights()[0].getDepartureDate())
             self._currentReservation = reservation
+            self.gui.switchScreen("modify_reservation_dates")
 
     def runModifyReservationChangeDate(self):
         # This is run after they enter a new date and submit it

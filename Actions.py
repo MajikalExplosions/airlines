@@ -299,6 +299,7 @@ class ActionManager:
             # display = "Boarding pass exported to " + boardingPass.export()
             self._checkinCurrentPassenger = len(self._checkinReservation.getPassengers()) - 1
             self.gui.switchScreen("checkin_bag")
+            self.runCheckinBagsNext()
         except:
             self.gui.findWidgetByID("checkin: output").setText("Invalid Reservation Number and Last Name")
 

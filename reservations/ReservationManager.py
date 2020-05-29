@@ -47,13 +47,17 @@ class ReservationManager:
         return reservation
 
     def __reservationMatchesLastName(self, lastName, fileLines, reservationStartInd):
-        passengerLastNameInd = reservationStartInd + 5
+        passengerInd = reservationStartInd
+        while fileLines[passengerInd].find("Passenger") == -1:
+            passengerInd += 1
 
-        while passengerLastNameInd < len(fileLines) and fileLines[passengerLastNameInd].find("Last Name: ") != -1:
-            if fileLines[passengerLastNameInd].lstrip("Last Name: ") == lastName:
+        while fileLines[passengerInd].find("}") == -1:
+            lastNameFile = fileLines[passengerInd].split("  ")[2].lstrip("Last Name: ")
+
+            if lastNameFile == lastName:
                 return True
 
-            passengerLastNameInd += 4
+            passengerInd += 1
 
         return False
 
@@ -73,8 +77,7 @@ class ReservationManager:
                 if confirmationNum == confirmationNumber:
                     #the start of a reservation will be 1 line above where it's confirmation number is
                     return lineNum - 1
-            else:
-                lineNum += 1
+            lineNum += 1
         return -1
 
     def validateCreditCard(self, creditCardNum):
@@ -112,3 +115,14 @@ class ReservationManager:
 
         #if the last digit of the sum is the same as the last digit of the original, it's valid
         return (digitSum % 10) == checkDigit
+
+
+    #takes a number and splits it into a list of each of it's digits, the returned list will be the number reversed
+    def __splitNumToList(self, number):
+        list = []
+
+        while number > 0:
+            list.append(number % 10)
+            number //= 10
+
+        return list

@@ -11,6 +11,11 @@ class ReservationManager:
         self.reservations = []
         self.singleFlights = []
 
+    def createReservation(self):
+        reservation = Reservation()
+        self.reservations.append(reservation)
+        return reservation
+
     def serializeAll(self):
         for reservation in self.reservations:
             reservation.serialize()

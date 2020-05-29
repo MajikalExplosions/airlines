@@ -115,7 +115,7 @@ class Path:
         if index == -1 or index >= len(self.distToNode) - 1:
             return self.distToNode[-1]
         arriveLast = self.distToNode[index - 1]
-        flightToCurrent = self.toFlights(fm)[index - 1]
+        flightToCurrent = self.toFlights(fm)[index - 1].getTravelTime()
         return arriveLast + flightToCurrent
 
     def equals(self, other):

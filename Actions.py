@@ -4,6 +4,7 @@
 # Ver.	    Writer			        Date			Notes
 # 1.0       Joseph Liu              05/27/20		Move actions and utils out of main and into a separate file
 # 1.1       Chris Luey              05/27/20		Bug fixes (GUI display not working) & back button fix, refactor
+# 1.2       Shuvam Chatterjee       05/28/20        Reservation creation functions
 
 
 from random import randint
@@ -219,6 +220,7 @@ class ActionManager:
                     self._passengersAlt.append(Passenger(passenger.getFirstName(), passenger.getLastName()))
 
                 self.gui.switchScreen("select_seating")
+                #TODO gray out taken seats
                 self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
                 self._seatSelectionMode = 0
                 
@@ -248,6 +250,8 @@ class ActionManager:
             self._passengers.append(Passenger(f, l))
             if len(self._passengers) == self._passengerCount:
                 self.gui.switchScreen("select_seating")
+                #TODO gray out taken seats
+
                 self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
                 self._seatSelectionMode = 0
                 
@@ -270,8 +274,12 @@ class ActionManager:
             i = i[1:]
         
         row, seat = int(i[:-1]), int(i[-1])
+
         if self._seatSelectionMode == 0:
             #This is creating reservation
+            
+            #TODO Check if seat is taken
+
             self.runCreateReservationSelectSeats(row, seat, self._passengerSeatingIndex)
             self._passengerSeatingIndex += 1
             if self._passengerSeatingIndex >= self._passengerCount:
@@ -295,6 +303,9 @@ class ActionManager:
                 self.gui.findWidgetByID("select_seat: text").setText("Choose " + self._passengers[self._passengerSeatingIndex].getFirstName() + " " + self._passengers[self._passengerSeatingIndex].getLastName() + "'s seat on " + self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex].getFullNumber())
         
         elif self._seatSelectionMode == 1:
+            
+            #TODO Check if seat is taken
+
             self.runModifyReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
             self._passengerSeatingIndex += 1
             if self._passengerSeatingIndex == len(self._passengers):
@@ -304,7 +315,6 @@ class ActionManager:
     def runModifyReservationFindExisting(self):
         print("Finding existing reservation.")
 
-        # TODO update the following section once Shuvam finishes ReservationManager and Chris finishes GUI
         cn, ln = self.gui.findWidgetByID("modify_reservation: reservation_number").getText(), self.gui.findWidgetByID(
             "modify_reservation: last_name").getText()
         reservation = self.rm.loadReservation(cn, ln)
@@ -339,7 +349,6 @@ class ActionManager:
                     totalFlightTime += nextFlightTime + flightTime
                 
                 #totalflighttime is in hours since starttime
-                # TODO Allow user to select new flight
                 for k in range(self.k):
                     print("Finding path", k)
                     self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year, self._startDate.month, self._startDate.day)
@@ -363,11 +372,34 @@ class ActionManager:
             print("Input is invalid")
 
     def runCreditCardCreateReservation(self):
+        self._currentReservation = self.rm.createReservation()
+
+        flightData = self._selectedPaths[0].toFlights(self.fm)
+
+        for i in range(len(flightData)):
+            depTime = self._selectedPaths[0].timeToNodeDeparture(i)
+            arrTime = self._selectedPaths[0].timeToNodeArrival(i + 1, self.fm)
+            self._currentReservation.addFlight(flightData[i], depTime, arrTime)
+
+        for passenger in self._passengers:
+            self._currentReservation.addPassenger(passenger)
+
+        if self._tripType == 1:
+            self._currentReservationAlt = self.rm.createReservation()
+
+            flightData = self._selectedPaths[1].toFlights(self.fm)
+
+            for i in range(len(flightData)):
+                depTime = self._selectedPaths[1].timeToNodeDeparture(i)
+                arrTime = self._selectedPaths[1].timeToNodeArrival(i + 1)
+                self._currentReservationAlt.addFlight(flightData[i], depTime, arrTime)
+
+            for passenger in self._passengersAlt:
+                self._currentReservationAlt.addPassenger(passenger)
+
+        self.rm.serializeAll()
+
         print("Created reservation")
-        # Create reservation object in self._currentReservation
-        # Flight data is in self._selectedPaths[0].toFlights(self.fm) for outbound and self._selectedPaths[1].toFlights(self.fm) for inbound (only for roundtrip flights)
-        #    - If self._tripType == 1, it's a roundtrip, and if it's 0 then it's a one way flight
-        # Passengers is in self._passengers for outbound, and in roundtrips they're in self._passengersAlt
 
         self.gui.switchScreen("create_reservation_success")
         self._start, self._end = 0, 0
@@ -378,7 +410,17 @@ class ActionManager:
         self.gui.getWidgetByID("create_reservation: start_date").setText("")
 
     def runCreateReservationSuccess(self):
-        # TODO update screen with info & reservation number or numbers
+        reservationInfo = "Last Name: " + self._currentReservation.getLastName()
+
+        if self._tripType == 0:
+            self.gui.getWidgetByID("Success_Description").setText("A one-way reservation has been created.")
+            reservationInfo += "Confirmation Number: " + self._currentReservation.getConfirmationNumber()
+        else:
+            self.gui.getWidgetByID("Success_Description").setText("A round-trip reservation has been created.")
+            reservationInfo += "Outbound Confirmation Number: " + self._currentReservation.getConfirmationNumber()
+            reservationInfo += "Inbound Confirmation Number: " + self._currentReservationAlt.getConfirmationNumber()
+
+        self.gui.getWidgetByID("create_reservation_success: display_info").setText(reservationInfo)
         self.gui.switchScreen("main")
 
     def runModifyReservationSelectSeats(self, row, seat, passenger):

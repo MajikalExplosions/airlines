@@ -24,6 +24,7 @@ class Flight:
         arrivalTimeSubtract = False
         arrivalTimeAdd2 = False
 
+        #determines if the flight arrives on a different day than it takes off
         if self.arrivalTime.find("-") != -1 or self.arrivalTime.find("+") != -1:
             if self.arrivalTime.find("-1") != -1:
                 arrivalTimeSubtract = True
@@ -37,12 +38,13 @@ class Flight:
 
             self.arrivalTime = self.arrivalTime[:-2]
         
-
+        #converts local to UTC
         self.arrivalTimeLocal = flightToDatetime(self.arrivalTime)
         self.arrivalTime = toUTC(self.destination.getTimezone(), self.arrivalTimeLocal)
         self.departureTimeLocal = flightToDatetime(self.departureTime)
         self.departureTime = toUTC(self.origin.getTimezone(), self.departureTimeLocal)
 
+        #fixes the UTC time based off of the day it arrives above
         if arrivalTimeAdd:
             self.arrivalTime += timedelta(hours = 24)
 

@@ -4,7 +4,7 @@
 # Ver.	Writer			    Date			Notes
 # 1.0   Joseph Liu			05/25/20		Original airport search ported from FlightManager, create searchForFlights
 # 1.1   Joseph Liu			05/25/20		Add example code
-# 1.2   Chris Luey			05/27/20		Add lookup
+# 1.2   Chris Luey			05/27/20		Add searchForFlight() Add isValidAirport()
 
 
 from flights.FlightManager import FlightManager

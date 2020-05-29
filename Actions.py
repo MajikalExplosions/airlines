@@ -3,17 +3,17 @@
 
 # Ver.	    Writer			        Date			Notes
 # 1.0       Joseph Liu              05/27/20		Move actions and utils out of main and into a separate file
-# 1.1       Chris Luey              05/27/20		Bug fixes (GUI display not working) & back button fix, refactor
+# 1.1       Christopher Luey        05/27/20		Bug fixes (GUI display not working) & back button fix, refactor
 # 1.2       Shuvam Chatterjee       05/28/20        Reservation creation functions
-# 2.0       Everybody at once       05/28/20        Finish all missing functions
-import copy
+# 1.3       Christopher Luey        05/28/20		Finished checkin functionality, generates boarding pass
+# 2.0       Everybody at once       05/28/20        Finish modify reservation and refine create reservation
+
 from random import randint
 
-from flights.Airport import Airport
-from flights.Flight import Flight
 from reservations.BoardingPass import BoardingPass
 from reservations.Passenger import Passenger
 from flights.Time import *
+
 
 class ActionManager:
     def __init__(self, fm, fs, gui, rm):

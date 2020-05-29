@@ -1,5 +1,5 @@
 # Name: Actions.py
-# Description: Runner program.
+# Description: Utility class containing functions called by main
 
 # Ver.	    Writer			        Date			Notes
 # 1.0       Joseph Liu              05/27/20		Move actions and utils out of main and into a separate file
@@ -10,6 +10,7 @@
 
 from random import randint
 
+from flights.Airport import Airport
 from reservations.BoardingPass import BoardingPass
 from reservations.Passenger import Passenger
 from flights.Time import *
@@ -113,17 +114,30 @@ class ActionManager:
         self._tripType = 1
 
     def runCreateReservationSearchFlights(self):
-        count, startD = self.gui.findWidgetByID("create_reservation: travelers").getText(), self.gui.findWidgetByID("create_reservation: start_date").getText()
+        count, startD = self.gui.findWidgetByID("create_reservation: travelers").getText(), self.gui.findWidgetByID(
+            "create_reservation: start_date").getText()
         if self._tripType == 1:
             endD = self.gui.findWidgetByID("create_reservation: return_date").getText()
-        if self._start == 0 or self._end == 0 or self._start == self._end:
-            print("Invalid start or end airports.")
+        if self._start == 0 or self._end == 0:
+            self.gui.findWidgetByID("create_reservation: output").setText(
+                "Invalid Airports.\nPlease press Find Start or Find Destination to select your airport.")
+            return
+        if self._start == self._end:
+            self.gui.findWidgetByID("create_reservation: output").setText(
+                "Invalid Airports.\nDeparture airport is the same as arrival airport.")
+            return
+        if self._start.getCode() == self.gui.findWidgetByID(
+                "create_reservation: start").getText() or self._end.getCode() == self.gui.findWidgetByID(
+                "create_reservation: destination").getText():
+            self.gui.findWidgetByID("create_reservation: output").setText(
+                "Changes to your input detected.\nPlease press Find Start or Find Destination to select the airport")
             return
 
         try:
             count = int(count)
             if count <= 0:
-                print("You need to have at least 1 passenger.")
+                self.gui.findWidgetByID("create_reservation: output").setText(
+                    "You need to have at least 1 passenger")
                 return
             self._passengerCount = count
             self._passengers = []
@@ -132,11 +146,13 @@ class ActionManager:
             if self._tripType == 1:
                 endD = endD.split("/")
             if len(startD) != 3:
-                print("Start date is invalid")
+                self.gui.findWidgetByID("create_reservation: output").setText(
+                    "Start date is invalid.")
                 return
 
             if self._tripType == 1 and len(endD) != 3:
-                print("End date is invalid.")
+                self.gui.findWidgetByID("create_reservation: output").setText(
+                    "Return date is invalid.")
                 return
 
             self._startDate = datetime(year=int(startD[2]), month=int(startD[0]), day=int(startD[1]))
@@ -145,12 +161,15 @@ class ActionManager:
             if self._tripType == 1:
                 self._endDate = datetime(year=int(endD[2]), month=int(endD[0]), day=int(endD[1]))
         except ValueError:
-            print("Input is invalid")
+            self.gui.findWidgetByID("Invalid input for passengers. Must be a number.")
             return
 
         for k in range(self.k):
             print("Finding path", k)
-            self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year, self._startDate.month, self._startDate.day)
+            self.gui.findWidgetByID("create_reservation: output").setText(
+                "Calculating Flight Paths...")
+            self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year,
+                                                   self._startDate.month, self._startDate.day)
             if k == 0:
                 if not self._paths:
                     break

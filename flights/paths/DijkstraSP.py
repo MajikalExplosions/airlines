@@ -26,15 +26,19 @@ class DijkstraSP:
         self.manage = False
         
         while len(pq) > 0:
+            #Get the closest airport/node in the queue
             cur = heapq.heappop(pq)
             
+            #Visit said node and remove it from the queue.
             cur[1].visit()
             cur[1].rmQ()
 
+            #If we've found the target, then the search is over
             if cur[1] == target:
                 break
             
             for edge in cur[1].getEdges():
+                #Remove
                 if not graph.exists(edge.v) or edge.removed():
                     continue
                 dest = nodes[edge.v]
@@ -48,6 +52,7 @@ class DijkstraSP:
 
                     #If it's in queue and this new one is better, update.
                     if dest.inQ() and self.manage:
+                        #This only runs if I'm managing the queue, which I'm not.
                         if cur[1].getDist() + timeSpent < dest.getQ():
 
                             #Find its location in queue
@@ -66,6 +71,7 @@ class DijkstraSP:
 
                             dest.setQ(cur[1].getDist() + timeSpent)
                     else:
+                        #It will do this instead.
                         heapq.heappush(pq, (cur[1].getDist() + timeSpent, dest))
                         dest.setQ(cur[1].getDist() + timeSpent)
         
@@ -73,6 +79,7 @@ class DijkstraSP:
         self.graph = graph
     
     def getPath(self):
+        #If the node has been visited, there's a valid path, so get the path object.
         if not self.dest.visited():
             return (False, 0)
         p = Path()

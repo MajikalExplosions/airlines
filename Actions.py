@@ -458,8 +458,8 @@ class ActionManager:
                     flightDestinationCode = self._currentReservation.getFlights()[i].getDestination()[-4:-1]
                     flight = self.fs.searchForFlight(flightDestinationCode,flightNumber)
 
-                    nextFlightTime = self._currentReservation.getFlights()[i].timeUntilNextFlight(offsetStartTime(timedelta(hours=totalFlightTime)))
-                    flightTime = self._currentReservation.getFlights()[i].getTravelTime()
+                    nextFlightTime = flight.timeUntilNextFlight(offsetStartTime(timedelta(hours=totalFlightTime)))
+                    flightTime = flight.getTravelTime()
                     totalFlightTime += nextFlightTime + flightTime
                 
                 #totalflighttime is in hours since starttime

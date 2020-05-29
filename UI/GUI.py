@@ -51,8 +51,8 @@ class GUI:
                 self.backButton.toggleActivation()
             self.activeScreen.deflate()
             self.screen.append(self.id_screen["main"])
+            self.index = len(self.screen) - 1
             self.activeScreen = self.screen[self.index]
-            self.index += 1
             self.attrs = self.activeScreen.inflate()
 
         elif screen == "back":

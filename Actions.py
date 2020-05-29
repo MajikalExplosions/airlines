@@ -428,7 +428,7 @@ class ActionManager:
         reservation = self.rm.loadReservation(cn, ln)
         if reservation != 0:
             self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
-                reservation.getFlights()[0].getDepartureDate())
+                "{}/{}/{}".format(reservation.getFlights()[0].getDepartureDate().year,reservation.getFlights()[0].getDepartureDate().month,reservation.getFlights()[0].getDepartureDate().day))
             self._currentReservation = reservation
             self.gui.switchScreen("modify_reservation_dates")
 

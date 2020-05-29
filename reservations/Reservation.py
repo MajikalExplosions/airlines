@@ -27,13 +27,13 @@ class Reservation:
 
         index += 2
         while fileLines[index].find("Flight") != -1:
-            flight = SingleFlight(None, "", "")
+            flight = SingleFlight()
             flight.createFromString(fileLines[index])
             self.flights.append(flight)
             index += 1
 
         while fileLines[index].find("Passenger") != -1:
-            passenger = Passenger("", "", "")
+            passenger = Passenger("", "")
             passenger.createFromString(fileLines[index])
             self.passengers.append(passenger)
             index += 1

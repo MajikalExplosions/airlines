@@ -114,9 +114,10 @@ class SingleFlight:
         self.arrivalTime = tokens[8].lstrip("Arrival Time: ")
 
         seatList = tokens[9].lstrip("Booked Seats: ")
-        for seat in seatList.split(" "):
-            row, col = seat.split(",")
-            self.seats[row][col] = False
+        for seat in seatList.strip().split(" "):
+            if seat != "":
+                row, col = seat.split(",")
+                self.seats[row][col] = False
 
     def toString(self):
         string = "Flight"

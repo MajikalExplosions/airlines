@@ -330,6 +330,7 @@ class ActionManager:
         self.gui.getWidgetByID("create_reservation: start_date").setText("")
 
     def runCreateReservationSuccess(self):
+        # TODO update screen with info & reservation number or numbers
         self.gui.switchScreen("main")
 
     def runModifyReservationSelectSeats(self, row, seat, passenger):

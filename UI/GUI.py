@@ -11,6 +11,7 @@
 # 1.6     Christopher Luey     05/27/20     Back button saves state
 # 1.7     Christopher Luey     05/27/20     Display airports and flights
 # 1.8     Christopher Luey     05/28/20     Display seat selection
+# 1.9     Christopher Luey     05/28/20     Commenting
 
 
 import json
@@ -22,11 +23,14 @@ class GUI:
 
     def __init__(self):
         self.win = GraphWin(title="Airport", width=1200, height=800, autoflush=False)
+        # Hash used to convert widget to id
         self.id_widget, self.widget_id = {}, {}
 
+        # List of valid screens
         ids = ["main", "list_flights", "create_reservation", "modify_reservation", "flight_status", "checkin",
                "list_airports", "select_passenger", "select_seating", "credit_card", "create_reservation_success"]
 
+        # Create hash with ID to screen and screen to ID
         self.id_screen = {x: y for x, y in zip(ids, [Screen(i, self.win) for i in ids])}
         self.screen_id = {y: x for x, y in self.id_screen.items()}
 
@@ -34,6 +38,7 @@ class GUI:
             self.id_widget.update({x[1]: x[0] for x in i.getAttr()})
             self.widget_id.update({x[0]: x[1] for x in i.getAttr()})
 
+        # Create header and set current screen as main screen
         self._inflate_header()
         self.activeScreen = self.id_screen["main"]
         self.screen, self.index = [], 0
@@ -41,25 +46,26 @@ class GUI:
         self.switchScreen("main")
 
     def switchScreen(self, screen):
-        """
-        Args:
-            screen:
-        """
-
+        # Disable back button on main screen
         if screen == "main":
+            self.screen.append(self.id_screen[screen])
+            self.index = len(self.screen) - 1
+            self.activeScreen = self.screen[self.index]
             if self.backButton.isActive():
                 self.backButton.toggleActivation()
-            self._switchScreen((self.id_screen[screen]))
 
         elif screen == "back":
             if self.screen[self.index - 1] == self.id_screen["main"] and self.backButton.isActive():
                 self.backButton.toggleActivation()
 
+            # Set the previous screen as the current screen
             self.activeScreen.deflate()
             self.index -= 1
             self.screen.append(self.screen[self.index])
             self.activeScreen = self.screen[self.index]
             self.attrs = self.activeScreen.inflate()
+
+        # Disable back button on this screen
         elif screen == "create_reservation_success":
             if self.backButton.isActive():
                 self.backButton.toggleActivation()
@@ -73,37 +79,45 @@ class GUI:
         return self.activeScreen
 
     def findWidgetByID(self, id):
+        # Return the widget based on ID
         try:
             return self.id_widget[id]
         except KeyError:
             raise Exception("Invalid Widget ID")
 
     def findIDByWidget(self, wid):
+        # Return ID based on widget
         try:
             return self.widget_id[wid]
         except:
             raise Exception("Invalid Widget")
 
     def getWidgetIDs(self):
+        # Return the widget to ID hash
         return self.widget_id
 
     def getScreenID(self, screen):
+        # Return ID of screen
         return self.screen_id[screen]
 
     def getScreenIDs(self):
+        # Return screen based on ID
         return self.id_screen
 
     def getWin(self):
+        # Return window
         return self.win
 
     def _switchScreen(self, screen):
         if not self.backButton.isActive():
             self.backButton.toggleActivation()
+
+        # Deflate current screen
         self.activeScreen.deflate()
-
+        # Remove screen list_airports from back button consideration
         if screen.getName() != "list_airports":
-
             self.screen.append(screen)
+            # Remove duplicate screens
             try:
                 if self.screen[-1] == self.screen[len(self.screen) - 2]:
                     self.screen.pop()
@@ -112,6 +126,7 @@ class GUI:
             self.index = len(self.screen) - 1
             self.activeScreen = self.screen[self.index]
         else:
+            # Remove duplicate screens
             try:
                 if self.screen[-1] == self.screen[len(self.screen) - 2]:
                     self.screen.pop()
@@ -119,9 +134,11 @@ class GUI:
                 pass
             self.index = len(self.screen)
             self.activeScreen = screen
+        # Inflate the screen and receive widget elements
         self.attrs = self.activeScreen.inflate()
 
     def setOnButtonClickListener(self):
+        # Gather user button clicks
         p = self.win.getMouse()
         while not self.quitButton.isClicked(p):
             for widget, id in self.widget_id.items():
@@ -153,11 +170,6 @@ class GUI:
 class Screen:
 
     def __init__(self, name, win):
-        """
-        Args:
-            name:
-            win:
-        """
         self.name = name
         self.win = win
         path = "UI/Screens/" + name + ".json"
@@ -168,6 +180,7 @@ class Screen:
             raise Exception("Could not locate file: " + path)
 
     def deflate(self):
+        # Remove all elements associated with screen
         for i in self.attr:
             if type(i[0]) == Button:
                 if i[0].isActive():
@@ -178,6 +191,7 @@ class Screen:
                 pass
 
     def inflate(self):
+        # Draw all elements associated with screen
         for i in self.attr:
             if type(i[0]) == Button:
                 if not i[0].isDrawn():
@@ -198,15 +212,12 @@ class Screen:
         return self.attr
 
     def _parse(self, s):
-
-        """
-        Args:
-            s:
-        """
+        # Read the json file gather all elements and convert to graphics object
         attrs = []
-
         d = json.load(s)
+
         for key, item in d.items():
+            # Depending on the type create the Graphics object accordingly
             if str(key).find("Button") != -1:
                 attrs.append([Button(item["x"], item["y"], item["width"], item["height"], item["radius"],
                                      color_rgb(item["color"]["r"], item["color"]['g'], item["color"]['b']),
@@ -260,6 +271,7 @@ class Screen:
                 attrs[len(attrs) - 1][0].adjustShadowColor('white')
                 attrs[len(attrs) - 1][0].undraw()
 
+            # Special view for listing 10 airports
             elif str(key).find("List10") != -1:
                 for i in range(10):
                     attrs.append(
@@ -271,6 +283,8 @@ class Screen:
                     attrs[len(attrs) - 1][0].setFill(color_rgb(255, 255, 255))
                     attrs[len(attrs) - 1][0].setOutline(color_rgb(98, 182, 203))
                     attrs[len(attrs) - 1][0].setWidth(3)
+
+            # Special view for listing 10 flights
             elif str(key).find("Flight10") != -1:
                 for i in range(10):
                     attrs.append(
@@ -283,39 +297,43 @@ class Screen:
                     attrs[len(attrs) - 1][0].setOutline(color_rgb(98, 182, 203))
                     attrs[len(attrs) - 1][0].setWidth(3)
 
+            # Special view for creating the seating
             elif str(key).find("Seating") != -1:
-                for i in range(38):
-                    for j in range(3):
-                        attrs.append(
-                            [Button(50 + 1100 * i / 38, 350 + 450 * j / 12, 15, 30, 1, 'green', "",
-                                    color_rgb(27, 73, 101), 25, self.win).undraw(),
-                             "selection_seat" + str(i) + str(j)])
-                        attrs[len(attrs) - 1][0].adjustShadowColor('white')
-                    attrs.append([Text(Point(50 + 1100 * i / 38, 315), str(i + 1)), "row"])
-                    attrs[len(attrs) - 1][0].setSize(18)
-                    attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
-
-                    for j in range(3, 6):
-                        attrs.append(
-                            [Button(50 + 1100 * i / 38, 425 + 450 * j / 12, 15, 30, 1, 'green', "",
-                                    color_rgb(27, 73, 101), 25, self.win).undraw(),
-                             "selection_seat" + str(i) + str(j)])
-                        attrs[len(attrs) - 1][0].adjustShadowColor('white')
-                    attrs.append([Text(Point(50 + 1100 * i / 38, 450 / 2 + 425), str(i + 1)), "row"])
-                    attrs[len(attrs) - 1][0].setSize(18)
-                    attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
-
-                for j in range(3):
-                    attrs.append([Text(Point(25, 350 + 450 * j / 12), ["A", "B", "C"][j]), "col"])
-                    attrs[len(attrs) - 1][0].setSize(18)
-                    attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
-
-                for j in range(3, 6):
-                    attrs.append([Text(Point(25, 425 + 450 * j / 12), ["A", "B", "C", "D", "E", "F"][j]), "col"])
-                    attrs[len(attrs) - 1][0].setSize(18)
-                    attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
+                self.createSeating(attrs)
 
         return attrs
+
+    def createSeating(self, attrs):
+        for i in range(38):
+            for j in range(3):
+                attrs.append(
+                    [Button(50 + 1100 * i / 38, 350 + 450 * j / 12, 15, 30, 1, 'green', "",
+                            color_rgb(27, 73, 101), 25, self.win).undraw(),
+                     "selection_seat" + str(i) + str(j)])
+                attrs[len(attrs) - 1][0].adjustShadowColor('white')
+            attrs.append([Text(Point(50 + 1100 * i / 38, 315), str(i + 1)), "row"])
+            attrs[len(attrs) - 1][0].setSize(18)
+            attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
+
+            for j in range(3, 6):
+                attrs.append(
+                    [Button(50 + 1100 * i / 38, 425 + 450 * j / 12, 15, 30, 1, 'green', "",
+                            color_rgb(27, 73, 101), 25, self.win).undraw(),
+                     "selection_seat" + str(i) + str(j)])
+                attrs[len(attrs) - 1][0].adjustShadowColor('white')
+            attrs.append([Text(Point(50 + 1100 * i / 38, 450 / 2 + 425), str(i + 1)), "row"])
+            attrs[len(attrs) - 1][0].setSize(18)
+            attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
+
+        for j in range(3):
+            attrs.append([Text(Point(25, 350 + 450 * j / 12), ["A", "B", "C"][j]), "col"])
+            attrs[len(attrs) - 1][0].setSize(18)
+            attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
+
+        for j in range(3, 6):
+            attrs.append([Text(Point(25, 425 + 450 * j / 12), ["A", "B", "C", "D", "E", "F"][j]), "col"])
+            attrs[len(attrs) - 1][0].setSize(18)
+            attrs[len(attrs) - 1][0].setTextColor(color_rgb(27, 73, 101))
 
 
 class Gradient:

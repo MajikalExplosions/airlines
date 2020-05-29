@@ -4,6 +4,7 @@
 # Ver.	    Writer			        Date			Notes
 # 1.0       Joseph Liu              05/27/20		Move actions and utils out of main and into a separate file
 # 1.1       Chris Luey              05/27/20		Bug fixes (GUI display not working) & back button fix, refactor
+# 1.2       Shuvam Chatterjee       05/28/20        Reservation creation functions
 
 
 from random import randint

@@ -49,48 +49,11 @@
     "style": "bold",
     "id": "modify_reservation_dates: start_date"
   },
-  "Entry2": {
-    "x": 460,
-    "y": 350,
-    "width": 11,
-    "size": 30,
-    "text": "",
-    "fill": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
-    "outline": {
-      "r": 255,
-      "g": 255,
-      "b": 255
-    },
-    "textColor": {
-      "r": 27,
-      "g": 73,
-      "b": 101
-    },
-    "style": "bold",
-    "id": "modify_reservation_dates: return_date"
-  },
   "Text3": {
     "id": "ModifyReservationText",
     "x": 160,
     "y": 300,
     "text": "Start Date:",
-    "size": 32,
-    "color": {
-      "r": 27,
-      "g": 73,
-      "b": 101
-    },
-    "style": "normal"
-  },
-  "Text4": {
-    "id": "ModifyDateLastText",
-    "x": 448,
-    "y": 300,
-    "text": "Return Date:",
     "size": 32,
     "color": {
       "r": 27,

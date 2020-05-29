@@ -548,6 +548,9 @@ class ActionManager:
                                             self._flightSeatingIndex)
 
     def runCheckinBagsNext(self):
+        if self._checkinReservation == None:
+            self.gui.switchScreen("main")
+            return
         self.gui.findWidgetByID("checkin_bags: output").setText("Enter Number of Bags to Check-In for " +
                                                                 self._checkinReservation.getPassengers()[
                                                                     self._checkinCurrentPassenger].getFirstName() + " " +
@@ -556,11 +559,13 @@ class ActionManager:
         self._checkinCurrentPassenger -= 1
         if self._checkinCurrentPassenger >= -1:
             try:
-                x = int(self.gui.findWidgetByID("checkin_bags: bags").getText())
-                if x < 1:
-                    self.gui.findWidgetByID("checkin_bags: output").setText("Invalid Number of Bags")
+                if self.gui.findWidgetByID("checkin_bags: bags").getText() == "":
+                    return
                 else:
-                    pass
+                    x = int(self.gui.findWidgetByID("checkin_bags: bags").getText())
+                    if x < 1:
+                        self.gui.findWidgetByID("checkin_bags: output").setText("Invalid Number of Bags")
+
             except ValueError:
                 self.gui.findWidgetByID("checkin_bags: output").setText("Invalid Number of Bags")
         else:
@@ -568,6 +573,10 @@ class ActionManager:
             self.gui.findWidgetByID("checkin_bags: output").setText(
                 "Boarding Passes Generated for " + self._checkinReservation.getConfirmationNumber())
             self._checkinReservation, self._checkinCurrentPassenger = None, 0
+            self.gui.findWidgetByID("checkin: output").setText("")
+            self.gui.findWidgetByID("checkin: reservation_number").setText("")
+            self.gui.findWidgetByID("checkin: last_name").setText("")
+            self.gui.findWidgetByID("checkin_bags: bags").setText("")
 
     def __getSeatAvailability(self, flightId, depDate, isOutbound):
         singleFlight = self.rm.createSingleFlight(flightId, depDate)

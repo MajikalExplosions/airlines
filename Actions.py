@@ -37,6 +37,7 @@ class ActionManager:
         self._selectFlightMode = 0
         self.k = 2
         self._checkinReservation, self._checkinCurrentPassenger = None, 0
+        self.singleFlights, self.singleFlightsAlt = [], []
 
     def runFlightStatusLookup(self):
         dest = self.gui.findWidgetByID("flight_status: flight_destination").getText()
@@ -473,5 +474,10 @@ class ActionManager:
                 "Boarding Passes Generated for " + self._checkinReservation.getConfirmationNumber())
             self._checkinReservation, self._checkinCurrentPassenger = None, 0
 
-    def __getSeatAvailability(self, flightId, y, m, d):
-        pass
+    def __getSeatAvailability(self, flightId, depDate, isOutbound):
+        singleFlight = self.rm.createSingleFlight(flightId, depDate)
+
+        if isOutbound:
+            self.singleFlights.append(singleFlight)
+        else:
+            self.singleFlightsAlt.append(singleFlight)

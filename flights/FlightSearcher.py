@@ -4,7 +4,7 @@
 # Ver.	Writer			    Date			Notes
 # 1.0   Joseph Liu			05/25/20		Original airport search ported from FlightManager, create searchForFlights
 # 1.1   Joseph Liu			05/25/20		Add example code
-# 1.2   Chris Luey			05/27/20		Add lookup
+# 1.2   Chris Luey			05/27/20		Add searchForFlight() Add isValidAirport()
 
 
 from flights.FlightManager import FlightManager
@@ -20,6 +20,7 @@ class FlightSearcher:
         self._flightCache = {}
 
     def searchForAirports(self, searchString):
+        #creates a list, maxing out at 10, of airports that are close to that string
         fullMatch, partMatch = [], []
         searchString = searchString.lower()
         for airport in self.flightManager.getAirports():
@@ -39,12 +40,14 @@ class FlightSearcher:
                     match = True
                     break
 
+            #stops if there are 10 full matches
             if len(fullMatch) == 10:
                 return fullMatch
 
         return fullMatch + partMatch[:10 - len(fullMatch)]
 
     def searchForFlights(self, origin, dest, k, y, m, d):
+        #locates flights, uses pathfinder
         setStartDate(y, m, d)
         c1, c2 = origin.getCode(), dest.getCode()
         if c1 + c2 in self._flightCache:
@@ -59,6 +62,7 @@ class FlightSearcher:
         return res
 
     def searchForFlight(self, destinationCode, flightNumber):
+        #able to find a flight from entered information
         for flight in self.flightManager.getFlights():
             if flight.getDestination().getCode() == destinationCode and flight.getAirline() + str(
                     flight.getNumber()) == flightNumber:

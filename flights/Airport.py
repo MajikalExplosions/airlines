@@ -27,6 +27,7 @@ class Airport:
 
 
 	def addFlight(self, f):
+		#keeps track of the flights leaving an airport
 		if f.getOrigin() == self:
 			self.flights.append(f)
 

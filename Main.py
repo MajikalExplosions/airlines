@@ -4,8 +4,9 @@
 # Ver.	    Writer			        Date			Notes
 # 1.0       Christopher Luey        05/17/20		Original
 # 1.1       Christopher Luey        05/17/20		Compatibility with widget id system
-# 1.2       Christopher Luey        05/27/20		Complete Lookup flight
-# 1.3       Christopher Luey        05/27/20		Complete Reservation
+# 1.2       Christopher Luey        05/17/20		Add screen switching, all GUI elements displayed
+# 1.3       Christopher Luey        05/27/20		Complete Lookup flight functionality
+# 1.4       Christopher Luey        05/27/20		Complete Create Reservation up to search for flights
 # 2.0       Joseph Liu              05/27/20        Move helper functions into Actions.py
 
 
@@ -14,7 +15,6 @@ from UI.GUI import GUI
 from flights.FlightManager import FlightManager
 from flights.FlightSearcher import FlightSearcher
 from reservations.ReservationManager import ReservationManager
-from reservations.BoardingPass import BoardingPass
 
 
 def main():
@@ -97,5 +97,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-

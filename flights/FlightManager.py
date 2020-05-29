@@ -16,7 +16,8 @@ class FlightManager:
 		self.flights = []
 		self.airports = []
 		codes = {}
-
+		
+		#creates airport list
 		af = open(airportFile, "r")
 		contents = af.readlines()[1:]
 		af.close()
@@ -29,6 +30,7 @@ class FlightManager:
 			codes[self.airports[-1].getCode()] = index
 			index += 1
 		
+		#creates flight list
 		ff = open(flightFile, "r")
 		contents = ff.readlines()[1:]
 		ff.close()

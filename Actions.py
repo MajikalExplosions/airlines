@@ -237,9 +237,8 @@ class ActionManager:
             self._checkinCurrentPassenger = len(self._checkinReservation.getPassengers()) - 1
             self.gui.switchScreen("checkin_bag")
         except:
-            display = "Reservation not found. Please try again."
+            self.gui.findWidgetByID("checkin: output").setText("Invalid Reservation Number and Last Name")
 
-        # TODO update display with message somewhere
 
     def runSelectPassengerNext(self):
         f, l = self.gui.findWidgetByID("select_passenger: first_name").getText(), self.gui.findWidgetByID(

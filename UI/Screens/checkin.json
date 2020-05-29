@@ -99,6 +99,19 @@
     },
     "style": "normal"
   },
+  "Text5": {
+    "id": "checkin: output",
+    "x": 600,
+    "y": 500,
+    "text": "",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
+  },
   "Button1": {
     "x": 600,
     "y": 575,

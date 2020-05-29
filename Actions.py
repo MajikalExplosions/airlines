@@ -546,9 +546,9 @@ class ActionManager:
                                             self._flightSeatingIndex)
 
     def runCheckinBagsNext(self):
-        self.gui.findWidgetByID("checkin_bags: output").setText("Enter Number of Bags to Check-In for ",
+        self.gui.findWidgetByID("checkin_bags: output").setText("Enter Number of Bags to Check-In for " +
                                                                 self._checkinReservation.getPassengers()[
-                                                                    self._checkinCurrentPassenger].getFirstName(), " ",
+                                                                    self._checkinCurrentPassenger].getFirstName() + " " +
                                                                 self._checkinReservation.getPassengers()[
                                                                     self._checkinCurrentPassenger].getLastName())
         self._checkinCurrentPassenger -= 1

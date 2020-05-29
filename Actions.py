@@ -5,6 +5,7 @@
 # 1.0       Joseph Liu              05/27/20		Move actions and utils out of main and into a separate file
 # 1.1       Chris Luey              05/27/20		Bug fixes (GUI display not working) & back button fix, refactor
 # 1.2       Shuvam Chatterjee       05/28/20        Reservation creation functions
+# 2.0       Everybody at once       05/28/20        Finish all missing functions
 
 
 from random import randint

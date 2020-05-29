@@ -24,6 +24,10 @@ class ReservationManager:
             flight.serialize()
 
     def loadReservation(self, confirmationNumber, lastName):
+        for reservation in self.reservations:
+            if reservation.getConfirmationNumber() == confirmationNumber and reservation.getLastName() == lastName:
+                return reservation
+
         readFile = open("reservations/data_reservation/reservations.txt", "r")
         fileLines = readFile.readlines()
         readFile.close()

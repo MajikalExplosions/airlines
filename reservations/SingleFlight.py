@@ -7,7 +7,7 @@
 from flights import Flight
 
 class SingleFlight:
-    def __init__(self, flight, depDate, arrDate):
+    def __init__(self):
         #makes a list of all seat combinations of rows from 1-38 and letters from A-F
         self.seats = []
 

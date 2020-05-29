@@ -25,7 +25,7 @@ class ActionManager:
         self._start, self._end = 0, 0
         self._flightInfo = {}
         self._passengerCount = 0
-        self._passengers = []
+        self._passengers, self.passengersAlt = [], []
         self._startDate, self._returnDate = t_starttime, t_starttime
         self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
         self._seatSelectionMode = 0
@@ -233,7 +233,7 @@ class ActionManager:
         
         row, seat = int(i[:-1]), int(i[-1])
         if self._seatSelectionMode == 0:
-
+            #This is creating reservation
             self.runCreateReservationSelectSeats(row, seat, self._passengerSeatingIndex)
             self._passengerSeatingIndex += 1
             if self._passengerSeatingIndex >= self._passengerCount:
@@ -302,6 +302,11 @@ class ActionManager:
 
     def runCreditCardCreateReservation(self):
         print("Created reservation")
+        #Create reservation object in self._currentReservation
+        #Flight data is in self._selectedPaths[0].toFlights(self.fm) for outbound and self._selectedPaths[1].toFlights(self.fm) for inbound (only for roundtrip flights)
+        #    - If self._tripType == 1, it's a roundtrip, and if it's 0 then it's a one way flight
+        #Passengers is in self._passengers for outbound, and in roundtrips they're in self._passengersAlt
+
         self.gui.switchScreen("create_reservation_success")
     
     def runCreateReservationSuccess(self):

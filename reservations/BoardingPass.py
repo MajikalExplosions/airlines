@@ -11,8 +11,8 @@ class BoardingPass:
         self.reservation = reservation
 
     def export(self):
-        fileName = "Reservation" + self.reservation.getConfirmationNumber() + ".txt"
-        file = open(fileName, "a")
+        fileName = "reservations/boarding_passes/Reservation" + self.reservation.getConfirmationNumber() + ".txt"
+        file = open(fileName, "w")
 
         flights = self.reservation.getFlights()
         for i in range(len(flights)):

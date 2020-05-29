@@ -56,7 +56,14 @@ class Reservation:
                         flight.bookSeat(seat)
 
     def modifySeat(self, seat, passengerFirstName, passengerLastName, flightID):
-        pass
+        for i in range(len(self.flights)):
+            if self.flights[i].getFlightID() == flightID:
+                flightIndex = i
+                break
+
+        for passenger in self.passengers:
+            if passenger.getFirstName() == passengerFirstName and passenger.getLastName() == passengerLastName:
+                passenger.setSeatAt(seat, flightIndex)
 
     def getPassengers(self):
         return self.passengers
@@ -95,7 +102,7 @@ class Reservation:
             while fileLines[endInd].strip() != "":
                 endInd += 1
 
-            reservationFile = open("reservations/data_reservation/reservations.txt", "w")
+            reservationFile = open("reservations/data_reservation/reservations.txt", "a")
 
             for i in range(len(fileLines)):
                 if i < reservationStartInd and i >= endInd:

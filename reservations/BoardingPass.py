@@ -12,7 +12,7 @@ class BoardingPass:
 
     def export(self):
         fileName = "Reservation" + self.reservation.getConfirmationNumber() + ".txt"
-        file = open(fileName, "w")
+        file = open(fileName, "a")
 
         flights = self.reservation.getFlights()
         for i in range(len(flights)):
@@ -27,7 +27,8 @@ class BoardingPass:
                 string += "SEAT: " + passenger.getSeats()[i] + "\n"
                 string += "GATE: " + str(gate) + "\n"
 
-        print(string, file=file)
+                print(string, file=file)
+
         file.close()
 
         return fileName

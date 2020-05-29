@@ -14,6 +14,9 @@ class Passenger:
 
         self.seats = []
 
+    def setSeatAt(self, seat, index):
+        self.seats[index] = seat
+
     def addSeat(self, seat):
         self.seats.append(seat)
 

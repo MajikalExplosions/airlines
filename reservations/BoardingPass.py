@@ -22,6 +22,7 @@ class BoardingPass:
             gate = randint(1, 8)
 
             for passenger in self.reservation.getPassengers():
+                print(passenger.getSeats())
                 string += "NAME OF PASSENGER:\n"
                 string += passenger.getLastName() + " / " + passenger.getFirstName() + "\n"
                 string += "FROM: " + flight.getOrigin() + "\n"

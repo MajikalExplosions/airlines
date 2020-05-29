@@ -175,7 +175,7 @@ class Reservation:
         readFile = open("reservations/data_reservation/confirmation_numbers.txt", "r")
 
         #continuously generates a new number until we get one that has not already been issued
-        self.confirmationNumber = self.__generateRandomConfirmation()
+        confirmationNumber = self.__generateRandomConfirmation()
         while self.__fileContainsString(readFile, self.confirmationNumber):
             confirmationNumber = self.__generateRandomConfirmation()
 

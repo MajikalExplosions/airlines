@@ -14,7 +14,7 @@ from flights.paths.Path import Path
 from time import time
 
 class DijkstraSP:
-    def __init__(self, graph, origin, target, rootVal = 0):
+    def __init__(self, graph, origin, target, rootVal = 0, rootNode = -2):
         nodes = graph.getNodes()
         pq = [(rootVal, origin)]
         origin.root(rootVal)
@@ -42,8 +42,16 @@ class DijkstraSP:
                 if not graph.exists(edge.v) or edge.removed():
                     continue
                 dest = nodes[edge.v]
+
+
                 #1 is added because layovers take T I M E
-                timeSpent = edge.f.getTravelTime() + edge.f.timeUntilNextFlight(offsetStartTime(timedelta(hours=cur[1].getDist() + 1)))
+                if rootNode == dest:
+                    if edge.f.timeUntilNextFlight(offsetStartTime(timedelta(hours=cur[1].getDist() + 1))) >= 24:
+                        continue
+                    else:
+                        timeSpent = edge.f.getTravelTime()
+                else:
+                    timeSpent = edge.f.getTravelTime() + edge.f.timeUntilNextFlight(offsetStartTime(timedelta(hours=cur[1].getDist() + 1)))
                 
                 #If new path shorter, update.
                 if cur[1].getDist() + timeSpent < dest.getDist():

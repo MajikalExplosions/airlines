@@ -449,22 +449,6 @@ class ActionManager:
                     flightTime = flight.getTravelTime()
 
                     totalFlightTime += nextFlightTime + flightTime
-                
-                #totalflighttime is in hours since starttime
-                # for k in range(self.k):
-                #     print("Finding path", k)
-                #     self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year, self._startDate.month, self._startDate.day)
-                #     if k == 0:
-                #         if not self._paths:
-                #             break
-                #         else:
-                #             self.gui.switchScreen("list_flights")
-                #     try:
-                #         self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._paths[k].toShortString(self.fm))
-                #     except:
-                #         self.gui.findWidgetByID("selection_circle_flight" + str(k)).undraw()
-                #         self.gui.findWidgetByID("selection_flight" + str(k)).toggleActivation()
-                #         self.gui.findWidgetByID("selection_flight" + str(k)).undraw()
 
 
                 newTime = self._currentReservation.getFlights()[0].getDepartureDate()

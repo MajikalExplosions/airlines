@@ -60,7 +60,10 @@ class FlightSearcher:
 
     def searchForFlight(self, destinationCode, flightNumber):
         for flight in self.flightManager.getFlights():
-            if flight.getDestination().getCode() == destinationCode and flight.getAirline() + str(flight.getNumber()) == flightNumber:
+            if flight.getDestination().getCode() == destinationCode and flight.getAirline() + str(
+                    flight.getNumber()) == flightNumber:
+                return flight
+            if flight.getDestination().getCode() == destinationCode and str(flight.getNumber()) == flightNumber:
                 return flight
         return "Flight {} to {} Doesn't Exist".format(flightNumber, destinationCode)
 

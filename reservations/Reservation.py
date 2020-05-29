@@ -44,14 +44,20 @@ class Reservation:
     def addPassenger(self, passenger):
         self.passengers.append(passenger)
 
+    def matchSeats(self):
+        for i in range(len(self.flights)):
+            flight = self.flights[i]
+
+            for passenger in self.passengers:
+                seat = passenger.getSeats()[i]
+                row = int(seat[:-1]) - 1
+                col = ord(seat[-1]) - 65
+                flight.bookSeat(row, col)
+
     def addSeat(self, seat, passengerFirstName, passengerLastName, flightID):
         for passenger in self.passengers:
             if passenger.getFirstName() == passengerFirstName and passenger.getLastName() == passengerLastName:
                 passenger.addSeat(seat)
-
-                for flight in self.flights:
-                    if flight.getFlightID() == flightID:
-                        flight.bookSeat(seat)
 
     def modifySeat(self, seat, passengerFirstName, passengerLastName, flightID):
         for i in range(len(self.flights)):

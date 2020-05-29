@@ -20,6 +20,9 @@ class Passenger:
     def addSeat(self, seat):
         self.seats.append(seat)
 
+    def getSeats(self):
+        return self.seats
+
     def getFirstName(self):
         return self.firstName
 

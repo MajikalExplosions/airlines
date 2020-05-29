@@ -1,5 +1,5 @@
 # Name: Actions.py
-# Description: Runner program.
+# Description: Utility class containing functions called by main
 
 # Ver.	    Writer			        Date			Notes
 # 1.0       Joseph Liu              05/27/20		Move actions and utils out of main and into a separate file

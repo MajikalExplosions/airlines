@@ -1,5 +1,5 @@
 # Name: Path.py
-# Description: Represents a path object
+# Description: Represents a path (a series of flights and airports)
 
 # Ver.	Writer			        Date			Notes
 # 1.0   Joseph Liu              05/23/20		Original
@@ -17,12 +17,15 @@ class Path:
         self.graph = 0
     
     def fromDSP(self, dsp, dest):
+        #Initializes this path object from a shortest path search
         self.nodes = [dest]
         self.edges = []
+        #Starting from the destination, follow edgeIn until you reach the root.
         while not self.nodes[0].isRoot():
             self.edges.insert(0, self.nodes[0].getEdgeIn())
             self.nodes.insert(0, dsp.graph.getNodes()[self.nodes[0].getEdgeIn().u])
         
+        #Append the distance of each node from the root
         self.distToNode = []
         for node in self.nodes:
             self.distToNode.append(node.getDist())
@@ -87,6 +90,7 @@ class Path:
         return s
     
     def recalculateDist(self, initial):
+        #Recalculates the distance of the path, in case you don't want to re-run Dijkstra's
         self.distToNode = [initial]
         for i in range(len(self.edges)):
             nextFlightTime = self.edges[i].f.timeUntilNextFlight(offsetStartTime(timedelta(hours=self.distToNode[-1])))
@@ -114,6 +118,7 @@ class Path:
         
         if index == -1 or index >= len(self.distToNode) - 1:
             return self.distToNode[-1]
+        #The time you arrive at a node is equal to the time you arrived at the last node plus the length of the last flight
         arriveLast = self.distToNode[index - 1]
         flightToCurrent = self.toFlights(fm)[index - 1].getTravelTime()
         return arriveLast + flightToCurrent

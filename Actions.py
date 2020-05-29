@@ -67,7 +67,7 @@ class ActionManager:
                     time.setText(self._flightInfo[dest + num][1])
             else:
                 status.setText("Error")
-                time.setText("Destination '{}' is not Valid".format(num, dest))
+                time.setText("Destination '{}' is not Valid".format(dest))
 
         except ValueError:
             status.setText("Error")

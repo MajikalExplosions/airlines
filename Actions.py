@@ -450,7 +450,6 @@ class ActionManager:
 
                     totalFlightTime += nextFlightTime + flightTime
 
-
                 newTime = self._currentReservation.getFlights()[0].getDepartureDate()
                 newTime.replace(year=int(startdate[2]), month = int(startdate[0]), day = int(startdate[1]))
 

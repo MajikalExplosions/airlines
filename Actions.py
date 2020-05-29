@@ -427,7 +427,7 @@ class ActionManager:
         reservation = self.rm.loadReservation(cn, ln)
         if reservation != 0:
             self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
-                reservation.getFlights()[0].getDepDate())
+                reservation.getFlights()[0].getDepartureDate())
             self._currentReservation = reservation
 
     def runModifyReservationChangeDate(self):
@@ -474,7 +474,7 @@ class ActionManager:
                 # setStartDate()
 
                 # TODO create new reservation set it to _currentReservation, update reservation manager
-                newTime = self._currentReservation.getFlights()[0].getDepDate()
+                newTime = self._currentReservation.getFlights()[0].getDepartureDate()
                 newTime.replace(year=int(startdate[2]), month = int(startdate[0]), day = int(startdate[1]))
 
                 tempRes = self.rm.createReservation()

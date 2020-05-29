@@ -115,8 +115,6 @@ class ReservationManager:
 
     def validateCreditCard(self, creditCardNum):
         creditCardNum = creditCardNum.strip()
-        if not (16 <= len(creditCardNum) <= 19):
-            return False
 
         try:
             creditCardNum = int(creditCardNum)

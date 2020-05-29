@@ -526,6 +526,7 @@ class ActionManager:
                 self._currentReservationAlt.addPassenger(passenger)
 
         self.rm.serializeAll()
+        self.singleFlights, self.singleFlightsAlt = [], []
 
         print("Created reservation")
 

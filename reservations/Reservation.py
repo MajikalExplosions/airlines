@@ -103,13 +103,13 @@ class Reservation:
         #it has been serialized and we have to override it
         else:
             endInd = reservationStartInd
-            while fileLines[endInd].strip() != "":
+            while fileLines[endInd].strip() != "}":
                 endInd += 1
 
             reservationFile = open("reservations/data_reservation/reservations.txt", "a")
 
             for i in range(len(fileLines)):
-                if i < reservationStartInd and i >= endInd:
+                if i < reservationStartInd and i > endInd:
                     print(fileLines[i], file=reservationFile)
 
             print(self.__toString(), file=reservationFile)

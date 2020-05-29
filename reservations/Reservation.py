@@ -176,7 +176,7 @@ class Reservation:
 
         #continuously generates a new number until we get one that has not already been issued
         confirmationNumber = self.__generateRandomConfirmation()
-        while self.__fileContainsString(readFile, self.confirmationNumber):
+        while self.__fileContainsString(readFile, confirmationNumber):
             confirmationNumber = self.__generateRandomConfirmation()
 
         readFile.close()

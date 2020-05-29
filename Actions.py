@@ -391,7 +391,7 @@ class ActionManager:
 
             for i in range(len(flightData)):
                 depTime = self._selectedPaths[1].timeToNodeDeparture(i)
-                arrTime = self._selectedPaths[1].timeToNodeArrival(i + 1)
+                arrTime = self._selectedPaths[1].timeToNodeArrival(i + 1, self.fm)
                 self._currentReservationAlt.addFlight(flightData[i], depTime, arrTime)
 
             for passenger in self._passengersAlt:

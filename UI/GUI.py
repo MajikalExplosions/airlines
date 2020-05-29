@@ -10,6 +10,7 @@
 # 1.5     Christopher Luey     05/26/20     Begin integration
 # 1.6     Christopher Luey     05/27/20     Back button saves state
 # 1.7     Christopher Luey     05/27/20     Display airports and flights
+# 1.8     Christopher Luey     05/28/20     Display seat selection
 
 
 import json
@@ -25,7 +26,7 @@ class GUI:
 
         ids = ["main", "list_flights", "create_reservation", "modify_reservation", "flight_status", "checkin",
                "list_airports", "select_passenger", "select_seating", "credit_card", "create_reservation_success"]
-        # self.screens - Hash: screenID : Screen()
+
         self.id_screen = {x: y for x, y in zip(ids, [Screen(i, self.win) for i in ids])}
         self.screen_id = {y: x for x, y in self.id_screen.items()}
 
@@ -49,9 +50,9 @@ class GUI:
             if self.backButton.isActive():
                 self.backButton.toggleActivation()
             self.activeScreen.deflate()
-            self.index += 1
             self.screen.append(self.id_screen["main"])
-            self.activeScreen = self.screen[self.index - 1]
+            self.activeScreen = self.screen[self.index]
+            self.index += 1
             self.attrs = self.activeScreen.inflate()
 
         elif screen == "back":
@@ -60,9 +61,6 @@ class GUI:
 
             self.activeScreen.deflate()
             self.index -= 1
-            # if self.activeScreen == self.screen[self.index]:
-            #     self.screen.pop(self.index)
-            #     self.index-=1
             self.screen.append(self.screen[self.index])
             self.activeScreen = self.screen[self.index]
             self.attrs = self.activeScreen.inflate()

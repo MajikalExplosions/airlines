@@ -1,7 +1,7 @@
 {
   "Text1": {
     "id": "Payment_Title",
-    "x": 338,
+    "x": 320,
     "y": 150,
     "text": "Payment Details",
     "size": 60,
@@ -26,9 +26,9 @@
     "style": "normal"
   },
   "Entry1": {
-    "x": 210,
+    "x": 600,
     "y": 350,
-    "width": 10,
+    "width": 16,
     "size": 30,
     "text": "",
     "fill": {
@@ -51,9 +51,9 @@
   },
   "Text3": {
     "id": "CreditCard",
-    "x": 160,
+    "x": 600,
     "y": 300,
-    "text": "Credit Card #:",
+    "text": " Credit Card #: ",
     "size": 32,
     "color": {
       "r": 27,

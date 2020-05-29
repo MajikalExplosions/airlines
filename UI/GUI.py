@@ -46,15 +46,13 @@ class GUI:
         self.switchScreen("main")
 
     def switchScreen(self, screen):
-        # Disable back button on main screen
+        # Draw the main screen
         if screen == "main":
             if len(self.screen) != 0:
                 self.activeScreen.deflate()
             self.screen.append(self.id_screen[screen])
             self.index = len(self.screen) - 1
             self.activeScreen = self.screen[self.index]
-            if self.backButton.isActive():
-                self.backButton.toggleActivation()
             self.activeScreen.inflate()
 
         elif screen == "back":
@@ -68,13 +66,13 @@ class GUI:
             self.activeScreen = self.screen[self.index]
             self.attrs = self.activeScreen.inflate()
 
-        # Disable back button on this screen
-        elif screen == "create_reservation_success":
-            if self.backButton.isActive():
-                self.backButton.toggleActivation()
-            self._switchScreen((self.id_screen[screen]))
         else:
             self._switchScreen(self.id_screen[screen])
+
+        # Disable back button on these screens
+        if screen == "main" or screen == "select_passenger" or screen == "select_seating" or screen == "credit_card" or screen == "create_reservation_success":
+            if self.backButton.isActive():
+                self.backButton.toggleActivation()
 
         print("ID:", screen, "- Switch to Screen")
 

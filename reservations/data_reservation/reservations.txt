@@ -165,3 +165,402 @@ Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Numb
 Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
 }
 
+Reservation {
+Confirmation Number: wJHMQo
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['17C']
+}
+
+Reservation {
+Confirmation Number: aIiNhc
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['17C']
+}
+
+Reservation {
+Confirmation Number: aIiNhc
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['17C']
+}
+
+Reservation {
+Confirmation Number: aIiNhc
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['17C']
+}
+
+Reservation {
+Confirmation Number: aIiNhc
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['17C']
+}
+
+Reservation {
+Confirmation Number: aIiNhc
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['17C']
+}
+
+Reservation {
+Confirmation Number: aIiNhc
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['17C']
+}
+
+Reservation {
+Confirmation Number: aIiNhc
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['17C']
+}
+
+Reservation {
+Confirmation Number: aIiNhc
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['17C']
+}
+
+Reservation {
+Confirmation Number: aIiNhc
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['17C']
+}
+
+Reservation {
+Confirmation Number: aIiNhc
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['17C']
+}
+
+Reservation {
+Confirmation Number: 9HdfRR
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: LjItoW
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: x  Last Name: x  Seats: ['10D']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: MuyAox
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: x  Last Name: x  Seats: ['10D']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: MuyAox
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: x  Last Name: x  Seats: ['10D']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: MuyAox
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: x  Last Name: x  Seats: ['10D']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: MuyAox
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: x  Last Name: x  Seats: ['10D']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: MuyAox
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: x  Last Name: x  Seats: ['10D']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: MuyAox
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: x  Last Name: x  Seats: ['10D']
+}
+
+Reservation {
+Confirmation Number: mzVmvq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['13C']
+}
+
+Reservation {
+Confirmation Number: MuyAox
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: x  Last Name: x  Seats: ['10D']
+}
+
+Reservation {
+Confirmation Number: KSJbHq
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['1A']
+}
+
+Reservation {
+Confirmation Number: HaSKKg
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 15398  Airline: UA  Number: 6100  Origin: San Diego International Airport, San Diego (SAN)  Destination: Los Angeles International Airport, Los Angeles (LAX)  Departure Time: 2020-05-28 13:00:00  Arrival Time: 2020-05-28 13:55:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 15398  Airline: UA  Number: 6100  Origin: San Diego International Airport, San Diego (SAN)  Destination: Los Angeles International Airport, Los Angeles (LAX)  Departure Time: 2020-05-28 13:00:00  Arrival Time: 2020-05-28 13:55:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['1A']
+}
+
+Reservation {
+Confirmation Number: zQyaI4
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['1A']
+}
+
+Reservation {
+Confirmation Number: XPMGFX
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 15398  Airline: UA  Number: 6100  Origin: San Diego International Airport, San Diego (SAN)  Destination: Los Angeles International Airport, Los Angeles (LAX)  Departure Time: 2020-05-28 13:00:00  Arrival Time: 2020-05-28 13:55:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 15398  Airline: UA  Number: 6100  Origin: San Diego International Airport, San Diego (SAN)  Destination: Los Angeles International Airport, Los Angeles (LAX)  Departure Time: 2020-05-28 13:00:00  Arrival Time: 2020-05-28 13:55:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['1A']
+}
+
+Reservation {
+Confirmation Number: zQyaI4
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['1A']
+}
+
+Reservation {
+Confirmation Number: XPMGFX
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 15398  Airline: UA  Number: 6100  Origin: San Diego International Airport, San Diego (SAN)  Destination: Los Angeles International Airport, Los Angeles (LAX)  Departure Time: 2020-05-28 13:00:00  Arrival Time: 2020-05-28 13:55:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 15398  Airline: UA  Number: 6100  Origin: San Diego International Airport, San Diego (SAN)  Destination: Los Angeles International Airport, Los Angeles (LAX)  Departure Time: 2020-05-28 13:00:00  Arrival Time: 2020-05-28 13:55:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['1A']
+}
+
+Reservation {
+Confirmation Number: zQyaI4
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['1A']
+}
+
+Reservation {
+Confirmation Number: XPMGFX
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 15398  Airline: UA  Number: 6100  Origin: San Diego International Airport, San Diego (SAN)  Destination: Los Angeles International Airport, Los Angeles (LAX)  Departure Time: 2020-05-28 13:00:00  Arrival Time: 2020-05-28 13:55:00  Booked Seats: 
+Flight  Departure Date: 0002-01-02 00:00:00  Flight ID: 15398  Airline: UA  Number: 6100  Origin: San Diego International Airport, San Diego (SAN)  Destination: Los Angeles International Airport, Los Angeles (LAX)  Departure Time: 2020-05-28 13:00:00  Arrival Time: 2020-05-28 13:55:00  Booked Seats: 
+Passenger  First Name: f  Last Name: f  Seats: ['1A']
+}
+

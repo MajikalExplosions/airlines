@@ -14,7 +14,7 @@
   },
   "Text2": {
     "id": "Success_Description",
-    "x": 375,
+    "x": 345,
     "y": 200,
     "text": "A reservation has been created.",
     "size": 32,

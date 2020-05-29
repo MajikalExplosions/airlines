@@ -291,8 +291,6 @@ class ActionManager:
                     totalFlightTime += nextFlightTime + flightTime
                 
                 #totalflighttime is in hours since starttime
-                # TODO Allow user to select new flight
-                # setStartDate()
                 # TODO create new reservation set it to _currentReservation, update reservation manager
 
                 pass

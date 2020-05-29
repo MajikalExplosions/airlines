@@ -12,7 +12,7 @@ class BoardingPass:
         self.export()
 
     def export(self):
-        fileName = "reservations/boarding_passes/Reservation" + self.reservation.getConfirmationNumber() + ".txt"
+        fileName = "reservations/boarding_passes/reservation_" + self.reservation.getConfirmationNumber() + ".txt"
         file = open(fileName, "w")
 
         flights = self.reservation.getFlights()

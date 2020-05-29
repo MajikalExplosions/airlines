@@ -381,6 +381,7 @@ class ActionManager:
             arrTime = self._selectedPaths[0].timeToNodeArrival(i + 1, self.fm)
             self._currentReservation.addFlight(flightData[i], depTime, arrTime)
 
+
         for passenger in self._passengers:
             self._currentReservation.addPassenger(passenger)
 
@@ -410,7 +411,7 @@ class ActionManager:
         self.gui.findWidgetByID("create_reservation: start_date").setText("")
 
     def runCreateReservationSuccess(self):
-        reservationInfo = "Last Name: " + self._currentReservation.getLastName()
+        reservationInfo = "Last Name: " + self._currentReservation.getLastName() + " "
 
         if self._tripType == 0:
             self.gui.findWidgetByID("Success_Description").setText("A one-way reservation has been created.")

@@ -164,8 +164,8 @@ class Reservation:
                 if confirmationNum == confirmationNumber:
                     #the start of a reservation will be 1 line above where it's confirmation number is
                     return lineNum - 1
-            else:
-                lineNum += 1
+            lineNum += 1
+
         return -1
 
     #takes a number and splits it into a list of each of it's digits, the returned list will be the number reversed

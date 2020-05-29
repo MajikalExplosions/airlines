@@ -140,7 +140,7 @@ class ActionManager:
                 return
 
             self._startDate = datetime(year=int(startD[2]), month=int(startD[0]), day=int(startD[1]))
-            # TODO Check date time
+
             setStartDate(self._startDate.year, self._startDate.month, self._startDate.day)
             if self._tripType == 1:
                 self._endDate = datetime(year=int(endD[2]), month=int(endD[0]), day=int(endD[1]))
@@ -238,7 +238,16 @@ class ActionManager:
                     self._passengersAlt.append(Passenger(passenger.getFirstName(), passenger.getLastName()))
 
                 self.gui.switchScreen("select_seating")
-                #TODO gray out taken seats
+
+                #Gray out taken seats
+                seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0], self._startDate, self._currentTripSelect == 0)
+                for i in range(len(seatA)):
+                    for j in range(len(seatA[i])):
+                        if seatA[i][j]:
+                            self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
+                        else:
+                            self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")
+
                 self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
                 self._seatSelectionMode = 0
                 
@@ -267,7 +276,16 @@ class ActionManager:
             self._passengers.append(Passenger(f, l))
             if len(self._passengers) == self._passengerCount:
                 self.gui.switchScreen("select_seating")
-                #TODO gray out taken seats
+
+                #Gray out taken seats
+                seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0], self._startDate, self._currentTripSelect == 0)
+                for i in range(len(seatA)):
+                    for j in range(len(seatA[i])):
+                        if seatA[i][j]:
+                            self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
+                        else:
+                            self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")
+
 
                 self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
                 self._seatSelectionMode = 0
@@ -295,7 +313,21 @@ class ActionManager:
         if self._seatSelectionMode == 0:
             #This is creating reservation
             
-            #TODO Check if seat is taken
+            #Gray out taken seats
+            seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0], self._startDate, self._currentTripSelect == 0)
+            
+            bad = False
+            for i in range(len(seatA)):
+                for j in range(len(seatA[i])):
+                    if i == row and j == seat and seatA[i][j]:
+                        bad = True
+                    if not seatA[i][j]:
+                        self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
+                    else:
+                        self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")
+
+            if bad:
+                return
 
             self.runCreateReservationSelectSeats(row, seat, self._passengerSeatingIndex)
             self._passengerSeatingIndex += 1
@@ -321,7 +353,21 @@ class ActionManager:
         
         elif self._seatSelectionMode == 1:
             
-            #TODO Check if seat is taken
+            #Gray out taken seats
+            seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0], self._startDate, self._currentTripSelect == 0)
+            
+            bad = False
+            for i in range(len(seatA)):
+                for j in range(len(seatA[i])):
+                    if i == row and j == seat:
+                        bad = True
+                    if seatA[i][j]:
+                        self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
+                    else:
+                        self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")
+
+            if bad:
+                return
 
             self.runModifyReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
             self._passengerSeatingIndex += 1
@@ -390,7 +436,7 @@ class ActionManager:
 
     def runCreditCardCreateReservation(self):
         cardIsValid = self.rm.validateCreditCard(self.gui.findWidgetByID("credit_card: creditcard").getText())
-        #TODO remove and False
+        #TODO remove "and False" to actually check if the card is valid
         if not cardIsValid and False:
             self.gui.findWidgetByID("credit_card: output").setText("Invalid credit card - try again.")
             return

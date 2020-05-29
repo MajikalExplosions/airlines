@@ -221,10 +221,10 @@ class Reservation:
         string += "Confirmation Number: " + self.confirmationNumber + "\n"
 
         for flight in self.flights:
-            string += flight.toString()
+            string += flight.toString() + "\n"
 
         for passenger in self.passengers:
-            string += passenger.toString()
+            string += passenger.toString() + "\n"
 
         string += "}\n"
 

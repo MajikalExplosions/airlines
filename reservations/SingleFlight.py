@@ -116,7 +116,7 @@ class SingleFlight:
         seatList = tokens[9].lstrip("Booked Seats: ")
         for seat in seatList.split(" "):
             row, col = seat.split(",")
-            self.seats[row][col] = True
+            self.seats[row][col] = False
 
     def toString(self):
         string = "Flight"

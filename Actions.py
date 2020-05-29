@@ -493,8 +493,7 @@ class ActionManager:
 
     def runCreditCardCreateReservation(self):
         cardIsValid = self.rm.validateCreditCard(self.gui.findWidgetByID("credit_card: creditcard").getText())
-        #TODO remove "and False" to actually check if the card is valid
-        if not cardIsValid and False:
+        if not cardIsValid:
             self.gui.findWidgetByID("credit_card: output").setText("Invalid credit card - try again.")
             return
 

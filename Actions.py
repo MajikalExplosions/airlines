@@ -305,7 +305,6 @@ class ActionManager:
         except:
             self.gui.findWidgetByID("checkin: output").setText("Invalid Reservation Number and Last Name")
 
-
     def runSelectPassengerNext(self):
         f, l = self.gui.findWidgetByID("select_passenger: first_name").getText(), self.gui.findWidgetByID(
             "select_passenger: last_name").getText()
@@ -418,14 +417,15 @@ class ActionManager:
             "modify_reservation: last_name").getText()
         try:
             reservation = self.rm.loadReservation(cn, ln)
-            if reservation != 0:
-                date = reservation.getFlights()[0].getDepartureDate()[0:10].lstrip("0").split("-")
-                self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
-                    "{}/{}/{}".format(date[2], date[1], date[0]))
-                self._currentReservation = reservation
-                self.gui.switchScreen("modify_reservation_dates")
         except:
             self.gui.findWidgetByID("modify_reservation: output").setText("Invalid Last name or Reservation Number")
+
+        if reservation != 0:
+            date = reservation.getFlights()[0].getDepartureDate()[0:10].lstrip("0").split("-")
+            self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
+                "{}/{}/{}".format(date[2], date[1], date[0]))
+            self._currentReservation = reservation
+            self.gui.switchScreen("modify_reservation_dates")
 
     def runModifyReservationChangeDate(self):
         # This is run after they enter a new date and submit it

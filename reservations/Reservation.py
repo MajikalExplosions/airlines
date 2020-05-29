@@ -28,7 +28,7 @@ class Reservation:
 
     # parses a reservation string and returns a reservation object
     def createFromFile(self, fileLines, index):
-        self.confirmationNumber = fileLines[index + 1].lstrip("Confirmation Number:")
+        self.confirmationNumber = fileLines[index + 1].lstrip("Confirmation Number:").strip()
 
         #loops through each lines for a flight object
         index += 2

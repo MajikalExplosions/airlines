@@ -126,7 +126,7 @@ class SingleFlight:
         for seat in seatList.strip().split(" "):
             if seat != "":
                 row, col = seat.split(",")
-                self.seats[row][col] = False
+                self.seats[int(row)][int(col)] = False
 
     def toString(self):
         string = "Flight"

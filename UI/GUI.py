@@ -48,7 +48,9 @@ class GUI:
     def switchScreen(self, screen):
         # Disable back button on main screen
         if screen == "main":
-            self._switchScreen((self.id_screen[screen]))
+            self.screen.append(self.id_screen[screen])
+            self.index = len(self.screen) - 1
+            self.activeScreen = self.screen[self.index]
             if self.backButton.isActive():
                 self.backButton.toggleActivation()
 

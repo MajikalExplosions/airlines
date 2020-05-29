@@ -253,7 +253,7 @@ class ActionManager:
             self._passengerSeatingIndex += 1
             if self._passengerSeatingIndex == len(self._passengers):
                 self.gui.switchScreen("main")
-                #Finish reselecting seats.
+                # Finish reselecting seats.
                 pass
     
     #self._seatSelectionMode = 1 somewhere at the end

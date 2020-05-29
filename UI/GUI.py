@@ -166,6 +166,14 @@ class GUI:
             self.findWidgetByID("flight_status: flight_number").setText("")
             self.findWidgetByID("flight_status: status").setText("Status: Unavailable")
             self.findWidgetByID("flight_status: time").setText("")
+        elif screen == "modify_reservation":
+            self.findWidgetByID("modify_reservation: output").setText("")
+            self.findWidgetByID("modify_reservation: last_name").setText("")
+            self.findWidgetByID("modify_reservation: reservation_number").setText("")
+        elif screen == "checkin":
+            self.findWidgetByID("checkin: output").setText("")
+            self.findWidgetByID("checkin: last_name").setText("")
+            self.findWidgetByID("checkin: reservation_number").setText("")
 
 
 class Screen:

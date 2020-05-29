@@ -1,7 +1,7 @@
 {
   "Text1": {
     "id": "ModifyReservation_Title",
-    "x": 338,
+    "x": 380,
     "y": 150,
     "text": "Modify a Reservation",
     "size": 60,
@@ -14,7 +14,7 @@
   },
   "Text2": {
     "id": "ModifyReservation_Description",
-    "x": 375,
+    "x": 365,
     "y": 200,
     "text": "Enter valid reservation details to modify.",
     "size": 32,
@@ -26,7 +26,7 @@
     "style": "normal"
   },
   "Entry1": {
-    "x": 210,
+    "x": 400,
     "y": 350,
     "width": 10,
     "size": 30,
@@ -50,7 +50,7 @@
     "id": "modify_reservation: reservation_number"
   },
   "Entry2": {
-    "x": 460,
+    "x": 800,
     "y": 350,
     "width": 11,
     "size": 30,
@@ -75,7 +75,7 @@
   },
   "Text3": {
     "id": "ModifyReservationText",
-    "x": 160,
+    "x": 400,
     "y": 300,
     "text": "Reservation Number:",
     "size": 32,
@@ -88,7 +88,7 @@
   },
   "Text4": {
     "id": "ModifyLastText",
-    "x": 448,
+    "x": 800,
     "y": 300,
     "text": "Last Name:",
     "size": 32,
@@ -118,5 +118,18 @@
     },
     "textSize": 32,
     "id": "modify_reservation: find_reservation"
+  },
+  "Text5": {
+    "id": "modify_reservation: output",
+    "x": 600,
+    "y": 500,
+    "text": "",
+    "size": 32,
+    "color": {
+      "r": 27,
+      "g": 73,
+      "b": 101
+    },
+    "style": "normal"
   }
 }

@@ -56,6 +56,7 @@ class Flight:
             print(self.airline, self.number, self.departureTimeLocal, self.arrivalTimeLocal, self.departureTime, self.arrivalTime, toUTCOffset(self.origin.getTimezone()), toUTCOffset(self.destination.getTimezone()), sep=" | ")
 
 
+        self.days = days
 
         #Add days where flight is run
         if days == "Daily":
@@ -67,17 +68,20 @@ class Flight:
                 days = days[1:]
             else:
                 self.runsOn = [False, False, False, False, False, False, False]
-            
-            #For each
+
+            # For each
             for i in range(len(days)):
                 self.runsOn[int(days[i]) - 1] = not self.runsOn[int(days[i]) - 1]
 
     def getID(self):
-    	return self.flightId
+        return self.flightId
+
+    def getDays(self):
+        return self.days
 
     def getAirline(self):
-    	return self.airline
-        
+        return self.airline
+
     def getNumber(self):
         return self.number
 

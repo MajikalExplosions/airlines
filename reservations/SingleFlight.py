@@ -20,6 +20,7 @@ class SingleFlight:
 
     def create(self, flight, depDate):
         self.depDate = depDate
+        self.flight = flight
 
         self.flightId = flight.getID()
         self.airline = flight.getAirline()
@@ -28,6 +29,8 @@ class SingleFlight:
         self.destination = flight.getDestination().toString()
         self.departureTime = flight.getDepTime()
         self.arrivalTime = flight.getArrTime()
+        self.days = flight.getDays()
+        print(self.days)
 
     def serialize(self):
         readFile = open("reservations/data_reservation/single_flights.txt", "r")
@@ -62,6 +65,9 @@ class SingleFlight:
             lineNum += 1
         return -1
 
+    def getDays(self):
+        return self.days
+
     def getFlightID(self):
         return self.flightId
 
@@ -73,6 +79,9 @@ class SingleFlight:
 
     def getDepartureDate(self):
         return self.depDate
+
+    def setDepartureDate(self, dep):
+        self.depDate = dep
 
     def getOrigin(self):
         return self.origin

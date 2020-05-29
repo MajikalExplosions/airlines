@@ -6,11 +6,11 @@
 # 1.1       Chris Luey              05/27/20		Bug fixes (GUI display not working) & back button fix, refactor
 # 1.2       Shuvam Chatterjee       05/28/20        Reservation creation functions
 # 2.0       Everybody at once       05/28/20        Finish all missing functions
-
-
+import copy
 from random import randint
 
 from flights.Airport import Airport
+from flights.Flight import Flight
 from reservations.BoardingPass import BoardingPass
 from reservations.Passenger import Passenger
 from flights.Time import *
@@ -176,7 +176,8 @@ class ActionManager:
             if self._tripType == 1:
                 self._endDate = datetime(year=int(endD[2]), month=int(endD[0]), day=int(endD[1]))
         except ValueError:
-            self.gui.findWidgetByID("Invalid input for passengers. Must be a number.")
+            self.gui.findWidgetByID("create_reservation: output").setText(
+                "Invalid input for passengers. Must be a number.")
             return
 
         for k in range(self.k):
@@ -384,10 +385,13 @@ class ActionManager:
                 self.gui.findWidgetByID("select_seat: text").setText("Choose " + self._passengers[self._passengerSeatingIndex].getFirstName() + " " + self._passengers[self._passengerSeatingIndex].getLastName() + "'s seat on " + self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex].getFullNumber())
         
         elif self._seatSelectionMode == 1:
-            
-            #Gray out taken seats
-            seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex], self._startDate, self._currentTripSelect == 0)
-            
+
+            # Gray out taken seats
+            # TODO Joseph fix because you understand I don't get it
+            seatA = self.__getSeatAvailability(
+                self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex],
+                self._startDate, self._currentTripSelect == 0)
+
             bad = False
             for i in range(len(seatA)):
                 for j in range(len(seatA[i])):
@@ -412,13 +416,16 @@ class ActionManager:
 
         cn, ln = self.gui.findWidgetByID("modify_reservation: reservation_number").getText(), self.gui.findWidgetByID(
             "modify_reservation: last_name").getText()
-        reservation = self.rm.loadReservation(cn, ln)
-        if reservation != 0:
-            date = reservation.getFlights()[0].getDepartureDate()[0:10].lstrip("0").split("-")
-            self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
-                "{}/{}/{}".format(date[2], date[1], date[0]))
-            self._currentReservation = reservation
-            self.gui.switchScreen("modify_reservation_dates")
+        try:
+            reservation = self.rm.loadReservation(cn, ln)
+            if reservation != 0:
+                date = reservation.getFlights()[0].getDepartureDate()[0:10].lstrip("0").split("-")
+                self.gui.findWidgetByID("modify_reservation_dates: start_date").setText(
+                    "{}/{}/{}".format(date[2], date[1], date[0]))
+                self._currentReservation = reservation
+                self.gui.switchScreen("modify_reservation_dates")
+        except:
+            self.gui.findWidgetByID("modify_reservation: output").setText("Invalid Last name or Reservation Number")
 
     def runModifyReservationChangeDate(self):
         # This is run after they enter a new date and submit it
@@ -426,53 +433,55 @@ class ActionManager:
 
         startdate = self.gui.findWidgetByID("modify_reservation_dates: start_date").getText()
 
-        try:
-            startdate = startdate.split("/")
+        # try:
+        startdate = startdate.split("/")
 
-            if len(startdate) != 3:
-                print("Start date is invalid")
-                return
-            date = self._currentReservation.getFlights()[0].getDepartureDate()[0:10].lstrip("0").split("-").reverse()
+        if len(startdate) != 3:
+            print("Start date is invalid")
+            return
+        date = self._currentReservation.getFlights()[0].getDepartureDate()[0:10].lstrip("0").split("-").reverse()
 
-            if date != startdate:
-                self._seatSelectionMode = 1
+        if date != startdate:
+            self._seatSelectionMode = 1
 
-                totalFlightTime = 0
-                setStartDate(int(startdate[2]), int(startdate[0]), int(startdate[1]))
+            totalFlightTime = 0
+            setStartDate(int(startdate[2]), int(startdate[0]), int(startdate[1]))
 
-                for i in range(len(self._currentReservation.getFlights())):
-                    flightNumber = self._currentReservation.getFlights()[i].getNumber()
-                    flightDestinationCode = self._currentReservation.getFlights()[i].getDestination()[-4:-1]
-                    flight = self.fs.searchForFlight(flightDestinationCode,flightNumber)
+            for i in range(len(self._currentReservation.getFlights())):
+                flightNumber = self._currentReservation.getFlights()[i].getNumber()
+                flightDestinationCode = self._currentReservation.getFlights()[i].getDestination()[-4:-1]
+                flight = self.fs.searchForFlight(flightDestinationCode, flightNumber)
 
-                    nextFlightTime = flight.timeUntilNextFlight(offsetStartTime(timedelta(hours=totalFlightTime)))
-                    flightTime = flight.getTravelTime()
+                nextFlightTime = flight.timeUntilNextFlight(offsetStartTime(timedelta(hours=totalFlightTime)))
+                flightTime = flight.getTravelTime()
 
-                    totalFlightTime += nextFlightTime + flightTime
+                totalFlightTime += nextFlightTime + flightTime
 
-                newTime = self._currentReservation.getFlights()[0].getDepartureDate()
-                newTime.replace(year=int(startdate[2]), month = int(startdate[0]), day = int(startdate[1]))
+            newTime = self._currentReservation.getFlights()[0].getDepartureDate()
+            newTime = datetime.strptime(newTime, "%Y-%m-%d %H:%M:%S")
+            newTime.replace(year=int(startdate[2]), month=int(startdate[0]), day=int(startdate[1]))
 
-                tempRes = self.rm.createReservation()
+            # tempRes = self.rm.createReservation()
 
-                for flight in self._currentReservation.getFlights():
-                    tempRes.addFlight(flight, newTime)
+            for flight in self._currentReservation.getFlights():
+                flight.setDepartureDate(newTime)
+                # tempRes.addFlight(x, newTime)
 
-                for passenger in self._currentReservation.getPassengers():
-                    tempRes.addPassenger(passenger)
+            # for passenger in self._currentReservation.getPassengers():
+            #     tempRes.addPassenger(passenger)
 
-                self.rm.serializeAll()
+            self.rm.serializeAll()
 
-                # TODO user selects a new seat
-                self.gui.switchScreen("select_seating")
-            else:
-                # TODO no date change user selects new seat if they want
-                self.gui.switchScreen("select_seating")
-
-
-
-        except ValueError:
-            print("Input is invalid")
+            # TODO user selects a new seat
+            self.gui.switchScreen("select_seating")
+        else:
+            # TODO no date change user selects new seat if they want
+            self.gui.switchScreen("select_seating")
+        #
+        #
+        #
+        # except ValueError:
+        #     print("Input is invalid")
 
     def runCreditCardCreateReservation(self):
         cardIsValid = self.rm.validateCreditCard(self.gui.findWidgetByID("credit_card: creditcard").getText())
@@ -494,13 +503,17 @@ class ActionManager:
             self._currentReservationAlt.matchSeats()
 
         self.rm.serializeAll()
-        self.singleFlights, self.singleFlightsAlt = [], []
 
         print("Created reservation")
 
         self.gui.switchScreen("create_reservation_success")
         self.runCreateReservationSuccess()
         self._start, self._end = 0, 0
+        self._currentTripSelect = 0
+        self._selectedPaths = [0, 0]
+        self._tripType = 1
+        self._passengers, self._passengersAlt = [], []
+        self.singleFlights, self.singleFlightsAlt = [], []
         self.gui.findWidgetByID("create_reservation: start").setText("")
         self.gui.findWidgetByID("create_reservation: destination").setText("")
         self.gui.findWidgetByID("create_reservation: travelers").setText("")

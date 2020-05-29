@@ -34,15 +34,15 @@ def main():
 
         print("ID:", clicked, "- Action Performed")
         if clicked in gui.getScreenIDs() or clicked == 'back':
+            if clicked == 'back':
+                gui.resetScreen(gui.getScreenID(gui.getScreen()))
+                am.runCreateReservationUpdatetrip()
+
             gui.switchScreen(clicked)
 
             # Reset dot to original location
             if clicked == "create_reservation":
                 am.runCreateReservationRoundtrip()
-
-            if clicked == 'back':
-                gui.resetScreen(gui.getScreenID(gui.getScreen()))
-                am.runCreateReservationUpdatetrip()
 
         if clicked == "flight_status: lookup":
             am.runFlightStatusLookup()

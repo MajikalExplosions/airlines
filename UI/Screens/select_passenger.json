@@ -126,9 +126,9 @@
     "text": "Enter information for passenger 1",
     "size": 32,
     "color": {
-      "r": 150,
-      "g": 193,
-      "b": 192
+      "r": 27,
+      "g": 73,
+      "b": 101
     },
     "style": "normal"
   }

@@ -218,6 +218,7 @@ class ActionManager:
                     self._passengersAlt.append(Passenger(passenger.getFirstName(), passenger.getLastName()))
 
                 self.gui.switchScreen("select_seating")
+                #TODO gray out taken seats
                 self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
                 self._seatSelectionMode = 0
                 
@@ -246,6 +247,8 @@ class ActionManager:
             self._passengers.append(Passenger(f, l))
             if len(self._passengers) == self._passengerCount:
                 self.gui.switchScreen("select_seating")
+                #TODO gray out taken seats
+
                 self._flightSeatingIndex, self._passengerSeatingIndex = 0, 0
                 self._seatSelectionMode = 0
                 
@@ -268,8 +271,12 @@ class ActionManager:
             i = i[1:]
         
         row, seat = int(i[:-1]), int(i[-1])
+
         if self._seatSelectionMode == 0:
             #This is creating reservation
+            
+            #TODO Check if seat is taken
+
             self.runCreateReservationSelectSeats(row, seat, self._passengerSeatingIndex)
             self._passengerSeatingIndex += 1
             if self._passengerSeatingIndex >= self._passengerCount:
@@ -293,6 +300,9 @@ class ActionManager:
                 self.gui.findWidgetByID("select_seat: text").setText("Choose " + self._passengers[self._passengerSeatingIndex].getFirstName() + " " + self._passengers[self._passengerSeatingIndex].getLastName() + "'s seat on " + self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[self._flightSeatingIndex].getFullNumber())
         
         elif self._seatSelectionMode == 1:
+            
+            #TODO Check if seat is taken
+
             self.runModifyReservationSelectSeats(row, seat, self._passengers[self._passengerSeatingIndex])
             self._passengerSeatingIndex += 1
             if self._passengerSeatingIndex == len(self._passengers):
@@ -302,7 +312,6 @@ class ActionManager:
     def runModifyReservationFindExisting(self):
         print("Finding existing reservation.")
 
-        # TODO update the following section once Shuvam finishes ReservationManager and Chris finishes GUI
         cn, ln = self.gui.findWidgetByID("modify_reservation: reservation_number").getText(), self.gui.findWidgetByID(
             "modify_reservation: last_name").getText()
         reservation = self.rm.loadReservation(cn, ln)
@@ -337,7 +346,6 @@ class ActionManager:
                     totalFlightTime += nextFlightTime + flightTime
                 
                 #totalflighttime is in hours since starttime
-                # TODO Allow user to select new flight
                 for k in range(self.k):
                     print("Finding path", k)
                     self._paths = self.fs.searchForFlights(self._start, self._end, k + 1, self._startDate.year, self._startDate.month, self._startDate.day)
@@ -367,7 +375,7 @@ class ActionManager:
 
         for i in range(len(flightData)):
             depTime = self._selectedPaths[0].timeToNodeDeparture(i)
-            arrTime = self._selectedPaths[0].timeToNodeArrival(i + 1)
+            arrTime = self._selectedPaths[0].timeToNodeArrival(i + 1, self.fm)
             self._currentReservation.addFlight(flightData[i], depTime, arrTime)
 
         for passenger in self._passengers:
@@ -400,6 +408,7 @@ class ActionManager:
 
     def runCreateReservationSuccess(self):
         # TODO update screen with info & reservation number or numbers
+        
         self.gui.switchScreen("main")
 
     def runModifyReservationSelectSeats(self, row, seat, passenger):

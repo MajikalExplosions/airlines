@@ -111,8 +111,8 @@ class Path:
         return f
 
     def timeToNodeDeparture(self, index, fm):
-        if index == 0:
-            return self.timeToNodeArrival(1, fm) - self.toFlights(fm)[0].getTravelTime()
+        #if index == 0:
+        #    return self.timeToNodeArrival(1, fm) - self.toFlights(fm)[0].getTravelTime()
         return self.distToNode[index]
     
     def timeToNodeArrival(self, index, fm):

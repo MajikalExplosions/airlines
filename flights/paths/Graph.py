@@ -11,16 +11,21 @@ class Graph:
     def __init__(self):
         self.nodes = []
         self.MAX = 1000000000
+
+        #Maps between node id and airport ids
         self.ntoa = {}
         self.aton = {}
 
     def fromFlights(self, fm):
         a = fm.getAirports()
+        
+        #First create all nodes and map ids to each other
         for i in range(len(a)):
             self.nodes.append(Node(i, self.MAX))
             self.ntoa[i] = a[i].getId()
             self.aton[a[i].getId()] = i
         
+        #Add edges representing each flight
         for airport in a:
             for flight in airport.getFlights():
                 self.nodes[self.aton[airport.getId()]].addEdge(Edge(flight, self.aton[airport.getId()], self.aton[flight.getDestination().getId()]))
@@ -47,6 +52,7 @@ class Graph:
             node.reset(self.MAX)
     
     def reset(self, path):
+        #Resets all nodes except for those in path
         for node in self.nodes:
             if node not in path.getNodes():
                 node.reset(self.MAX)
@@ -79,6 +85,7 @@ class Node:
         return self.v
     
     def getQ(self):
+        #Whether it's in the queue or not
         return self.q
 
     def setQ(self, q):
@@ -100,6 +107,7 @@ class Node:
         self.q = mx
     
     def setEdgeIn(self, p):
+        #Sets the edge/flight that was taken to arrive at this node
         self.edgeIn = p
 
     def getEdgeIn(self):
@@ -109,6 +117,7 @@ class Node:
         return self.edgeIn == -1
 
     def root(self, d):
+        #Sets this node as the root node
         self._dist = d
         self.edgeIn = -1
 
@@ -123,4 +132,5 @@ class Edge:
         self.r = False
     
     def removed(self):
+        #r represents whether this edge/flight should be traveled or not
         return self.r

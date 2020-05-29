@@ -1,7 +1,7 @@
 {
   "Text1": {
     "id": "SelectPassenger_Title",
-    "x": 338,
+    "x": 368,
     "y": 150,
     "text": "Fill in Passenger Details",
     "size": 60,
@@ -14,7 +14,7 @@
   },
   "Text2": {
     "id": "SelectPassenger_Description",
-    "x": 375,
+    "x": 400,
     "y": 200,
     "text": "Enter valid passenger details to create a reservation.",
     "size": 32,
@@ -75,7 +75,7 @@
   },
   "Text3": {
     "id": "SelectPassegnerFirst",
-    "x": 160,
+    "x": 200,
     "y": 300,
     "text": "First Name:",
     "size": 32,
@@ -88,7 +88,7 @@
   },
   "Text4": {
     "id": "SelectPassengerLast",
-    "x": 448,
+    "x": 445,
     "y": 300,
     "text": "Last Name:",
     "size": 32,
@@ -118,5 +118,18 @@
     },
     "textSize": 32,
     "id": "select_passenger: next"
+  },
+  "Text5": {
+    "id": "select_passenger: output",
+    "x": 600,
+    "y": 500,
+    "text": "Enter information for passenger 1",
+    "size": 32,
+    "color": {
+      "r": 150,
+      "g": 193,
+      "b": 192
+    },
+    "style": "normal"
   }
 }

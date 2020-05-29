@@ -1,7 +1,7 @@
 {
   "Text1": {
     "id": "SelectSeating_Title",
-    "x": 338,
+    "x": 300,
     "y": 150,
     "text": "Select a Seat",
     "size": 60,
@@ -14,7 +14,7 @@
   },
   "Text2": {
     "id": "SelectSeating_Description",
-    "x": 375,
+    "x": 330,
     "y": 200,
     "text": "Choose a seat for passenger.",
     "size": 32,

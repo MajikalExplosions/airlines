@@ -36,7 +36,7 @@ class ActionManager:
         self._currentReservation, self._currentReservationAlt = "", ""
         self._selectedPaths = [0, 0]
         self._selectFlightMode = 0
-        self.k = 2
+        self.k = 10
         self._checkinReservation, self._checkinCurrentPassenger = None, 0
         self.singleFlights, self.singleFlightsAlt = [], []
 
@@ -85,9 +85,12 @@ class ActionManager:
     def runCreateReservationOneway(self):
         # Undraw prompt for return flight date
         try:
-            if self._tripType != 0:
+            if self._tripType == 1:
                 self.gui.findWidgetByID("FlightReturnDateText").undraw()
                 self.gui.findWidgetByID("create_reservation: return_date").undraw()
+            else:
+                self.gui.findWidgetByID("FlightReturnDateText").draw(self.gui.getWin())
+                self.gui.findWidgetByID("create_reservation: return_date").draw(self.gui.getWin())
         except:
             pass
 
@@ -101,9 +104,12 @@ class ActionManager:
     def runCreateReservationRoundtrip(self):
         # Draw prompt for return flight date
         try:
-            if self._tripType != 1:
+            if self._tripType == 0:
                 self.gui.findWidgetByID("FlightReturnDateText").draw(self.gui.getWin())
                 self.gui.findWidgetByID("create_reservation: return_date").draw(self.gui.getWin())
+            else:
+                self.gui.findWidgetByID("FlightReturnDateText").undraw()
+                self.gui.findWidgetByID("create_reservation: return_date").undraw()
         except:
             pass
         # Move selection dot thing over if necessary
@@ -113,7 +119,17 @@ class ActionManager:
 
         self._tripType = 1
 
+    def runCreateReservationUpdatetrip(self):
+        try:
+            if self._tripType == 1:
+                self.runCreateReservationOneway()
+            else:
+                self.runCreateReservationRoundtrip()
+        except:
+            pass
+
     def runCreateReservationSearchFlights(self):
+        # Error check user input
         count, startD = self.gui.findWidgetByID("create_reservation: travelers").getText(), self.gui.findWidgetByID(
             "create_reservation: start_date").getText()
         if self._tripType == 1:
@@ -175,6 +191,8 @@ class ActionManager:
                     break
                 else:
                     self.gui.switchScreen("list_flights")
+                    self.gui.findWidgetByID("create_reservation: output").setText(
+                        "")
             try:
                 self.gui.findWidgetByID("selection_flight" + str(k)).setText(self._paths[k].toShortString(self.fm))
             except:
@@ -235,8 +253,8 @@ class ActionManager:
         self.gui.switchScreen("create_reservation")
         try:
             if self._tripType != 0:
-                self.gui.findWidgetByID("FlightReturnDateText").draw()
-                self.gui.findWidgetByID("create_reservation: return_date").draw()
+                self.gui.findWidgetByID("FlightReturnDateText").draw(self.gui.getWin())
+                self.gui.findWidgetByID("create_reservation: return_date").draw(self.gui.getWin())
             else:
                 self.gui.findWidgetByID("FlightReturnDateText").undraw()
                 self.gui.findWidgetByID("create_reservation: return_date").undraw()
@@ -249,6 +267,8 @@ class ActionManager:
             self._selectFlightMode = (self._selectFlightMode + 1) % 2
         if self._currentTripSelect == 0:
             self.gui.switchScreen("select_passenger")
+            self.gui.findWidgetByID("select_passenger: output").setText(
+                "Fill in first and last name for passenger " + str(len(self._passengers) + 1))
 
         elif self._currentTripSelect == 1:            
         
@@ -310,20 +330,22 @@ class ActionManager:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
                         else:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")
-                
+
                 self.gui.findWidgetByID("select_seat: text").setText(
                     "Choose " + self._passengers[0].getFirstName() + " " + self._passengers[
-                        0].getLastName() + "'s seat on " + self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0].getFullNumber())
+                        0].getLastName() + "'s seat on " +
+                    self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0].getFullNumber())
             else:
                 self.gui.findWidgetByID("select_passenger: first_name").setText("")
                 self.gui.findWidgetByID("select_passenger: last_name").setText("")
-    
+                self.gui.findWidgetByID("select_passenger: output").setText(
+                    "Fill in first and last name for passenger " + str(len(self._passengers) + 1))
+
     def runCreateReservationSelectSeats(self, row, seat, passengerIndex):
         if self._currentTripSelect == 0:
             self._passengers[passengerIndex].addSeat(str(row + 1) + ["A", "B", "C", "D", "E", "F"][seat])
         if self._currentTripSelect == 1:
             self._passengersAlt[passengerIndex].addSeat(str(row + 1) + ["A", "B", "C", "D", "E", "F"][seat])
-
 
     def runSelectSeats(self, i):
         if i[0] not in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:

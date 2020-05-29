@@ -159,3 +159,9 @@ Flight  Departure Date: 0020-05-02 00:00:00  Flight ID: 15471  Airline: UA  Numb
 Passenger  First Name: A  Last Name: A  Seats: ['1A']
 }
 
+Reservation {
+Confirmation Number: zQLliX
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+Flight  Departure Date: 0020-01-12 00:00:00  Flight ID: 10992  Airline: UA  Number: 6320  Origin: Los Angeles International Airport, Los Angeles (LAX)  Destination: San Diego International Airport, San Diego (SAN)  Departure Time: 2020-05-28 13:30:00  Arrival Time: 2020-05-28 14:19:00  Booked Seats: 
+}
+

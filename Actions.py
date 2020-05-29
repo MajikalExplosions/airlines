@@ -408,7 +408,7 @@ class ActionManager:
 
                 tempRes = self.rm.createReservation()
                 
-                for flight in self._currentReservation.getFlights();
+                for flight in self._currentReservation.getFlights():
                     tempRes.addFlight(flight,newTime,flight.getArrivalTime()+(newTime-flight.getDepTime()))
 
                 for passenger in self._currentReservation.getPassengers():

@@ -126,9 +126,9 @@ class ActionManager:
             self.gui.findWidgetByID("create_reservation: output").setText(
                 "Invalid Airports.\nDeparture airport is the same as arrival airport.")
             return
-        if self._start.getCode() == self.gui.findWidgetByID(
-                "create_reservation: start").getText() or self._end.getCode() == self.gui.findWidgetByID(
-                "create_reservation: destination").getText():
+        if self._start.getCode() != self.gui.findWidgetByID(
+                "create_reservation: start").getText() or self._end.getCode() != self.gui.findWidgetByID(
+            "create_reservation: destination").getText():
             self.gui.findWidgetByID("create_reservation: output").setText(
                 "Changes to your input detected.\nPlease press Find Start or Find Destination to select the airport")
             return

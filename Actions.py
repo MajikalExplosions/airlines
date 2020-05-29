@@ -82,9 +82,12 @@ class ActionManager:
 
     def runCreateReservationOneway(self):
         # Undraw prompt for return flight date
-        if self._tripType != 0:
-            self.gui.findWidgetByID("FlightReturnDateText").undraw()
-            self.gui.findWidgetByID("create_reservation: return_date").undraw()
+        try:
+            if self._tripType != 0:
+                self.gui.findWidgetByID("FlightReturnDateText").undraw()
+                self.gui.findWidgetByID("create_reservation: return_date").undraw()
+        except:
+            pass
 
         # Move selection dot thing over
         self.gui.findWidgetByID("create_reservation: moving_circle").move(
@@ -95,10 +98,12 @@ class ActionManager:
 
     def runCreateReservationRoundtrip(self):
         # Draw prompt for return flight date
-        if self._tripType != 1:
-            self.gui.findWidgetByID("FlightReturnDateText").draw(self.gui.getWin())
-            self.gui.findWidgetByID("create_reservation: return_date").draw(self.gui.getWin())
-
+        try:
+            if self._tripType != 1:
+                self.gui.findWidgetByID("FlightReturnDateText").draw(self.gui.getWin())
+                self.gui.findWidgetByID("create_reservation: return_date").draw(self.gui.getWin())
+        except:
+            pass
         # Move selection dot thing over if necessary
         self.gui.findWidgetByID("create_reservation: moving_circle").move(
             135 - self.gui.findWidgetByID("create_reservation: moving_circle").getCenter().getX(),
@@ -206,7 +211,17 @@ class ActionManager:
             self._start = self._airportLists[0][i]
 
         # Switch screen back
+
         self.gui.switchScreen("create_reservation")
+        try:
+            if self._tripType != 0:
+                self.gui.findWidgetByID("FlightReturnDateText").draw()
+                self.gui.findWidgetByID("create_reservation: return_date").draw()
+            else:
+                self.gui.findWidgetByID("FlightReturnDateText").undraw()
+                self.gui.findWidgetByID("create_reservation: return_date").undraw()
+        except:
+            pass
 
     def runCreateReservationSelectFlight(self, i):
         self._selectedPaths[self._selectFlightMode] = self._paths[i]

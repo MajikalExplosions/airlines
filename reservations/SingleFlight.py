@@ -44,7 +44,7 @@ class SingleFlight:
             pass
 
     #searches the list of file lines to see if it contains this flight
-    #if it does, returns the line where the glith starts
+    #if it does, returns the line where the flight starts
     #if it doesn't, returns -1
     def __fileContainsFlight(self, fileLines):
         lineNum = 0
@@ -56,11 +56,10 @@ class SingleFlight:
                 flightID = curLine.lstrip("Flight ID: ")
 
                 if flightID == self.flightId:
-                    depLine = fileLines[lineNum - 2].lstrip("Departure Date: ")
+                    depLine = fileLines[lineNum - 1].lstrip("Departure Date: ")
                     if depLine == self.depDate:
-                        return lineNum - 3
-            else:
-                lineNum += 1
+                        return lineNum - 2
+            lineNum += 1
         return -1
 
     def getFlightID(self):

@@ -432,7 +432,7 @@ class ActionManager:
             if len(startdate) != 3:
                 print("Start date is invalid")
                 return
-            date = self._currentReservation.getFlights()[0].getDepartureDate()[0:10].lstrip("0").split("-")
+            date = self._currentReservation.getFlights()[0].getDepartureDate()[0:10].lstrip("0").split("-").reverse()
 
             if date != startdate:
                 self._seatSelectionMode = 1

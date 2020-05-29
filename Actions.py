@@ -192,7 +192,6 @@ class ActionManager:
             self._selectFlightMode = (self._selectFlightMode + 1) % 2
         self.gui.switchScreen("select_passenger")
         
-
     def runCheckinFindReservation(self):
         cn, ln = self.gui.findWidgetByID("checkin: reservation_number").getText(), self.gui.findWidgetByID("checkin: last_name").getText()
         try:
@@ -226,7 +225,6 @@ class ActionManager:
     
     def runCreateReservationSelectSeats(self, row, seat, passengerIndex):
         self._passengers[passengerIndex].addSeat(str(row + 1) + ["A", "B", "C", "D", "E", "F"][seat])
-        print("HI!")
 
 
     def runSelectSeats(self, i):
@@ -253,8 +251,6 @@ class ActionManager:
             self._passengerSeatingIndex += 1
             if self._passengerSeatingIndex == len(self._passengers):
                 self.gui.switchScreen("main")
-                # Finish reselecting seats.
-                pass
     
     #self._seatSelectionMode = 1 somewhere at the end
     def runModifyReservationFindExisting(self):

@@ -262,7 +262,7 @@ class ActionManager:
                 seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0], self._startDate, self._currentTripSelect == 0)
                 for i in range(len(seatA)):
                     for j in range(len(seatA[i])):
-                        if seatA[i][j]:
+                        if not seatA[i][j]:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
                         else:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")
@@ -300,7 +300,7 @@ class ActionManager:
                 seatA = self.__getSeatAvailability(self._selectedPaths[self._currentTripSelect].toFlights(self.fm)[0], self._startDate, self._currentTripSelect == 0)
                 for i in range(len(seatA)):
                     for j in range(len(seatA[i])):
-                        if seatA[i][j]:
+                        if not seatA[i][j]:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
                         else:
                             self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")
@@ -378,9 +378,9 @@ class ActionManager:
             bad = False
             for i in range(len(seatA)):
                 for j in range(len(seatA[i])):
-                    if i == row and j == seat:
+                    if i == row and j == seat and seatA[i][j]:
                         bad = True
-                    if seatA[i][j]:
+                    if not seatA[i][j]:
                         self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("gray")
                     else:
                         self.gui.findWidgetByID("selection_seat" + str(i) + str(j)).setColor("green")

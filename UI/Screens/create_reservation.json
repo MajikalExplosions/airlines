@@ -361,12 +361,12 @@
     "textSize": 25,
     "id": "create_reservation: find_destination_airport"
   },
-  "Text8": {
-    "id": "create_reservation: error",
+  "Text9": {
+    "id": "create_reservation: output",
     "x": 600,
-    "y": 600,
-    "text": "",
-    "size": 25,
+    "y": 700,
+    "text": "Click on Find Start or Find Destination to Choose an Airport",
+    "size": 32,
     "color": {
       "r": 150,
       "g": 193,
